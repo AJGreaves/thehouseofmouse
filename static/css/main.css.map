@@ -1,0 +1,16 @@
+{
+    "version": 3,
+    "mappings": "ACAA,OAAO,CAAC,kFAAI;AAEZ,eAAe",
+    "sources": [
+        "../scss/main.scss",
+        "../scss/helpers/_variables.scss",
+        "../scss/helpers/_fonts.scss",
+        "../scss/helpers/_buttons.scss",
+        "../scss/helpers/_icons.scss",
+        "../scss/utilities/_utilities.scss",
+        "../scss/pages/_allpages.scss",
+        "../scss/pages/_mediaqueries.scss"
+    ],
+    "names": [],
+    "file": "main.css"
+}
