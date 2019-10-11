@@ -7,6 +7,11 @@ class Product(models.Model):
         'shipping.Shipping_profile',
         on_delete=models.CASCADE,
     )
+    category = models.ForeignKey(
+        'Category',
+        on_delete=models.CASCADE,
+        null=True
+    )
     title = models.CharField(max_length=100)
     # image1 = models.ImageField() have installed Pillow, but need to work out storage see https://docs.djangoproject.com/en/2.2/ref/models/fields/#imagefield
     description = models.TextField()
