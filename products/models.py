@@ -3,10 +3,6 @@ from django.core.validators import MaxValueValidator
 
 # Create your models here.
 class Product(models.Model):
-    shipping_profile = models.ForeignKey(
-        'shipping.Shipping_profile',
-        on_delete=models.CASCADE,
-    )
     category = models.ForeignKey(
         'Category',
         on_delete=models.CASCADE,
