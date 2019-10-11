@@ -1,6 +1,5 @@
 from django.db import models
 from django.core.validators import MaxValueValidator
-
 # Create your models here.
 class Product(models.Model):
     # category = models.ForeignKey(Category) - create table for this in shipping app
@@ -18,10 +17,9 @@ class Product(models.Model):
     num_in_stock = models.PositiveSmallIntegerField(validators=[MaxValueValidator(100)])
     num_sold = models.PositiveSmallIntegerField(default=0)
     num_fav = models.PositiveSmallIntegerField(default=0)
-
+    
     def __str__(self):
         return self.title
-
 class Category(models.Model):
     name = models.CharField(max_length=50)
 
