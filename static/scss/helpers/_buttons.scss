@@ -20,6 +20,11 @@
     background-color: $color3;
 }
 
-#mobile-search-input {
+#mobile-search-input,
+#nav-search-input {
     border-radius: 0.25rem 0 0 0.25rem;
+}
+
+#nav-search-btn {
+    border-radius: 0 0.25rem 0.25rem 0;
 }
