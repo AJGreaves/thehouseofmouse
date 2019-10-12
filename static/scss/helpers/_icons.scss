@@ -37,3 +37,38 @@
     line-height: 1rem;
     margin-left: -18px;
 }
+
+/* social media icons */
+
+footer .fab {
+    font-size: 2rem;
+    padding: 1rem;
+    -webkit-transition: 0.3s all ease-in-out 0.2s;
+    transition: 0.3s all ease-in-out 0.2s;
+}
+
+footer .fab:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    text-shadow: 2px 2px rgba(0,0,0,.5);
+}
+
+footer .fa-facebook-square:hover {
+    color: #4267B2;
+}
+
+footer .fa-twitter:hover {
+    color: #1DA1F2;
+}
+
+footer .fa-pinterest:hover {
+    color: #E60023;
+}
+
+footer .fa-instagram:hover {
+    color: #F77737;
+}
+footer .fa-youtube-square:hover {
+    color: #FF0000;
+}
+
