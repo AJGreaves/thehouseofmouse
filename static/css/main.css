@@ -37,16 +37,16 @@
 
 /*  Gives shopping cart and favs icons the
     right sizing                                */
-.navbar_icon {
+.navbar-icon {
   font-size: 2rem;
 }
 
-.fa-heart.navbar_icon {
+.fa-heart.navbar-icon {
   color: #FFBABE;
 }
 
 /*  Matches color of other navbar items         */
-.fa-shopping-basket.navbar_icon {
+.fa-shopping-basket.navbar-icon {
   color: rgba(0, 0, 0, 0.5);
 }
 

@@ -29,20 +29,34 @@
     </div>
     <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <a class="navbar-brand px-2 mr-auto" href="#">
+        <a class="navbar-brand px-1 mr-auto mr-md-1" href="#">
             <img id="logo" src="{% static 'img/logo.png' %}" alt="The House of Mouse logo">
         </a>
+
         <form class="form-inline mr-auto my-2 my-lg-0 d-none d-md-inline-block">
             <input id="nav-search-input" class="form-control" type="search" placeholder="Search all mice"
                 aria-label="Search"><button id="nav-search-btn" class="btn btn-search" type="submit"><i
                     class="fas fa-search"></i></button>
         </form>
 
+        <!-- positions favs and cart icons to left of toggler on mobiles (2nd one for desktop below) -->
+        <div id="navbar-icons-mobile" class="d-lg-none">
+            <a class="nav-link nav-link-icon" href="#" title="My Favourites">
+                <i class="far fa-heart navbar-icon"></i>
+            </a>
+            <a class="nav-link nav-link-icon" href="#" title="Shopping cart">
+                <div>
+                    <i class="fas fa-shopping-basket navbar-icon"></i>
+                    <div id="cart-counter">2</div>
+                </div>
+            </a>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
@@ -86,13 +100,15 @@
             </ul>
 
         </div>
-        <div id="navbar-icons">
+
+        <!-- positions favs and cart icons to far right of navbar when navigation not collapsed -->
+        <div id="navbar-icons-desktop" class="d-none d-lg-inline-block">
             <a class="nav-link nav-link-icon" href="#" title="My Favourites">
-                <i class="far fa-heart navbar_icon"></i>
+                <i class="far fa-heart navbar-icon"></i>
             </a>
             <a class="nav-link nav-link-icon" href="#" title="Shopping cart">
                 <div>
-                    <i class="fas fa-shopping-basket navbar_icon"></i>
+                    <i class="fas fa-shopping-basket navbar-icon"></i>
                     <div id="cart-counter">2</div>
                 </div>
             </a>
