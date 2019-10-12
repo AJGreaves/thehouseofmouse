@@ -1,3 +1,39 @@
 #logo {
     height: 45px;
 }
+
+/*  Gives shopping cart and favs icons the
+    right sizing                                */
+.navbar_icon {
+    font-size: 2rem;
+}
+
+.fa-heart.navbar_icon {
+    color: $color2;
+}
+
+/*  Matches color of other navbar items         */
+.fa-shopping-basket.navbar_icon {
+    color: rgba(0,0,0,.5);
+}
+
+/*  Positions shopping cart nicely in navbar    */
+.nav-link-icon {
+    padding: 0 5px;
+    display: inline-block;
+}
+
+/*  Styles shopping cart counter and positions 
+    it partially over the shopping cart icon    */
+#cart-counter {
+    background-color: $color3;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    color: white;
+    text-align: center;
+    font-size: 0.8rem;
+    line-height: 1rem;
+    margin-left: -18px;
+}

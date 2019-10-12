@@ -15,48 +15,92 @@
     <!-- custom css -->
     <link rel="stylesheet" href="{% static 'css/main.min.css' %}">
 
+    <!-- Font awesome script -->
+    <script src="https://kit.fontawesome.com/b83175b9a4.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-            <img id="logo" src="{% static 'img/logo.png' %}" alt="The House of Mouse logo">
-        </a>
+    <div id="mobile-search-bar" class="d-md-none">
+        <form class="form-inline justify-content-center">
+            <input id="mobile-search-input" class="form-control" type="search" placeholder="Search all mice"
+                aria-label="Search">
+            <button id="mobile-search-btn" class="btn my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
+        <a class="navbar-brand px-2 mr-auto" href="#">
+            <img id="logo" src="{% static 'img/logo.png' %}" alt="The House of Mouse logo">
+        </a>
+        <form class="form-inline mr-auto my-2 my-lg-0 d-none d-md-inline-block">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search all mice" aria-label="Search">
+            <button class="btn btn-search my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home {% if page == "home" %}<span class="sr-only">(current)</span>{% endif %}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="#">Home {% if page == "home" %}<span
+                            class="sr-only">(current)</span>{% endif %}</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
+                        Browse
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">View All</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+
+                        <a class="dropdown-item" href="#">Famous</a>
+                        <a class="dropdown-item" href="#">Star Wars</a>
+                        <a class="dropdown-item" href="#">Doctor Who</a>
+                        <a class="dropdown-item" href="#">Harry Potter</a>
+                        <div class="dropdown-divider"></div>
+
+                        <a class="dropdown-item" href="#">Special Occasions</a>
+                        <a class="dropdown-item" href="#">Christmas</a>
+                        <a class="dropdown-item" href="#">Halloween & Dangerous</a>
+                        <div class="dropdown-divider"></div>
+
+                        <a class="dropdown-item" href="#">Cultures</a>
+                        <a class="dropdown-item" href="#">Weird & Misc</a>
+                        <a class="dropdown-item" href="#">Clearance</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sign In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Create Account</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+
+        </div>
+        <div id="navbar-icons">
+            <a class="nav-link nav-link-icon" href="#" title="My Favourites">
+                <i class="far fa-heart navbar_icon"></i>
+            </a>
+            <a class="nav-link nav-link-icon" href="#" title="Shopping cart">
+                <div>
+                    <i class="fas fa-shopping-basket navbar_icon"></i>
+                    <div id="cart-counter">2</div>
+                </div>
+            </a>
         </div>
     </nav>
+
+
+
+
 
     {% block content %}
     {% endblock %}
