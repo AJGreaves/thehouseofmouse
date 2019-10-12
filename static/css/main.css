@@ -1,5 +1,32 @@
-@import url("https://fonts.googleapis.com/css?family=Emilys+Candy|Open+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Emilys+Candy|Lato&display=swap");
 /* Variables */
+body {
+  font-family: "Lato", sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: "Emilys Candy", cursive;
+}
+
+h4, h5 {
+  font-family: "Lato", sans-serif;
+  text-transform: uppercase;
+}
+
+h5 {
+  font-size: 1.1rem;
+  letter-spacing: 0.1rem;
+}
+
+footer h3 {
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+  color: #f8f9fa;
+}
+
+footer h5 {
+  color: #FFBABE;
+}
+
 .btn-search {
   color: #63c4fc;
   background-color: transparent;
@@ -74,7 +101,8 @@
 /* social media icons */
 footer .fab {
   font-size: 2rem;
-  padding: 1rem;
+  padding: 0.8rem;
+  color: #f8f9fa;
   -webkit-transition: 0.3s all ease-in-out 0.2s;
   transition: 0.3s all ease-in-out 0.2s;
 }
@@ -127,6 +155,7 @@ footer .fa-youtube-square:hover {
 
 footer {
   background-color: #373737;
+  padding: 1.5rem;
 }
 
 footer li {
@@ -136,5 +165,20 @@ footer li {
 footer ul {
   padding: 0;
   margin: 0;
+}
+
+.footer-heading {
+  margin-bottom: 2rem;
+}
+
+footer a {
+  color: #f8f9fa;
+  -webkit-transition: 0.3s all ease-in-out 0.2s;
+  transition: 0.3s all ease-in-out 0.2s;
+}
+
+footer a:hover {
+  color: #FFBABE;
+  text-decoration: none;
 }
 /*# sourceMappingURL=main.css.map */

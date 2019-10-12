@@ -1,0 +1,26 @@
+body {
+    font-family: $main-text;
+}
+
+h1, h2, h3 {
+    font-family: $heading
+}
+
+h4, h5 {
+    font-family: $main-text;
+    text-transform: uppercase;
+}
+
+h5 {
+    font-size: 1.1rem;
+    letter-spacing: 0.1rem;
+}
+
+footer h3 {
+    text-shadow: 1px 1px rgba(0,0,0,.5);
+    color: #f8f9fa;
+}
+
+footer h5 {
+    color: $color2;
+}

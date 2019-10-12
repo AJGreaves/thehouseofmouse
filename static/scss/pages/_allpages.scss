@@ -20,6 +20,7 @@
 
 footer {
     background-color: $color-dark;
+    padding: 1.5rem;
 }
 
 footer li {
@@ -29,4 +30,19 @@ footer li {
 footer ul {
     padding: 0;
     margin: 0;
+}
+
+.footer-heading {
+    margin-bottom: 2rem;
+}
+
+footer a {
+    color: #f8f9fa;
+    -webkit-transition: 0.3s all ease-in-out 0.2s;
+    transition: 0.3s all ease-in-out 0.2s;
+}
+
+footer a:hover {
+    color: $color2;
+    text-decoration: none;
 }
