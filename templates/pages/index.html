@@ -11,13 +11,13 @@
         <li data-target="#home-page-carousel" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner">
-        <div class="carousel-item active">
+        <div class="carousel-item home-carousel-item active">
             <div id="carousel-img-1" class="d-block w-100 carousel-image"></div>
         </div>
-        <div class="carousel-item">
+        <div class="carousel-item home-carousel-item">
             <div id="carousel-img-2" class="d-block w-100 carousel-image"></div>
         </div>
-        <div class="carousel-item">
+        <div class="carousel-item home-carousel-item">
             <div id="carousel-img-3" class="d-block w-100 carousel-image"></div>
         </div>
     </div>
@@ -72,6 +72,8 @@
                         </div>
                     </header>
                 </div>
+
+                <!-- Shop sections -->
                 <div class="row mt-3">
                     <!-- top two columns bigger on desktop -->
                     <div class="col-12 col-sm-6 home-category-wrapper-lg">
@@ -130,10 +132,66 @@
                         </div>
                     </div>
                 </div>
-                <!-- Shop sections -->
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Testimonials -->
+<div id="testimonials-section" class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div id="testimonials-container" class="container">
+                <div class="row justify-content-center text-center">
+                    <div class="col-12">
+                        <h3>What my customers say...</h3>
+                    </div>
+                    <div class="col-12">
+                        <!-- testimonials carousel -->
+                        <div id="testimonials-carousel" class="carousel slide pb-4" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#testimonials-carousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#testimonials-carousel" data-slide-to="1"></li>
+                                <li data-target="#testimonials-carousel" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div class="testimonial-wrapper d-block" alt="First slide">
+                                        <div class="mb-3">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <blockquote cite="https://www.etsy.com/shop/TheHouseOfMouse#reviews">
+                                            <p>AMAZING. My son is into ninja mice, but I didn't see a Ninja Mouse
+                                                offered by Anna. I asked if she could create one, and VOILA! A
+                                                custom-ordered, ADORABLE ninja mouse for my son. It's not easy to
+                                                find ninja mouse items for the holidays, so I was VERY relieved!
+                                                It is extremely well made and accurate. And the turnaround time
+                                                was insanely fast, even though it was a custom order and had to
+                                                ship to San Francisco in the US.</p>
+                                            <footer>- sherrihowe, <cite>Etsy Feedback</cite></footer>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="..." alt="Second slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="..." alt="Third slide">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
 
 {% endblock %}

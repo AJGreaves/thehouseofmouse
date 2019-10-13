@@ -1,4 +1,4 @@
-.carousel-item {
+.home-carousel-item {
     height: 66vh;
     width: 100vw;
 }
@@ -100,4 +100,18 @@
 .home-category-wrapper h3,
 .home-category-wrapper-lg h3 {
     font-size: 1.3rem;
+}
+
+/* testimonials */
+
+#testimonials-section {
+    background-color: $color-dark;
+    color: white;
+}
+.testimonial-wrapper {
+    padding: 1rem;
+}
+
+#testimonials-container {
+    padding: 2rem 1rem;
 }
