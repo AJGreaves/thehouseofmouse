@@ -18,6 +18,11 @@
     box-shadow: 0 2px 4px rgba(0,0,0,0.16), 0 2px 4px rgba(0,0,0,0.23);
 }
 
+.sm-box-shadow-hover:hover {
+    -webkit-box-shadow: 0 4px 7px rgba(0,0,0,0.16), 0 4px 8px rgba(0,0,0,0.23);
+            box-shadow: 0 4px 7px rgba(0,0,0,0.16), 0 4px 8px rgba(0,0,0,0.23);
+}
+
 footer {
     background-color: $color-dark;
     padding: 1.5rem;

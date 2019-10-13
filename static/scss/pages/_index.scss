@@ -47,3 +47,57 @@
     text-transform: uppercase;
     letter-spacing: 0.15rem;
 }
+
+/* category images and headings */
+
+/* home-category-wrapper-lg is larger on desktop, see media queries */
+.home-category-wrapper-lg,
+.home-category-wrapper {
+    height: 250px;
+    padding: 15px;
+}
+
+.category-img {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 8px;
+    -webkit-transition: 0.2s all ease-in-out 0.2s;
+    transition: 0.2s all ease-in-out 0.2s;
+    background-position: center 35%;
+}
+
+.category-heading-box {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#category-img-1 {
+    background-image: url('https://i.ibb.co/TrxyMsy/Beatles-1.jpg');
+}
+
+#category-img-2 {
+    background-image: url('https://i.ibb.co/0Myn71W/Wedding-1.jpg');
+}
+
+#category-img-3 {
+    background-image: url('https://i.ibb.co/P6fLV3B/HPGroup.jpg');
+}
+
+#category-img-4 {
+    background-image: url('https://i.ibb.co/TYFQxMM/SWYoda-1.jpg');
+}
+
+#category-img-5 {
+    background-image: url('https://i.ibb.co/qpFMHV6/Mr-Applecheeks1.jpg');
+}
+
+#category-img-6 {
+    background-image: url('https://i.ibb.co/5RpCJWz/GuitarF1.jpg');
+}
+
+.home-category-wrapper h3,
+.home-category-wrapper-lg h3 {
+    font-size: 1.3rem;
+}
