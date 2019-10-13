@@ -81,3 +81,16 @@ footer .fa-youtube-square:hover {
     color: #FF0000;
 }
 
+/* add to favrouites icon */
+
+.listing-img i {
+    font-size: 1.5rem;
+    padding: 1rem;
+    -webkit-transition: 0.2s all ease-in-out 0.3s;
+    transition: 0.2s all ease-in-out 0.3s;
+    opacity: 0.5;
+}
+
+.listing-img i:hover {
+    color: $color2-hover;
+}
