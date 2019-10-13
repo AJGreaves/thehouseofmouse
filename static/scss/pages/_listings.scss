@@ -19,12 +19,7 @@
     font-size: 0.6rem;
 }
 
-/* Credit: http://jsfiddle.net/laelitenetwork/puJ6G/ */ 
-.qty {
-    width: 40px;
-    height: 25px;
-    text-align: center;
+.listing-quantity {
+    max-width: 100px;
+    margin-bottom: 1rem;
 }
-input.qtyplus { width:25px; height:25px;}
-input.qtyminus { width:25px; height:25px;}
-/* end credit */

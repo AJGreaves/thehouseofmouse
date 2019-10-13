@@ -22,7 +22,7 @@
         <div class="col-12">
             <h1>Yoda Mouse</h1>
         </div>
-        
+
         <!-- listing images -->
         <div class="col-12 col-md-9 col-lg-7">
             <div class="row">
@@ -52,15 +52,20 @@
                     <p>Add to favourites</p>
                 </div>
                 <div class="col-12">
-                    <h5>Quantity</h5>
-
-                    <!-- Credit: http://jsfiddle.net/laelitenetwork/puJ6G/ -->
-                    <form id='quantity-form' method='POST' action='#'>
-                        <input type='button' value='-' class='qtyminus' field='quantity' />
-                        <input type='text' name='quantity' value='0' class='qty' />
-                        <input type='button' value='+' class='qtyplus' field='quantity' />
+                    <form id="listing-quantity-form">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Quantity</label>
+                            <select class="form-control listing-quantity" id="exampleFormControlSelect1">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <button type="submit" class="btn btn-cta btn-blue btn-shop">Add to Cart</button>
+                        </div>
                     </form>
-                    <!-- end credit -->
+
                 </div>
             </div>
         </div>

@@ -41,8 +41,6 @@
     margin-top: 0.5rem;
 }
 
-
-
 .btn-pink{
     background-color: $color2;
     color: white;
@@ -70,4 +68,9 @@
     background-color: $color3-hover;
     -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.16), 0 2px 4px rgba(0,0,0,0.23);
             box-shadow: 0 2px 4px rgba(0,0,0,0.16), 0 2px 4px rgba(0,0,0,0.23);
+}
+
+.btn-shop {
+    width: 100%;
+    margin: 0;
 }

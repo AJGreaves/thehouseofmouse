@@ -122,6 +122,11 @@ footer h5 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23);
 }
 
+.btn-shop {
+  width: 100%;
+  margin: 0;
+}
+
 #logo {
   height: 45px;
 }
@@ -462,21 +467,9 @@ footer a:hover {
   font-size: 0.6rem;
 }
 
-/*  */
-.qty {
-  width: 40px;
-  height: 25px;
-  text-align: center;
-}
-
-input.qtyplus {
-  width: 25px;
-  height: 25px;
-}
-
-input.qtyminus {
-  width: 25px;
-  height: 25px;
+.listing-quantity {
+  max-width: 100px;
+  margin-bottom: 1rem;
 }
 
 @media screen and (min-width: 768px) {
