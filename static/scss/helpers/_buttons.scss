@@ -28,3 +28,22 @@
 #nav-search-btn {
     border-radius: 0 0.25rem 0.25rem 0;
 }
+
+.btn-cta {
+    text-transform: uppercase;
+    letter-spacing: 0.25rem;
+    padding: 0.4rem 1rem;
+    margin: 1rem;
+}
+
+.btn-pink {
+    background-color: $color2;
+    color: white;
+}
+
+.btn-pink:hover {
+    background-color: $color2-hover;
+    color: white;
+    -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.16), 0 2px 4px rgba(0,0,0,0.23);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.16), 0 2px 4px rgba(0,0,0,0.23);
+}
