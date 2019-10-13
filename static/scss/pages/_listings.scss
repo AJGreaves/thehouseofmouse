@@ -1,0 +1,20 @@
+#breadcrumbs {
+    margin: 0.5rem 0;
+}
+
+#breadcrumbs a {
+    color: $color-dark;
+    font-size: 0.8rem;
+    -webkit-transition: 0.2s all ease-in-out 0.3s;
+    transition: 0.2s all ease-in-out 0.3s;
+}
+
+#breadcrumbs a:hover {
+    color: $color3-hover;
+    text-decoration: none;
+}
+
+#breadcrumbs i {
+    color: gold;
+    font-size: 0.6rem;
+}

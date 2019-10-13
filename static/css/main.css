@@ -441,6 +441,27 @@ footer a:hover {
   background-color: #FFE4E6;
 }
 
+#breadcrumbs {
+  margin: 0.5rem 0;
+}
+
+#breadcrumbs a {
+  color: #373737;
+  font-size: 0.8rem;
+  -webkit-transition: 0.2s all ease-in-out 0.3s;
+  transition: 0.2s all ease-in-out 0.3s;
+}
+
+#breadcrumbs a:hover {
+  color: #47b7f8;
+  text-decoration: none;
+}
+
+#breadcrumbs i {
+  color: gold;
+  font-size: 0.6rem;
+}
+
 @media screen and (min-width: 768px) {
   /* replacement image that will look better when image wider than tall */
   #carousel-img-3 {

@@ -6,3 +6,6 @@ def home_view(request, *args, **kwargs):
         "page": "home"
     }
     return render(request, "pages/index.html", context)
+
+def listing_view(request, *args, **kwargs):
+    return render(request, "pages/listing.html")
