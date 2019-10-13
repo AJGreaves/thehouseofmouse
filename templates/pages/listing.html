@@ -4,10 +4,10 @@
 {% block title %}Listing Name | The House of Mouse{% endblock %}
 
 {% block content %}
-
-
 <div class="container">
     <div class="row">
+
+        <!-- breadcrumbs -->
         <div id="breadcrumbs" class="col-12">
             <a href="/">Home </a>
             <i class="fas fa-cheese fa-flip-horizontal"></i>
@@ -16,6 +16,63 @@
             <a href="#">Star Wars </a>
             <i class="fas fa-cheese fa-flip-horizontal"></i>
             <a href="#">Yoda Mouse </a>
+        </div>
+
+        <!-- Heading -->
+        <div class="col-12">
+            <h1>Yoda Mouse</h1>
+        </div>
+        
+        <!-- listing images -->
+        <div class="col-12 col-md-9 col-lg-7">
+            <div class="row">
+
+                <!-- big image -->
+                <div class="col-12 col-lg-10">
+
+                </div>
+
+                <!-- thumbnails -->
+                <div class="col-12 col-lg-2">
+
+                </div>
+            </div>
+        </div>
+
+        <!-- listing details -->
+        <div class="col-12 col-md-3 col-lg-5">
+            <div class="row">
+
+                <!-- Price -->
+                <div class="col-9">
+                    €40 <span><small>Incl. tax</small></span>
+                </div>
+                <div class="col-3">
+                    <i class="far fa-heart"></i>
+                    <p>Add to favourites</p>
+                </div>
+                <div class="col-12">
+                    <h5>Quantity</h5>
+
+                    <!-- Credit: http://jsfiddle.net/laelitenetwork/puJ6G/ -->
+                    <form id='quantity-form' method='POST' action='#'>
+                        <input type='button' value='-' class='qtyminus' field='quantity' />
+                        <input type='text' name='quantity' value='0' class='qty' />
+                        <input type='button' value='+' class='qtyplus' field='quantity' />
+                    </form>
+                    <!-- end credit -->
+                </div>
+            </div>
+        </div>
+
+        <!-- listing description -->
+        <div class="col-12">
+
+        </div>
+
+        <!-- share buttons -->
+        <div class="col-12">
+
         </div>
     </div>
 </div>
