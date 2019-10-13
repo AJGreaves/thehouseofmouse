@@ -1,11 +1,18 @@
 from django.db import models
-
 # Create your models here.
-class Shipping_profile(models.Model):
+
+class Destination_country(models.Model):
     name = models.CharField(max_length=100)
-    price_nl = models.DecimalField(max_digits=6, decimal_places=2)
-    price_eu = models.DecimalField(max_digits=6, decimal_places=2)
-    price_non_eu = models.DecimalField(max_digits=6, decimal_places=2)
+    shipping_category = models.ForeignKey(
+        'Shipping_category',
+        on_delete=models.CASCADE,
+    )
+    def __str__(self):
+        return self.name
+
+class Shipping_category(models.Model):
+    name = models.CharField(max_length=100)
+    shipping_price = models.DecimalField(max_digits=6, decimal_places=2)
 
     def __str__(self):
         return self.name

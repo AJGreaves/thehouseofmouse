@@ -1,0 +1,131 @@
+.home-carousel-item {
+    height: 66vh;
+    width: 100vw;
+}
+
+.carousel-image {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#carousel-img-1 {
+    background-image: url('https://i.ibb.co/wSrfNTN/RWF-4746-1500.jpg');
+    background-position: center 35%;
+}
+
+#carousel-img-2 {
+    background-image: url('https://i.ibb.co/zGW76QM/Family-1500.jpg');
+    background-position: center 65%;
+}
+
+#carousel-img-3 {
+    /*  this image is replaced with a different one on 
+        medium screens & up, see media queries          */
+    background-image: url('https://i.ibb.co/BnzQYjP/silly.jpg');
+    background-position: center 35%;
+}
+
+.icon-box-wrapper,
+.icon-box {
+    display: inline-block
+}
+
+.icon-box {
+    width: 165px;
+    margin: 1rem;
+}
+
+.icon-box-wrapper i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.icon-box p {
+    font-size: 1rem;
+    color: $color2;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+}
+
+/* category images and headings */
+
+/* home-category-wrapper-lg is larger on desktop, see media queries */
+.home-category-wrapper-lg,
+.home-category-wrapper {
+    height: 250px;
+    padding: 15px;
+}
+
+.category-img {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 8px;
+    -webkit-transition: 0.2s all ease-in-out 0.2s;
+    transition: 0.2s all ease-in-out 0.2s;
+    background-position: center 35%;
+}
+
+.category-heading-box {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#category-img-1 {
+    background-image: url('https://i.ibb.co/TrxyMsy/Beatles-1.jpg');
+}
+
+#category-img-2 {
+    background-image: url('https://i.ibb.co/0Myn71W/Wedding-1.jpg');
+}
+
+#category-img-3 {
+    background-image: url('https://i.ibb.co/P6fLV3B/HPGroup.jpg');
+}
+
+#category-img-4 {
+    background-image: url('https://i.ibb.co/TYFQxMM/SWYoda-1.jpg');
+}
+
+#category-img-5 {
+    background-image: url('https://i.ibb.co/qpFMHV6/Mr-Applecheeks1.jpg');
+}
+
+#category-img-6 {
+    background-image: url('https://i.ibb.co/5RpCJWz/GuitarF1.jpg');
+}
+
+.home-category-wrapper h3,
+.home-category-wrapper-lg h3 {
+    font-size: 1.3rem;
+}
+
+/* testimonials */
+
+#testimonials-section {
+    background-color: $color-medium-dark;
+    color: white;
+}
+.testimonial-wrapper {
+    padding: 1rem;
+}
+
+#testimonials-container {
+    padding: 2rem 1rem;
+}
+
+/* mailchimp signup form */
+
+#mc-embedded-subscribe-form {
+    max-width: 500px;
+}
+
+#mc_embed_signup form {
+    padding: 0;
+}
+
+.bg-light-pink {
+    background-color: $color1;
+}

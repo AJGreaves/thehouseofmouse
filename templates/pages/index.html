@@ -1,0 +1,418 @@
+{% extends 'base.html' %}
+
+{% block title %}Home | The House of Mouse{% endblock %}
+
+{% block content %}
+
+<div id="home-page-carousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#home-page-carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#home-page-carousel" data-slide-to="1"></li>
+        <li data-target="#home-page-carousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item home-carousel-item active">
+            <div id="carousel-img-1" class="d-block w-100 carousel-image"></div>
+        </div>
+        <div class="carousel-item home-carousel-item">
+            <div id="carousel-img-2" class="d-block w-100 carousel-image"></div>
+        </div>
+        <div class="carousel-item home-carousel-item">
+            <div id="carousel-img-3" class="d-block w-100 carousel-image"></div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="container py-2">
+
+                <!-- Header and intro -->
+                <div class="row">
+                    <header id="home-header" class="col-12 text-center">
+                        <h1 class="mt-3">The House of Mouse</h1>
+                        <h2 class="pink-cap-header mb-3">Handmade collectable artisan mice</h2>
+
+                        <p>Everyone deserves to have more in their life to smile about.
+                            My mice are experts at creating smiles.</p>
+                        <p>I am Anna, the artist behind these joyful artisan felt mice.</p>
+                        <p>My Granny was a mouse maker, and just like her I am on a mission
+                            to let more joy into your life. </p>
+                        <p>I want my creations to speak
+                            to your soul, light you up and inspire you with pure delight.</p>
+                        <p>Because I believe that the things that make you happy are
+                            what make your life so unique.</p>
+                        <p>I put hours of loving attention into the tiniest details,
+                            to bring these intricate, adorable felt mice to life, so
+                            they can light up your day in an instant.</p>
+                        <a href="#" class="btn btn-pink btn-cta">Learn More</a>
+                        <!-- link to about page later -->
+
+                        <hr>
+                        <div class="icon-box-wrapper">
+                            <div class="icon-box">
+                                <i class="fas fa-hand-holding-heart"></i>
+                                <p>Completely Handmade</p>
+                            </div>
+                            <div class="icon-box">
+                                <i class="fas fa-globe-europe"></i>
+                                <p>Worldwide Shipping</p>
+                            </div>
+                        </div>
+                        <div class="icon-box-wrapper">
+                            <div class="icon-box">
+                                <i class="fas fa-certificate"></i>
+                                <p>Custom Orders Welcome</p>
+                            </div>
+                            <div class="icon-box">
+                                <i class="fas fa-gift"></i>
+                                <p>Gift Wrapping Available</p>
+                            </div>
+                        </div>
+                    </header>
+                </div>
+
+                <!-- Shop sections -->
+                <div class="row mt-3">
+                    <!-- top two columns bigger on desktop -->
+                    <div class="col-12 col-sm-6 home-category-wrapper-lg">
+                        <div id="category-img-1"
+                            class="category-img d-flex align-items-end small-box-shadow sm-box-shadow-hover"
+                            title="Browse famous mice">
+                            <div class="category-heading-box text-center">
+                                <h3>Famous Mice</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 home-category-wrapper-lg">
+                        <div id="category-img-2"
+                            class="category-img d-flex align-items-end small-box-shadow sm-box-shadow-hover"
+                            title="Browse mice for special occasions">
+                            <div class="category-heading-box text-center">
+                                <h3>Special Occasions</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-lg-3 home-category-wrapper">
+                        <div id="category-img-3"
+                            class="category-img d-flex align-items-end small-box-shadow sm-box-shadow-hover"
+                            title="Browse Harry Potter inspired mice">
+                            <div class="category-heading-box text-center">
+                                <h3>Harry Potter Mice</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 home-category-wrapper">
+                        <div id="category-img-4"
+                            class="category-img d-flex align-items-end small-box-shadow sm-box-shadow-hover"
+                            title="Browse Star Wars inspired mice">
+                            <div class="category-heading-box text-center">
+                                <h3>Star Wars Mice</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 home-category-wrapper">
+                        <div id="category-img-5"
+                            class="category-img d-flex align-items-end small-box-shadow sm-box-shadow-hover"
+                            title="Browse mice with jobs and hobbies">
+                            <div class="category-heading-box text-center">
+                                <h3>Jobs & Hobbies</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 home-category-wrapper">
+                        <div id="category-img-6"
+                            class="category-img d-flex align-items-end small-box-shadow sm-box-shadow-hover"
+                            title="Clearance">
+                            <div class="category-heading-box text-center">
+                                <h3>Clearance</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Testimonials -->
+<div id="testimonials-section" class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div id="testimonials-container" class="container">
+                <div class="row justify-content-center text-center">
+                    <div class="col-12">
+                        <h3>What my customers say...</h3>
+                    </div>
+                    <div class="col-12">
+                        <!-- testimonials carousel -->
+                        <div id="testimonials-carousel" class="carousel slide pb-4" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#testimonials-carousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#testimonials-carousel" data-slide-to="1"></li>
+                                <li data-target="#testimonials-carousel" data-slide-to="2"></li>
+                                <li data-target="#testimonials-carousel" data-slide-to="3"></li>
+                                <li data-target="#testimonials-carousel" data-slide-to="4"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div class="testimonial-wrapper d-block">
+                                        <div class="mb-3">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <blockquote cite="https://www.etsy.com/shop/TheHouseOfMouse#reviews">
+                                            <p>AMAZING. My son is into ninja mice, but I didn't see a Ninja Mouse
+                                                offered by Anna. I asked if she could create one, and VOILA! A
+                                                custom-ordered, ADORABLE ninja mouse for my son. It's not easy to
+                                                find ninja mouse items for the holidays, so I was VERY relieved!
+                                                It is extremely well made and accurate. And the turnaround time
+                                                was insanely fast, even though it was a custom order and had to
+                                                ship to San Francisco in the US.</p>
+                                            <footer>- sherrihowe, <cite>Etsy Feedback</cite></footer>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="testimonial-wrapper d-block">
+                                        <div class="mb-3">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <blockquote cite="https://www.etsy.com/shop/TheHouseOfMouse#reviews">
+                                            <p>I had a custom set of mice created specially for my boyfriend -
+                                                a Fallout vault dweller and a companion dog-mouse. :) They
+                                                turned out so well, I love them! Anna was really cool and
+                                                patient when I was describing what I wanted to see, and she
+                                                gave a lot of feedback about what was possible to create.
+                                                She was very responsive and creative, and I love how much
+                                                detail and thought she put into them. If you're a mouse fan,
+                                                I definitely recommend House of Mouse - they're one of a
+                                                kind adorable little gifts created by an artist!</p>
+                                            <footer>- Mandi Chell, <cite>Etsy Feedback</cite></footer>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="testimonial-wrapper d-block">
+                                        <div class="mb-3">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <blockquote cite="https://www.etsy.com/shop/TheHouseOfMouse#reviews">
+                                            <p>This is my second purchase from The House of Mouse and I'm once again
+                                                very happy with this little mouse. It was a gift and was very much loved
+                                                by the recipient. The mouse is exactly as it appears in the photo and
+                                                nicely made. A wonderful little mouse
+                                                created by a wonderful artist and shop owner.</p>
+                                            <footer>- Heather A Small, <cite>Etsy Feedback</cite></footer>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="testimonial-wrapper d-block">
+                                        <div class="mb-3">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <blockquote cite="https://www.etsy.com/shop/TheHouseOfMouse#reviews">
+                                            <p>I got this as a gift for a friend, and it's adorable! I was in a little
+                                                of a time crunch since it was for his birthday, but Anna was very
+                                                understanding and made sure I got it on time. Thank you!</p>
+                                            <footer>- kwang031, <cite>Etsy Feedback</cite></footer>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="testimonial-wrapper d-block">
+                                        <div class="mb-3">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <blockquote cite="https://www.etsy.com/shop/TheHouseOfMouse#reviews">
+                                            <p>At a loss of words! They are superb, incredibly detailed,
+                                                magnificent and gorgeous. A WOW gift for my hubby who is very happy :-D
+                                                Thank you for your little joyful mice: great, artworks!</p>
+                                            <footer>- Antonella, <cite>Etsy Feedback</cite></footer>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <a href="https://www.etsy.com/shop/TheHouseOfMouse#reviews" target="blank"
+                            class="btn btn-cta btn-pink">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Featured listings -->
+<div id="featured-listings-home" class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="container p-3">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h3>Featured Listings</h3>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding">
+                        <div class="listing-card mx-auto">
+                            <div class="listing-img-wrapper">
+                                <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
+                                    style="background-image: url('https://i.ibb.co/qpFMHV6/Mr-Applecheeks1.jpg');">
+                                    <i class="far fa-heart" title="Add to favourites"></i>
+                                </div>
+                            </div>
+
+                            <div class="listing-info d-flex justify-content-between">
+                                <h5>Mr Applecheeks the Librarian Mouse</h5>
+                                <p>€35</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding">
+                        <div class="listing-card mx-auto">
+                            <div class="listing-img-wrapper">
+                                <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
+                                    style="background-image: url('https://i.ibb.co/qpFMHV6/Mr-Applecheeks1.jpg');">
+                                    <i class="far fa-heart" title="Add to favourites"></i>
+                                </div>
+                            </div>
+
+                            <div class="listing-info d-flex justify-content-between">
+                                <h5>Mr Applecheeks the Librarian Mouse</h5>
+                                <p>€35</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding">
+                        <div class="listing-card mx-auto">
+                            <div class="listing-img-wrapper">
+                                <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
+                                    style="background-image: url('https://i.ibb.co/qpFMHV6/Mr-Applecheeks1.jpg');">
+                                    <i class="far fa-heart" title="Add to favourites"></i>
+                                </div>
+                            </div>
+
+                            <div class="listing-info d-flex justify-content-between">
+                                <h5>Mr Applecheeks the Librarian Mouse</h5>
+                                <p>€35</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding">
+                        <div class="listing-card mx-auto">
+                            <div class="listing-img-wrapper">
+                                <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
+                                    style="background-image: url('https://i.ibb.co/qpFMHV6/Mr-Applecheeks1.jpg');">
+                                    <i class="far fa-heart" title="Add to favourites"></i>
+                                </div>
+                            </div>
+
+                            <div class="listing-info d-flex justify-content-between">
+                                <h5>Mr Applecheeks the Librarian Mouse</h5>
+                                <p>€35</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- last two cards hidden in desktop view -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding d-lg-none">
+                        <div class="listing-card mx-auto">
+                            <div class="listing-img-wrapper">
+                                <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
+                                    style="background-image: url('https://i.ibb.co/qpFMHV6/Mr-Applecheeks1.jpg');">
+                                    <i class="far fa-heart" title="Add to favourites"></i>
+                                </div>
+                            </div>
+
+                            <div class="listing-info d-flex justify-content-between">
+                                <h5>Mr Applecheeks the Librarian Mouse</h5>
+                                <p>€35</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding d-lg-none">
+                        <div class="listing-card mx-auto">
+                            <div class="listing-img-wrapper">
+                                <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
+                                    style="background-image: url('https://i.ibb.co/qpFMHV6/Mr-Applecheeks1.jpg');">
+                                    <i class="far fa-heart" title="Add to favourites"></i>
+                                </div>
+                            </div>
+
+                            <div class="listing-info d-flex justify-content-between">
+                                <h5>Mr Applecheeks the Librarian Mouse</h5>
+                                <p>€35</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 text-center">
+                        <a href="#" class="btn btn-cta btn-pink">Browse more</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Newsletter signup -->
+<div class="container-fluid bg-light-pink">
+    <div class="row">
+        <div class="col-12">
+
+            <!-- code provided by mailchimp -->
+            <div id="mc_embed_signup">
+                <form
+                    action="https://thehouseofmouse.us1.list-manage.com/subscribe/post?u=a2845c55f242a66f82488ac19&amp;id=076256ce1a"
+                    method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate mx-auto"
+                    target="_blank" novalidate>
+                    <div id="mc_embed_signup_scroll" class="text-center">
+                        <h2>Subscribe to The House of Mouse newsletter for exclusive offers and discounts.</h2>
+                        <div class="mc-field-group mx-auto">
+                            <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Your email address">
+                        </div>
+                        <div id="mce-responses" class="clear text-left">
+                            <div class="response" id="mce-error-response" style="display:none"></div>
+                            <div class="response" id="mce-success-response" style="display:none"></div>
+                        </div>
+                        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text"
+                                name="b_a2845c55f242a66f82488ac19_076256ce1a" tabindex="-1" value=""></div>
+                        <div class="clear"><input type="submit" value="Subscribe" name="subscribe"
+                                id="mc-embedded-subscribe" class="button btn btn-cta btn-blue"></div>
+                    </div>
+                </form>
+            </div>
+            <!-- END code provided by mailchimp -->
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

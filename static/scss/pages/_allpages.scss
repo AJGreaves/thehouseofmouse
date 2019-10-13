@@ -1,0 +1,93 @@
+#mobile-search-bar {
+    padding: 0.5rem;
+    background-color: $color1;
+}
+
+#mobile-search-input {
+    width: auto;
+}
+
+/*  overrides bootstrap navbar padding to 
+    make it more streamlined                */
+.navbar {
+    padding: 0 1rem;
+}
+
+.small-box-shadow {
+    -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.16), 0 2px 4px rgba(0,0,0,0.23);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.16), 0 2px 4px rgba(0,0,0,0.23);
+}
+
+.sm-box-shadow-hover:hover {
+    -webkit-box-shadow: 0 4px 7px rgba(0,0,0,0.16), 0 4px 8px rgba(0,0,0,0.23);
+            box-shadow: 0 4px 7px rgba(0,0,0,0.16), 0 4px 8px rgba(0,0,0,0.23);
+}
+
+#footer {
+    background-color: $color-dark;
+    padding: 1.5rem;
+}
+
+footer li {
+    list-style: none;
+}
+
+footer ul {
+    padding: 0;
+    margin: 0;
+}
+
+.footer-heading {
+    margin-bottom: 2rem;
+}
+
+footer a {
+    color: #f8f9fa;
+    -webkit-transition: 0.3s all ease-in-out 0.2s;
+    transition: 0.3s all ease-in-out 0.2s;
+}
+
+footer a:hover {
+    color: $color2;
+    text-decoration: none;
+}
+
+/* listing cards */
+
+.listing-img-wrapper {
+    height: 200px;
+    min-width: 175px;
+}
+
+.listing-img {
+    height: 100%;
+    border-radius: 8px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center 35%;
+}
+
+.listing-card {
+    max-width: 300px;
+    -webkit-transition: 0.2s all ease-in-out 0.2s;
+    transition: 0.2s all ease-in-out 0.2s;
+}
+
+.listing-card-padding {
+    padding: 15px;
+}
+
+.listing-info {
+    padding: 0.5rem 1rem;
+}
+
+.listing-info h5 {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.listing-info p {
+    color: $color3;
+    font-size: 1.2rem;
+    margin: 0;
+}
