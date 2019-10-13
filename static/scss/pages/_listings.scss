@@ -23,3 +23,15 @@
     max-width: 100px;
     margin-bottom: 1rem;
 }
+
+.listing-img-main {
+    width: 100%;
+}
+
+.listing-img-thumbnail {
+    height: 65px;
+    width: 65px;
+    display: inline-block;
+    background-size: cover;
+    background-position: center center;
+}

@@ -472,6 +472,18 @@ footer a:hover {
   margin-bottom: 1rem;
 }
 
+.listing-img-main {
+  width: 100%;
+}
+
+.listing-img-thumbnail {
+  height: 65px;
+  width: 65px;
+  display: inline-block;
+  background-size: cover;
+  background-position: center center;
+}
+
 @media screen and (min-width: 768px) {
   /* replacement image that will look better when image wider than tall */
   #carousel-img-3 {
