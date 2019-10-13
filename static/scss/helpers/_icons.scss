@@ -94,3 +94,19 @@ footer .fa-youtube-square:hover {
 .listing-img i:hover {
     color: $color2-hover;
 }
+
+#add-fav i {
+    font-size: 1.9rem;
+    color: $color2;
+    display: block;
+    line-height: 2.3rem;
+}
+
+.listing-price {
+    color: $color3;
+    font-size: 1.5rem;
+}
+
+.sml-txt {
+    font-size: 0.9rem;
+}

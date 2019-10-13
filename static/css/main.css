@@ -223,6 +223,22 @@ footer .fa-youtube-square:hover {
   color: #fa878d;
 }
 
+#add-fav i {
+  font-size: 1.9rem;
+  color: #ff9a9f;
+  display: block;
+  line-height: 2.3rem;
+}
+
+.listing-price {
+  color: #63c4fc;
+  font-size: 1.5rem;
+}
+
+.sml-txt {
+  font-size: 0.9rem;
+}
+
 #mobile-search-bar {
   padding: 0.5rem;
   background-color: #FFE4E6;
