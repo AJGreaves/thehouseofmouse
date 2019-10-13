@@ -105,7 +105,7 @@
 /* testimonials */
 
 #testimonials-section {
-    background-color: $color-dark;
+    background-color: $color-medium-dark;
     color: white;
 }
 .testimonial-wrapper {
@@ -114,4 +114,18 @@
 
 #testimonials-container {
     padding: 2rem 1rem;
+}
+
+/* mailchimp signup form */
+
+#mc-embedded-subscribe-form {
+    max-width: 500px;
+}
+
+#mc_embed_signup form {
+    padding: 0;
+}
+
+.bg-light-pink {
+    background-color: $color1;
 }
