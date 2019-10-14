@@ -12,3 +12,6 @@ def listing_view(request, *args, **kwargs):
 
 def faqs_view(request, *args, **kwargs):
     return render(request, "pages/faqs.html")
+
+def about_view(request, *args, **kwargs):
+    return render(request, "pages/about.html")
