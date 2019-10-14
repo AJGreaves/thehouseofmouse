@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
 
-<!-- add listing name to title here -->
-{% block title %}Listing Name | The House of Mouse{% endblock %}
+<!-- listing name here (SEO) -->
+{% block title %}{% endblock %} 
+
+<!-- listing meta description here (SEO) -->
+{% block meta_description %}{% endblock %}
+
+{% block meta_robots %}index, follow{% endblock %}
 
 {% block content %}
 <div class="container">
@@ -29,15 +34,20 @@
 
                 <!-- big image -->
                 <div class="col-12 col-lg-10">
-                    <img src="https://i.ibb.co/TYFQxMM/SWYoda-1.jpg" alt="Yoda Mouse" class="listing-img-main small-box-shadow">
+                    <img src="https://i.ibb.co/TYFQxMM/SWYoda-1.jpg" alt="Yoda Mouse"
+                        class="listing-img-main small-box-shadow">
                 </div>
 
                 <!-- thumbnails -->
                 <div class="col-12 col-lg-2 text-center text-lg-left">
-                    <div class="listing-img-thumbnail" style="background-image: url('https://i.ibb.co/TYFQxMM/SWYoda-1.jpg')"></div>
-                    <div class="listing-img-thumbnail" style="background-image: url('https://i.ibb.co/J3m1dt6/SWYoda-2.jpg')"></div>
-                    <div class="listing-img-thumbnail" style="background-image: url('https://i.ibb.co/KbWkqcx/SWYoda-3.jpg')"></div>
-                    <div class="listing-img-thumbnail" style="background-image: url('https://i.ibb.co/FDc6Xkj/starwasrcollectables1sml.jpg')"></div>
+                    <div class="listing-img-thumbnail"
+                        style="background-image: url('https://i.ibb.co/TYFQxMM/SWYoda-1.jpg')"></div>
+                    <div class="listing-img-thumbnail"
+                        style="background-image: url('https://i.ibb.co/J3m1dt6/SWYoda-2.jpg')"></div>
+                    <div class="listing-img-thumbnail"
+                        style="background-image: url('https://i.ibb.co/KbWkqcx/SWYoda-3.jpg')"></div>
+                    <div class="listing-img-thumbnail"
+                        style="background-image: url('https://i.ibb.co/FDc6Xkj/starwasrcollectables1sml.jpg')"></div>
                 </div>
             </div>
         </div>
@@ -48,7 +58,7 @@
 
                 <!-- Price -->
                 <div class="col-8">
-                    <div class="listing-price">€40</div> 
+                    <div class="listing-price">€40</div>
                     <p class="sml-txt">Incl. tax</p>
                 </div>
                 <div id="add-fav" class="col-4 text-center">
@@ -75,7 +85,17 @@
 
         <!-- listing description -->
         <div class="col-12">
+            <h4>Description</h4>
+            <p>
+                Old and wise, this little mouse is. Much stronger than he looks, is he. Among the oldest and most
+                powerful known Jedi masters in the Star Wars universe, Grand Jedi master Yoda Mouse is. Once on the Jedi
+                council, he was.
 
+                Intricately hand crafted in his Jedi robes, Yoda Mouse has been. Holds a green lightsaber in his paws he
+                does.
+
+                My Star Wars Mice were featured in the book "1,000 Collectibles: Memorabilia and stories from a Galaxy
+                far, far away" by Stephen Sansweet. (page 328) </p>
         </div>
 
         <!-- share buttons -->
