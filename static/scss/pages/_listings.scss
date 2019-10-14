@@ -19,6 +19,47 @@
     font-size: 0.6rem;
 }
 
+/* listing cards */
+
+.listing-img-wrapper {
+    height: 200px;
+    min-width: 175px;
+}
+
+.listing-img {
+    height: 100%;
+    border-radius: 8px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center 35%;
+}
+
+.listing-card {
+    max-width: 300px;
+    -webkit-transition: 0.2s all ease-in-out 0.2s;
+    transition: 0.2s all ease-in-out 0.2s;
+}
+
+.listing-card-padding {
+    padding: 15px;
+}
+
+.listing-info {
+    padding: 0.5rem 1rem;
+}
+
+.listing-info h5 {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.listing-info p {
+    color: $color3;
+    font-size: 1.2rem;
+    margin: 0;
+    line-height: 1.1rem;
+}
+
 .listing-quantity {
     max-width: 100px;
     margin-bottom: 1rem;
