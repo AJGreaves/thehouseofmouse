@@ -18,6 +18,9 @@ class Product(models.Model):
     num_in_stock = models.PositiveSmallIntegerField(validators=[MaxValueValidator(100)])
     num_sold = models.PositiveSmallIntegerField(default=0)
     num_fav = models.PositiveSmallIntegerField(default=0)
+    title_tag = models.CharField(max_length=60, default='')
+    meta_descrption = models.CharField(max_length=160, default='')
+
 
     def __str__(self):
         return self.title
