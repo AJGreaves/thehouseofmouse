@@ -21,11 +21,11 @@ class Product(models.Model):
     title_tag = models.CharField(max_length=60, default='')
     meta_descrption = models.CharField(max_length=160, default='')
 
-
     def __str__(self):
         return self.title
 class Category(models.Model):
     name = models.CharField(max_length=50)
+    introduction = models.TextField(default='')
 
     def __str__(self):
         return self.name
