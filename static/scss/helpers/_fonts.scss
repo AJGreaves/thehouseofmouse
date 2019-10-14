@@ -3,6 +3,10 @@ body {
     color: $color-dark;
 }
 
+h1 {
+    margin-top: 1.5rem;
+}
+
 h1, h2, h3 {
     font-family: $heading
 }
@@ -50,4 +54,10 @@ footer h5 {
 /* overrides mailchimp css */
 #mc_embed_signup h2 {
     font-weight: normal;
+}
+
+.pink-text {
+    font-family: $heading;
+    color: $color2;
+    text-transform: none;
 }

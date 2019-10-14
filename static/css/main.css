@@ -5,6 +5,10 @@ body {
   color: #373737;
 }
 
+h1 {
+  margin-top: 1.5rem;
+}
+
 h1, h2, h3 {
   font-family: "Emilys Candy", cursive;
 }
@@ -52,6 +56,12 @@ footer h5 {
 /* overrides mailchimp css */
 #mc_embed_signup h2 {
   font-weight: normal;
+}
+
+.pink-text {
+  font-family: "Emilys Candy", cursive;
+  color: #ff9a9f;
+  text-transform: none;
 }
 
 .btn-search {
