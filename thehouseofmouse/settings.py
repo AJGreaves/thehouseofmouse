@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     # Custom
     'products',
     'shipping',
-    'pages'
+    'pages',
+    'cart',
 ]
 
 MIDDLEWARE = [
