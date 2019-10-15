@@ -588,6 +588,8 @@ footer a:hover {
 
 #subtotal {
   font-family: "Lato", sans-serif;
+  text-transform: uppercase;
+  font-size: 1.2rem;
 }
 
 @media screen and (min-width: 768px) {
