@@ -4,4 +4,7 @@
 $( document ).ready(function() {
     let date = new Date();
     $('#copyright-year').text( '2008 - ' + date.getFullYear())
+
+
+
 });

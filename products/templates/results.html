@@ -1,0 +1,266 @@
+{% extends 'base.html' %}
+
+<!-- This page can be used for displaying categories, search results and favourites -->
+
+<!-- Page name here (SEO) -->
+{% block title %}{% endblock %}
+
+<!-- page meta description here (SEO) -->
+{% block meta_description %}{% endblock %}
+
+{% block meta_robots %}index, follow{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+
+        <!-- breadcrumbs -->
+        <div id="breadcrumbs" class="col-12">
+            <a href="/">Home </a>
+            <i class="fas fa-cheese fa-flip-horizontal"></i>
+            <a href="#">breadcrumbs </a>
+            <i class="fas fa-cheese fa-flip-horizontal"></i>
+            <a href="#">here</a>
+        </div>
+
+        <!-- Heading -->
+        <div class="col-12">
+            <h1>Page Name Nere</h1>
+            <p> if category, Category description here. Pellentesque at dignissim velit, ut fringilla nulla. Duis ultrices dolor ac
+                quam hendrerit, in finibus odio dictum. Integer sapien nisi, sodales et lorem non, pulvinar dapibus
+                nisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus
+                sit amet dolor in nulla pellentesque tincidunt. Integer at malesuada nunc, vitae suscipit libero. In
+                malesuada dignissim magna, a facilisis tellus lobortis id. Suspendisse lacinia est sit amet felis
+                mattis, sed pharetra lectus posuere. </p>
+            <hr>
+        </div>
+
+        <!-- results -->
+        <div id="results-listings" class="col-12">
+            <div class="container p-3">
+                <div class="row">
+                    <div class="col-12">
+                        <form>
+                            <div class="form-group d-flex justify-content-center justify-content-md-end">
+                                <label for="results-sort-select" class="p-2 pr-3">Sort by</label>
+                                <select name="results-sort-select" id="results-sort-select" class="form-control">
+                                    <option value="">Featured</option>
+                                    <option value="">Price, high to low</option>
+                                    <option value="">Price, low to high</option>
+                                    <option value="">Date, new to old</option>
+                                    <option value="">Date, old to new</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding">
+                        <div class="listing-card mx-auto">
+                            <div class="listing-img-wrapper">
+                                <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
+                                    style="background-image: url('https://i.ibb.co/hXJFLpt/SWChewy-1.jpg');">
+                                    <i class="far fa-heart" title="Add to favourites"></i>
+                                </div>
+                            </div>
+
+                            <div class="listing-info d-flex justify-content-between">
+                                <h5>Chewbacca Mouse</h5>
+                                <p>€30</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding">
+                        <div class="listing-card mx-auto">
+                            <div class="listing-img-wrapper">
+                                <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
+                                    style="background-image: url('https://i.ibb.co/rvcKbqy/SWBoba-1.jpg');">
+                                    <i class="far fa-heart" title="Add to favourites"></i>
+                                </div>
+                            </div>
+
+                            <div class="listing-info d-flex justify-content-between">
+                                <h5>Boba Fett Mouse</h5>
+                                <p>€50</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding">
+                        <div class="listing-card mx-auto">
+                            <div class="listing-img-wrapper">
+                                <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
+                                    style="background-image: url('https://i.ibb.co/PTrnwfy/SWObiwan-1.jpg');">
+                                    <i class="far fa-heart" title="Add to favourites"></i>
+                                </div>
+                            </div>
+
+                            <div class="listing-info d-flex justify-content-between">
+                                <h5>Obiwan Kenobi Mouse</h5>
+                                <p>€35</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding">
+                        <div class="listing-card mx-auto">
+                            <div class="listing-img-wrapper">
+                                <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
+                                    style="background-image: url('https://i.ibb.co/nwc6R0b/SWVader-1.jpg');">
+                                    <i class="far fa-heart" title="Add to favourites"></i>
+                                </div>
+                            </div>
+
+                            <div class="listing-info d-flex justify-content-between">
+                                <h5>Darth Vader Mouse</h5>
+                                <p>€35</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding">
+                        <div class="listing-card mx-auto">
+                            <div class="listing-img-wrapper">
+                                <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
+                                    style="background-image: url('https://i.ibb.co/r4d3G3f/SWStorm-1.jpg');">
+                                    <i class="far fa-heart" title="Add to favourites"></i>
+                                </div>
+                            </div>
+
+                            <div class="listing-info d-flex justify-content-between">
+                                <h5>Stormtrooper Mouse</h5>
+                                <p>€40</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding">
+                        <div class="listing-card mx-auto">
+                            <div class="listing-img-wrapper">
+                                <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
+                                    style="background-image: url('https://i.ibb.co/TRcK25S/Ewok.jpg');">
+                                    <i class="far fa-heart" title="Add to favourites"></i>
+                                </div>
+                            </div>
+
+                            <div class="listing-info d-flex justify-content-between">
+                                <h5>Ewok Mouse</h5>
+                                <p>€35</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding">
+                        <div class="listing-card mx-auto">
+                            <div class="listing-img-wrapper">
+                                <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
+                                    style="background-image: url('https://i.ibb.co/hXJFLpt/SWChewy-1.jpg');">
+                                    <i class="far fa-heart" title="Add to favourites"></i>
+                                </div>
+                            </div>
+
+                            <div class="listing-info d-flex justify-content-between">
+                                <h5>Chewbacca Mouse</h5>
+                                <p>€30</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding">
+                        <div class="listing-card mx-auto">
+                            <div class="listing-img-wrapper">
+                                <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
+                                    style="background-image: url('https://i.ibb.co/rvcKbqy/SWBoba-1.jpg');">
+                                    <i class="far fa-heart" title="Add to favourites"></i>
+                                </div>
+                            </div>
+
+                            <div class="listing-info d-flex justify-content-between">
+                                <h5>Boba Fett Mouse</h5>
+                                <p>€50</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding">
+                        <div class="listing-card mx-auto">
+                            <div class="listing-img-wrapper">
+                                <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
+                                    style="background-image: url('https://i.ibb.co/PTrnwfy/SWObiwan-1.jpg');">
+                                    <i class="far fa-heart" title="Add to favourites"></i>
+                                </div>
+                            </div>
+
+                            <div class="listing-info d-flex justify-content-between">
+                                <h5>Obiwan Kenobi Mouse</h5>
+                                <p>€35</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding">
+                        <div class="listing-card mx-auto">
+                            <div class="listing-img-wrapper">
+                                <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
+                                    style="background-image: url('https://i.ibb.co/nwc6R0b/SWVader-1.jpg');">
+                                    <i class="far fa-heart" title="Add to favourites"></i>
+                                </div>
+                            </div>
+
+                            <div class="listing-info d-flex justify-content-between">
+                                <h5>Darth Vader Mouse</h5>
+                                <p>€35</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding">
+                        <div class="listing-card mx-auto">
+                            <div class="listing-img-wrapper">
+                                <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
+                                    style="background-image: url('https://i.ibb.co/r4d3G3f/SWStorm-1.jpg');">
+                                    <i class="far fa-heart" title="Add to favourites"></i>
+                                </div>
+                            </div>
+
+                            <div class="listing-info d-flex justify-content-between">
+                                <h5>Stormtrooper Mouse</h5>
+                                <p>€40</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding">
+                        <div class="listing-card mx-auto">
+                            <div class="listing-img-wrapper">
+                                <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
+                                    style="background-image: url('https://i.ibb.co/TRcK25S/Ewok.jpg');">
+                                    <i class="far fa-heart" title="Add to favourites"></i>
+                                </div>
+                            </div>
+
+                            <div class="listing-info d-flex justify-content-between">
+                                <h5>Ewok Mouse</h5>
+                                <p>€35</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- placeholder pagination -->
+                    <div class="col-12">
+                        <nav aria-label="Page navigation example" class="mx-auto">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -5,6 +5,10 @@ body {
   color: #373737;
 }
 
+h1 {
+  margin-top: 1.5rem;
+}
+
 h1, h2, h3 {
   font-family: "Emilys Candy", cursive;
 }
@@ -36,6 +40,10 @@ footer h5 {
   font-size: 1.2rem;
 }
 
+#listing-description h5 {
+  font-size: 1rem;
+}
+
 #home-header p {
   margin-bottom: 0.75rem;
 }
@@ -48,6 +56,12 @@ footer h5 {
 /* overrides mailchimp css */
 #mc_embed_signup h2 {
   font-weight: normal;
+}
+
+.pink-text {
+  font-family: "Emilys Candy", cursive;
+  color: #ff9a9f;
+  text-transform: none;
 }
 
 .btn-search {
@@ -120,6 +134,41 @@ footer h5 {
   background-color: #47b7f8;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23);
+}
+
+.btn-shop {
+  width: 100%;
+  margin: 0;
+}
+
+.btn-fb {
+  color: #4267B2;
+  border: 1px solid #4267B2;
+}
+
+.btn-fb:hover {
+  color: white;
+  background-color: #4267B2;
+}
+
+.btn-twit {
+  color: #1DA1F2;
+  border: 1px solid #1DA1F2;
+}
+
+.btn-twit:hover {
+  color: white;
+  background-color: #1DA1F2;
+}
+
+.btn-pin {
+  color: #E60023;
+  border: 1px solid #E60023;
+}
+
+.btn-pin:hover {
+  color: white;
+  background-color: #E60023;
 }
 
 #logo {
@@ -218,6 +267,22 @@ footer .fa-youtube-square:hover {
   color: #fa878d;
 }
 
+#add-fav i {
+  font-size: 1.9rem;
+  color: #ff9a9f;
+  display: block;
+  line-height: 2.3rem;
+}
+
+.listing-price {
+  color: #63c4fc;
+  font-size: 1.5rem;
+}
+
+.sml-txt {
+  font-size: 0.9rem;
+}
+
 #mobile-search-bar {
   padding: 0.5rem;
   background-color: #FFE4E6;
@@ -270,45 +335,6 @@ footer a {
 footer a:hover {
   color: #ff9a9f;
   text-decoration: none;
-}
-
-/* listing cards */
-.listing-img-wrapper {
-  height: 200px;
-  min-width: 175px;
-}
-
-.listing-img {
-  height: 100%;
-  border-radius: 8px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center 35%;
-}
-
-.listing-card {
-  max-width: 300px;
-  -webkit-transition: 0.2s all ease-in-out 0.2s;
-  transition: 0.2s all ease-in-out 0.2s;
-}
-
-.listing-card-padding {
-  padding: 15px;
-}
-
-.listing-info {
-  padding: 0.5rem 1rem;
-}
-
-.listing-info h5 {
-  font-size: 1rem;
-  margin: 0;
-}
-
-.listing-info p {
-  color: #63c4fc;
-  font-size: 1.2rem;
-  margin: 0;
 }
 
 .home-carousel-item {
@@ -439,6 +465,129 @@ footer a:hover {
 
 .bg-light-pink {
   background-color: #FFE4E6;
+}
+
+#breadcrumbs {
+  margin: 0.5rem 0;
+}
+
+#breadcrumbs a {
+  color: #373737;
+  font-size: 0.8rem;
+  -webkit-transition: 0.2s all ease-in-out 0.3s;
+  transition: 0.2s all ease-in-out 0.3s;
+}
+
+#breadcrumbs a:hover {
+  color: #47b7f8;
+  text-decoration: none;
+}
+
+#breadcrumbs i {
+  color: gold;
+  font-size: 0.6rem;
+}
+
+/* listing cards */
+.listing-img-wrapper {
+  height: 200px;
+  min-width: 175px;
+}
+
+.listing-img {
+  height: 100%;
+  border-radius: 8px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 35%;
+}
+
+.listing-card {
+  max-width: 300px;
+  -webkit-transition: 0.2s all ease-in-out 0.2s;
+  transition: 0.2s all ease-in-out 0.2s;
+}
+
+.listing-card-padding {
+  padding: 15px;
+}
+
+.listing-info {
+  padding: 0.5rem 1rem;
+}
+
+.listing-info h5 {
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.listing-info p {
+  color: #63c4fc;
+  font-size: 1.2rem;
+  margin: 0;
+  line-height: 1.1rem;
+}
+
+.listing-quantity {
+  max-width: 100px;
+  margin-bottom: 1rem;
+}
+
+.listing-img-main {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+.listing-img-thumbnail {
+  height: 65px;
+  width: 65px;
+  display: inline-block;
+  background-size: cover;
+  background-position: center center;
+}
+
+#results-sort-select {
+  max-width: 200px;
+}
+
+.cart-item-img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 0.5rem;
+  border: 1px solid lightgray;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+#shopping-cart-contents {
+  border: 1px solid lightgray;
+  border-radius: 6px;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background-color: #f8f9fa;
+}
+
+#shopping-cart-contents h4 {
+  font-size: 1rem;
+}
+
+#shopping-cart-contents i {
+  line-height: 1.2rem;
+}
+
+/* pushes price up to be in line with quantity select field */
+#price {
+  margin-bottom: 1.4rem;
+}
+
+.text-pink {
+  color: #ff9a9f;
+}
+
+#subtotal {
+  font-family: "Lato", sans-serif;
 }
 
 @media screen and (min-width: 768px) {
