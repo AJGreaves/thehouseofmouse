@@ -551,6 +551,45 @@ footer a:hover {
   max-width: 200px;
 }
 
+.cart-item-img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 0.5rem;
+  border: 1px solid lightgray;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+#shopping-cart-contents {
+  border: 1px solid lightgray;
+  border-radius: 6px;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background-color: #f8f9fa;
+}
+
+#shopping-cart-contents h4 {
+  font-size: 1rem;
+}
+
+#shopping-cart-contents i {
+  line-height: 1.2rem;
+}
+
+/* pushes price up to be in line with quantity select field */
+#price {
+  margin-bottom: 1.4rem;
+}
+
+.text-pink {
+  color: #ff9a9f;
+}
+
+#subtotal {
+  font-family: "Lato", sans-serif;
+}
+
 @media screen and (min-width: 768px) {
   /* replacement image that will look better when image wider than tall */
   #carousel-img-3 {
