@@ -26,6 +26,7 @@ class Product(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=50)
     introduction = models.TextField(default='')
+    meta_description = models.CharField(max_length=160, default='')
 
     def __str__(self):
         return self.name

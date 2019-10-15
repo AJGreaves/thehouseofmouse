@@ -547,6 +547,10 @@ footer a:hover {
   background-position: center center;
 }
 
+#category-sort-select {
+  max-width: 200px;
+}
+
 @media screen and (min-width: 768px) {
   /* replacement image that will look better when image wider than tall */
   #carousel-img-3 {
