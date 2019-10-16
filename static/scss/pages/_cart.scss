@@ -115,7 +115,7 @@
 .checkout-heading {
     font-size: 1.2rem;
     font-weight: bold;
-    margin-top: 1.2rem;
+    font-family: $main-text;
 }
 
 .link {
@@ -127,4 +127,8 @@
 .link:hover {
     color: $color3;
     text-decoration: none;
+}
+
+.collapse {
+    background-color: #f8f9fa;
 }

@@ -668,7 +668,7 @@ footer a:hover {
 .checkout-heading {
   font-size: 1.2rem;
   font-weight: bold;
-  margin-top: 1.2rem;
+  font-family: "Lato", sans-serif;
 }
 
 .link {
@@ -680,6 +680,10 @@ footer a:hover {
 .link:hover {
   color: #63c4fc;
   text-decoration: none;
+}
+
+.collapse {
+  background-color: #f8f9fa;
 }
 
 @media screen and (min-width: 768px) {

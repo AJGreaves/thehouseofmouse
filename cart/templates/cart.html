@@ -29,125 +29,15 @@
     <div class="row justify-content-center">
         <div id="shopping-cart-contents" class="col-11 col-md-8 col-lg-6 small-box-shadow">
             <div class="row">
-                <div class="col-4">
-                    <div class="cart-item-img mx-auto"
-                        style="background-image: url('https://i.ibb.co/TYFQxMM/SWYoda-1.jpg')"
-                        title="Listing title here"></div>
-                </div>
-                <div class="col-8">
-                    <div class="row">
-                        <div class="col-10">
-                            <h4>Yoda Mouse</h4>
-                        </div>
-                        <div class="col-2 text-center">
-                            <i class="far fa-times-circle" title="Delete"></i>
-                        </div>
-                    </div>
-                    <div class="row justify-content-end">
-                        <!-- aligns price to bottom right corner of it's container -->
-                        <div class="col-4 d-flex align-items-end justify-content-end">
-                            <p id="price">€40</p>
-                        </div>
-                        <div class="col-4">
-                            <form id="listing-quantity-form">
-                                <div class="form-group">
-                                    <label for="exampleFormControlSelect1">Quantity</label>
-                                    <select class="form-control listing-quantity" id="exampleFormControlSelect1">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-12">
-                    <hr>
-                </div>
+                {% include 'components/cart-items.html' %}
 
-                <div class="col-4">
-                    <div class="cart-item-img mx-auto"
-                        style="background-image: url('https://i.ibb.co/0Fh81F4/Lawyer-1.jpg')"
-                        title="Listing title here"></div>
-                </div>
-                <div class="col-8">
-                    <div class="row">
-                        <div class="col-10">
-                            <h4>Bailey the Lawyer Mouse</h4>
-                        </div>
-                        <div class="col-2 text-center">
-                            <i class="far fa-times-circle" title="Delete"></i>
-                        </div>
-                    </div>
-                    <div class="row justify-content-end">
-                        <!-- aligns price to bottom right corner of it's container -->
-                        <div class="col-4 d-flex align-items-end justify-content-end">
-                            <p id="price">€35</p>
-                        </div>
-                        <div class="col-4">
-                            <form id="listing-quantity-form">
-                                <div class="form-group">
-                                    <label for="exampleFormControlSelect1">Quantity</label>
-                                    <select class="form-control listing-quantity" id="exampleFormControlSelect1">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="col-12">
-                    <hr>
-                </div>
-
-                <div class="col-4">
-                    <div class="cart-item-img mx-auto"
-                        style="background-image: url('https://i.ibb.co/SsJrwNS/Mr-Applecheeks1.jpg')"
-                        title="Listing title here"></div>
-                </div>
-                <div class="col-8">
-                    <div class="row">
-                        <div class="col-10">
-                            <h4>Mr Applecheeks the Librarian Mouse</h4>
-                        </div>
-                        <div class="col-2 text-center">
-                            <i class="far fa-times-circle" title="Delete"></i>
-                        </div>
-                    </div>
-                    <div class="row justify-content-end">
-                        <!-- aligns price to bottom right corner of it's container -->
-                        <div class="col-4 d-flex align-items-end justify-content-end">
-                            <p id="price">€30</p>
-                        </div>
-                        <div class="col-4">
-                            <form id="listing-quantity-form">
-                                <div class="form-group">
-                                    <label for="exampleFormControlSelect1">Quantity</label>
-                                    <select class="form-control listing-quantity" id="exampleFormControlSelect1">
-                                        <option>1</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-12 text-right text-pink">
-                            Only one left in stock!
-                        </div>
-                    </div>
-                </div>
                 <div class="col-12 text-right">
                     <hr>
                     <h3 id="subtotal">Subtotal: <span>€105</span></h3>
                     <p>Tax included.
-                        <br>Shipping calculated at checkout.</p>
-                    <button type="submit" class="btn btn-cta btn-blue mr-0">Checkout</button>
+                        <br>Shipping calculated during checkout.</p>
+                    <button type="submit" class="btn btn-cta btn-blue ml-0">Checkout</button>
                 </div>
             </div>
         </div>
