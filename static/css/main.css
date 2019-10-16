@@ -630,12 +630,6 @@ footer a:hover {
   color: white;
 }
 
-/* styling progress circle on done step */
-.progress-circle.done {
-  background-color: #63c4fc;
-  color: white;
-}
-
 #checkout-logo,
 #checkout-heading {
   display: inline-block;
