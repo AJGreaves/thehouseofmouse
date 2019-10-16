@@ -87,15 +87,19 @@
     margin: 1rem 1rem 1rem 0;
 }
 
-#order-summary-mobile span {
+#order-summary-mobile h4,
+.total {
     font-size: 1rem;
     font-family: $main-text;
     color: $color-dark;
     margin: 0 1rem;
+    display: inline;
+    text-transform: none;
 }
 
 #order-summary-mobile button {
     text-decoration: none;
+    width: 100%;
 }
 
 #order-summary-mobile .fa-shopping-basket {
@@ -106,4 +110,21 @@
 #order-summary-mobile .chevron {
     color: $color-dark;
     font-size: 1.1rem;
+}
+
+.checkout-heading {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 1.2rem;
+}
+
+.link {
+    color: $color3-hover;
+    -webkit-transition: 0.2s all ease-in-out 0.2s;
+    transition: 0.2s all ease-in-out 0.2s;
+}
+
+.link:hover {
+    color: $color3;
+    text-decoration: none;
 }
