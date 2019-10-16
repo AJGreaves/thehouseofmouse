@@ -594,7 +594,8 @@ footer a:hover {
 
 #progress-line {
   border-top: 1px solid black;
-  margin: 2rem 0;
+  margin: 2rem auto;
+  width: 80%;
 }
 
 .progress-step {
@@ -604,7 +605,7 @@ footer a:hover {
 }
 
 .progress-circle {
-  background-color: transparent;
+  background-color: white;
   border: 1px solid #373737;
   color: #373737;
   width: 40px;
@@ -616,6 +617,26 @@ footer a:hover {
 
 .progress-step p {
   font-size: 0.8rem;
+}
+
+/* places progress circles over joining line */
+#progress-circles {
+  margin-top: -3.3rem;
+}
+
+#progress-box {
+  margin: 1.5rem;
+}
+
+/* styling progress circle on active step */
+.progress-circle.active {
+  background-color: #63c4fc;
+  color: white;
+}
+
+.progress-circle.done {
+  background-color: #63c4fc;
+  color: white;
 }
 
 @media screen and (min-width: 768px) {

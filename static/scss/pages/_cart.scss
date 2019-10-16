@@ -41,7 +41,8 @@
 
 #progress-line {
     border-top: 1px solid rgba(0,0,0,1);
-    margin: 2rem 0;
+    margin: 2rem auto;
+    width: 80%;
 }
 
 .progress-step {
@@ -51,7 +52,7 @@
 }
 
 .progress-circle {
-    background-color: transparent;
+    background-color: white;
     border: 1px solid $color-dark;
     color: $color-dark;
     width: 40px;
@@ -63,4 +64,24 @@
 
 .progress-step p {
     font-size: 0.8rem;
+}
+/* places progress circles over joining line */
+#progress-circles {
+    margin-top: -3.3rem;
+}
+
+#progress-box {
+    margin: 1.5rem;
+}
+
+/* styling progress circle on active step */
+
+.progress-circle.active {
+    background-color: $color3;
+    color: white;
+}
+
+.progress-circle.done {
+    background-color: $color3;
+    color: white;
 }
