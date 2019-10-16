@@ -87,3 +87,23 @@
     margin: 1rem 1rem 1rem 0;
 }
 
+#order-summary-mobile span {
+    font-size: 1rem;
+    font-family: $main-text;
+    color: $color-dark;
+    margin: 0 1rem;
+}
+
+#order-summary-mobile button {
+    text-decoration: none;
+}
+
+#order-summary-mobile .fa-shopping-basket {
+    color: $color-dark;
+    font-size: 1.5rem;
+}
+
+#order-summary-mobile .chevron {
+    color: $color-dark;
+    font-size: 1.1rem;
+}

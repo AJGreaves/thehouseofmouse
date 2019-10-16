@@ -640,6 +640,27 @@ footer a:hover {
   margin: 1rem 1rem 1rem 0;
 }
 
+#order-summary-mobile span {
+  font-size: 1rem;
+  font-family: "Lato", sans-serif;
+  color: #373737;
+  margin: 0 1rem;
+}
+
+#order-summary-mobile button {
+  text-decoration: none;
+}
+
+#order-summary-mobile .fa-shopping-basket {
+  color: #373737;
+  font-size: 1.5rem;
+}
+
+#order-summary-mobile .chevron {
+  color: #373737;
+  font-size: 1.1rem;
+}
+
 @media screen and (min-width: 768px) {
   /* replacement image that will look better when image wider than tall */
   #carousel-img-3 {
