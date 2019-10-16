@@ -592,6 +592,32 @@ footer a:hover {
   font-size: 1.2rem;
 }
 
+#progress-line {
+  border-top: 1px solid black;
+  margin: 2rem 0;
+}
+
+.progress-step {
+  width: 100px;
+  text-align: center;
+  display: inline-block;
+}
+
+.progress-circle {
+  background-color: transparent;
+  border: 1px solid #373737;
+  color: #373737;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 0 auto;
+  line-height: 2.3rem;
+}
+
+.progress-step p {
+  font-size: 0.8rem;
+}
+
 @media screen and (min-width: 768px) {
   /* replacement image that will look better when image wider than tall */
   #carousel-img-3 {
