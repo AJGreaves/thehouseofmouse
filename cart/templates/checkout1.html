@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load staticfiles %}
+
 <!-- listing name here (SEO) -->
 {% block title %}{% endblock %}
 
@@ -9,6 +11,15 @@
 {% block meta_robots %}index, follow{% endblock %}
 
 {% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <img id="checkout-logo" src="{% static 'img/logo.png' %}" alt="The House of Mouse logo">
+            <h2 id="checkout-heading">The House of Mouse</h2>
+        </div>
+    </div>
+</div>
 
 {% include 'components/cartprogress.html' %}
 

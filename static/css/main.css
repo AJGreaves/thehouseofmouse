@@ -624,19 +624,26 @@ footer a:hover {
   margin-top: -3.3rem;
 }
 
-#progress-box {
-  margin: 1.5rem;
-}
-
 /* styling progress circle on active step */
 .progress-circle.active {
   background-color: #63c4fc;
   color: white;
 }
 
+/* styling progress circle on done step */
 .progress-circle.done {
   background-color: #63c4fc;
   color: white;
+}
+
+#checkout-logo,
+#checkout-heading {
+  display: inline-block;
+}
+
+#checkout-logo {
+  width: 80px;
+  margin: 1rem 1rem 1rem 0;
 }
 
 @media screen and (min-width: 768px) {
