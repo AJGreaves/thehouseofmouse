@@ -29,7 +29,9 @@
 
 <body>
 
+    {% if navbar != False %}
     {% include 'components/navbar.html' %}
+    {% endif %}
 
     {% block content %}
     {% endblock %}
