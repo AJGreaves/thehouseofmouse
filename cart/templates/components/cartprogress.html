@@ -1,3 +1,15 @@
+
+<!-- Checkout header -->
+<div class="container">
+    <div class="row">
+        <div class="col-12 pt-3 text-center">
+            <img id="checkout-logo" src="{% static 'img/logo.png' %}" alt="The House of Mouse logo">
+            <h2 id="checkout-heading">The House of Mouse</h2>
+        </div>
+    </div>
+</div>
+
+<!-- Checkout progress bar -->
 <div class="container">
     <div class="row justify-content-center">
         <div id="progress-box" class="col-10 col-md-8 col-lg-6">
@@ -6,7 +18,7 @@
                 <div class="progress-step">
                     <div class="progress-circle active">
                         {% if active_pg == 'checkout_info' %}
-                        1 
+                        1
                         {% else %}
                         <i class="fas fa-check"></i>
                         {% endif %}
@@ -15,9 +27,10 @@
                 </div>
 
                 <div class="progress-step">
-                    <div class="progress-circle {% if active_pg == 'checkout_shipping' or active_pg != 'checkout_info' %}active{% endif %}">
+                    <div
+                        class="progress-circle {% if active_pg == 'checkout_shipping' or active_pg != 'checkout_info' %}active{% endif %}">
                         {% if active_pg == 'checkout_info' or active_pg == 'checkout_shipping' %}
-                        2 
+                        2
                         {% else %}
                         <i class="fas fa-check"></i>
                         {% endif %}
@@ -26,7 +39,8 @@
                 </div>
 
                 <div class="progress-step">
-                    <div class="progress-circle {% if active_pg == 'checkout_payment' or active_pg == 'checkout_confirm' %}active{% endif %}">
+                    <div
+                        class="progress-circle {% if active_pg == 'checkout_payment' or active_pg == 'checkout_confirm' %}active{% endif %}">
                         {% if active_pg != 'checkout_confirm' %}
                         3
                         {% else %}
