@@ -17,7 +17,7 @@ def checkout_info_view(request, *args, **kwargs):
         "navbar": False,
         "active_pg": "checkout_info"
     }
-    return render(request, "checkout1.html", context)
+    return render(request, "checkout1_info.html", context)
 
 def checkout_shipping_view(request, *args, **kwargs):
     context = {
@@ -25,7 +25,7 @@ def checkout_shipping_view(request, *args, **kwargs):
         "navbar": False,
         "active_pg": "checkout_shipping"
     }
-    return render(request, "checkout2.html", context)
+    return render(request, "checkout2_shipping.html", context)
 
 def checkout_payment_view(request, *args, **kwargs):
     context = {
@@ -33,7 +33,7 @@ def checkout_payment_view(request, *args, **kwargs):
         "navbar": False,
         "active_pg": "checkout_payment"
     }
-    return render(request, "checkout3.html", context)
+    return render(request, "checkout3_payment.html", context)
 
 def checkout_confirm_view(request, *args, **kwargs):
     context = {
@@ -41,4 +41,4 @@ def checkout_confirm_view(request, *args, **kwargs):
         "navbar": False,
         "active_pg": "checkout_confirm"
     }
-    return render(request, "checkout4.html", context)
+    return render(request, "checkout4_confirm.html", context)
