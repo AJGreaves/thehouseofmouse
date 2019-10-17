@@ -11,7 +11,7 @@ def cart_view(request, *args, **kwargs):
     """
     return render(request, "cart.html", {"footer": False})
 
-def checkout1_view(request, *args, **kwargs):
+def checkout_info_view(request, *args, **kwargs):
     context = {
         "footer": False,
         "navbar": False,
@@ -19,7 +19,7 @@ def checkout1_view(request, *args, **kwargs):
     }
     return render(request, "checkout1.html", context)
 
-def checkout2_view(request, *args, **kwargs):
+def checkout_shipping_view(request, *args, **kwargs):
     context = {
         "footer": False,
         "navbar": False,
@@ -27,7 +27,7 @@ def checkout2_view(request, *args, **kwargs):
     }
     return render(request, "checkout2.html", context)
 
-def checkout3_view(request, *args, **kwargs):
+def checkout_payment_view(request, *args, **kwargs):
     context = {
         "footer": False,
         "navbar": False,
@@ -35,7 +35,7 @@ def checkout3_view(request, *args, **kwargs):
     }
     return render(request, "checkout3.html", context)
 
-def checkout4_view(request, *args, **kwargs):
+def checkout_confirm_view(request, *args, **kwargs):
     context = {
         "footer": False,
         "navbar": False,
