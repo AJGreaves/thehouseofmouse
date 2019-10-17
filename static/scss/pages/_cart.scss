@@ -132,3 +132,17 @@
 .collapse {
     background-color: #f8f9fa;
 }
+
+.checkout-card {
+    padding: 1.5rem;
+    margin: 0 auto;
+    border-radius: 6px;
+}
+
+.total.ml-auto {
+    margin-right: 0;
+}
+
+a.blue-link {
+    color: $color3-hover;
+}
