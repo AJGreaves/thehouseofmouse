@@ -171,6 +171,10 @@ footer h5 {
   background-color: #E60023;
 }
 
+#pay-now-btn {
+  min-width: 300px;
+}
+
 #logo {
   height: 45px;
 }
@@ -709,6 +713,11 @@ footer a:hover {
 
 a.blue-link {
   color: #47b7f8;
+}
+
+#total {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 @media screen and (min-width: 768px) {
