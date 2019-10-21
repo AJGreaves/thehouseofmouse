@@ -4,7 +4,7 @@ from .models import Product
 # Create your views here.
 def listing_view(request, *args, **kwargs):
     """ view specific product details """
-    product = Product.objects.get(id=2)
+    product = Product.objects.get(id=1)
     num_in_stock = product.num_in_stock
 
     stock_arr = []
@@ -13,7 +13,8 @@ def listing_view(request, *args, **kwargs):
 
     context = {
         'product': product,
-        'stock_arr': stock_arr
+        'stock_arr': stock_arr,
+        'num_in_stock': num_in_stock,
     }
     return render(request, "listing.html", context)
 
