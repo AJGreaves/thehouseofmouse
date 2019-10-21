@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
 <!-- listing name here (SEO) -->
-{% block title %}{% endblock %}
+{% block title %}{{ product.title }} | The House of Mouse{% endblock %}
 
 <!-- listing meta description here (SEO) -->
-{% block meta_description %}{% endblock %}
+{% block meta_description %}{{ product.description }}{% endblock %}
 
 {% block meta_robots %}index, follow{% endblock %}
 
@@ -18,14 +18,14 @@
             <i class="fas fa-cheese fa-flip-horizontal"></i>
             <a href="#">Categories </a>
             <i class="fas fa-cheese fa-flip-horizontal"></i>
-            <a href="#">Star Wars </a>
+            <a href="#">{{ product.category }}</a>
             <i class="fas fa-cheese fa-flip-horizontal"></i>
-            <a href="#">Yoda Mouse </a>
+            <a href="#">{{ product.title }}</a>
         </div>
 
         <!-- Heading -->
         <div class="col-12">
-            <h1>Yoda Mouse</h1>
+            <h1>{{ product.title }}</h1>
         </div>
 
         <!-- listing images -->
@@ -34,7 +34,7 @@
 
                 <!-- big image -->
                 <div class="col-12 col-lg-10">
-                    <img src="https://i.ibb.co/TYFQxMM/SWYoda-1.jpg" alt="Yoda Mouse"
+                    <img src="https://i.ibb.co/TYFQxMM/SWYoda-1.jpg" alt="{{ product.title }}"
                         class="listing-img-main small-box-shadow">
                 </div>
 
@@ -58,7 +58,7 @@
 
                 <!-- Price -->
                 <div class="col-12">
-                    <div class="listing-price">€40</div>
+                    <div class="listing-price">€{{ product.price }}</div>
                     <p class="sml-txt">Incl. tax</p>
                 </div>
                 <div class="col-12">
@@ -66,11 +66,9 @@
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Quantity</label>
                             <select class="form-control listing-quantity" id="exampleFormControlSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                                {% for i in stock_arr %}
+                                    <option>{{ i|add:1 }}</option>
+                                {% endfor %}
                             </select>
                             <button type="submit" class="btn btn-cta btn-blue btn-shop">Add to Cart</button>
                         </div>
@@ -83,16 +81,8 @@
         <!-- listing description -->
         <div id="listing-description" class="col-12 col-lg-8">
             <h4 class="pink-cap-header mt-3">Description</h4>
-            <p>
-                Old and wise, this little mouse is. Much stronger than he looks, is he. Among the oldest and most
-                powerful known Jedi masters in the Star Wars universe, Grand Jedi master Yoda Mouse is. Once on the Jedi
-                council, he was.</p>
 
-            <p>Intricately hand crafted in his Jedi robes, Yoda Mouse has been. Holds a green lightsaber in his paws he
-                does.</p>
-
-            <p class="mb-3">My Star Wars Mice were featured in the book "1,000 Collectibles: Memorabilia and stories from a Galaxy
-                far, far away" by Stephen Sansweet. (page 328) </p>
+            <p class="mb-3">{{ product.description }}</p>
             <hr>
 
             <!-- Standard details for all listings -->

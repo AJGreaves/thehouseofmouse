@@ -4,15 +4,15 @@ from django.core.validators import MaxValueValidator
 # Create your models here.
 class Product(models.Model):
     """ model for product """
-    WEIRD_MISC = 'WM'
-    STAR_WARS = 'SW'
-    OCCASIONS = 'OC'
-    JOBS_HOBBIES = 'JH'
-    HARRY_POTTER = 'HP'
-    FAMOUS =  'FA'
-    DOCTOR_WHO = 'DW'
-    HALLOWEEN = 'HW'
-    CHRISTMAS = 'CM'
+    WEIRD_MISC = 'Weird & Misc'
+    STAR_WARS = 'Star Wars'
+    OCCASIONS = 'Special Occasions'
+    JOBS_HOBBIES = 'Jobs & Hobbies'
+    HARRY_POTTER = 'Harry Potter'
+    FAMOUS = 'Famous'
+    DOCTOR_WHO = 'Doctor Who'
+    HALLOWEEN = 'Halloween'
+    CHRISTMAS = 'Christmas'
     CATEGORY_CHOICES = [
         (WEIRD_MISC, 'Weird & Misc'),
         (STAR_WARS, 'Star Wars'),
@@ -25,7 +25,7 @@ class Product(models.Model):
         (CHRISTMAS, 'Christmas'),
     ]
     category = models.CharField(
-        max_length=3,
+        max_length=20,
         choices=CATEGORY_CHOICES,
         default=STAR_WARS,
     )
