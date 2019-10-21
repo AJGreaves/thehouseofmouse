@@ -3,6 +3,7 @@ from .models import Product
 
 # Create your views here.
 def listing_view(request, *args, **kwargs):
+    """ view specific product details """
     product = Product.objects.get(id=1)
     context = {
         'title': product.title,
