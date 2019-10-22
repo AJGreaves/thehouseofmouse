@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path
 from pages.views import home_view, faqs_view, about_view
-from accounts.views import register_view
+from accounts.views import register_view, profile_view
 from products.views import listing_view, results_view
 from cart.views import cart_view, checkout_info_view, checkout_shipping_view, checkout_payment_view, checkout_confirm_view
 
@@ -33,6 +33,7 @@ urlpatterns = [
     path('register/', register_view, name="register"),
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name="login"),
     path('logout/', auth_views.LogoutView.as_view(template_name='logout.html'), name="logout"),
+    path('profile/', profile_view, name="profile"),
 
     # listings and search
     path('listing/', listing_view, name="listing"),
