@@ -1,6 +1,7 @@
 #folders
 .venv
 .vscode
+product_images
 
 #files
 *.sqlite3
