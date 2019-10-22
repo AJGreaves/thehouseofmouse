@@ -18,4 +18,9 @@ $(document).ready(function () {
 
     })
 
+    $('.listing-img-thumbnail').click(function() {
+        url = $(this).css('background-image').replace(/^url\(['"]?/,'').replace(/['"]?\)$/,'');
+        $('#main-listing-img').attr("src", url);
+    })
+
 });
