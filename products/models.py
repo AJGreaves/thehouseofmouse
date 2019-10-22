@@ -30,7 +30,7 @@ class Product(models.Model):
         default=STAR_WARS,
     )
     title = models.CharField(max_length=100)
-    product_image1 = models.ImageField(default='default.jpg', upload_to="product_images")
+    product_image1 = models.ImageField(upload_to="product_images")
     product_image2 = models.ImageField(upload_to="product_images", blank=True, null=True)
     product_image3 = models.ImageField(upload_to="product_images", blank=True, null=True)
     product_image4 = models.ImageField(upload_to="product_images", blank=True, null=True)

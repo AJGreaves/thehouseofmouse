@@ -7,8 +7,8 @@ class Profile(models.Model):
     address1 = models.CharField(max_length=150)
     address2 = models.CharField(max_length=150, blank=True, null=True)
     town = models.CharField(max_length=150)
-    postcode = models.CharField(max_length=10)
     county = models.CharField(max_length=150, blank=True, null=True)
+    postcode = models.CharField(max_length=10)
     country = models.ForeignKey(
         Destination_country,
         on_delete=models.CASCADE,
