@@ -6,9 +6,9 @@ from .forms import UserRegisterForm
 # Create your views here.
 def register_view(request):
     """
-    View for users to register a new account. 
-    Checks if form is valid, and responds accordingly, 
-    then redirects users to the login page on successfully 
+    View for users to register a new account.
+    Checks if form is valid, and responds accordingly,
+    then redirects users to the login page on successfully
     creating a new account.
     """
     if request.method == 'POST':
