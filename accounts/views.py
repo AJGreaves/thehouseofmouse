@@ -5,6 +5,12 @@ from .forms import UserRegisterForm
 
 # Create your views here.
 def register_view(request):
+    """
+    View for users to register a new account. 
+    Checks if form is valid, and responds accordingly, 
+    then redirects users to the login page on successfully 
+    creating a new account.
+    """
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
@@ -22,4 +28,5 @@ def register_view(request):
 
 @login_required
 def profile_view(request):
+    """ Renders profile page for user """
     return render(request, 'profile.html')
