@@ -64,6 +64,13 @@ footer h5 {
   text-transform: none;
 }
 
+.pink-uppercase {
+  color: #ff9a9f;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 1.2rem;
+}
+
 .btn-search {
   color: #63c4fc;
   background-color: transparent;

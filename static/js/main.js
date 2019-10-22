@@ -9,13 +9,18 @@ $(document).ready(function () {
     /**
      * Changes direction of chevron when clicked
      */
-    $('.chevron').click(function() {
+    $('.chevron').click(function () {
         if ($('.chevron').hasClass('fa-chevron-down')) {
             $('.chevron').addClass('fa-chevron-up').removeClass('fa-chevron-down')
         } else {
             $('.chevron').addClass('fa-chevron-down').removeClass('fa-chevron-up')
         }
-        
+
     })
+
+    /**
+     * Adds bootstrap styles to forms once inserted html from django has loaded.
+     */
+    $('input').addClass('form-control');
 
 });

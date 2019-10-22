@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from pages.views import home_view, faqs_view, about_view
+from accounts.views import register_view
 from products.views import listing_view, results_view
 from cart.views import cart_view, checkout_info_view, checkout_shipping_view, checkout_payment_view, checkout_confirm_view
 
@@ -26,6 +27,9 @@ urlpatterns = [
     path('', home_view, name="home"),
     path('faqs/', faqs_view, name="faqs"),
     path('about/', about_view, name="about"),
+
+    # user account pages
+    path('register/', register_view, name="register"),
 
     # listings and search
     path('listing/', listing_view, name="listing"),
