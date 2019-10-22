@@ -18,9 +18,4 @@ $(document).ready(function () {
 
     })
 
-    /**
-     * Adds bootstrap styles to forms once inserted html from django has loaded.
-     */
-    $('input').addClass('form-control');
-
 });

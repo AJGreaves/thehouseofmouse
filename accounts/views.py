@@ -11,8 +11,6 @@ def register_view(request):
             username = form.cleaned_data.get('username')
             messages.success(request, f'Account created for {username}!')
             return redirect('register')
-        else:
-            messages.warning(request, 'form is not valid')
     else:
         form = UserRegisterForm()
 
