@@ -18,6 +18,10 @@ $(document).ready(function () {
 
     })
 
+    /**
+     * Updates main listing image with src url from thumbnails when clicked.
+     * Credit for replace() code: https://stackoverflow.com/questions/8809876/can-i-get-divs-background-image-url
+     */
     $('.listing-img-thumbnail').click(function() {
         url = $(this).css('background-image').replace(/^url\(['"]?/,'').replace(/['"]?\)$/,'');
         $('#main-listing-img').attr("src", url);
