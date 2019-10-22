@@ -34,20 +34,21 @@
 
                 <!-- big image -->
                 <div class="col-12 col-lg-10">
-                    <img src="https://i.ibb.co/TYFQxMM/SWYoda-1.jpg" alt="{{ product.title }}"
-                        class="listing-img-main small-box-shadow">
+                        <img src="{{ product.product_image1.url }}" alt="{{ product.title }}" class="listing-img-main small-box-shadow">
                 </div>
 
                 <!-- thumbnails -->
                 <div class="col-12 col-lg-2 text-center text-lg-left">
-                    <div class="listing-img-thumbnail"
-                        style="background-image: url('https://i.ibb.co/TYFQxMM/SWYoda-1.jpg')"></div>
-                    <div class="listing-img-thumbnail"
-                        style="background-image: url('https://i.ibb.co/J3m1dt6/SWYoda-2.jpg')"></div>
-                    <div class="listing-img-thumbnail"
-                        style="background-image: url('https://i.ibb.co/KbWkqcx/SWYoda-3.jpg')"></div>
-                    <div class="listing-img-thumbnail"
-                        style="background-image: url('https://i.ibb.co/FDc6Xkj/starwasrcollectables1sml.jpg')"></div>
+                    <div class="listing-img-thumbnail" style="background-image: url('{{ product.product_image1.url }}')">
+                    </div>
+                    <div class="listing-img-thumbnail" style="background-image: url('{{ product.product_image2.url }}')">
+                    </div>
+                    <div class="listing-img-thumbnail" style="background-image: url('{{ product.product_image3.url }}')">
+                    </div>
+                    <div class="listing-img-thumbnail" style="background-image: url('{{ product.product_image4.url }}')">
+                    </div>
+                    <div class="listing-img-thumbnail" style="background-image: url('{{ product.product_image5.url }}')">
+                    </div>
                 </div>
             </div>
         </div>
@@ -68,7 +69,7 @@
                             <select class="form-control listing-quantity" id="exampleFormControlSelect1">
                                 <!-- loops through to create options for number of items in stock -->
                                 {% for i in stock_arr %}
-                                    <option>{{ i|add:1 }}</option>
+                                <option>{{ i|add:1 }}</option>
                                 {% endfor %}
                             </select>
                             {% if num_in_stock == 1 %}
@@ -117,7 +118,7 @@
 
         <!-- share buttons -->
         <div class="col-12 text-center text-md-left">
-            <a href="#" class="btn btn-cta btn-fb ml-md-0"><i class="fab fa-facebook-f"></i>  Share</a>
+            <a href="#" class="btn btn-cta btn-fb ml-md-0"><i class="fab fa-facebook-f"></i> Share</a>
             <a href="#" class="btn btn-cta btn-twit"><i class="fab fa-twitter"></i> Tweet</a>
             <a href="#" class="btn btn-cta btn-pin"><i class="fab fa-pinterest-p"></i> Pin it</a>
             <hr>
@@ -135,7 +136,7 @@
                             <div class="listing-img-wrapper">
                                 <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
                                     style="background-image: url('https://i.ibb.co/hXJFLpt/SWChewy-1.jpg');">
-                                    
+
                                 </div>
                             </div>
 
@@ -150,7 +151,7 @@
                             <div class="listing-img-wrapper">
                                 <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
                                     style="background-image: url('https://i.ibb.co/rvcKbqy/SWBoba-1.jpg');">
-                                    
+
                                 </div>
                             </div>
 
@@ -165,7 +166,7 @@
                             <div class="listing-img-wrapper">
                                 <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
                                     style="background-image: url('https://i.ibb.co/PTrnwfy/SWObiwan-1.jpg');">
-                                    
+
                                 </div>
                             </div>
 
@@ -180,7 +181,7 @@
                             <div class="listing-img-wrapper">
                                 <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
                                     style="background-image: url('https://i.ibb.co/nwc6R0b/SWVader-1.jpg');">
-                                    
+
                                 </div>
                             </div>
 
@@ -197,7 +198,7 @@
                             <div class="listing-img-wrapper">
                                 <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
                                     style="background-image: url('https://i.ibb.co/r4d3G3f/SWStorm-1.jpg');">
-                                    
+
                                 </div>
                             </div>
 
@@ -213,7 +214,7 @@
                             <div class="listing-img-wrapper">
                                 <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
                                     style="background-image: url('https://i.ibb.co/TRcK25S/Ewok.jpg');">
-                                    
+
                                 </div>
                             </div>
 

@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from pages.views import home_view, faqs_view, about_view
 from accounts.views import register_view, profile_view
 from products.views import listing_view, results_view
@@ -47,3 +49,7 @@ urlpatterns = [
     path('checkout/confirm/', checkout_confirm_view, name="confirm"),
 
 ]
+
+# only add this in when in debug mode
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
