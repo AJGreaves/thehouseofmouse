@@ -3,7 +3,7 @@ from django.core.validators import MaxValueValidator
 
 # Create your models here.
 class Product(models.Model):
-    """ model for product """
+    """ Model for product """
     WEIRD_MISC = 'Weird & Misc'
     STAR_WARS = 'Star Wars'
     OCCASIONS = 'Special Occasions'
@@ -30,7 +30,11 @@ class Product(models.Model):
         default=STAR_WARS,
     )
     title = models.CharField(max_length=100)
-    # image1 = models.ImageField() have installed Pillow, but need to work out storage see https://docs.djangoproject.com/en/2.2/ref/models/fields/#imagefield
+    product_image1 = models.ImageField(default='default.jpg', upload_to="product_images")
+    product_image2 = models.ImageField(upload_to="product_images", blank=True, null=True)
+    product_image3 = models.ImageField(upload_to="product_images", blank=True, null=True)
+    product_image4 = models.ImageField(upload_to="product_images", blank=True, null=True)
+    product_image5 = models.ImageField(upload_to="product_images", blank=True, null=True)
     description = models.TextField()
     price = models.DecimalField(max_digits=6, decimal_places=2)
     tags = models.CharField(max_length=300)
