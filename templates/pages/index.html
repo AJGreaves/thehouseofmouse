@@ -273,101 +273,28 @@ Amsterdam.{% endblock %}
                     <div class="col-12 text-center">
                         <h3>Featured Listings</h3>
                     </div>
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding">
-                        <div class="listing-card mx-auto">
-                            <div class="listing-img-wrapper">
-                                <div class="listing-img small-box-shadow sm-box-shadow-hover"
-                                    style="background-image: url('https://i.ibb.co/qpFMHV6/Mr-Applecheeks1.jpg');">
+                    {% for product in featured_products %}
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding {% if forloop.counter >= 5 %} d-lg-none {% endif %} ">
+                        <a href="{% url 'listing-detail' product.id %}">
+                            <div class="listing-card mx-auto">
+                                <div class="listing-img-wrapper">
+                                    <div class="listing-img small-box-shadow sm-box-shadow-hover"
+                                        style="background-image: url('{{ product.product_image1.url}}');">
 
+                                    </div>
+                                </div>
+
+                                <div class="listing-info d-flex justify-content-between">
+                                    <h5>{{ product.title }}</h5>
+                                    <p>€{{ product.price }}</p>
                                 </div>
                             </div>
-
-                            <div class="listing-info d-flex justify-content-between">
-                                <h5>Mr Applecheeks the Librarian Mouse</h5>
-                                <p>€35</p>
-                            </div>
-                        </div>
+                        </a>
                     </div>
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding">
-                        <div class="listing-card mx-auto">
-                            <div class="listing-img-wrapper">
-                                <div class="listing-img small-box-shadow sm-box-shadow-hover"
-                                    style="background-image: url('https://i.ibb.co/qpFMHV6/Mr-Applecheeks1.jpg');">
-
-                                </div>
-                            </div>
-
-                            <div class="listing-info d-flex justify-content-between">
-                                <h5>Mr Applecheeks the Librarian Mouse</h5>
-                                <p>€35</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding">
-                        <div class="listing-card mx-auto">
-                            <div class="listing-img-wrapper">
-                                <div class="listing-img small-box-shadow sm-box-shadow-hover"
-                                    style="background-image: url('https://i.ibb.co/qpFMHV6/Mr-Applecheeks1.jpg');">
-
-                                </div>
-                            </div>
-
-                            <div class="listing-info d-flex justify-content-between">
-                                <h5>Mr Applecheeks the Librarian Mouse</h5>
-                                <p>€35</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding">
-                        <div class="listing-card mx-auto">
-                            <div class="listing-img-wrapper">
-                                <div class="listing-img small-box-shadow sm-box-shadow-hover"
-                                    style="background-image: url('https://i.ibb.co/qpFMHV6/Mr-Applecheeks1.jpg');">
-
-                                </div>
-                            </div>
-
-                            <div class="listing-info d-flex justify-content-between">
-                                <h5>Mr Applecheeks the Librarian Mouse</h5>
-                                <p>€35</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- last two cards hidden in desktop view -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding d-lg-none">
-                        <div class="listing-card mx-auto">
-                            <div class="listing-img-wrapper">
-                                <div class="listing-img small-box-shadow sm-box-shadow-hover"
-                                    style="background-image: url('https://i.ibb.co/qpFMHV6/Mr-Applecheeks1.jpg');">
-
-                                </div>
-                            </div>
-
-                            <div class="listing-info d-flex justify-content-between">
-                                <h5>Mr Applecheeks the Librarian Mouse</h5>
-                                <p>€35</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding d-lg-none">
-                        <div class="listing-card mx-auto">
-                            <div class="listing-img-wrapper">
-                                <div class="listing-img small-box-shadow sm-box-shadow-hover"
-                                    style="background-image: url('https://i.ibb.co/qpFMHV6/Mr-Applecheeks1.jpg');">
-
-                                </div>
-                            </div>
-
-                            <div class="listing-info d-flex justify-content-between">
-                                <h5>Mr Applecheeks the Librarian Mouse</h5>
-                                <p>€35</p>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
 
                     <div class="col-12 text-center">
-                        <a href="#" class="btn btn-cta btn-pink">Browse more</a>
+                        <a href="{% url 'all-products' %}" class="btn btn-cta btn-pink">Browse more</a>
                     </div>
 
                 </div>
