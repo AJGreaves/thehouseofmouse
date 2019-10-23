@@ -32,22 +32,19 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12 col-md-6">
-            <h1>{{ user.username }}</h1>
-            <strong>Email:</strong>
-            <p>{{ user.email }}</p>
-            <strong>
-                Full Name:
-            </strong>
-            <p>{{user.first_name}} {{user.last_name}}</p>
-            <strong>Address:</strong>
-            <p>
-                {{ user.profile.address1 }}<br>
-                {{ user.profile.address2 }}<br>
-                {{ user.profile.town }}<br>
-                {{ user.profile.county }}<br>
-                {{ user.profile.postcode }}<br>
-                {{ user.profile.country }}
-            </p>
+
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Profile Info</legend>
+                    {{ u_form|crispy }}
+                    {{ p_form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-pink btn-cta m-0" type="submit">Update</button>
+                </div>
+            </form>
+
         </div>
     </div>
 </div>

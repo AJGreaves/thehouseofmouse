@@ -28,9 +28,13 @@ def register_view(request):
 
 @login_required
 def profile_view(request):
-    """ Renders profile page for user """
-    u_form = UserUpdateForm()
-    p_form = ProfileUpdateForm()
+    """
+    Renders profile page for user with a form to update
+    their information, already filled out with their current
+    data.
+    """
+    u_form = UserUpdateForm(instance=request.user)
+    p_form = ProfileUpdateForm(instance=request.user.profile)
 
     context = {
         'u_form': u_form,

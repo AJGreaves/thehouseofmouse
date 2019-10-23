@@ -7,9 +7,9 @@ from django.conf import settings
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    address1 = models.CharField(max_length=150, null=True)
-    address2 = models.CharField(max_length=150, blank=True, null=True)
-    town = models.CharField(max_length=150, null=True)
+    address_line_1 = models.CharField(max_length=150, null=True)
+    address_line_2 = models.CharField(max_length=150, blank=True, null=True)
+    town_or_city = models.CharField(max_length=150, null=True)
     county = models.CharField(max_length=150, blank=True, null=True)
     postcode = models.CharField(max_length=10, null=True)
     country = models.ForeignKey(

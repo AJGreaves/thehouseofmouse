@@ -24,4 +24,4 @@ class ProfileUpdateForm(forms.ModelForm):
     """ Form to update Profile info """
     class Meta:
         model = Profile
-        fields = ['address1', 'address2', 'town', 'county', 'postcode', 'country']
+        fields = ['address_line_1', 'address_line_2', 'town_or_city', 'county', 'postcode', 'country']
