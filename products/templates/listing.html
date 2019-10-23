@@ -41,14 +41,26 @@
                 <div class="col-12 col-lg-2 text-center text-lg-left">
                     <div class="listing-img-thumbnail" style="background-image: url('{{ product.product_image1.url }}')">
                     </div>
+
+                    {% if product.product_image2 %}
                     <div class="listing-img-thumbnail" style="background-image: url('{{ product.product_image2.url }}')">
                     </div>
+                    {% endif %}
+
+                    {% if product.product_image3 %}
                     <div class="listing-img-thumbnail" style="background-image: url('{{ product.product_image3.url }}')">
                     </div>
+                    {% endif %}
+
+                    {% if product.product_image4 %}
                     <div class="listing-img-thumbnail" style="background-image: url('{{ product.product_image4.url }}')">
                     </div>
+                    {% endif %}
+
+                    {% if product.product_image5 %}
                     <div class="listing-img-thumbnail" style="background-image: url('{{ product.product_image5.url }}')">
                     </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
