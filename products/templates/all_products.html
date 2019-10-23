@@ -27,14 +27,15 @@
             <div class="container p-3">
                 <div class="row">
                     <div class="col-12">
-                        <form>
+                        <form method="POST">
+                            {% csrf_token %}
                             <div class="form-group d-flex justify-content-center justify-content-md-end">
-                                <label for="results-sort-select" class="p-2 pr-3">Sort by</label>
                                 <select name="results-sort-select" id="results-sort-select" class="form-control">
-                                    <option value="">Featured</option>
-                                    <option value="">Price, high to low</option>
-                                    <option value="">Price, low to high</option>
+                                    <option {% if select == 'featured' %}selected{% endif %} value="featured">Featured</option>
+                                    <option {% if select == 'price-high' %}selected{% endif %} value="price-high">Price, high to low</option>
+                                    <option {% if select == 'price-low' %}selected{% endif %} value="price-low">Price, low to high</option>
                                 </select>
+                                <button type="submit" class="btn btn-outline-primary ml-2">Sort</button>
                             </div>
                         </form>
                     </div>
@@ -51,7 +52,7 @@
 
                             <div class="listing-info d-flex justify-content-between">
                                 <h5>{{ product.title }}</h5>
-                                <p>{{ product.price }}</p>
+                                <p>€{{ product.price }}</p>
                             </div>
                         </div>
                     </div>

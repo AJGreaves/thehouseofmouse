@@ -23,7 +23,22 @@ def results_view(request, *args, **kwargs):
     return render(request, "results.html")
 
 def all_products_view(request, *args, **kwargs):
-    """ displays all products """
+    """
+    Displays all products. If user selects an option to sort listings 
+    by featured or price, loads content in order requested.
+    """
+    if request.method == 'POST':
+        sort = request.POST.get('results-sort-select')
+        if sort == 'price-high':
+            results = Product.objects.all().order_by('-price')
+        elif sort == 'price-low':
+            results = Product.objects.all().order_by('price')
+        context = {
+            'products': results,
+            'select': sort,
+        }
+        return render(request, "all_products.html", context)
+
     context = {
         'products': Product.objects.all()
     }
