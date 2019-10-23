@@ -33,6 +33,8 @@ def all_products_view(request, *args, **kwargs):
             results = Product.objects.all().order_by('-price')
         elif sort == 'price-low':
             results = Product.objects.all().order_by('price')
+        elif sort == 'featured':
+            results = Product.objects.all().order_by('-featured')
         context = {
             'products': results,
             'select': sort,
@@ -40,6 +42,6 @@ def all_products_view(request, *args, **kwargs):
         return render(request, "all_products.html", context)
 
     context = {
-        'products': Product.objects.all()
+        'products': Product.objects.all().order_by('-featured')
     }
     return render(request, "all_products.html", context)
