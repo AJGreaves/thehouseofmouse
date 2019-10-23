@@ -31,9 +31,12 @@
                             {% csrf_token %}
                             <div class="form-group d-flex justify-content-center justify-content-md-end">
                                 <select name="results-sort-select" id="results-sort-select" class="form-control">
-                                    <option {% if select == 'featured' %}selected{% endif %} value="featured">Featured</option>
-                                    <option {% if select == 'price-high' %}selected{% endif %} value="price-high">Price, high to low</option>
-                                    <option {% if select == 'price-low' %}selected{% endif %} value="price-low">Price, low to high</option>
+                                    <option {% if select == 'featured' %}selected{% endif %} value="featured">Featured
+                                    </option>
+                                    <option {% if select == 'price-high' %}selected{% endif %} value="price-high">Price,
+                                        high to low</option>
+                                    <option {% if select == 'price-low' %}selected{% endif %} value="price-low">Price,
+                                        low to high</option>
                                 </select>
                                 <button type="submit" class="btn btn-outline-primary ml-2">Sort</button>
                             </div>
@@ -42,19 +45,22 @@
 
                     {% for product in products %}
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding">
-                        <div class="listing-card mx-auto">
-                            <div class="listing-img-wrapper">
-                                <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
-                                    style="background-image: url('{{ product.product_image1.url}}');">
-                                    
+                        <a href="{% url 'listing-detail' product.id %}">
+                            <div class="listing-card mx-auto">
+                                <div class="listing-img-wrapper">
+                                    <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
+                                        style="background-image: url('{{ product.product_image1.url}}');">
+
+                                    </div>
+                                </div>
+
+                                <div class="listing-info d-flex justify-content-between">
+                                    <h5>{{ product.title }}</h5>
+                                    <p>€{{ product.price }}</p>
                                 </div>
                             </div>
+                        </a>
 
-                            <div class="listing-info d-flex justify-content-between">
-                                <h5>{{ product.title }}</h5>
-                                <p>€{{ product.price }}</p>
-                            </div>
-                        </div>
                     </div>
                     {% endfor %}
 
