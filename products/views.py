@@ -30,9 +30,11 @@ class ListingDetailView(DetailView):
 
         return context
 
+
 def results_view(request, *args, **kwargs):
     """ results_view can be used for search results, category or favourites """
     return render(request, "results.html")
+
 
 def all_products_view(request, *args, **kwargs):
     """
@@ -50,10 +52,21 @@ def all_products_view(request, *args, **kwargs):
         context = {
             'products': results,
             'select': sort,
+            'category': 'All Products'
         }
         return render(request, "all_products.html", context)
 
     context = {
-        'products': Product.objects.all().order_by('-featured')
+        'products': Product.objects.all().order_by('-featured'),
+        'category': 'All Products',
     }
-    return render(request, "all_products.html", context)
+    return render(request, "results.html", context)
+
+
+def famous_category_view(request, *args, **kwargs):
+    """ Render all listings in "famous" category """
+    context = {
+        'products': Product.objects.all().filter(category="Famous"),
+        'category': 'Famous'
+    }
+    return render(request, "results.html", context)

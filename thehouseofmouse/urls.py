@@ -20,7 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from pages.views import home_view, faqs_view, about_view
 from accounts.views import register_view, profile_view
-from products.views import results_view, all_products_view, ListingDetailView
+from products.views import results_view, all_products_view, ListingDetailView, famous_category_view
 from cart.views import cart_view, checkout_info_view, checkout_shipping_view, checkout_payment_view, checkout_confirm_view
 
 urlpatterns = [
@@ -41,6 +41,7 @@ urlpatterns = [
     path('listing/<int:pk>/', ListingDetailView.as_view(), name="listing-detail"),
     path('results/', results_view, name="results"),
     path('all-products/', all_products_view, name="all-products"),
+    path('category/famous', famous_category_view, name="famous"),
 
     # cart and payment
     path('cart/', cart_view, name="cart"),
