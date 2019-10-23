@@ -36,8 +36,9 @@
             <form method="POST">
                 {% csrf_token %}
                 <fieldset class="form-group">
-                    <legend class="border-bottom mb-4">Profile Info</legend>
+                    <legend class="border-bottom my-4 pink-uppercase">Profile Info</legend>
                     {{ u_form|crispy }}
+                    <h4 class="border-bottom my-4 pink-uppercase">Shipping address:</h4>
                     {{ p_form|crispy }}
                 </fieldset>
                 <div class="form-group">
