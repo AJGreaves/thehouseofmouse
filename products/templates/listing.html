@@ -65,14 +65,14 @@
                 <div class="col-12">
                     <form id="listing-quantity-form">
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1">Quantity</label>
-                            <select class="form-control listing-quantity" id="exampleFormControlSelect1">
+                            <label for="quantity">Quantity</label>
+                            <select class="form-control listing-quantity" id="quantity">
                                 <!-- loops through to create options for number of items in stock -->
                                 {% for i in stock_arr %}
                                 <option>{{ i|add:1 }}</option>
                                 {% endfor %}
                             </select>
-                            {% if num_in_stock == 1 %}
+                            {% if product.num_in_stock == 1 %}
                             <p class="pink-text text-center">Only one left in stock!</p>
                             {% endif %}
                             <button type="submit" class="btn btn-cta btn-blue btn-shop">Add to Cart</button>
