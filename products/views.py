@@ -21,3 +21,10 @@ def listing_view(request, *args, **kwargs):
 def results_view(request, *args, **kwargs):
     """ results_view can be used for search results, category or favourites """
     return render(request, "results.html")
+
+def all_products_view(request, *args, **kwargs):
+    """ displays all products """
+    context = {
+        'products': Product.objects.all()
+    }
+    return render(request, "all_products.html", context)
