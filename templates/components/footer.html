@@ -18,22 +18,21 @@
                             <div class="col-12 col-lg-4">
                                 <ul>
 
-                                    <li><a href="#">Famous</a></li>
-                                    <li><a href="#">Star Wars</a></li>
-                                    <li><a href="#">Doctor Who</a></li>
-                                    <li><a href="#">Harry Potter</a></li>
-                                    <li><a href="#">Special Occasions</a></li>
-                                    <li><a href="#">Christmas</a></li>
+                                    <li><a href="{% url 'famous' %}">Famous</a></li>
+                                    <li><a href="{% url 'starwars' %}">Star Wars</a></li>
+                                    <li><a href="{% url 'doctor-who' %}">Doctor Who</a></li>
+                                    <li><a href="{% url 'harry-potter' %}">Harry Potter</a></li>
+                                    <li><a href="{% url 'special-occasions' %}">Special Occasions</a></li>
+                                    <li><a href="{% url 'christmas' %}">Christmas</a></li>
 
                                 </ul>
                             </div>
                             <div class="col-12 col-lg-8">
                                 <ul>
-                                    <li><a href="#">Halloween & Dangerous</a></li>
-                                    <li><a href="#">Jobs & Hobbies</a></li>
-                                    <li><a href="#">Weird & Misc</a></li>
-                                    <li><a href="#">Clearance</a></li>
-                                    <li class="mb-3"><a href="#">View All</a></li>
+                                    <li><a href="{% url 'halloween' %}">Halloween & Dangerous</a></li>
+                                    <li><a href="{% url 'jobs-hobbies' %}">Jobs & Hobbies</a></li>
+                                    <li><a href="{% url 'misc' %}">Weird & Misc</a></li>
+                                    <li class="mb-3"><a href="{% url 'all-products' %}">View All</a></li>
                                     <!-- mb-3 adds a little space between bottom of last <li> and column underneath -->
                                 </ul>
                             </div>
