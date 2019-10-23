@@ -64,7 +64,27 @@ def all_products_view(request, *args, **kwargs):
 
 
 def famous_category_view(request, *args, **kwargs):
-    """ Render all listings in "famous" category """
+    """
+    Render all listings in "famous" category. If user selects an 
+    option to sort listings by featured or price, loads content 
+    in order requested.
+    """
+
+    if request.method == 'POST':
+        sort = request.POST.get('results-sort-select')
+        if sort == 'price-high':
+            results = Product.objects.all().filter(category="Famous").order_by('-price')
+        elif sort == 'price-low':
+            results = Product.objects.all().filter(category="Famous").order_by('price')
+        elif sort == 'featured':
+            results = Product.objects.all().filter(category="Famous").order_by('-featured')
+        context = {
+            'products': results,
+            'select': sort,
+            'category': 'Famous'
+        }
+        return render(request, "results.html", context)
+
     context = {
         'products': Product.objects.all().filter(category="Famous"),
         'category': 'Famous'
