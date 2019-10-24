@@ -75,14 +75,15 @@
                     <p class="sml-txt">Incl. tax</p>
                 </div>
                 <div class="col-12">
-                    <form id="listing-quantity-form" method='POST'>
+                    <form id="listing-quantity-form" method='POST' action="{% url 'cart' %}">
                         {% csrf_token %}
                         <div class="form-group">
+                            <input id="listing-id" name="listing-id" type="hidden" value="{{ product.id }}" disabled>
                             <label for="quantity">Quantity</label>
-                            <select class="form-control listing-quantity" id="quantity">
+                            <select class="form-control listing-quantity" id="quantity" name="quantity">
                                 <!-- loops through to create options for number of items in stock -->
                                 {% for i in stock_arr %}
-                                <option>{{ i|add:1 }}</option>
+                                <option value="{{ i|add:1 }}">{{ i|add:1 }}</option>
                                 {% endfor %}
                             </select>
                             {% if product.num_in_stock == 1 %}
