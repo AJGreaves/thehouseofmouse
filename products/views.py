@@ -150,7 +150,7 @@ def doctor_who_category_view(request, *args, **kwargs):
         context = get_post_request_context(request, 'Doctor Who')
         return render(request, "results.html", context)
 
-    context = get_context('Christmas')
+    context = get_context('Doctor Who')
     return render(request, "results.html", context)
 
 
