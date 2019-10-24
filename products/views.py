@@ -25,10 +25,8 @@ class ListingDetailView(DetailView):
         for i in range(num_in_stock):
             stock_arr.append(i)
 
-        """
-        retrieve products from the same category (excluding the current listing)
-        to display in "more like this" section of the page.
-        """
+        # retrieve products from the same category (excluding the current listing)
+        # to display in "more like this" section of the page.
         more_products = Product.objects.all().filter(category=product.category).exclude(id=pk).order_by('-featured')[:6]
 
         context['product'] = product
