@@ -61,7 +61,7 @@ def all_products_view(request, *args, **kwargs):
             'select': sort,
             'category': 'All Products'
         }
-        return render(request, "all_products.html", context)
+        return render(request, "results.html", context)
 
     context = {
         'products': Product.objects.all().order_by('-featured'),
@@ -69,6 +69,11 @@ def all_products_view(request, *args, **kwargs):
     }
     return render(request, "results.html", context)
 
+def categories_view(request, *args, **kwargs):
+    """
+    Display all categories for users to choose from.
+    """
+    return render(request, "categories.html")
 
 def famous_category_view(request, *args, **kwargs):
     """

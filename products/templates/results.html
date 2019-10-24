@@ -3,7 +3,14 @@
 <!-- This page can be used for displaying categories and search results -->
 
 <!-- Page name here (SEO) -->
-{% block title %}{% endblock %}
+{% block title %}
+{% if category %}
+{{ category }}
+{% else %}
+Search Results
+{% endif %}
+| The House of Mouse
+{% endblock %}
 
 <!-- page meta description here (SEO) -->
 {% block meta_description %}{% endblock %}
@@ -17,12 +24,16 @@
 
         <!-- breadcrumbs -->
         <div id="breadcrumbs" class="col-12">
-            <a href="/">Home </a>
+            <a href="{% url 'home' %}">Home </a>
             <i class="fas fa-cheese fa-flip-horizontal"></i>
             {% if category %}
-            <a href="#">Categories </a>
+            <a href="{% url 'categories' %}">Categories </a>
             <i class="fas fa-cheese fa-flip-horizontal"></i>
-            <a href="#">{{ category }}</a>
+                {% if category != "All Products" %}
+                <a href="categories/{{ category|slugify }}">{{ category }}</a>
+                {% else %}
+                <a href="{% url 'all-products' %}">{{ category }}</a>
+                {% endif %}
             {% else %}
             <a href="#">Search</a>
             {% endif %}

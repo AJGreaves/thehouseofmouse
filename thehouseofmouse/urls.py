@@ -20,7 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from pages.views import home_view, faqs_view, about_view
 from accounts.views import register_view, profile_view
-from products.views import results_view, all_products_view, ListingDetailView, famous_category_view, special_category_view, harry_potter_category_view, starwars_category_view, misc_category_view, jobs_category_view, doctor_who_category_view, xmas_category_view, halloween_category_view
+from products.views import results_view, all_products_view, ListingDetailView, famous_category_view, special_category_view, harry_potter_category_view, starwars_category_view, misc_category_view, jobs_category_view, doctor_who_category_view, xmas_category_view, halloween_category_view, categories_view
 from cart.views import cart_view, checkout_info_view, checkout_shipping_view, checkout_payment_view, checkout_confirm_view
 
 urlpatterns = [
@@ -41,11 +41,12 @@ urlpatterns = [
     path('listing/<int:pk>/', ListingDetailView.as_view(), name="listing-detail"),
     path('results/', results_view, name="results"),
     path('all-products/', all_products_view, name="all-products"),
+    path('categories/', categories_view, name="categories"),
     path('categories/famous', famous_category_view, name="famous"),
     path('categories/special-occasions', special_category_view, name="special-occasions"),
     path('categories/harry-potter', harry_potter_category_view, name="harry-potter"),
-    path('categories/star-wars', starwars_category_view, name="starwars"),
-    path('categories/weird-misc', misc_category_view, name="misc"),
+    path('categories/star-wars', starwars_category_view, name="star-wars"),
+    path('categories/weird-misc', misc_category_view, name="weird-misc"),
     path('categories/jobs-hobbies', jobs_category_view, name="jobs-hobbies"),
     path('categories/doctor-who', doctor_who_category_view, name="doctor-who"),
     path('categories/christmas', xmas_category_view, name="christmas"),

@@ -72,59 +72,77 @@ Amsterdam.{% endblock %}
                 <div class="row mt-3">
                     <!-- top two columns bigger on desktop -->
                     <div class="col-12 col-sm-6 home-category-wrapper-lg">
-                        <div id="category-img-1"
-                            class="category-img d-flex align-items-end small-box-shadow sm-box-shadow-hover"
-                            title="Browse famous mice">
-                            <div class="category-heading-box text-center">
-                                <h3>Famous Mice</h3>
+                        <a href="{% url 'famous' %}">
+                            <div id="category-img-1"
+                                class="category-img d-flex align-items-end small-box-shadow sm-box-shadow-hover"
+                                title="Browse famous mice">
+                                <div class="category-heading-box text-center">
+                                    <h3>Famous Mice</h3>
+                                </div>
                             </div>
-                        </div>
+                        </a>
+
                     </div>
                     <div class="col-12 col-sm-6 home-category-wrapper-lg">
-                        <div id="category-img-2"
-                            class="category-img d-flex align-items-end small-box-shadow sm-box-shadow-hover"
-                            title="Browse mice for special occasions">
-                            <div class="category-heading-box text-center">
-                                <h3>Special Occasions</h3>
+                        <a href="{% url 'special-occasions' %}">
+                            <div id="category-img-2"
+                                class="category-img d-flex align-items-end small-box-shadow sm-box-shadow-hover"
+                                title="Browse mice for special occasions">
+                                <div class="category-heading-box text-center">
+                                    <h3>Special Occasions</h3>
+                                </div>
                             </div>
-                        </div>
+                        </a>
+
                     </div>
 
                     <div class="col-12 col-sm-6 col-lg-3 home-category-wrapper">
-                        <div id="category-img-3"
-                            class="category-img d-flex align-items-end small-box-shadow sm-box-shadow-hover"
-                            title="Browse Harry Potter inspired mice">
-                            <div class="category-heading-box text-center">
-                                <h3>Harry Potter Mice</h3>
+                        <a href="{% url 'halloween' %}">
+                            <div id="category-img-3"
+                                class="category-img d-flex align-items-end small-box-shadow sm-box-shadow-hover"
+                                title="Browse Halloween inspired mice">
+                                <div class="category-heading-box text-center">
+                                    <h3>Halloween</h3>
+                                </div>
                             </div>
-                        </div>
+                        </a>
+
                     </div>
                     <div class="col-12 col-sm-6 col-lg-3 home-category-wrapper">
-                        <div id="category-img-4"
-                            class="category-img d-flex align-items-end small-box-shadow sm-box-shadow-hover"
-                            title="Browse Star Wars inspired mice">
-                            <div class="category-heading-box text-center">
-                                <h3>Star Wars Mice</h3>
+                        <a href="{% url 'star-wars' %}">
+                            <div id="category-img-4"
+                                class="category-img d-flex align-items-end small-box-shadow sm-box-shadow-hover"
+                                title="Browse Star Wars inspired mice">
+                                <div class="category-heading-box text-center">
+                                    <h3>Star Wars Mice</h3>
+                                </div>
                             </div>
-                        </div>
+                        </a>
+
                     </div>
                     <div class="col-12 col-sm-6 col-lg-3 home-category-wrapper">
-                        <div id="category-img-6"
-                            class="category-img d-flex align-items-end small-box-shadow sm-box-shadow-hover"
-                            title="Clearance">
-                            <div class="category-heading-box text-center">
-                                <h3>Doctor Who</h3>
+                        <a href="{% url 'doctor-who' %}">
+                            <div id="category-img-6"
+                                class="category-img d-flex align-items-end small-box-shadow sm-box-shadow-hover"
+                                title="Browse Doctor Who inspired mice">
+                                <div class="category-heading-box text-center">
+                                    <h3>Doctor Who</h3>
+                                </div>
                             </div>
-                        </div>
+                        </a>
+
                     </div>
                     <div class="col-12 col-sm-6 col-lg-3 home-category-wrapper">
-                        <div id="category-img-5"
-                            class="category-img d-flex align-items-end small-box-shadow sm-box-shadow-hover"
-                            title="Browse mice with jobs and hobbies">
-                            <div class="category-heading-box text-center">
-                                <h3>Jobs & Hobbies</h3>
+                        <a href="{% url 'jobs-hobbies' %}">
+                            <div id="category-img-5"
+                                class="category-img d-flex align-items-end small-box-shadow sm-box-shadow-hover"
+                                title="Browse mice with jobs and hobbies">
+                                <div class="category-heading-box text-center">
+                                    <h3>Jobs & Hobbies</h3>
+                                </div>
                             </div>
-                        </div>
+                        </a>
+
                     </div>
                 </div>
 
@@ -274,7 +292,8 @@ Amsterdam.{% endblock %}
                         <h3>Featured Listings</h3>
                     </div>
                     {% for product in featured_products %}
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding {% if forloop.counter >= 5 %} d-lg-none {% endif %} ">
+                    <div
+                        class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding {% if forloop.counter >= 5 %} d-lg-none {% endif %} ">
                         <a href="{% url 'listing-detail' product.id %}">
                             <div class="listing-card mx-auto">
                                 <div class="listing-img-wrapper">
