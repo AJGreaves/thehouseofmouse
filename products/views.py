@@ -11,11 +11,6 @@ class ListingDetailView(DetailView):
     context_object_name = 'product'
 
     def get_context_data(self, **kwargs):
-
-        if self.request.method == 'POST':
-            post_request = self.request
-            print(post_request)
-
         """
         Get the current context and the relevant pk, then set the
         context needed for building the select dropdown menu.
