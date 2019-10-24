@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+<!-- listing name here (SEO) -->
+{% block title %}Checkout Step 2 Shipping | The House of Mouse{% endblock %}
+
+{% block meta_robots %}noindex{% endblock %}
+
+{% block content %}
+
+{% include 'components/progress.html' %}
+
+{% include 'components/summary.html' %}
+
+<div class="container pb-2">
+    <div class="row justify-content-between">
+        <div class="col-12 col-md-6 mt-4" id="shipping-options">
+
+            <div class="card bg-light checkout-card">
+                <h6 class="checkout-heading">Contact</h6>
+                <p>example@email.com</p>
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <h6 class="checkout-heading">Ship to</h6>
+                    <span>Change</span>
+                </div>
+
+                <p>Example Street 1, 1234AB Amsterdam, Netherlands</p>
+            </div>
+
+            <h6 class="checkout-heading mt-4">Shipping method</h6>
+            <div class="card bg-light checkout-card mb-3">
+                <div class="container-fluid">
+                    <div class="row justify-content-between">
+                        <div class="col-9">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                                    value="option1" checked>
+                                <label class="form-check-label" for="exampleRadios1">
+                                    DHL signed parcel
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-3 text-right">
+                            €6
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <button type="submit" class="btn btn-cta btn-blue d-block mx-auto m-lg-0 ml-lg-auto mr-0">Continue to
+                payment</button>
+
+        </div>
+
+        <!-- order summary section, hidden on medium screens and up -->
+        <div id="shopping-cart-contents" class="d-none d-md-block col-md-6 card">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="checkout-heading pb-3 px-3">Your order summary</h3>
+                </div>
+
+                {% include 'components/cart-items.html' %}
+                <div class="col-12 text-right">
+                    <hr>
+                    <h3 id="subtotal">Subtotal: <span>€105</span></h3>
+                    <p>Tax included.
+                        <br>Shipping calculated during checkout.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 text-center text-md-left p-3">
+            <div class="text-center text-md-left my-2">
+                <a href="#" class="mx-auto blue-link"><i class="fas fa-arrow-left"></i> Return to information</a>
+            </div>
+            <a href="#" class="mr-2">Refund Policy</a>
+            <a href="#" class="ml-2">Terms of Service</a>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

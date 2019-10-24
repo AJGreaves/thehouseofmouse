@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
 <!-- listing name here (SEO) -->
-{% block title %}{% endblock %}
+{% block title %}{{ product.title }} | The House of Mouse{% endblock %}
 
 <!-- listing meta description here (SEO) -->
-{% block meta_description %}{% endblock %}
+{% block meta_description %}{{ product.description }}{% endblock %}
 
 {% block meta_robots %}index, follow{% endblock %}
 
@@ -18,14 +18,14 @@
             <i class="fas fa-cheese fa-flip-horizontal"></i>
             <a href="#">Categories </a>
             <i class="fas fa-cheese fa-flip-horizontal"></i>
-            <a href="#">Star Wars </a>
+            <a href="/categories/{{ product.category|slugify }}">{{ product.category }}</a>
             <i class="fas fa-cheese fa-flip-horizontal"></i>
-            <a href="#">Yoda Mouse </a>
+            <a href="{% url 'listing-detail' product.id %}">{{ product.title }}</a>
         </div>
 
         <!-- Heading -->
         <div class="col-12">
-            <h1>Yoda Mouse</h1>
+            <h1>{{ product.title }}</h1>
         </div>
 
         <!-- listing images -->
@@ -34,20 +34,33 @@
 
                 <!-- big image -->
                 <div class="col-12 col-lg-10">
-                    <img src="https://i.ibb.co/TYFQxMM/SWYoda-1.jpg" alt="Yoda Mouse"
-                        class="listing-img-main small-box-shadow">
+                    <img id="main-listing-img" src="{{ product.product_image1.url }}" alt="{{ product.title }}" class="listing-img-main small-box-shadow">
                 </div>
 
                 <!-- thumbnails -->
                 <div class="col-12 col-lg-2 text-center text-lg-left">
-                    <div class="listing-img-thumbnail"
-                        style="background-image: url('https://i.ibb.co/TYFQxMM/SWYoda-1.jpg')"></div>
-                    <div class="listing-img-thumbnail"
-                        style="background-image: url('https://i.ibb.co/J3m1dt6/SWYoda-2.jpg')"></div>
-                    <div class="listing-img-thumbnail"
-                        style="background-image: url('https://i.ibb.co/KbWkqcx/SWYoda-3.jpg')"></div>
-                    <div class="listing-img-thumbnail"
-                        style="background-image: url('https://i.ibb.co/FDc6Xkj/starwasrcollectables1sml.jpg')"></div>
+                    <div class="listing-img-thumbnail" style="background-image: url('{{ product.product_image1.url }}')">
+                    </div>
+
+                    {% if product.product_image2 %}
+                    <div class="listing-img-thumbnail" style="background-image: url('{{ product.product_image2.url }}')">
+                    </div>
+                    {% endif %}
+
+                    {% if product.product_image3 %}
+                    <div class="listing-img-thumbnail" style="background-image: url('{{ product.product_image3.url }}')">
+                    </div>
+                    {% endif %}
+
+                    {% if product.product_image4 %}
+                    <div class="listing-img-thumbnail" style="background-image: url('{{ product.product_image4.url }}')">
+                    </div>
+                    {% endif %}
+
+                    {% if product.product_image5 %}
+                    <div class="listing-img-thumbnail" style="background-image: url('{{ product.product_image5.url }}')">
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -57,24 +70,23 @@
             <div class="row">
 
                 <!-- Price -->
-                <div class="col-8">
-                    <div class="listing-price">€40</div>
+                <div class="col-12">
+                    <div class="listing-price">€{{ product.price }}</div>
                     <p class="sml-txt">Incl. tax</p>
-                </div>
-                <div id="add-fav" class="col-4 text-center">
-                    <i class="far fa-heart" title="Add to favourites"></i>
                 </div>
                 <div class="col-12">
                     <form id="listing-quantity-form">
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1">Quantity</label>
-                            <select class="form-control listing-quantity" id="exampleFormControlSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                            <label for="quantity">Quantity</label>
+                            <select class="form-control listing-quantity" id="quantity">
+                                <!-- loops through to create options for number of items in stock -->
+                                {% for i in stock_arr %}
+                                <option>{{ i|add:1 }}</option>
+                                {% endfor %}
                             </select>
+                            {% if product.num_in_stock == 1 %}
+                            <p class="pink-text text-center">Only one left in stock!</p>
+                            {% endif %}
                             <button type="submit" class="btn btn-cta btn-blue btn-shop">Add to Cart</button>
                         </div>
                     </form>
@@ -86,16 +98,8 @@
         <!-- listing description -->
         <div id="listing-description" class="col-12 col-lg-8">
             <h4 class="pink-cap-header mt-3">Description</h4>
-            <p>
-                Old and wise, this little mouse is. Much stronger than he looks, is he. Among the oldest and most
-                powerful known Jedi masters in the Star Wars universe, Grand Jedi master Yoda Mouse is. Once on the Jedi
-                council, he was.</p>
 
-            <p>Intricately hand crafted in his Jedi robes, Yoda Mouse has been. Holds a green lightsaber in his paws he
-                does.</p>
-
-            <p class="mb-3">My Star Wars Mice were featured in the book "1,000 Collectibles: Memorabilia and stories from a Galaxy
-                far, far away" by Stephen Sansweet. (page 328) </p>
+            <p class="mb-3">{{ product.description }}</p>
             <hr>
 
             <!-- Standard details for all listings -->
@@ -126,7 +130,7 @@
 
         <!-- share buttons -->
         <div class="col-12 text-center text-md-left">
-            <a href="#" class="btn btn-cta btn-fb ml-md-0"><i class="fab fa-facebook-f"></i>  Share</a>
+            <a href="#" class="btn btn-cta btn-fb ml-md-0"><i class="fab fa-facebook-f"></i> Share</a>
             <a href="#" class="btn btn-cta btn-twit"><i class="fab fa-twitter"></i> Tweet</a>
             <a href="#" class="btn btn-cta btn-pin"><i class="fab fa-pinterest-p"></i> Pin it</a>
             <hr>
@@ -139,102 +143,28 @@
                     <div class="col-12">
                         <h3>More like this</h3>
                     </div>
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding">
-                        <div class="listing-card mx-auto">
-                            <div class="listing-img-wrapper">
-                                <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
-                                    style="background-image: url('https://i.ibb.co/hXJFLpt/SWChewy-1.jpg');">
-                                    <i class="far fa-heart" title="Add to favourites"></i>
+                    {% for product in more_products %}
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding {% if forloop.counter >= 5 %} d-lg-none {% endif %} ">
+                        <a href="{% url 'listing-detail' product.id %}">
+                            <div class="listing-card mx-auto">
+                                <div class="listing-img-wrapper">
+                                    <div class="listing-img small-box-shadow sm-box-shadow-hover"
+                                        style="background-image: url('{{ product.product_image1.url}}');">
+
+                                    </div>
+                                </div>
+
+                                <div class="listing-info d-flex justify-content-between">
+                                    <h5>{{ product.title }}</h5>
+                                    <p>€{{ product.price }}</p>
                                 </div>
                             </div>
-
-                            <div class="listing-info d-flex justify-content-between">
-                                <h5>Chewbacca Mouse</h5>
-                                <p>€30</p>
-                            </div>
-                        </div>
+                        </a>
                     </div>
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding">
-                        <div class="listing-card mx-auto">
-                            <div class="listing-img-wrapper">
-                                <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
-                                    style="background-image: url('https://i.ibb.co/rvcKbqy/SWBoba-1.jpg');">
-                                    <i class="far fa-heart" title="Add to favourites"></i>
-                                </div>
-                            </div>
-
-                            <div class="listing-info d-flex justify-content-between">
-                                <h5>Boba Fett Mouse</h5>
-                                <p>€50</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding">
-                        <div class="listing-card mx-auto">
-                            <div class="listing-img-wrapper">
-                                <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
-                                    style="background-image: url('https://i.ibb.co/PTrnwfy/SWObiwan-1.jpg');">
-                                    <i class="far fa-heart" title="Add to favourites"></i>
-                                </div>
-                            </div>
-
-                            <div class="listing-info d-flex justify-content-between">
-                                <h5>Obiwan Kenobi Mouse</h5>
-                                <p>€35</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding">
-                        <div class="listing-card mx-auto">
-                            <div class="listing-img-wrapper">
-                                <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
-                                    style="background-image: url('https://i.ibb.co/nwc6R0b/SWVader-1.jpg');">
-                                    <i class="far fa-heart" title="Add to favourites"></i>
-                                </div>
-                            </div>
-
-                            <div class="listing-info d-flex justify-content-between">
-                                <h5>Darth Vader Mouse</h5>
-                                <p>€35</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- last two cards hidden in desktop view -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding d-lg-none">
-                        <div class="listing-card mx-auto">
-                            <div class="listing-img-wrapper">
-                                <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
-                                    style="background-image: url('https://i.ibb.co/r4d3G3f/SWStorm-1.jpg');">
-                                    <i class="far fa-heart" title="Add to favourites"></i>
-                                </div>
-                            </div>
-
-                            <div class="listing-info d-flex justify-content-between">
-                                <h5>Stormtrooper Mouse</h5>
-                                <p>€40</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding d-lg-none">
-                        <div class="listing-card mx-auto">
-                            <div class="listing-img-wrapper">
-                                <div class="listing-img small-box-shadow sm-box-shadow-hover d-flex justify-content-end"
-                                    style="background-image: url('https://i.ibb.co/TRcK25S/Ewok.jpg');">
-                                    <i class="far fa-heart" title="Add to favourites"></i>
-                                </div>
-                            </div>
-
-                            <div class="listing-info d-flex justify-content-between">
-                                <h5>Ewok Mouse</h5>
-                                <p>€35</p>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
 
                     <div class="col-12 text-center">
-                        <a href="#" class="btn btn-cta btn-pink">Browse more</a>
+                        <a href="/categories/{{ product.category|slugify }}" class="btn btn-cta btn-pink">Browse more</a>
                     </div>
 
                 </div>

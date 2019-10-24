@@ -1,0 +1,45 @@
+{% load staticfiles %}
+
+<!-- collapsible order summary section for mobile screens, hidden on med screen sizes and up -->
+<div class="accordion d-md-none" id="order-summary-mobile">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link d-flex justify-content-between" type="button" data-toggle="collapse" data-target="#collapseOne"
+                                aria-expanded="false" aria-controls="collapseOne">
+                                <div>
+                                    <i class="fas fa-shopping-basket"></i>
+                                <h4>Show order summary </h4>
+                                <i class="fas fa-chevron-down chevron"></i>
+                                </div>
+                                
+                                <div class="total ml-auto">€105</div>
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                        data-parent="#order-summary-mobile">
+                        <div class="card-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    {% include 'components/cart-items.html' %}
+                                <div class="col-12 text-right">
+                                    <hr>
+                                    <h3 id="subtotal">Subtotal: <span>€105</span></h3>
+                                    <p>Tax included.
+                                        <br>Shipping calculated during checkout.</p>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

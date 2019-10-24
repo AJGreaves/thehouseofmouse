@@ -61,3 +61,10 @@ footer h5 {
     color: $color2;
     text-transform: none;
 }
+
+.pink-uppercase {
+    color: $color2;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-size: 1.2rem;
+}

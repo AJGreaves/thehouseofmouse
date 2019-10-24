@@ -64,6 +64,13 @@ footer h5 {
   text-transform: none;
 }
 
+.pink-uppercase {
+  color: #ff9a9f;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 1.2rem;
+}
+
 .btn-search {
   color: #63c4fc;
   background-color: transparent;
@@ -169,6 +176,10 @@ footer h5 {
 .btn-pin:hover {
   color: white;
   background-color: #E60023;
+}
+
+#pay-now-btn {
+  min-width: 300px;
 }
 
 #logo {
@@ -281,6 +292,17 @@ footer .fa-youtube-square:hover {
 
 .sml-txt {
   font-size: 0.9rem;
+}
+
+a {
+  color: #797979;
+  -webkit-transition: 0.2s all ease-in-out 0.2s;
+  transition: 0.2s all ease-in-out 0.2s;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #47b7f8;
 }
 
 #mobile-search-bar {
@@ -412,7 +434,7 @@ footer a:hover {
 }
 
 #category-img-1 {
-  background-image: url("https://i.ibb.co/TrxyMsy/Beatles-1.jpg");
+  background-image: url("https://i.ibb.co/q0sGXmD/Indiana-1.jpg");
 }
 
 #category-img-2 {
@@ -420,7 +442,7 @@ footer a:hover {
 }
 
 #category-img-3 {
-  background-image: url("https://i.ibb.co/P6fLV3B/HPGroup.jpg");
+  background-image: url("https://i.ibb.co/FxD7G8C/DHPump-1.jpg");
 }
 
 #category-img-4 {
@@ -432,7 +454,15 @@ footer a:hover {
 }
 
 #category-img-6 {
-  background-image: url("https://i.ibb.co/5RpCJWz/GuitarF1.jpg");
+  background-image: url("https://i.ibb.co/nghXvfm/DWDalek-B-1.jpg");
+}
+
+#category-img-7 {
+  background-image: url("https://i.ibb.co/P6fLV3B/HPGroup.jpg");
+}
+
+#category-img-8 {
+  background-image: url("https://i.ibb.co/vhyJfJJ/cat1ws-blog.jpg");
 }
 
 .home-category-wrapper h3,
@@ -588,6 +618,121 @@ footer a:hover {
 
 #subtotal {
   font-family: "Lato", sans-serif;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+#progress-line {
+  border-top: 1px solid black;
+  margin: 2rem auto;
+  width: 80%;
+}
+
+.progress-step {
+  width: 100px;
+  text-align: center;
+  display: inline-block;
+}
+
+.progress-circle {
+  background-color: white;
+  border: 1px solid #373737;
+  color: #373737;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 0 auto;
+  line-height: 2.3rem;
+}
+
+.progress-step p {
+  font-size: 0.8rem;
+}
+
+/* places progress circles over joining line */
+#progress-circles {
+  margin-top: -3.3rem;
+}
+
+/* styling progress circle on active step */
+.progress-circle.active {
+  background-color: #63c4fc;
+  color: white;
+}
+
+#checkout-logo,
+#checkout-heading {
+  display: inline-block;
+}
+
+#checkout-logo {
+  width: 80px;
+  margin: 1rem 1rem 1rem 0;
+}
+
+#order-summary-mobile h4,
+.total {
+  font-size: 1rem;
+  font-family: "Lato", sans-serif;
+  color: #373737;
+  margin: 0 1rem;
+  display: inline;
+  text-transform: none;
+}
+
+#order-summary-mobile button {
+  text-decoration: none;
+  width: 100%;
+}
+
+#order-summary-mobile .fa-shopping-basket {
+  color: #373737;
+  font-size: 1.5rem;
+}
+
+#order-summary-mobile .chevron {
+  color: #373737;
+  font-size: 1.1rem;
+}
+
+.checkout-heading {
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: "Lato", sans-serif;
+}
+
+.link {
+  color: #47b7f8;
+  -webkit-transition: 0.2s all ease-in-out 0.2s;
+  transition: 0.2s all ease-in-out 0.2s;
+}
+
+.link:hover {
+  color: #63c4fc;
+  text-decoration: none;
+}
+
+.collapse {
+  background-color: #f8f9fa;
+}
+
+.checkout-card {
+  padding: 1.5rem;
+  margin: 0 auto;
+  border-radius: 6px;
+}
+
+.total.ml-auto {
+  margin-right: 0;
+}
+
+a.blue-link {
+  color: #47b7f8;
+}
+
+#total {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 @media screen and (min-width: 768px) {
@@ -595,6 +740,10 @@ footer a:hover {
   #carousel-img-3 {
     background-image: url("https://i.ibb.co/CW69XXd/smile.jpg");
     background-position: center 65%;
+  }
+  #info-form input.half-md-width {
+    width: 49%;
+    display: inline-block;
   }
 }
 

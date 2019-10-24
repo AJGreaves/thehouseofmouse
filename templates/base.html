@@ -29,12 +29,16 @@
 
 <body>
 
+    {% if navbar != False %}
     {% include 'components/navbar.html' %}
+    {% endif %}
 
     {% block content %}
     {% endblock %}
 
+    {% if footer != False %}
     {% include 'components/footer.html' %}
+    {% endif %}
 
     <!-- script for mailchimp -->
     <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>

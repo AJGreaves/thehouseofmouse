@@ -12,7 +12,7 @@
 
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light small-box-shadow">
 
-    <a class="navbar-brand px-1 mr-auto mr-md-1" href="#">
+    <a class="navbar-brand px-1 mr-auto mr-md-1" href="{% url 'home' %}">
         <img id="logo" src="{% static 'img/logo.png' %}" alt="The House of Mouse logo">
     </a>
 
@@ -20,16 +20,13 @@
         <input id="nav-search-input" class="form-control" type="search" placeholder="Search all mice"
             aria-label="Search"><button id="nav-search-btn" class="btn btn-search" type="submit"><i
                 class="fas fa-search"></i></button>
-            <!-- bug fix: for some reason if <button> starts on a new line there is a 
+        <!-- bug fix: for some reason if <button> starts on a new line there is a 
                 gap between input field and button, which does not work with my design! -->
     </form>
 
     <!-- positions favs and cart icons to left of toggler on mobiles (2nd one for desktop below) -->
     <div id="navbar-icons-mobile" class="d-lg-none">
-        <a class="nav-link nav-link-icon" href="#" title="My Favourites">
-            <i class="far fa-heart navbar-icon"></i>
-        </a>
-        <a class="nav-link nav-link-icon" href="#" title="Shopping cart">
+        <a class="nav-link nav-link-icon" href="{% url 'cart' %}" title="Shopping cart">
             <div>
                 <i class="fas fa-shopping-basket navbar-icon"></i>
                 <div id="cart-counter">2</div>
@@ -44,8 +41,8 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home {% if page == "home" %}<span
+            <li class="nav-item {% if page == 'home' %}active{% endif %}">
+                <a class="nav-link" href="{% url 'home' %}">Home {% if page == "home" %}<span
                         class="sr-only">(current)</span>{% endif %}</a>
             </li>
             <li class="nav-item dropdown">
@@ -54,45 +51,57 @@
                     Browse
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">View All</a>
+                    <a class="dropdown-item" href="{% url 'all-products' %}">View All</a>
                     <div class="dropdown-divider"></div>
 
-                    <a class="dropdown-item" href="#">Famous</a>
-                    <a class="dropdown-item" href="#">Star Wars</a>
-                    <a class="dropdown-item" href="#">Doctor Who</a>
-                    <a class="dropdown-item" href="#">Harry Potter</a>
+                    <a class="dropdown-item" href="{% url 'famous' %}">Famous</a>
+                    <a class="dropdown-item" href="{% url 'star-wars' %}">Star Wars</a>
+                    <a class="dropdown-item" href="{% url 'doctor-who' %}">Doctor Who</a>
+                    <a class="dropdown-item" href="{% url 'harry-potter' %}">Harry Potter</a>
                     <div class="dropdown-divider"></div>
 
-                    <a class="dropdown-item" href="#">Special Occasions</a>
-                    <a class="dropdown-item" href="#">Christmas</a>
-                    <a class="dropdown-item" href="#">Halloween & Dangerous</a>
+                    <a class="dropdown-item" href="{% url 'special-occasions' %}">Special Occasions</a>
+                    <a class="dropdown-item" href="{% url 'christmas' %}">Christmas</a>
+                    <a class="dropdown-item" href="{% url 'halloween' %}">Halloween & Dangerous</a>
                     <div class="dropdown-divider"></div>
 
-                    <a class="dropdown-item" href="#">Jobs & Hobbies</a>
-                    <a class="dropdown-item" href="#">Cultures</a>
-                    <a class="dropdown-item" href="#">Weird & Misc</a>
-                    <a class="dropdown-item" href="#">Clearance</a>
+                    <a class="dropdown-item" href="{% url 'jobs-hobbies' %}">Jobs & Hobbies</a>
+                    <a class="dropdown-item" href="{% url 'weird-misc' %}">Weird & Misc</a>
                 </div>
+            </li>
+            <li class="nav-item {% if page == 'about' %}active{% endif %}">
+                <a class="nav-link" href="{% url 'about' %}">About {% if page == "about" %}<span
+                    class="sr-only">(current)</span>{% endif %}</a>
+            </li>
+            <li class="nav-item {% if page == 'faqs' %}active{% endif %}">
+                <a class="nav-link" href="{% url 'faqs' %}">FAQs {% if page == "faqs" %}<span
+                    class="sr-only">(current)</span>{% endif %}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Contact</a>
             </li>
+            {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" href="#">Sign In</a>
+                <a class="nav-link" href="{% url 'logout' %}">Log out</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Create Account</a>
+                <a class="nav-link" href="{% url 'profile' %}">Profile</a>
             </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}">Register</a>
+            </li>
+            {% endif  %}
         </ul>
 
     </div>
 
     <!-- positions favs and cart icons to far right of navbar when navigation not collapsed -->
     <div id="navbar-icons-desktop" class="d-none d-lg-inline-block">
-        <a class="nav-link nav-link-icon" href="#" title="My Favourites">
-            <i class="far fa-heart navbar-icon"></i>
-        </a>
-        <a class="nav-link nav-link-icon" href="#" title="Shopping cart">
+        <a class="nav-link nav-link-icon" href="{% url 'cart' %}" title="Shopping cart">
             <div>
                 <i class="fas fa-shopping-basket navbar-icon"></i>
                 <div id="cart-counter">2</div>

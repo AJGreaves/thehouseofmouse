@@ -6,6 +6,11 @@
         background-image: url('https://i.ibb.co/CW69XXd/smile.jpg');
         background-position: center 65%;
     }
+
+    #info-form input.half-md-width {
+        width: 49%;
+        display: inline-block;
+    }
 }
 
 // Large devices (desktops, 992px and up)

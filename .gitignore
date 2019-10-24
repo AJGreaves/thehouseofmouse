@@ -1,8 +1,10 @@
 #folders
 .venv
 .vscode
+product_images
 
 #files
 *.sqlite3
 *.pyc
 __pycache__
+*/migrations/*

@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+<!-- listing name here (SEO) -->
+{% block title %}Checkout Step 3 Payment | The House of Mouse{% endblock %}
+
+{% block meta_robots %}noindex{% endblock %}
+
+{% block content %}
+
+{% include 'components/progress.html' %}
+
+<div class="container pb-2">
+    <div class="row justify-content-between">
+        <div class="col-12 col-md-6 mt-4" id="shipping-options">
+
+            <div class="card bg-light checkout-card">
+                <h6 class="checkout-heading">Contact</h6>
+                <p>example@email.com</p>
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <h6 class="checkout-heading">Ship to</h6>
+                    <span>Change</span>
+                </div>
+
+                <p>Example Street 1, 1234AB Amsterdam, Netherlands</p>
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <h6 class="checkout-heading">Shipping method</h6>
+                    <span>Change</span>
+                </div>
+
+                <p>DHL Signed for - €6</p>
+            </div>
+
+            <h6 class="checkout-heading mt-4">Payment</h6>
+            <p>All transactions are secure and encrypted</p>
+            <p>---- Credit card form here ----</p>
+
+            <button id="pay-now-btn" type="submit" class="btn btn-cta btn-blue d-block mx-auto m-lg-0 ml-lg-auto mr-0">Pay Now</button>
+
+        </div>
+
+        <!-- order summary section, hidden on medium screens and up -->
+        <div id="shopping-cart-contents" class="d-none d-md-block col-md-6 card">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="checkout-heading pb-3 px-3">Your order summary</h3>
+                </div>
+
+                {% include 'components/cart-items.html' %}
+                <div class="col-12 text-right">
+                    <hr>
+                    <h3 id="subtotal">Subtotal: <span>€105</span></h3>
+                    <p>Shipping: <span>€6</span></p>
+                    <hr>
+                    <h5 id="total">Total: €111</h5>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 text-center text-md-left p-3">
+            <div class="text-center text-md-left my-2">
+                <a href="#" class="mx-auto blue-link"><i class="fas fa-arrow-left"></i> Return to Shipping</a>
+            </div>
+            <a href="#" class="mr-2">Refund Policy</a>
+            <a href="#" class="ml-2">Terms of Service</a>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
