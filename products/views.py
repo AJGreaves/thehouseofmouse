@@ -4,11 +4,11 @@ from .models import Product
 
 # Create your views here.
 class ListingDetailView(DetailView):
+
     """ Create view for individual listings """
     model = Product
     template_name = 'listing.html'
     context_object_name = 'product'
-    
 
     def get_context_data(self, **kwargs):
         """

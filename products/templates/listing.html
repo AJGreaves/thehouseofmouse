@@ -75,7 +75,8 @@
                     <p class="sml-txt">Incl. tax</p>
                 </div>
                 <div class="col-12">
-                    <form id="listing-quantity-form">
+                    <form id="listing-quantity-form" method='POST'>
+                        {% csrf_token %}
                         <div class="form-group">
                             <label for="quantity">Quantity</label>
                             <select class="form-control listing-quantity" id="quantity">
@@ -86,8 +87,12 @@
                             </select>
                             {% if product.num_in_stock == 1 %}
                             <p class="pink-text text-center">Only one left in stock!</p>
+                            {% elif product.num_in_stock == 0 %}
+                            <p class="pink-text text-center">Sorry this listing is currently sold out!</p>
                             {% endif %}
-                            <button type="submit" class="btn btn-cta btn-blue btn-shop">Add to Cart</button>
+                            <button type="submit" class="btn btn-cta btn-blue btn-shop" {% if product.num_in_stock == 0 %}disabled{% endif %}>
+                                Add to Cart
+                            </button>
                         </div>
                     </form>
 

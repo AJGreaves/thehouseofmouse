@@ -18,7 +18,7 @@ class Order(models.Model):
     shipped = models.BooleanField(default=False)
 
     def __str__(self):
-        return f'{self.id}-{self.date_ordered}={self.full_name}'
+        return f'{self.id}-{self.date_ordered}-{self.full_name}'
 
 
 class OrderItem(models.Model):
