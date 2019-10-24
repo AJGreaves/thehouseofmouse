@@ -18,9 +18,9 @@
             <i class="fas fa-cheese fa-flip-horizontal"></i>
             <a href="#">Categories </a>
             <i class="fas fa-cheese fa-flip-horizontal"></i>
-            <a href="/category/{{ product.category|slugify }}">{{ product.category }}</a>
+            <a href="/categories/{{ product.category|slugify }}">{{ product.category }}</a>
             <i class="fas fa-cheese fa-flip-horizontal"></i>
-            <a href="#">{{ product.title }}</a>
+            <a href="{% url 'listing-detail' product.id %}">{{ product.title }}</a>
         </div>
 
         <!-- Heading -->
