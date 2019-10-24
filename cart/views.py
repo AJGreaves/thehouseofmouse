@@ -7,8 +7,6 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 @login_required
 def cart_view(request, *args, **kwargs):
-    if request.method == 'POST':
-        print(request)
     """
     render shopping cart page, remove footer from this page
     to fit conventions of other eCommerce sites

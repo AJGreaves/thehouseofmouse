@@ -75,7 +75,7 @@
                     <p class="sml-txt">Incl. tax</p>
                 </div>
                 <div class="col-12">
-                    <form id="listing-quantity-form" method='POST' action="{% url 'cart' %}">
+                    <form id="listing-quantity-form" method='POST'>
                         {% csrf_token %}
                         <div class="form-group">
                             <input id="listing-id" name="listing-id" type="hidden" value="{{ product.id }}" disabled>

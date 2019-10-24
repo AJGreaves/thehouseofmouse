@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render
 from django.views.generic import DetailView
 from .models import Product
@@ -34,6 +35,11 @@ class ListingDetailView(DetailView):
         context['more_products'] = more_products
 
         return context
+
+    def post(self, request, *args, **kwargs):
+        form = request.POST
+        if form.is_valid():
+            print('Valid form')
 
 
 def results_view(request, *args, **kwargs):
