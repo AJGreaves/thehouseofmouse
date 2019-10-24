@@ -7,35 +7,24 @@ from products.models import Product
 
 class Order(models.Model):
 
-    first_name = models.CharField(max_length=150)
-    last_name = models.CharField(max_length=150)
+    full_name = models.CharField(max_length=150)
     address_line_1 = models.CharField(max_length=150)
     address_line_2 = models.CharField(max_length=150, blank=True, null=True)
     town_or_city = models.CharField(max_length=150)
     county = models.CharField(max_length=150, blank=True, null=True)
     postcode = models.CharField(max_length=10)
-    country = models.ForeignKey(
-        Destination_country,
-        on_delete=models.CASCADE,
-        null=True,
-    )
+    country = models.ForeignKey(Destination_country, on_delete=models.CASCADE, null=True)
     date_ordered = models.DateField(default=datetime.date.today)
     shipped = models.BooleanField(default=False)
 
     def __str__(self):
-        return f'Order placed on {self.date_ordered}'
+        return f'{self.id}-{self.date_ordered}={self.full_name}'
 
 
 class OrderItem(models.Model):
-    product = models.ForeignKey(
-        Product,
-        on_delete=models.PROTECT
-    )
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, null=False)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=False)
     quantity = models.SmallIntegerField()
-    order = models.ForeignKey(
-        Order,
-        on_delete=models.CASCADE
-    )
 
     def __str__(self):
-        return f'Order item {self.product.title} quantity: {self.quantity}'
+        return f'{self.quantity} x {self.product.title}'
