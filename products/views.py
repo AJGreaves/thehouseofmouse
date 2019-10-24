@@ -67,138 +67,111 @@ def famous_category_view(request, *args, **kwargs):
     """
     Render all listings in "famous" category.
     """
-
     if request.method == 'POST':
-        context = render_category_page(request, 'Famous')
+        context = get_post_request_context(request, 'Famous')
         return render(request, "results.html", context)
 
-    context = {
-        'products': Product.objects.all().filter(category="Famous"),
-        'category': 'Famous'
-    }
+    context = get_context('Famous')
     return render(request, "results.html", context)
+
 
 def special_category_view(request, *args, **kwargs):
     """
     Render all listings in "Special Occasions" category.
     """
-
     if request.method == 'POST':
-        context = render_category_page(request, 'Special Occasions')
+        context = get_post_request_context(request, 'Special Occasions')
         return render(request, "results.html", context)
 
-    context = {
-        'products': Product.objects.all().filter(category="Special Occasions"),
-        'category': 'Special Occasions'
-    }
+    context = get_context('Special Occasions')
     return render(request, "results.html", context)
+
 
 def harry_potter_category_view(request, *args, **kwargs):
     """
     Render all listings in "Harry Potter" category.
     """
-
     if request.method == 'POST':
-        context = render_category_page(request, 'Harry Potter')
+        context = get_post_request_context(request, 'Harry Potter')
         return render(request, "results.html", context)
 
-    context = {
-        'products': Product.objects.all().filter(category="Harry Potter"),
-        'category': 'Harry Potter'
-    }
+    context = get_context('Harry Potter')
     return render(request, "results.html", context)
+
 
 def starwars_category_view(request, *args, **kwargs):
     """
     Render all listings in "Star Wars" category.
     """
-
     if request.method == 'POST':
-        context = render_category_page(request, 'Star Wars')
+        context = get_post_request_context(request, 'Star Wars')
         return render(request, "results.html", context)
 
-    context = {
-        'products': Product.objects.all().filter(category="Star Wars"),
-        'category': 'Star Wars'
-    }
+    context = get_context('Star Wars')
     return render(request, "results.html", context)
+
 
 def misc_category_view(request, *args, **kwargs):
     """
     Render all listings in "Weird & Misc" category.
     """
-
     if request.method == 'POST':
-        context = render_category_page(request, 'Weird & Misc')
+        context = get_post_request_context(request, 'Weird & Misc')
         return render(request, "results.html", context)
 
-    context = {
-        'products': Product.objects.all().filter(category="Weird & Misc"),
-        'category': 'Weird & Misc'
-    }
+    context = get_context('Weird & Misc')
     return render(request, "results.html", context)
+
 
 def jobs_category_view(request, *args, **kwargs):
     """
     Render all listings in "Jobs & Hobbies" category.
     """
-
     if request.method == 'POST':
-        context = render_category_page(request, 'Jobs & Hobbies')
+        context = get_post_request_context(request, 'Jobs & Hobbies')
         return render(request, "results.html", context)
 
-    context = {
-        'products': Product.objects.all().filter(category="Jobs & Hobbies"),
-        'category': 'Jobs & Hobbies'
-    }
+    context = get_context('Jobs & Hobbies')
     return render(request, "results.html", context)
+
 
 def doctor_who_category_view(request, *args, **kwargs):
     """
     Render all listings in "Doctor Who" category.
     """
-
     if request.method == 'POST':
-        context = render_category_page(request, 'Doctor Who')
+        context = get_post_request_context(request, 'Doctor Who')
         return render(request, "results.html", context)
 
-    context = {
-        'products': Product.objects.all().filter(category="Doctor Who"),
-        'category': 'Doctor Who'
-    }
+    context = get_context('Christmas')
     return render(request, "results.html", context)
+
 
 def xmas_category_view(request, *args, **kwargs):
     """
     Render all listings in "Christmas" category.
     """
-
     if request.method == 'POST':
-        context = render_category_page(request, 'Christmas')
+        context = get_post_request_context(request, 'Christmas')
         return render(request, "results.html", context)
 
-    context = {
-        'products': Product.objects.all().filter(category="Christmas"),
-        'category': 'Christmas'
-    }
+    context = get_context('Christmas')
     return render(request, "results.html", context)
+
 
 def halloween_category_view(request, *args, **kwargs):
     """
     Render all listings in "Halloween" category.
     """
-
     if request.method == 'POST':
-        context = render_category_page(request, 'Halloween')
+        context = get_post_request_context(request, 'Halloween')
         return render(request, "results.html", context)
 
-    context = {
-        'products': Product.objects.all().filter(category="Halloween"),
-        'category': 'Halloween'
-    }
+    context = get_context('Halloween')
     return render(request, "results.html", context)
 
-def render_category_page(post_request, category_name):
+
+def get_post_request_context(post_request, category_name):
     """
     Takes request and the relevant category name, and pulls the 
     necessary context to fit the filer the user selected.
@@ -213,6 +186,13 @@ def render_category_page(post_request, category_name):
     context = {
         'products': results,
         'select': sort,
+        'category': category_name
+    }
+    return context
+
+def get_context(category_name):
+    context = {
+        'products': Product.objects.all().filter(category=category_name).order_by('-featured'),
         'category': category_name
     }
     return context
