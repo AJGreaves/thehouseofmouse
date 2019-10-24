@@ -179,7 +179,7 @@ This document was created during the planning phase of this project. The final w
 
 1. Feature 1
 
-    - description
+    - password reset by email
 
 This section will continue to grow as the site is deployed to its own domain and implemented in the real word. New issues and needs will become apparent as the site is used.
 

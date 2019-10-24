@@ -118,9 +118,9 @@ Responsive design waw also tested in the Chrome Developer Tools device simulator
 
 #### Unsolved bugs
 
-1. **signals.py file not connecting in accounts app**
-    - My signals code to create a new instance of the Profile model when a new User was created refused to work as expected. The same code works fine when it is moved to the models.py file. 
-    - Due to time constraints on this project I elected to leave the signals code in the models.py file, and hope to come back to it when I have a better grasp of how signals work.
+1. **On running the python server, large errors appear in terminal**
+    - Any time a page is loaded, the terminal filled with around 100 lines of errors, although the page does still load. This appears to be an existing bug with Python 3 [See bug report on bugs.python.org](https://bugs.python.org/issue27682).
+
 
 ## Further testing: 
 1. Asked fellow students, friends and family to look at the site on their devices and report any issues they found.
