@@ -24,7 +24,7 @@ class ListingDetailView(DetailView):
         return instance
 
     def post(self, request, *args, **kwargs):
-        """ AJAX """
+        """ Processes fetch request and adds shopping cart data to session storage """
         form = json.loads(request.body)
         _id = self.kwargs.get('pk')
         instance = Product.objects.filter(id=_id).first()
@@ -33,13 +33,9 @@ class ListingDetailView(DetailView):
             'quantity': form['quantity'],
         }
 
-        if request.session.get('orderItems'):
-            print('orderItems already exists')
-            request.session['orderItems'].append({'listingId': _id, 'quantity': form['quantity']})
-        else:
-            print('orderItems did not already exist')
-            request.session['orderItems'] = [{'listingId': _id, 'quantity': form['quantity']}]
-        print(request.session['orderItems'])
+        cart = request.session.get('orderItems', {'orderItems': []})
+        cart['orderItems'].append({'listingId': _id, 'quantity': form['quantity']})
+        request.session['orderItems'] = cart
         
         return JsonResponse(data)
 

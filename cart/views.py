@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-
-# Context objects
-
+from django.contrib.auth.models import User
+from products.models import Product
 
 # Create your views here.
 @login_required
@@ -11,6 +10,11 @@ def cart_view(request, *args, **kwargs):
     render shopping cart page, remove footer from this page
     to fit conventions of other eCommerce sites
     """
+    cart_items = request.session.get('orderItems')
+    cart = []
+    for item in cart_items:
+        product = Product.objects.filter(id=item['listingId']).first()
+        cart.append(product)
     return render(request, "cart.html", {"footer": False})
 
 @login_required
