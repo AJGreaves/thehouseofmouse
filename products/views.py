@@ -27,7 +27,11 @@ class ListingDetailView(DetailView):
         """ AJAX """
         form = json.loads(request.body)
         print(form)
-        return JsonResponse({'data': form['quantity']})
+        data = {
+            'listingId': form['listingId'],
+            'quantity': form['quantity'],
+        }
+        return JsonResponse(data)
 
 
 def results_view(request, *args, **kwargs):

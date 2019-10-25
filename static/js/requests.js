@@ -9,6 +9,11 @@ addToCart.onsubmit = (event) => {
     event.preventDefault();
     const form = event.target;
 
+    const data = {
+        listingId: form.listingId.value,
+        quantity: form.quantity.value
+    }
+
     fetch('.', {
         method: 'POST',
         headers: new Headers({
@@ -16,7 +21,7 @@ addToCart.onsubmit = (event) => {
                     'X-CSRFToken': csrftoken,
                     'X-Requested-With': 'XMLHttpRequest',
                 }),
-        body: JSON.stringify({quantity: form.listingId.value}),
+        body: JSON.stringify(data),
         credentials: 'same-origin',
     })
         .then(res => res.text())
