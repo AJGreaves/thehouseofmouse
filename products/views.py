@@ -2,7 +2,6 @@ import json
 from django.shortcuts import render
 from django.views.generic import DetailView
 from .models import Product
-from cart.models import Order, OrderItem
 from django.http import JsonResponse
 
 # Create your views here.
