@@ -2,6 +2,7 @@ import json
 from django.shortcuts import render
 from django.views.generic import DetailView
 from .models import Product
+from django.http import JsonResponse
 
 # Create your views here.
 class ListingDetailView(DetailView):
@@ -10,36 +11,23 @@ class ListingDetailView(DetailView):
     model = Product
     template_name = 'listing.html'
     context_object_name = 'product'
+    extra_context = {}
 
-    def get_context_data(self, **kwargs):
-        """
-        Get the current context and the relevant pk, then set the
-        context needed for building the select dropdown menu.
-        """
-        context = super().get_context_data(**kwargs)
-        pk = self.kwargs['pk']
+    def get_object(self, queryset=Product):
+        _id = self.kwargs.get('pk')
+        instance = Product.objects.filter(id=_id).first()
 
-        product = Product.objects.get(id=pk)
-        num_in_stock = product.num_in_stock
+        self.extra_context['product'] = instance
+        self.extra_context['stock_arr'] = [x for x in range(instance.num_in_stock)]
+        self.extra_context['more_products'] = Product.objects.all().filter(category=instance.category).exclude(id=_id).order_by('-featured')[:6]
 
-        stock_arr = []
-        for i in range(num_in_stock):
-            stock_arr.append(i)
-
-        # retrieve products from the same category (excluding the current listing)
-        # to display in "more like this" section of the page.
-        more_products = Product.objects.all().filter(category=product.category).exclude(id=pk).order_by('-featured')[:6]
-
-        context['product'] = product
-        context['stock_arr'] = stock_arr
-        context['more_products'] = more_products
-
-        return context
+        return instance
 
     def post(self, request, *args, **kwargs):
-        form = request.POST
-        if form.is_valid():
-            print('Valid form')
+        """ AJAX """
+        form = json.loads(request.body)
+        print(form)
+        return JsonResponse({'data': form['quantity']})
 
 
 def results_view(request, *args, **kwargs):

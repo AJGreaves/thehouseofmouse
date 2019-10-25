@@ -51,7 +51,10 @@
 
     <!-- custom js -->
     <script src="{% static 'js/main.js' %}"></script>
-
+    <script src="{% static 'js/cookie.js' %}"></script>
+    {% if stock_arr %}
+    <script src="{% static 'js/requests.js' %}"></script>
+    {% endif %}
 </body>
 
 </html>

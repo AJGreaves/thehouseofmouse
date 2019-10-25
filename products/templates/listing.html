@@ -78,7 +78,7 @@
                     <form id="listing-quantity-form" method='POST'>
                         {% csrf_token %}
                         <div class="form-group">
-                            <input id="listing-id" name="listing-id" type="hidden" value="{{ product.id }}" disabled>
+                            <input id="listing-id" name="listingId" type="hidden" value="{{ product.id }}" disabled>
                             <label for="quantity">Quantity</label>
                             <select class="form-control listing-quantity" id="quantity" name="quantity">
                                 <!-- loops through to create options for number of items in stock -->
