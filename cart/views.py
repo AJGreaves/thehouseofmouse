@@ -16,7 +16,10 @@ def cart_view(request, *args, **kwargs):
         for key, value in item.items():
             if key == 'listingId':
                 product = Product.objects.filter(id=value).first()
-                cart.append(product)
+            elif key == 'quantity':
+                quantity = value
+        cart.append({'product': product, 'quantity': quantity})
+    print(cart)
 
     return render(request, "cart.html", {"footer": False})
 
