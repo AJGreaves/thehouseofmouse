@@ -2,11 +2,14 @@ from django.db import models
 import datetime
 from shipping.models import Destination_country
 from products.models import Product
+from django.contrib.auth.models import User
 
 # Create your models here.
 
 class Order(models.Model):
+    # need link to customer id
 
+    customer = models.ForeignKey(User, on_delete=models.PROTECT, null=True)
     full_name = models.CharField(max_length=150)
     address_line_1 = models.CharField(max_length=150)
     address_line_2 = models.CharField(max_length=150, blank=True, null=True)

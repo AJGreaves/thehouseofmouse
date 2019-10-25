@@ -2,6 +2,7 @@ import json
 from django.shortcuts import render
 from django.views.generic import DetailView
 from .models import Product
+from cart.models import Order, OrderItem
 from django.http import JsonResponse
 
 # Create your views here.
@@ -32,6 +33,15 @@ class ListingDetailView(DetailView):
             'title': instance.title,
             'quantity': form['quantity'],
         }
+
+        if request.session.get('orderItems'):
+            print('orderItems already exists')
+            request.session['orderItems'].append({'listingId': _id, 'quantity': form['quantity']})
+        else:
+            print('orderItems did not already exist')
+            request.session['orderItems'] = [{'listingId': _id, 'quantity': form['quantity']}]
+        print(request.session['orderItems'])
+        
         return JsonResponse(data)
 
 
