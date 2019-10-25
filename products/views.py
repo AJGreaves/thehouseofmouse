@@ -33,8 +33,9 @@ class ListingDetailView(DetailView):
             'quantity': form['quantity'],
         }
 
-        cart = request.session.get('orderItems', {'orderItems': []})
-        cart['orderItems'].append({'listingId': _id, 'quantity': form['quantity']})
+        cart = request.session.get('orderItems', [])
+        cart.append({'listingId': _id, 'quantity': form['quantity']})
+        print(cart)
         request.session['orderItems'] = cart
         
         return JsonResponse(data)
