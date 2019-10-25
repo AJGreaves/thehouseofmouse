@@ -71,6 +71,11 @@ footer h5 {
   font-size: 1.2rem;
 }
 
+.swal2-popup h2 {
+  font-size: 1.3rem;
+  font-family: "Lato", sans-serif;
+}
+
 .btn-search {
   color: #63c4fc;
   background-color: transparent;

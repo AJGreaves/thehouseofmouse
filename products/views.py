@@ -26,9 +26,10 @@ class ListingDetailView(DetailView):
     def post(self, request, *args, **kwargs):
         """ AJAX """
         form = json.loads(request.body)
-        print(form)
+        _id = self.kwargs.get('pk')
+        instance = Product.objects.filter(id=_id).first()
         data = {
-            'listingId': form['listingId'],
+            'title': instance.title,
             'quantity': form['quantity'],
         }
         return JsonResponse(data)
