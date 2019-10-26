@@ -72,14 +72,14 @@ class ListingDetailView(DetailView):
         # set values for count and total for new item in cart
         if not too_many:
             cart['count'] = cart['count'] + int(form['quantity'])
-            cart['total'] = round(cart['total'] + float(Decimal(instance.price) * Decimal(form['quantity'])), 2)
+            cart['total'] = round(cart['total'] + float(Decimal(instance.price) * Decimal(form['quantity'])))
         
         # set values for count and total based on the number of items
         # in stock rather than number of items user requested
         else:
             quantity_to_add = int(form['quantity']) - diff
             cart['count'] = cart['count'] + quantity_to_add
-            cart['total'] = round(cart['total'] + float(Decimal(instance.price) * quantity_to_add), 2)
+            cart['total'] = round(cart['total'] + float(Decimal(instance.price) * quantity_to_add))
 
             
         request.session['cart'] = cart
