@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 <!-- listing name here (SEO) -->
-{% block title %}{% endblock %}
+{% block title %}Cart | The House of Mouse{% endblock %}
 
 <!-- listing meta description here (SEO) -->
 {% block meta_description %}{% endblock %}
@@ -16,7 +16,7 @@
         <div id="breadcrumbs" class="col-12">
             <a href="/">Home </a>
             <i class="fas fa-cheese fa-flip-horizontal"></i>
-            <a href="#">Shopping cart </a>
+            <a href="{% url 'cart' %}">Shopping cart </a>
         </div>
         <heading class="col-11 col-md-8 col-lg-6">
             <h1>Your shopping cart</h1>
@@ -30,11 +30,49 @@
         <div id="shopping-cart-contents" class="col-11 col-md-8 col-lg-6 small-box-shadow">
             <div class="row">
 
-                {% include 'components/cart-items.html' %}
+                {% for item in cart_items %}
+                <div class="col-4">
+                    <div class="cart-item-img mx-auto"
+                        style="background-image: url('{{ item.product.product_image1.url}}')"
+                        title="{{ item.product.title }}"></div>
+                </div>
+                <div class="col-8">
+                    <div class="row">
+                        <div class="col-10">
+                            <h4>{{ item.product.title }}</h4>
+                        </div>
+                        <div class="col-2 text-center">
+                            <i class="far fa-times-circle" title="Delete"></i>
+                        </div>
+                    </div>
+                    <div class="row justify-content-end">
+                        <!-- aligns price to bottom right corner of it's container -->
+                        <div class="col-4 d-flex align-items-end justify-content-end">
+                            <p id="price">€{{ item.product.price }}</p>
+                        </div>
+                        <div class="col-4">
+                            <form id="listing-quantity-form">
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Quantity</label>
+                                    <select class="form-control listing-quantity" id="exampleFormControlSelect1">
+                                        {% for i in item.stock_arr %}
+                                        <option value="{{ i|add:1 }}" {% if i|add:1 == item.quantity %} selected {% endif %}>{{ i|add:1 }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <hr>
+                </div>
+
+                {% endfor %}
 
                 <div class="col-12 text-right">
-                    <hr>
-                    <h3 id="subtotal">Subtotal: <span>€105</span></h3>
+                    <h3 id="subtotal">Subtotal: <span>€{{ request.session.cart.total }}</span></h3>
                     <p>Tax included.
                         <br>Shipping calculated during checkout.</p>
                     <button type="submit" class="btn btn-cta btn-blue ml-0">Checkout</button>

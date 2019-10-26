@@ -12,17 +12,18 @@ def cart_view(request, *args, **kwargs):
     """
     cart = request.session.get('cart')
 
-    cart_products = []
+    cart_items = []
 
     for item in cart['orderItems']:
         _id = item['listingId']
         product = Product.objects.filter(id=_id).first()
-        cart_products.append({'product': product, 'quantity': item['quantity']})
+        stock_arr = [x for x in range(product.num_in_stock)]
+        cart_items.append({'product': product, 'quantity': item['quantity'], 'stock_arr': stock_arr})
     print(cart)
-    print(cart_products)
+    print(cart_items)
 
     context = {
-        'products' : cart_products,
+        "cart_items" : cart_items,
         "footer": False
     }
 
