@@ -34,13 +34,29 @@ class ListingDetailView(DetailView):
             'quantity': form['quantity'],
         }
 
-        # checks if orderItems already exists in session storage, and creates it if needed.
         # credit for code to set cart session storage to CI alumnus Sean Murphy,
         # who created it to demonstrate how to accomplish this.
+
+        # checks if orderItems already exists in session storage, and creates it if needed.
         cart = request.session.get('cart', {'orderItems': [], 'total': 0, 'count': 0})
-        cart['count'] = cart['count'] + 1
+        
+        item_already_in_cart = False
+
+        if len(cart['orderItems']) != 0:
+            for item in cart['orderItems']:
+                listingId = item.get("listingId")
+                if listingId == _id:
+                    item['quantity'] = int(item['quantity']) + int(form['quantity'])
+                    print(item['quantity'])
+                    item_already_in_cart = True
+            if not item_already_in_cart:
+                cart['orderItems'].append({'listingId': _id, 'quantity': form['quantity']})
+        else:
+            cart['orderItems'].append({'listingId': _id, 'quantity': form['quantity']})
+
+        cart['count'] = cart['count'] + int(form['quantity'])
         cart['total'] = round(cart['total'] + float(Decimal(instance.price) * Decimal(form['quantity'])), 2)
-        cart['orderItems'].append({'listingId': _id, 'quantity': form['quantity']})
+            
         request.session['cart'] = cart
         print(cart)
         return JsonResponse(data)
