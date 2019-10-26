@@ -29,10 +29,6 @@ class ListingDetailView(DetailView):
         form = json.loads(request.body)
         _id = self.kwargs.get('pk')
         instance = Product.objects.filter(id=_id).first()
-        data = {
-            'title': instance.title,
-            'quantity': form['quantity'],
-        }
 
         # credit for code to set cart session storage to CI alumnus Sean Murphy,
         # who created it to demonstrate how to accomplish this.
@@ -41,24 +37,56 @@ class ListingDetailView(DetailView):
         cart = request.session.get('cart', {'orderItems': [], 'total': 0, 'count': 0})
         
         item_already_in_cart = False
+        too_many = False
 
+        # if cart already exists, check if selected item is already in cart orderItems
         if len(cart['orderItems']) != 0:
             for item in cart['orderItems']:
                 listingId = item.get("listingId")
+
+                # if listing is already in cart set to true, check num in stock against num requested by user
                 if listingId == _id:
-                    item['quantity'] = int(item['quantity']) + int(form['quantity'])
-                    print(item['quantity'])
                     item_already_in_cart = True
+                    num_in_stock = instance.num_in_stock
+                    quantity_total = int(item['quantity']) + int(form['quantity'])
+
+                    # if quantity requested is more than is in stock set quantity
+                    # of item to number in stock and send response to js to alert user
+                    if quantity_total > num_in_stock:
+                        diff = quantity_total - num_in_stock
+                        item['quantity'] = num_in_stock
+                        too_many = True
+                    else:
+                        item['quantity'] = quantity_total
+
+            # if item not already in cart, append new item to orderItems
             if not item_already_in_cart:
                 cart['orderItems'].append({'listingId': _id, 'quantity': form['quantity']})
+        
+        # if brand new cart, add first orderItem to it
         else:
             cart['orderItems'].append({'listingId': _id, 'quantity': form['quantity']})
 
-        cart['count'] = cart['count'] + int(form['quantity'])
-        cart['total'] = round(cart['total'] + float(Decimal(instance.price) * Decimal(form['quantity'])), 2)
+        # set values for count and total for new item in cart
+        if not too_many:
+            cart['count'] = cart['count'] + int(form['quantity'])
+            cart['total'] = round(cart['total'] + float(Decimal(instance.price) * Decimal(form['quantity'])), 2)
+        
+        # set values for count and total based on the number of items
+        # in stock rather than number of items user requested
+        else:
+            quantity_to_add = int(form['quantity']) - diff
+            cart['count'] = cart['count'] + quantity_to_add
+            cart['total'] = round(cart['total'] + float(Decimal(instance.price) * quantity_to_add), 2)
+
             
         request.session['cart'] = cart
         print(cart)
+        data = {
+            'title': instance.title,
+            'quantity': form['quantity'],
+            'too_many': too_many
+        }
         return JsonResponse(data)
 
 

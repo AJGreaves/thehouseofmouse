@@ -24,7 +24,12 @@ addToCart.onsubmit = (event) => {
         })
         .then(res => res.json())
         .then(response => {
-            alert(response.title);
+            if(response.too_many) {
+                alert_too_many(response.title);
+            } else {
+                alert_success(response.title);
+            }
+            
         })
         .catch(err => console.log('ERROR: ' + err))
 
@@ -34,12 +39,26 @@ addToCart.onsubmit = (event) => {
  * settings for SweetAlert2 popup. 
  * @param {string} title 
  */
-function alert(title) {
+function alert_success(title) {
     message = `${title} has been added to your cart.`
     Swal.fire({
         type: 'success',
         title: message,
         text: "Go to checkout?",
+        showCloseButton: true,
+        confirmButtonColor: '#47b7f8'
+    }).then((result) => {
+        if (result.value) {
+            window.location.replace("/cart/");
+        }
+    })
+}
+
+function alert_too_many(title) {
+    Swal.fire({
+        type: 'warning',
+        title: `Oops! The total number of ${title} in your cart was more than we have in stock`,
+        text: `Your cart has been adjusted and now contains the maximum number available. Go to checkout?`,
         showCloseButton: true,
         confirmButtonColor: '#47b7f8'
     }).then((result) => {
