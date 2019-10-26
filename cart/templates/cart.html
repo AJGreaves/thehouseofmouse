@@ -28,56 +28,61 @@
 <div class="container mb-5">
     <div class="row justify-content-center">
         <div id="shopping-cart-contents" class="col-11 col-md-8 col-lg-6 small-box-shadow">
-            <div class="row">
+            <form method="POST" action="{% url 'info' %}">
+                {% csrf_token %}
+                <div class="row">
 
-                {% for item in cart_items %}
-                <div class="col-4">
-                    <div class="cart-item-img mx-auto"
-                        style="background-image: url('{{ item.product.product_image1.url}}')"
-                        title="{{ item.product.title }}"></div>
-                </div>
-                <div class="col-8">
-                    <div class="row">
-                        <div class="col-10">
-                            <h4>{{ item.product.title }}</h4>
-                        </div>
-                        <div class="col-2 text-center">
-                            <i class="far fa-times-circle" title="Delete"></i>
-                        </div>
+                    {% for item in cart_items %}
+                    <div class="col-4">
+                        <div class="cart-item-img mx-auto"
+                            style="background-image: url('{{ item.product.product_image1.url}}')"
+                            title="{{ item.product.title }}"></div>
                     </div>
-                    <div class="row justify-content-end">
-                        <!-- aligns price to bottom right corner of it's container -->
-                        <div class="col-4 d-flex align-items-end justify-content-end">
-                            <p id="price">€{{ item.product.price }}</p>
+                    <div class="col-8">
+                        <div class="row">
+                            <div class="col-10">
+                                <h4>{{ item.product.title }}</h4>
+                            </div>
+                            <div class="col-2 text-center">
+                                <i class="far fa-times-circle" title="Delete"></i>
+                            </div>
                         </div>
-                        <div class="col-4">
-                            <form id="listing-quantity-form">
+                        <div class="row justify-content-end">
+                            <!-- aligns price to bottom right corner of it's container -->
+                            <div class="col-4 d-flex align-items-end justify-content-end">
+                                <p class="price">€{{ item.product.price }}</p>
+                            </div>
+                            <div class="col-4">
                                 <div class="form-group">
-                                    <label for="exampleFormControlSelect1">Quantity</label>
-                                    <select class="form-control listing-quantity" id="exampleFormControlSelect1">
+                                    <input id="item{{ forloop.counter }}id" name="item{{ forloop.counter }}id" type="hidden" value="{{ item.product.id }}" disabled>
+                                    <label for="item{{ forloop.counter }}Quantity">Quantity</label>
+                                    <select class="form-control listing-quantity" id="item{{ forloop.counter }}Quantity" name="item{{ forloop.counter }}Quantity">
                                         {% for i in item.stock_arr %}
-                                        <option value="{{ i|add:1 }}" {% if i|add:1 == item.quantity %} selected {% endif %}>{{ i|add:1 }}</option>
+                                        <option value="{{ i|add:1 }}" {% if i|add:1 == item.quantity %} selected
+                                            {% endif %}>{{ i|add:1 }}</option>
                                         {% endfor %}
                                     </select>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-12">
-                    <hr>
-                </div>
+                    <div class="col-12">
+                        <hr>
+                    </div>
 
-                {% endfor %}
+                    {% endfor %}
 
-                <div class="col-12 text-right">
-                    <h3 id="subtotal">Subtotal: <span>€{{ request.session.cart.total }}</span></h3>
-                    <p>Tax included.
-                        <br>Shipping calculated during checkout.</p>
-                    <button type="submit" class="btn btn-cta btn-blue ml-0">Checkout</button>
+                    <div class="col-12 text-right">
+                        <h3 id="subtotal">Subtotal: <span>€{{ request.session.cart.total }}</span></h3>
+                        <p>Tax included.
+                            <br>Shipping calculated during checkout.</p>
+                        <button type="submit" class="btn btn-cta btn-blue ml-0">Checkout</button>
+                    </div>
                 </div>
-            </div>
+            </form>
+
+
         </div>
     </div>
 </div>
