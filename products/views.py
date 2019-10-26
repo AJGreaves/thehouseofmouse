@@ -1,8 +1,9 @@
 import json
 from django.shortcuts import render
 from django.views.generic import DetailView
-from .models import Product
 from django.http import JsonResponse
+from decimal import Decimal
+from .models import Product
 
 # Create your views here.
 class ListingDetailView(DetailView):
@@ -34,12 +35,14 @@ class ListingDetailView(DetailView):
         }
 
         # checks if orderItems already exists in session storage, and creates it if needed.
-        cart = request.session.get('orderItems', [])
-        cart.append({'listingId': _id, 'quantity': form['quantity']})
-
-        # resets the value of orderItems to new total, fixes items getting overwritten.
-        request.session['orderItems'] = cart
-        
+        # credit for code to set cart session storage to CI alumnus Sean Murphy,
+        # who created it to demonstrate how to accomplish this.
+        cart = request.session.get('cart', {'orderItems': [], 'total': 0, 'count': 0})
+        cart['count'] = cart['count'] + 1
+        cart['total'] = round(cart['total'] + float(Decimal(instance.price) * Decimal(form['quantity'])), 2)
+        cart['orderItems'].append({'listingId': _id, 'quantity': form['quantity']})
+        request.session['cart'] = cart
+        print(cart)
         return JsonResponse(data)
 
 

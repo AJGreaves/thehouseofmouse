@@ -10,17 +10,14 @@ def cart_view(request, *args, **kwargs):
     render shopping cart page, remove footer from this page
     to fit conventions of other eCommerce sites
     """
-    order_items = request.session.get('orderItems')
+    cart_items = request.session.get('cart')
 
     cart = []
-    for item in order_items:
-        for key, value in item.items():
-            if key == 'listingId':
-                product = Product.objects.filter(id=value).first()
-            elif key == 'quantity':
-                quantity = value
-        obj = {'product': product, 'quantity': quantity}
-        cart.append(obj)
+
+    for item in cart_items['orderItems']:
+        _id = item['listingId']
+        product = Product.objects.filter(id=_id).first()
+        cart.append(product)
     print(cart)
 
     return render(request, "cart.html", {"footer": False})
