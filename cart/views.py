@@ -11,6 +11,7 @@ def cart_view(request, *args, **kwargs):
     to fit conventions of other eCommerce sites
     """
     order_items = request.session.get('orderItems')
+
     cart = []
     for item in order_items:
         for key, value in item.items():
@@ -18,7 +19,8 @@ def cart_view(request, *args, **kwargs):
                 product = Product.objects.filter(id=value).first()
             elif key == 'quantity':
                 quantity = value
-        cart.append({'product': product, 'quantity': quantity})
+        obj = {'product': product, 'quantity': quantity}
+        cart.append(obj)
     print(cart)
 
     return render(request, "cart.html", {"footer": False})

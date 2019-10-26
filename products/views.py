@@ -33,9 +33,11 @@ class ListingDetailView(DetailView):
             'quantity': form['quantity'],
         }
 
+        # checks if orderItems already exists in session storage, and creates it if needed.
         cart = request.session.get('orderItems', [])
         cart.append({'listingId': _id, 'quantity': form['quantity']})
-        print(cart)
+
+        # resets the value of orderItems to new total, fixes items getting overwritten.
         request.session['orderItems'] = cart
         
         return JsonResponse(data)
