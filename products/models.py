@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator
+from django.urls import reverse
 
 # Create your models here.
 class Product(models.Model):
@@ -42,7 +43,7 @@ class Product(models.Model):
     featured = models.BooleanField(default=False)
 
     def get_absolute_url(self):
-        return f"/listing/{self.id}"
+        return reverse('listing-detail', kwargs={'pk': self.id})
 
     def __str__(self):
         return self.title
