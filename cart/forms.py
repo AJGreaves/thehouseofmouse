@@ -5,9 +5,13 @@ class OrderItemForm(forms.ModelForm):
 
     class Meta:
         model = OrderItem
-        fields = ['order', 'product', 'quantity']
+        fields = [
+            'order',
+            'product',
+            'quantity'
+        ]
 
-class OrderForm(forms.ModelForm):
+class NewOrderForm(forms.ModelForm):
 
     class Meta:
         model = Order
@@ -17,4 +21,5 @@ class OrderForm(forms.ModelForm):
             'address_line_2',
             'town_or_city',
             'county',
-            'country']
+            'country'
+        ]
