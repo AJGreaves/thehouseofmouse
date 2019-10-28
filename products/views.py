@@ -28,7 +28,7 @@ class ListingDetailView(DetailView):
         """ Processes fetch request and adds shopping cart data to session storage """
         form = json.loads(request.body)
         _id = self.kwargs.get('pk')
-        instance = Product.objects.filter(id=_id).first()
+        instance = get_object_or_404(Product, id=_id)
 
         # credit for original code to set cart session storage to CI alumnus Sean Murphy,
         # who created it to demonstrate how to accomplish this. Sean's code was heavily adjusted by me
