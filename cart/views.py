@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from products.models import Product
+from .forms import OrderItemForm
 
 # Create your views here.
 @login_required
@@ -11,19 +12,23 @@ def cart_view(request, *args, **kwargs):
     to fit conventions of other eCommerce sites
     """
     cart = request.session.get('cart')
-
     cart_items = []
 
     for item in cart['orderItems']:
         _id = item['listingId']
-        product = Product.objects.filter(id=_id).first()
+        product = get_object_or_404(Product, id=_id)
         stock_arr = [x for x in range(product.num_in_stock)]
         cart_items.append({'product': product, 'quantity': item['quantity'], 'stock_arr': stock_arr})
     print(cart)
     print(cart_items)
 
+    form = OrderItemForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+
     context = {
         "cart_items" : cart_items,
+        'form' : form,
         "footer": False
     }
 

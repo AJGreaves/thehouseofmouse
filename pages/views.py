@@ -9,10 +9,10 @@ def home_view(request, *args, **kwargs):
         'category': 'All Products',
         'page': 'home',
     }
-    return render(request, "pages/index.html", context)
+    return render(request, "index.html", context)
 
 def faqs_view(request, *args, **kwargs):
-    return render(request, "pages/faqs.html", {"page": "faqs"})
+    return render(request, "faqs.html", {"page": "faqs"})
 
 def about_view(request, *args, **kwargs):
-    return render(request, "pages/about.html", {"page": "about"})
+    return render(request, "about.html", {"page": "about"})
