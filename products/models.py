@@ -41,6 +41,8 @@ class Product(models.Model):
     num_in_stock = models.PositiveSmallIntegerField(validators=[MaxValueValidator(100)])
     featured = models.BooleanField(default=False)
 
+    def get_absolute_url(self):
+        return f"/listing/{self.id}"
 
     def __str__(self):
         return self.title
