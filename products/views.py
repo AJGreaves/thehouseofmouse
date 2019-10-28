@@ -1,5 +1,5 @@
 import json
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import DetailView
 from django.http import JsonResponse
 from decimal import Decimal
@@ -16,7 +16,7 @@ class ListingDetailView(DetailView):
 
     def get_object(self, queryset=Product):
         _id = self.kwargs.get('pk')
-        instance = Product.objects.filter(id=_id).first()
+        instance = get_object_or_404(Product, id=_id)
 
         self.extra_context['product'] = instance
         self.extra_context['stock_arr'] = [x for x in range(instance.num_in_stock)]
