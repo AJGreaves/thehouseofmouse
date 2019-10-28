@@ -20,7 +20,7 @@
             <i class="fas fa-cheese fa-flip-horizontal"></i>
             <a href="/categories/{{ product.category|slugify }}">{{ product.category }}</a>
             <i class="fas fa-cheese fa-flip-horizontal"></i>
-            <a href="{% url 'listing-detail' product.id %}">{{ product.title }}</a>
+            <a href="{{ product.get_absolute_url }}">{{ product.title }}</a>
         </div>
 
         <!-- Heading -->
