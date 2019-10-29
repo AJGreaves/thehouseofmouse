@@ -1,7 +1,10 @@
 $(document).ready(function () {
     /**
-     * request function written by fellow student Sean Murphy to 
-     * demonstrate how to send data to back end with csrf token
+     * When user adds more of the same item to their cart,
+     * sends request to database to check how many in stock. 
+     * If number requested is more than number in stock, 
+     * responds with modal informing user and resets quantity
+     * in cart to max number in stock.
      */
     if (document.querySelector('#listing-quantity-form')) {
 
@@ -39,6 +42,13 @@ $(document).ready(function () {
         };
     };
 
+
+    /**
+     * When user increases or decreases the number of items
+     * in their cart, send request to database to check number of 
+     * item in stock. If user requests more than is in stock,
+     * launch modal to inform user and set value of input to max number available.
+     */
     if (document.querySelector('#confirmCartForm')) {
         $('.numberinput').change(function () {
             const value = this.value
@@ -72,7 +82,7 @@ $(document).ready(function () {
     };
 
     /**
-     * settings for SweetAlert2 popup. 
+     * settings for SweetAlert2 popup on successfully adding item to cart. 
      * @param {string} title 
      */
     function alert_success(title) {
@@ -90,6 +100,11 @@ $(document).ready(function () {
         })
     }
 
+    /**
+     * settings for SweetAlert2 popup on individual listing page, if user tries to add
+     * more of a product to their cart than there is in stock. 
+     * @param {string} title 
+     */
     function alert_too_many_listing_page(title) {
         Swal.fire({
             type: 'warning',
@@ -104,6 +119,11 @@ $(document).ready(function () {
         })
     }
 
+    /**
+     * settings for SweetAlert2 popup on cart page, if user tries to increase number
+     * in their order above what is in stock.
+     * @param {string} title 
+     */
     function alert_too_many_cart_page(num, title) {
         Swal.fire({
             type: 'info',
