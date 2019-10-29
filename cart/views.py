@@ -14,6 +14,7 @@ def cart_view(request, *args, **kwargs):
     render shopping cart page, remove footer from this page
     to fit conventions of other eCommerce sites
     """
+
     cart = request.session.get('cart')
     cart_items = []
 
@@ -26,15 +27,16 @@ def cart_view(request, *args, **kwargs):
     print(cart_items)
 
     initial_data = []
+    i = 1
     for item in cart['orderItems']:
-        initial_data.append({'quantity': item['quantity']})
+        initial_data.append({'name': i, 'quantity': item['quantity']})
 
     OrderItemFormSet = formset_factory(OrderItemForm, extra=0)
     form = OrderItemFormSet(initial=initial_data)
 
     context = {
         "cart_items" : cart_items,
-        'form' : form,
+        'formset' : form,
         "footer": False
     }
 
