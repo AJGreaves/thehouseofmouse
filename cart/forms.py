@@ -3,7 +3,11 @@ from .models import Order, OrderItem
 
 class OrderItemForm(forms.ModelForm):
 
-    quantity = forms.IntegerField(label='', min_value='0', max_value=10)
+    quantity = forms.IntegerField(
+        label='',
+        min_value='0',
+        max_value=10
+    )
     class Meta:
         model = OrderItem
         fields = [
