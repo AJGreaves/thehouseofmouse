@@ -1,3 +1,5 @@
+import json
+from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.forms import formset_factory
@@ -35,6 +37,19 @@ def cart_view(request, *args, **kwargs):
         'form' : form,
         "footer": False
     }
+
+    # Fetch request
+    if request.method == 'POST':
+        post_request = json.loads(request.body)
+        input_id = post_request['idChangedInput']
+        input_id = ''.join(i for i in input_id if i.isdigit())
+        max_num = cart_items[int(input_id)]['product'].num_in_stock
+        
+        response = {
+            'max_num': max_num,
+            'title': cart_items[int(input_id)]['product'].title,
+        }
+        return JsonResponse(response)
 
     return render(request, "cart.html", context)
 
