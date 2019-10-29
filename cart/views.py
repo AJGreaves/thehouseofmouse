@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.forms import formset_factory
 # from django.contrib.auth.models import User
 from products.models import Product
 from .forms import OrderItemForm
@@ -22,9 +23,12 @@ def cart_view(request, *args, **kwargs):
     print(cart)
     print(cart_items)
 
-    form = OrderItemForm(request.POST or None)
-    if form.is_valid():
-        form.save()
+    initial_data = []
+    for item in cart['orderItems']:
+        initial_data.append({'quantity': item['quantity']})
+
+    OrderItemFormSet = formset_factory(OrderItemForm, extra=0)
+    form = OrderItemFormSet(initial=initial_data)
 
     context = {
         "cart_items" : cart_items,

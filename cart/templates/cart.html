@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load crispy_forms_tags %}
+
 <!-- listing name here (SEO) -->
 {% block title %}Cart | The House of Mouse{% endblock %}
 
@@ -23,6 +25,16 @@
         </heading>
     </div>
 </div>
+
+<form method="POST">
+    {% csrf_token %}
+    <fieldset class="form-group">
+        {{ form|crispy }}
+    </fieldset>
+    <div class="form-group">
+        <button class="btn btn-pink btn-cta m-0" type="submit">Checkout</button>
+    </div>
+</form>
 
 <!-- contents of shopping basket -->
 <div class="container mb-5">
