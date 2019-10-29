@@ -56,18 +56,18 @@ class ListingDetailView(DetailView):
                     # of item to number in stock and send response to js to alert user
                     if quantity_total > num_in_stock:
                         diff = quantity_total - num_in_stock
-                        item['quantity'] = num_in_stock
+                        item['quantity'] = int(num_in_stock)
                         too_many = True
                     else:
-                        item['quantity'] = quantity_total
+                        item['quantity'] = int(quantity_total)
 
             # if item not already in cart, append new item to orderItems
             if not item_already_in_cart:
-                cart['orderItems'].append({'listingId': _id, 'quantity': form['quantity']})
+                cart['orderItems'].append({'listingId': _id, 'quantity': int(form['quantity'])})
         
         # if brand new cart, add first orderItem to it
         else:
-            cart['orderItems'].append({'listingId': _id, 'quantity': form['quantity']})
+            cart['orderItems'].append({'listingId': _id, 'quantity': int(form['quantity'])})
 
         # set values for count and total for new item in cart
         if not too_many:
