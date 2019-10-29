@@ -26,19 +26,21 @@
     </div>
 </div>
 
-<form id="confirmCartForm" method="POST">
-    {% csrf_token %}
-    <fieldset class="form-group">
-        {{ form|crispy }}
-    </fieldset>
-    <div class="form-group">
-        <button class="btn btn-pink btn-cta m-0" type="submit">Checkout</button>
-    </div>
-</form>
-
 <!-- contents of shopping basket -->
 <div class="container mb-5">
     <div class="row justify-content-center">
+        <div class="col-11 col-md-8 col-lg-6">
+            <form id="confirmCartForm" method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    {{ form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-pink btn-cta m-0" type="submit">Checkout</button>
+                </div>
+            </form>
+        </div>
+
         <div id="shopping-cart-contents" class="col-11 col-md-8 col-lg-6 small-box-shadow">
             <form method="POST" action="{% url 'info' %}">
                 {% csrf_token %}
@@ -66,9 +68,11 @@
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
-                                    <input id="item{{ forloop.counter }}id" name="item{{ forloop.counter }}id" type="hidden" value="{{ item.product.id }}" disabled>
+                                    <input id="item{{ forloop.counter }}id" name="item{{ forloop.counter }}id"
+                                        type="hidden" value="{{ item.product.id }}" disabled>
                                     <label for="item{{ forloop.counter }}Quantity">Quantity</label>
-                                    <select class="form-control listing-quantity" id="item{{ forloop.counter }}Quantity" name="item{{ forloop.counter }}Quantity">
+                                    <select class="form-control listing-quantity" id="item{{ forloop.counter }}Quantity"
+                                        name="item{{ forloop.counter }}Quantity">
                                         {% for i in item.stock_arr %}
                                         <option value="{{ i|add:1 }}" {% if i|add:1 == item.quantity %} selected
                                             {% endif %}>{{ i|add:1 }}</option>

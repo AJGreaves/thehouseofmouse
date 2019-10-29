@@ -78,6 +78,7 @@ $(document).ready(function () {
 
                 })
                 .catch(err => console.log('ERROR: ' + err))
+            
         })
     };
 
