@@ -1,6 +1,5 @@
 from django.db import models
 import datetime
-from django.core.validators import MinValueValidator
 from shipping.models import Destination_country
 from products.models import Product
 from django.contrib.auth.models import User
@@ -28,7 +27,7 @@ class Order(models.Model):
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, null=False)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, null=False)
-    quantity = models.PositiveSmallIntegerField(validators=[MinValueValidator(0)])
+    quantity = models.PositiveSmallIntegerField()
 
     def __str__(self):
         return f'{self.quantity} x {self.product.title}'
