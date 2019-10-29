@@ -40,18 +40,21 @@ def cart_view(request, *args, **kwargs):
         "footer": False
     }
 
-    # Fetch request
     if request.method == 'POST':
+        # Fetch request
         post_request = json.loads(request.body)
         input_id = post_request['idChangedInput']
         input_id = ''.join(i for i in input_id if i.isdigit())
         max_num = cart_items[int(input_id)]['product'].num_in_stock
+        request.session['cart']['orderItems'][int(input_id)]['quantity'] = post_request['value']
+        request.session.modified = True
         
         response = {
             'max_num': max_num,
             'title': cart_items[int(input_id)]['product'].title,
         }
         return JsonResponse(response)
+
 
     return render(request, "cart.html", context)
 

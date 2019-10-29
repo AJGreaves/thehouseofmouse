@@ -54,6 +54,7 @@ $(document).ready(function () {
             const value = this.value
             const data = {
                 idChangedInput: this.id,
+                value: value,
             };
 
             fetch('.', {
@@ -81,6 +82,8 @@ $(document).ready(function () {
             
         })
     };
+
+
 
     /**
      * settings for SweetAlert2 popup on successfully adding item to cart. 

@@ -31,7 +31,7 @@
     <div class="row justify-content-center">
 
         <div id="shopping-cart-contents" class="col-11 col-md-8 col-lg-6 small-box-shadow">
-            <form id="confirmCartForm" method="POST" action="{% url 'info' %}">
+            <form id="confirmCartForm" method="POST">
                 {% csrf_token %}
                 <div class="row">
 
@@ -82,7 +82,7 @@
                     {% endfor %}
 
                     <div class="col-12 text-right">
-                        <h3 id="subtotal">Subtotal: <span>€{{ request.session.cart.total }}</span></h3>
+                        <h3 id="subtotal">Subtotal: <span id="subtotal-js">€{{ request.session.cart.total }}</span></h3>
                         <p>Tax included.
                             <br>Shipping calculated during checkout.</p>
                         <button type="submit" class="btn btn-cta btn-blue mr-0">Checkout</button>
