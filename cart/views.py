@@ -45,12 +45,24 @@ def cart_view(request, *args, **kwargs):
         input_id = ''.join(i for i in input_id if i.isdigit())
         max_num = cart_items[int(input_id)]['product'].num_in_stock
 
-        request.session['cart']['orderItems'][int(input_id)]['quantity'] = post_request['value']
-        
-        request.session.modified = True
+        if int(cart['orderItems'][int(input_id)]['quantity']) <= max_num:
+            cart['orderItems'][int(input_id)]['quantity'] = post_request['value']
+        else:
+            cart['orderItems'][int(input_id)]['quantity'] = max_num
 
-        total = request.session['cart']['total']
-        print(total)
+        cart_total_price = 0
+        cart_total_quantity = 0
+        for item in cart['orderItems']:
+            product = get_object_or_404(Product, id=item['listingId'])
+            item_price = int(product.price)
+            cart_total_quantity = cart_total_quantity + int(item['quantity'])
+            cart_total_price = cart_total_price + (item_price * int(item['quantity']))
+        
+        cart['total'] = cart_total_price
+        cart['count'] = cart_total_quantity
+
+        request.session['cart'] = cart
+
         response = {
             'max_num': max_num,
             'title': cart_items[int(input_id)]['product'].title,
