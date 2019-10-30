@@ -62,6 +62,7 @@ def cart_view(request, *args, **kwargs):
 
         cart['orderItems'][int(input_id)]['quantity'] = quantity
 
+        # loop through cart contents to get new quantity and total
         cart_total_price = 0
         cart_total_quantity = 0
         for item in cart['orderItems']:
@@ -73,9 +74,9 @@ def cart_view(request, *args, **kwargs):
         cart['total'] = int(cart_total_price)
         cart['count'] = int(cart_total_quantity)
 
-        print(request.session['cart']['total'])
-        print(cart)
+        # reset cart in session
         request.session['cart'] = cart
+        
         response = {
             'max_num': max_num,
             'title': cart_items[int(input_id)]['product'].title,
