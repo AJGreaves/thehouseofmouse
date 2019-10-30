@@ -76,6 +76,7 @@ $(document).ready(function () {
                         );
                         this.value = response.max_num;
                     };
+                    $('#subtotal-js').text(response.total)
 
                 })
                 .catch(err => console.log('ERROR: ' + err))

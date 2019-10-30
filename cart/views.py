@@ -17,7 +17,7 @@ def cart_view(request, *args, **kwargs):
 
     cart = request.session.get('cart')
     cart_items = []
-
+    print(cart)
     for item in cart['orderItems']:
         _id = item['listingId']
         product = get_object_or_404(Product, id=_id)
@@ -39,16 +39,28 @@ def cart_view(request, *args, **kwargs):
     }
 
     if request.method == 'POST':
-        # Fetch request
+        """ Fetch request """
         post_request = json.loads(request.body)
+
+        # get item from cart items that was changed by user
         input_id = post_request['idChangedInput']
         input_id = ''.join(i for i in input_id if i.isdigit())
-        max_num = cart_items[int(input_id)]['product'].num_in_stock
 
-        if int(cart['orderItems'][int(input_id)]['quantity']) <= max_num:
-            cart['orderItems'][int(input_id)]['quantity'] = post_request['value']
+        # get number in stock from database
+        listing_id = cart['orderItems'][int(input_id)]['listingId']
+        product = get_object_or_404(Product, id=listing_id)
+        max_num = product.num_in_stock
+
+        # get quantity user requested
+        value = int(post_request['value'])
+
+        # compare number requested with maximum number in stock
+        if value <= max_num:
+            quantity = value
         else:
-            cart['orderItems'][int(input_id)]['quantity'] = max_num
+            quantity = int(max_num)
+
+        cart['orderItems'][int(input_id)]['quantity'] = quantity
 
         cart_total_price = 0
         cart_total_quantity = 0
@@ -58,15 +70,16 @@ def cart_view(request, *args, **kwargs):
             cart_total_quantity = cart_total_quantity + int(item['quantity'])
             cart_total_price = cart_total_price + (item_price * int(item['quantity']))
         
-        cart['total'] = cart_total_price
-        cart['count'] = cart_total_quantity
+        cart['total'] = int(cart_total_price)
+        cart['count'] = int(cart_total_quantity)
 
+        print(request.session['cart']['total'])
+        print(cart)
         request.session['cart'] = cart
-
         response = {
             'max_num': max_num,
             'title': cart_items[int(input_id)]['product'].title,
-            'total': request.session['cart']['total'],
+            'total': int(cart_total_price),
         }
         return JsonResponse(response)
 
