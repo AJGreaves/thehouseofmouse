@@ -20,13 +20,19 @@
             <i class="fas fa-cheese fa-flip-horizontal"></i>
             <a href="{% url 'cart' %}">Shopping cart </a>
         </div>
-        <heading class="col-11 col-md-8 col-lg-6">
-            <h1>Your shopping cart</h1>
+        <heading class="col-11 col-md-8 col-lg-6 text-center">
+            {% if nothing_in_cart %}
+                <h1>You have nothing in your cart yet!</h1>
+                <a href="{% url 'all-products' %}" class="btn btn-pink btn-cta my-5">Let's go shopping!</a>
+            {% else %}
+                <h1>Your shopping cart</h1>
+            {% endif %}
         </heading>
     </div>
 </div>
 
 <!-- contents of shopping basket -->
+{% if not nothing_in_cart %}
 <div class="container mb-5">
     <div class="row justify-content-center">
 
@@ -101,4 +107,5 @@
         </div>
     </div>
 </div>
+{% endif %}
 {% endblock %}

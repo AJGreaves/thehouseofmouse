@@ -14,85 +14,90 @@ def cart_view(request, *args, **kwargs):
     render shopping cart page, remove footer from this page
     to fit conventions of other eCommerce sites
     """
+    if request.session.get('cart'):
+        cart = request.session.get('cart')
+        cart_items = []
+        print(cart)
+        for item in cart['orderItems']:
+            _id = item['listingId']
+            product = get_object_or_404(Product, id=_id)
+            stock_arr = [x for x in range(product.num_in_stock)]
+            cart_items.append({'product': product, 'quantity': item['quantity'], 'stock_arr': stock_arr})
 
-    cart = request.session.get('cart')
-    cart_items = []
-    print(cart)
-    for item in cart['orderItems']:
-        _id = item['listingId']
-        product = get_object_or_404(Product, id=_id)
-        stock_arr = [x for x in range(product.num_in_stock)]
-        cart_items.append({'product': product, 'quantity': item['quantity'], 'stock_arr': stock_arr})
+        initial_data = []
+        i = 1
+        for item in cart['orderItems']:
+            initial_data.append({'name': i, 'quantity': item['quantity']})
 
-    initial_data = []
-    i = 1
-    for item in cart['orderItems']:
-        initial_data.append({'name': i, 'quantity': item['quantity']})
+        OrderItemFormSet = formset_factory(OrderItemForm, extra=0)
+        form = OrderItemFormSet(initial=initial_data)
 
-    OrderItemFormSet = formset_factory(OrderItemForm, extra=0)
-    form = OrderItemFormSet(initial=initial_data)
+        context = {
+            "cart_items" : cart_items,
+            'formset' : form,
+            "footer": False
+        }
 
-    context = {
-        "cart_items" : cart_items,
-        'formset' : form,
-        "footer": False
-    }
+        if request.method == 'POST':
+            
+            if request.headers['Content-Type'] == 'application/json':
+                # FETCH REQUESTS
+                post_request = json.loads(request.body)
 
-    if request.method == 'POST':
-        
-        if request.headers['Content-Type'] == 'application/json':
-            # FETCH REQUESTS
-            post_request = json.loads(request.body)
+                # if change to quantities in cart
+                if post_request.get('idChangedInput'):
+                    
+                    # get item from cart items that was changed by user
+                    input_id = post_request['idChangedInput']
+                    input_id = ''.join(i for i in input_id if i.isdigit())
 
-            # if change to quantities in cart
-            if post_request.get('idChangedInput'):
-                
-                # get item from cart items that was changed by user
-                input_id = post_request['idChangedInput']
-                input_id = ''.join(i for i in input_id if i.isdigit())
+                    # get number in stock from database
+                    listing_id = cart['orderItems'][int(input_id)]['listingId']
+                    product = get_object_or_404(Product, id=listing_id)
+                    max_num = product.num_in_stock
 
-                # get number in stock from database
-                listing_id = cart['orderItems'][int(input_id)]['listingId']
-                product = get_object_or_404(Product, id=listing_id)
-                max_num = product.num_in_stock
+                    # get quantity user requested
+                    value = int(post_request['value'])
 
-                # get quantity user requested
-                value = int(post_request['value'])
+                    # set quantity value by comparing number requested with maximum number in stock
+                    quantity = value if value <= max_num else int(max_num)
 
-                # set quantity value by comparing number requested with maximum number in stock
-                quantity = value if value <= max_num else int(max_num)
+                    cart['orderItems'][int(input_id)]['quantity'] = quantity
 
-                cart['orderItems'][int(input_id)]['quantity'] = quantity
+                    cart_total_price = set_new_cart_totals(request, cart)
 
-                cart_total_price = set_new_cart_totals(request, cart)
+                    response = {
+                        'max_num': max_num,
+                        'title': cart_items[int(input_id)]['product'].title,
+                        'total': int(cart_total_price),
+                    }
 
-                response = {
-                    'max_num': max_num,
-                    'title': cart_items[int(input_id)]['product'].title,
-                    'total': int(cart_total_price),
-                }
+                # if user deleted item from cart
+                if post_request.get('orderItemId'):
 
-            # if user deleted item from cart
-            if post_request.get('orderItemId'):
+                    id_to_delete = post_request['orderItemId']
+                    id_to_delete = int(id_to_delete) - 1
 
-                id_to_delete = post_request['orderItemId']
-                id_to_delete = int(id_to_delete) - 1
+                    # set quantity of item to 0, but do not actually delete entry from session.
+                    # I did this to save from changing the indexes of other items in the
+                    # session orderItems list.
+                    cart['orderItems'][id_to_delete]['quantity'] = 0
+                    
+                    cart_total_price = set_new_cart_totals(request, cart)
+                    response = {
+                        'total': int(cart_total_price),
+                    }
 
-                # set quantity of item to 0, but do not actually delete entry from session.
-                # I did this to save from changing the indexes of other items in the
-                # session orderItems list.
-                cart['orderItems'][id_to_delete]['quantity'] = 0
-                
-                cart_total_price = set_new_cart_totals(request, cart)
-                response = {
-                    'total': int(cart_total_price),
-                }
+                return JsonResponse(response)
 
-            return JsonResponse(response)
+            else:
+                print('else')
 
-        else:
-            print('else')
-
+    else:
+        context = {
+            'nothing_in_cart': True,
+            'footer': False
+        }
     return render(request, "cart.html", context)
 
 def set_new_cart_totals(request, cart):
