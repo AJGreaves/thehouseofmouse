@@ -24,5 +24,5 @@ class NewOrderForm(forms.ModelForm):
             'address_line_2',
             'town_or_city',
             'county',
-            'country'
+            # 'country'
         ]
