@@ -84,6 +84,11 @@ def cart_view(request, *args, **kwargs):
                     cart['orderItems'][id_to_delete]['quantity'] = 0
                     
                     cart_total_price = set_new_cart_totals(request, cart)
+
+                    # If cart completely empty, delete entire cart data in storage
+                    if int(cart_total_price) == 0:
+                        del request.session['cart']
+                    
                     response = {
                         'total': int(cart_total_price),
                     }
