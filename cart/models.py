@@ -1,6 +1,5 @@
 from django.db import models
 import datetime
-from shipping.models import Destination_country
 from products.models import Product
 from django.contrib.auth.models import User
 
@@ -15,7 +14,7 @@ class Order(models.Model):
     town_or_city = models.CharField(max_length=150, null=True)
     county = models.CharField(max_length=150, blank=True, null=True)
     postcode = models.CharField(max_length=10, null=True)
-    country = models.ForeignKey(Destination_country, on_delete=models.CASCADE, null=True)
+    # country = models.ForeignKey(Destination_country, on_delete=models.CASCADE, null=True)
     date_ordered = models.DateField(default=datetime.date.today, null=True)
     paid = models.BooleanField(default=False)
     shipped = models.BooleanField(default=False)

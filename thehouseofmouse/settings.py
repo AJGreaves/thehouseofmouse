@@ -45,7 +45,6 @@ INSTALLED_APPS = [
 
     # Custom
     'products',
-    'shipping',
     'pages',
     'cart',
     'accounts',
