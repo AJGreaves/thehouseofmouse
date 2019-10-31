@@ -9,7 +9,7 @@ class ShippingDestination(models.Model):
     shipping_price = models.DecimalField(max_digits=6, decimal_places=2)
 
     def __str__(self):
-        return f'{self.country}: €{self.shipping_price}'
+        return f'{self.country}'
 
 class Order(models.Model):
 
