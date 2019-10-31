@@ -27,7 +27,7 @@ def cart_view(request, *args, **kwargs):
         initial_data = []
         i = 1
         for item in cart['orderItems']:
-            initial_data.append({'name': i, 'quantity': item['quantity']})
+            initial_data.append({'quantity': item['quantity']})
 
         OrderItemFormSet = formset_factory(OrderItemForm, extra=0)
         form = OrderItemFormSet(initial=initial_data)
@@ -96,7 +96,11 @@ def cart_view(request, *args, **kwargs):
                 return JsonResponse(response)
 
             else:
-                print('else')
+                print('checkout button clicked')
+                order_form = OrderItemForm(request.POST)
+                print(order_form)
+                if order_form.is_valid():
+                    print('form is valid')
 
     else:
         context = {
