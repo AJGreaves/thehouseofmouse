@@ -6,6 +6,7 @@ from django.forms import formset_factory
 # from django.contrib.auth.models import User
 from products.models import Product
 from .forms import OrderItemForm
+from .models import ShippingDestination, Order, OrderItem
 
 # Create your views here.
 @login_required
@@ -96,11 +97,18 @@ def cart_view(request, *args, **kwargs):
                 return JsonResponse(response)
 
             else:
-                print('checkout button clicked')
-                order_form = OrderItemForm(request.POST)
-                print(order_form)
-                if order_form.is_valid():
-                    print('form is valid')
+                # CHECKOUT REQUEST
+                order = Order.objects.filter(customer=request.user, paid=False).first()
+                if not order:
+                    order = Order.objects.create(customer=request.user)
+                
+                checkout_cart = request.session['cart']
+                for item in checkout_cart['orderItems']:
+                    _id = int(item['listingId'])
+                    quantity = int(item['quantity'])
+                    product = Product.objects.filter(id=_id).first()
+                    order_item = OrderItem(order=order, product=product, quantity=quantity)
+                    order_item.save()
 
     else:
         context = {
