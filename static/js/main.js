@@ -16,15 +16,15 @@ $(document).ready(function () {
             $('.chevron').addClass('fa-chevron-down').removeClass('fa-chevron-up')
         }
 
-    })
+    });
 
     /**
      * Updates main listing image with src url from thumbnails when clicked.
      * Credit for replace() code: https://stackoverflow.com/questions/8809876/can-i-get-divs-background-image-url
      */
     $('.listing-img-thumbnail').click(function() {
-        url = $(this).css('background-image').replace(/^url\(['"]?/,'').replace(/['"]?\)$/,'');
+        let url = $(this).css('background-image').replace(/^url\(['"]?/,'').replace(/['"]?\)$/,'');
         $('#main-listing-img').attr("src", url);
-    })
+    });
 
 });

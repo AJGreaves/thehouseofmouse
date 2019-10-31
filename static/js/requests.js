@@ -69,9 +69,9 @@ $(document).ready(function () {
                 })
                 .then(res => res.json())
                 .then(response => {
-                    if(response.max_num < value) {
+                    if (response.max_num < value) {
                         alert_too_many_cart_page(
-                            response.max_num, 
+                            response.max_num,
                             response.title
                         );
                         this.value = response.max_num;
@@ -80,8 +80,36 @@ $(document).ready(function () {
 
                 })
                 .catch(err => console.log('ERROR: ' + err))
-            
+
         })
+
+        /**
+         * Function starts when user clicks a X icon in cart to delete an item from 
+         * their basket. Function checks id of icon (incremented in loop over cart items),
+         * sets quantity of item from session variable to 0, and reloads the page.
+         */
+        $('.delete-icon').click(function () {
+            const data = {
+                orderItemId: this.id.slice(17),
+            };
+            fetch('.', {
+                    method: 'POST',
+                    headers: new Headers({
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrftoken,
+                        'X-Requested-With': 'XMLHttpRequest',
+                    }),
+                    body: JSON.stringify(data),
+                    credentials: 'same-origin'
+                })
+                .then(res => res.json())
+                .then(response => {
+                    $('#subtotal-js').text(response.total);
+                    location.reload(); 
+                })
+                .catch(err => console.log('ERROR: ' + err))
+
+        });
     };
 
 
