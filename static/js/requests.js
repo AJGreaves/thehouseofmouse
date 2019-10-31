@@ -88,7 +88,7 @@ $(document).ready(function () {
          * their basket. Function checks id of icon (incremented in loop over cart items),
          * sets quantity of item from session variable to 0, and reloads the page.
          */
-        $('.delete-icon').click(function () {
+        $('.delete-icon-js').click(function () {
             const data = {
                 orderItemId: this.id.slice(17),
             };
