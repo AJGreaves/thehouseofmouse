@@ -22,8 +22,8 @@
         </div>
         <heading class="col-11 col-md-8 col-lg-6 text-center">
             {% if nothing_in_cart %}
-                <h1>You have nothing in your cart yet!</h1>
-                <a href="{% url 'all-products' %}" class="btn btn-pink btn-cta my-5">Let's go shopping!</a>
+                <h1>Your cart is empty!</h1>
+                <a href="{% url 'all-products' %}" class="btn btn-pink btn-cta my-5">Let's go shopping</a>
             {% else %}
                 <h1>Your shopping cart</h1>
             {% endif %}
