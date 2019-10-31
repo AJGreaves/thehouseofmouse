@@ -59,11 +59,8 @@ def cart_view(request, *args, **kwargs):
                 # get quantity user requested
                 value = int(post_request['value'])
 
-                # compare number requested with maximum number in stock
-                if value <= max_num:
-                    quantity = value
-                else:
-                    quantity = int(max_num)
+                # set quantity value by comparing number requested with maximum number in stock
+                quantity = value if value <= max_num else int(max_num)
 
                 cart['orderItems'][int(input_id)]['quantity'] = quantity
 
