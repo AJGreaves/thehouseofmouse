@@ -70,10 +70,7 @@
                                         <p class="price">€{{ item.product.price }}</p>
                                     </div>
                                     <div class="col-4">
-                                        <div class="form-group">
-                                            <input id="item{{ forloop.counter }}id" name="item{{ forloop.counter }}id"
-                                                type="hidden" value="{{ item.product.id }}" disabled>
-                                            <label for="id_form-{{ forloop.counter }}-quantity">Quantity</label>
+                                        
 
                                             <!-- Loops through formset and pulls out the corresponding input field -->
                                             {% with forloop.counter as item_counter %}
@@ -83,7 +80,7 @@
                                                     {% endif %}
                                                 {% endfor %}
                                             {% endwith %}
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
