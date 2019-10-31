@@ -110,3 +110,11 @@ footer .fa-youtube-square:hover {
 .sml-txt {
     font-size: 0.9rem;
 }
+
+.fa-times-circle {
+    -webkit-transition: 0.2s all ease-in-out 0.1s;
+    transition: 0.2s all ease-in-out 0.1s;
+}
+.fa-times-circle:hover {
+    color: red;
+}
