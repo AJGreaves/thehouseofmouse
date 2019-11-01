@@ -1,6 +1,6 @@
 import json
 from django.http import JsonResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.forms import formset_factory
 # from django.contrib.auth.models import User
@@ -99,17 +99,57 @@ def cart_view(request, *args, **kwargs):
             else:
                 # CHECKOUT REQUEST
                 order = Order.objects.filter(customer=request.user, paid=False).first()
+                checkout_cart = request.session['cart']
+
+                # if new order
                 if not order:
                     order = Order.objects.create(customer=request.user)
-                
-                checkout_cart = request.session['cart']
-                for item in checkout_cart['orderItems']:
-                    _id = int(item['listingId'])
-                    quantity = int(item['quantity'])
-                    product = Product.objects.filter(id=_id).first()
-                    order_item = OrderItem(order=order, product=product, quantity=quantity)
-                    order_item.save()
 
+                    # loop through all cart items and create new instances of OrderItem for them
+                    for item in checkout_cart['orderItems']:
+                        _id = int(item['listingId'])
+                        quantity = int(item['quantity'])
+                        # filter out items in session storage that have had their quantities reduced to 0
+                        if quantity > 0:
+                            product = Product.objects.filter(id=_id).first()
+                            order_item = OrderItem(order=order, product=product, quantity=quantity)
+                            order_item.save()
+                
+                # if unpaid order exists in database already:
+                else:
+                    # get items already assigned to this order
+                    items_in_order = OrderItem.objects.filter(order=order)
+                    print(items_in_order)
+                    # loop through items in session storage cart
+                    for item in checkout_cart['orderItems']:
+                        _id = int(item['listingId'])
+                        quantity = int(item['quantity'])
+
+                        # loop through OrderItems already assigned to existing order
+                        for orderitem in items_in_order:
+                            print(orderitem)
+                            # if item listingId already in OrderItems table
+                            # and quantity in cart is different from OrderItem
+                            if orderitem['product']['id'] == _id and orderitem['quantity'] != quantity:
+                                # if quantity is 0 delete entry from orderItems
+                                if quantity == 0:
+                                    orderitem.delete()
+                                # otherwise update quantity in table
+                                else:
+                                    orderitem['quantity'] = quantity
+                                    orderitem.save()
+
+                            # if item listingId is not already in OrderItems table and quantity is not 0
+                            elif quantity > 0:
+                                # create a new instance
+                                product = Product.objects.filter(id=_id).first()
+                                order_item = OrderItem(order=order, product=product, quantity=quantity)
+                                order_item.save()
+
+
+
+
+                return redirect('info')
     else:
         context = {
             'nothing_in_cart': True,

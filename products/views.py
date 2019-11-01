@@ -30,11 +30,6 @@ class ListingDetailView(DetailView):
         _id = self.kwargs.get('pk')
         instance = get_object_or_404(Product, id=_id)
 
-        # credit for original code to set cart session storage to CI alumnus Sean Murphy,
-        # who created it to demonstrate how to accomplish this. Sean's code was heavily adjusted by me
-        # to deal with user adding same item to their cart again, and code to handle if
-        # total number items requested is over number in stock.
-
         # checks if orderItems already exists in session storage, and creates it if needed.
         cart = request.session.get('cart', {'orderItems': [], 'total': 0, 'count': 0})
         
