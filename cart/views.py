@@ -3,7 +3,6 @@ from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.forms import formset_factory
-# from django.contrib.auth.models import User
 from products.models import Product
 from .forms import OrderItemForm
 from .models import ShippingDestination, Order, OrderItem
@@ -119,7 +118,7 @@ def cart_view(request, *args, **kwargs):
                 else:
                     # get items already assigned to this order
                     items_in_order = OrderItem.objects.filter(order=order)
-                    print(items_in_order)
+
                     # loop through items in session storage cart
                     for item in checkout_cart['orderItems']:
                         _id = int(item['listingId'])
@@ -127,28 +126,28 @@ def cart_view(request, *args, **kwargs):
 
                         # loop through OrderItems already assigned to existing order
                         for orderitem in items_in_order:
-                            print(orderitem)
+                            # if exact item and quantity are already in the Order, break out of loop.
+                            if orderitem.product.id == _id and orderitem.quantity == quantity:
+                                break
+
                             # if item listingId already in OrderItems table
-                            # and quantity in cart is different from OrderItem
-                            if orderitem['product']['id'] == _id and orderitem['quantity'] != quantity:
+                            elif orderitem.product.id == _id:
                                 # if quantity is 0 delete entry from orderItems
                                 if quantity == 0:
                                     orderitem.delete()
-                                # otherwise update quantity in table
+                                # if quantity in cart is different from OrderItem, update quantity in table
                                 else:
-                                    orderitem['quantity'] = quantity
+                                    orderitem.quantity = quantity
                                     orderitem.save()
 
-                            # if item listingId is not already in OrderItems table and quantity is not 0
-                            elif quantity > 0:
+                            # if item listingId is not already in OrderItems table and quantity is greater than 0
+                            elif orderitem.product.id != _id and quantity > 0:
                                 # create a new instance
                                 product = Product.objects.filter(id=_id).first()
                                 order_item = OrderItem(order=order, product=product, quantity=quantity)
                                 order_item.save()
-
-
-
-
+                            
+                            
                 return redirect('info')
     else:
         context = {
