@@ -16,27 +16,7 @@ def cart_view(request, *args, **kwargs):
     """
     if request.session.get('cart'):
         cart = request.session.get('cart')
-        cart_items = []
-        print(cart)
-        for item in cart['orderItems']:
-            _id = item['listingId']
-            product = get_object_or_404(Product, id=_id)
-            stock_arr = [x for x in range(product.num_in_stock)]
-            cart_items.append({'product': product, 'quantity': item['quantity'], 'stock_arr': stock_arr})
-
-        initial_data = []
-        i = 1
-        for item in cart['orderItems']:
-            initial_data.append({'quantity': item['quantity']})
-
-        OrderItemFormSet = formset_factory(OrderItemForm, extra=0)
-        form = OrderItemFormSet(initial=initial_data)
-
-        context = {
-            "cart_items" : cart_items,
-            'formset' : form,
-            "footer": False
-        }
+        context = get_cart_page_context(cart)
 
         if request.method == 'POST':
             
@@ -47,6 +27,7 @@ def cart_view(request, *args, **kwargs):
                 # if change to quantities in cart
                 if post_request.get('idChangedInput'):
                     
+                    cart_items = get_cart_items(cart)
                     # get item from cart items that was changed by user
                     input_id = post_request['idChangedInput']
                     input_id = ''.join(i for i in input_id if i.isdigit())
@@ -138,6 +119,38 @@ def cart_view(request, *args, **kwargs):
             'footer': False
         }
     return render(request, "cart.html", context)
+
+def get_cart_page_context(cart):
+    """ gets context to display contents of cart """
+    cart_items = get_cart_items(cart)
+    initial_data = get_initial_data(cart)
+    OrderItemFormSet = formset_factory(OrderItemForm, extra=0)
+    form = OrderItemFormSet(initial=initial_data)
+
+    context = {
+        "cart_items" : cart_items,
+        'formset' : form,
+        "footer": False
+    }
+
+    return context
+
+def get_initial_data(cart):
+    """ Creates initial data for quantity fields in OrderForm """
+    data = []
+    for item in cart['orderItems']:
+        data.append({'quantity': item['quantity']})
+    return data
+
+def get_cart_items(cart):
+    """ Gets data needed for rendering cart items in html """
+    cart_items = []
+    for item in cart['orderItems']:
+        _id = item['listingId']
+        product = get_object_or_404(Product, id=_id)
+        stock_arr = [x for x in range(product.num_in_stock)]
+        cart_items.append({'product': product, 'quantity': item['quantity'], 'stock_arr': stock_arr})
+    return cart_items
 
 def set_new_cart_totals(request, cart):
     """
