@@ -48,7 +48,7 @@ def cart_view(request, *args, **kwargs):
                 create_order_items(order, checkout_cart)
                     
                 return redirect('info')
-                
+
     else:
         context = {
             'nothing_in_cart': True,
@@ -62,12 +62,48 @@ def checkout_info_view(request, *args, **kwargs):
     """
     Renders checkout info page with navbar and footer removed
     """
-    context = {
-        "footer": False,
-        "navbar": False,
-        "active_pg": "checkout_info"
-    }
-    return render(request, "checkout1_info.html", context)
+
+    if request.session.get('cart'):
+        cart = request.session.get('cart')
+        context = get_cart_page_context(cart)
+
+        if request.method == 'POST':
+            
+            if request.headers['Content-Type'] == 'application/json':
+                # FETCH REQUESTS
+                post_request = json.loads(request.body)
+
+                # if change to quantities in cart
+                if post_request.get('idChangedInput'):
+                    response = process_changed_input_request(request, post_request, cart)
+
+                # if user deleted item from cart
+                if post_request.get('orderItemId'):
+                    response = process_delete_request(request, post_request, cart)
+
+                return JsonResponse(response)
+
+            else:
+                # CHECKOUT REQUEST
+
+                # get unpaid order for this user if it already exists
+                order = Order.objects.filter(customer=request.user, paid=False).first()
+                checkout_cart = request.session['cart']
+
+                # if new order create instance of order
+                if not order:
+                    order = Order.objects.create(customer=request.user)
+                
+                create_order_items(order, checkout_cart)
+                    
+                return redirect('info')
+                
+    else:
+        return redirect('cart')
+
+    new_context = {**context, **{"active_pg": "checkout_info"}}
+
+    return render(request, "checkout1_info.html", new_context)
 
 @login_required
 def checkout_shipping_view(request, *args, **kwargs):
@@ -167,6 +203,7 @@ def process_changed_input_request(request, post_request, cart):
     Processes request from user to change cart item quantity. 
     Returns response to be sent to js fetch.
     """
+    print(cart)
     cart_items = get_cart_items(cart)
     # get item from cart items that was changed by user
     input_id = post_request['idChangedInput']
