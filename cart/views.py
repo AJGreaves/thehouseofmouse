@@ -116,7 +116,7 @@ def cart_view(request, *args, **kwargs):
 
                     # delete all orders in the list
                     # fixes doubled up items appearing in database due to nested loop I 
-                    # was trying to use to comapre entries.
+                    # was trying to use to compare entries.
                     for orderitem in items_in_order:
                         orderitem.delete()
 
@@ -131,11 +131,7 @@ def cart_view(request, *args, **kwargs):
                             order_item = OrderItem(order=order, product=product, quantity=quantity)
                             order_item.save()
                     
-
-
-                        
-
-                # return redirect('info')
+                return redirect('info')
     else:
         context = {
             'nothing_in_cart': True,

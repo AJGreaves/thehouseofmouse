@@ -115,6 +115,41 @@ Responsive design waw also tested in the Chrome Developer Tools device simulator
     - Bug was partially resolved by upgrading my version of python to python 3.7.5, although this threw new errors at me.
     - Bug finally fixed by replacing my `python manage.py runserver` command with `python manage.py runserver 8000` (with thanks to Chris Zielinski, Code Institue Mentor for this solution)
 
+2. **Duplicate items added to OrderItems database**
+    - As I was using a nested loop to compare the items in my sessions storage cart to the items in the database Order, I was ending up with duplicate items when more than 1 item was already in the database.
+    - After multiple different attempts to fix the problem the solution was pretty simple: if the Order already existed I deleted all the OrderItems from the database and rebuilt them from the session variable instead.
+```python
+order = Order.objects.filter(customer=request.user, paid=False).first()
+checkout_cart = request.session['cart']
+
+# if new order, create instance of order
+if not order:
+    order = Order.objects.create(customer=request.user)
+
+# if unpaid order exists in database already:
+else:
+    # get items in session storage cart
+    session_cart = checkout_cart['orderItems']
+
+    # get items currently in Order
+    items_in_order = OrderItem.objects.filter(order=order)
+
+    # delete all orders in the list
+    for orderitem in items_in_order:
+        orderitem.delete()
+
+    # loop through all cart items and create new instances of OrderItem for them
+    for item in session_cart:
+        _id = int(item['listingId'])
+        quantity = int(item['quantity'])
+
+        # filter out items in session storage that have had their quantities reduced to 0
+        if quantity > 0:
+            product = Product.objects.filter(id=_id).first()
+            order_item = OrderItem(order=order, product=product, quantity=quantity)
+            order_item.save()
+```
+
 
 #### Unsolved bugs
 
