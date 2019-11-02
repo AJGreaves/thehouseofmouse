@@ -25,19 +25,22 @@
 
         <!-- order summary section, hidden on medium screens and up -->
         <div id="shopping-cart-contents" class="d-none d-md-block col-md-6 card">
-            <div class="row">
-                <div class="col-12">
-                    <h3 class="checkout-heading pb-3 px-3">Your order summary</h3>
-                </div>
+            <form id="confirmCartForm" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="checkout-heading pb-3 px-3">Your order summary</h3>
+                    </div>
 
-                {% include 'components/cart-items.html' %}
-                <div class="col-12 text-right">
-                    <hr>
-                    <h3 id="subtotal">Subtotal: <span>€105</span></h3>
-                    <p>Tax included.
-                        <br>Shipping calculated during checkout.</p>
+                    {% include 'components/cart-items.html' %}
+                    <div class="col-12 text-right">
+                        <h3 id="subtotal">Subtotal: €<span id="subtotal-js">{{ request.session.cart.total }}</span></h3>
+                        <p>Tax included.
+                            <br>Shipping calculated during checkout.</p>
+                    </div>
                 </div>
-            </div>
+            </form>
+
         </div>
 
     </div>

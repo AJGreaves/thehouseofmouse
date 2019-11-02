@@ -1,115 +1,49 @@
+{% load crispy_forms_tags %}
 
-                <div class="col-4">
-                    <div class="cart-item-img mx-auto"
-                        style="background-image: url('https://i.ibb.co/TYFQxMM/SWYoda-1.jpg')"
-                        title="Listing title here"></div>
-                </div>
-                <div class="col-8">
-                    <div class="row">
-                        <div class="col-10">
-                            <h4>Yoda Mouse</h4>
-                        </div>
-                        <div class="col-2 text-center">
-                            <i class="far fa-times-circle" title="Delete"></i>
-                        </div>
-                    </div>
-                    <div class="row justify-content-end">
-                        <!-- aligns price to bottom right corner of it's container -->
-                        <div class="col-4 d-flex align-items-end justify-content-end">
-                            <p id="price">€40</p>
-                        </div>
-                        <div class="col-4">
-                            <form id="listing-quantity-form">
-                                <div class="form-group">
-                                    <label for="exampleFormControlSelect1">Quantity</label>
-                                    <select class="form-control listing-quantity" id="exampleFormControlSelect1">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+{% for item in cart_items %}
+<!-- 
+deleted items and items that have had their quantities reduced to 0 are kept
+in session variables to save from changing indexes from the orderItems list. So this
+condition loops through the orderItems and only displays them if their quantity not 0 
+-->
+{% if item.quantity > 0 %}
+<div class="col-4">
+    <div class="cart-item-img mx-auto" style="background-image: url('{{ item.product.product_image1.url}}')"
+        title="{{ item.product.title }}"></div>
+</div>
+<div class="col-8">
+    <div class="row">
+        <div class="col-10">
+            <h4>{{ item.product.title }}</h4>
+        </div>
+        <div class="col-2 text-center">
+            <i class="far fa-times-circle delete-icon-js" title="Delete {{ item.product.title }} from cart"
+                id="cart-item-delete-{{ forloop.counter }}"></i>
+        </div>
+    </div>
+    <div class="row justify-content-end">
+        <!-- aligns price to bottom right corner of it's container -->
+        <div class="col-4 d-flex align-items-end justify-content-end">
+            <p class="price">€{{ item.product.price }}</p>
+        </div>
+        <div class="col-5 col-xl-4">
 
-                <div class="col-12">
-                    <hr>
-                </div>
 
-                <div class="col-4">
-                    <div class="cart-item-img mx-auto"
-                        style="background-image: url('https://i.ibb.co/0Fh81F4/Lawyer-1.jpg')"
-                        title="Listing title here"></div>
-                </div>
-                <div class="col-8">
-                    <div class="row">
-                        <div class="col-10">
-                            <h4>Bailey the Lawyer Mouse</h4>
-                        </div>
-                        <div class="col-2 text-center">
-                            <i class="far fa-times-circle" title="Delete"></i>
-                        </div>
-                    </div>
-                    <div class="row justify-content-end">
-                        <!-- aligns price to bottom right corner of it's container -->
-                        <div class="col-4 d-flex align-items-end justify-content-end">
-                            <p id="price">€35</p>
-                        </div>
-                        <div class="col-4">
-                            <form id="listing-quantity-form">
-                                <div class="form-group">
-                                    <label for="exampleFormControlSelect1">Quantity</label>
-                                    <select class="form-control listing-quantity" id="exampleFormControlSelect1">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+            <!-- Loops through formset and pulls out the corresponding input field -->
+            {% with forloop.counter as item_counter %}
+            {% for form in formset %}
+            {% if forloop.counter == item_counter %}
+            {{ form|crispy }}
+            {% endif %}
+            {% endfor %}
+            {% endwith %}
 
-                </div>
+        </div>
+    </div>
+</div>
 
-                <div class="col-12">
-                    <hr>
-                </div>
-
-                <div class="col-4">
-                    <div class="cart-item-img mx-auto"
-                        style="background-image: url('https://i.ibb.co/SsJrwNS/Mr-Applecheeks1.jpg')"
-                        title="Listing title here"></div>
-                </div>
-                <div class="col-8">
-                    <div class="row">
-                        <div class="col-10">
-                            <h4>Mr Applecheeks the Librarian Mouse</h4>
-                        </div>
-                        <div class="col-2 text-center">
-                            <i class="far fa-times-circle" title="Delete"></i>
-                        </div>
-                    </div>
-                    <div class="row justify-content-end">
-                        <!-- aligns price to bottom right corner of it's container -->
-                        <div class="col-4 d-flex align-items-end justify-content-end">
-                            <p id="price">€30</p>
-                        </div>
-                        <div class="col-4">
-                            <form id="listing-quantity-form">
-                                <div class="form-group">
-                                    <label for="exampleFormControlSelect1">Quantity</label>
-                                    <select class="form-control listing-quantity" id="exampleFormControlSelect1">
-                                        <option>1</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-12 text-right text-pink">
-                            Only one left in stock!
-                        </div>
-                    </div>
-                </div>
-                
+<div class="col-12">
+    <hr>
+</div>
+{% endif %}
+{% endfor %}
