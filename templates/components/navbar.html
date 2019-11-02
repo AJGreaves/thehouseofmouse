@@ -29,7 +29,7 @@
         <a class="nav-link nav-link-icon" href="{% url 'cart' %}" title="Shopping cart">
             <div>
                 <i class="fas fa-shopping-basket navbar-icon"></i>
-                <div id="cart-counter">2</div>
+                <div id="cart-counter">{% if request.session.cart.count > 9 %}9+ {% else %}{{ request.session.cart.count }}{% endif %}</div>
             </div>
         </a>
     </div>
@@ -104,7 +104,7 @@
         <a class="nav-link nav-link-icon" href="{% url 'cart' %}" title="Shopping cart">
             <div>
                 <i class="fas fa-shopping-basket navbar-icon"></i>
-                <div id="cart-counter">2</div>
+                <div id="cart-counter">{% if request.session.cart.count > 9 %}9+ {% else %}{{ request.session.cart.count }}{% endif %}</div>
             </div>
         </a>
     </div>
