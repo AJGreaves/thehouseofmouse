@@ -26,12 +26,10 @@ def cart_view(request, *args, **kwargs):
 
                 # if change to quantities in cart
                 if post_request.get('idChangedInput'):
-                    
                     response = process_changed_input_request(request, post_request, cart)
 
                 # if user deleted item from cart
                 if post_request.get('orderItemId'):
-
                     response = process_delete_request(request, post_request, cart)
 
                 return JsonResponse(response)
@@ -50,6 +48,7 @@ def cart_view(request, *args, **kwargs):
                 create_order_items(order, checkout_cart)
                     
                 return redirect('info')
+                
     else:
         context = {
             'nothing_in_cart': True,
@@ -57,7 +56,64 @@ def cart_view(request, *args, **kwargs):
         }
     return render(request, "cart.html", context)
 
+
+@login_required
+def checkout_info_view(request, *args, **kwargs):
+    """
+    Renders checkout info page with navbar and footer removed
+    """
+    context = {
+        "footer": False,
+        "navbar": False,
+        "active_pg": "checkout_info"
+    }
+    return render(request, "checkout1_info.html", context)
+
+@login_required
+def checkout_shipping_view(request, *args, **kwargs):
+    """
+    Renders checkout shipping page with navbar and footer removed
+    """
+    context = {
+        "footer": False,
+        "navbar": False,
+        "active_pg": "checkout_shipping"
+    }
+    return render(request, "checkout2_shipping.html", context)
+
+@login_required
+def checkout_payment_view(request, *args, **kwargs):
+    """
+    Renders checkout payment page with navbar and footer removed
+    """
+    context = {
+        "footer": False,
+        "navbar": False,
+        "active_pg": "checkout_payment"
+    }
+    return render(request, "checkout3_payment.html", context)
+
+@login_required
+def checkout_confirm_view(request, *args, **kwargs):
+    """
+    Renders payment conformation page with navbar and footer removed
+    """
+    context = {
+        "footer": False,
+        "navbar": False,
+        "active_pg": "checkout_confirm"
+    }
+    return render(request, "checkout4_confirm.html", context)
+
+
+
+# HELPER FUNCTIONS
 def create_order_items(order, checkout_cart):
+    """
+    Creates new OrderItems for Order from cart stored in session. 
+    If an Order for user already exists, deletes all related OrderItems 
+    from it first and then rebuilds from session cart. 
+    """
     # get items in session storage cart
     session_cart = checkout_cart['orderItems']
 
@@ -80,6 +136,7 @@ def create_order_items(order, checkout_cart):
             product = Product.objects.filter(id=_id).first()
             order_item = OrderItem(order=order, product=product, quantity=quantity)
             order_item.save()
+    return
 
 def process_delete_request(request, post_request, cart):
     """
@@ -189,51 +246,3 @@ def set_new_cart_totals(request, cart):
     request.session['cart'] = cart
 
     return cart_total_price
-
-@login_required
-def checkout_info_view(request, *args, **kwargs):
-    """
-    Renders checkout info page with navbar and footer removed
-    """
-    context = {
-        "footer": False,
-        "navbar": False,
-        "active_pg": "checkout_info"
-    }
-    return render(request, "checkout1_info.html", context)
-
-@login_required
-def checkout_shipping_view(request, *args, **kwargs):
-    """
-    Renders checkout shipping page with navbar and footer removed
-    """
-    context = {
-        "footer": False,
-        "navbar": False,
-        "active_pg": "checkout_shipping"
-    }
-    return render(request, "checkout2_shipping.html", context)
-
-@login_required
-def checkout_payment_view(request, *args, **kwargs):
-    """
-    Renders checkout payment page with navbar and footer removed
-    """
-    context = {
-        "footer": False,
-        "navbar": False,
-        "active_pg": "checkout_payment"
-    }
-    return render(request, "checkout3_payment.html", context)
-
-@login_required
-def checkout_confirm_view(request, *args, **kwargs):
-    """
-    Renders payment conformation page with navbar and footer removed
-    """
-    context = {
-        "footer": False,
-        "navbar": False,
-        "active_pg": "checkout_confirm"
-    }
-    return render(request, "checkout4_confirm.html", context)
