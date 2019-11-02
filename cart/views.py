@@ -97,58 +97,45 @@ def cart_view(request, *args, **kwargs):
 
             else:
                 # CHECKOUT REQUEST
+
+                # get unpaid order for this user if it already exists
                 order = Order.objects.filter(customer=request.user, paid=False).first()
                 checkout_cart = request.session['cart']
 
-                # if new order
+                # if new order create instance of order
                 if not order:
                     order = Order.objects.create(customer=request.user)
+                
+                # if unpaid order exists in database already:
+                else:
+                    # get items in session storage cart
+                    session_cart = checkout_cart['orderItems']
+
+                    # get items currently in Order
+                    items_in_order = OrderItem.objects.filter(order=order)
+
+                    # delete all orders in the list
+                    # fixes doubled up items appearing in database due to nested loop I 
+                    # was trying to use to comapre entries.
+                    for orderitem in items_in_order:
+                        orderitem.delete()
 
                     # loop through all cart items and create new instances of OrderItem for them
-                    for item in checkout_cart['orderItems']:
+                    for item in session_cart:
                         _id = int(item['listingId'])
                         quantity = int(item['quantity'])
+
                         # filter out items in session storage that have had their quantities reduced to 0
                         if quantity > 0:
                             product = Product.objects.filter(id=_id).first()
                             order_item = OrderItem(order=order, product=product, quantity=quantity)
                             order_item.save()
-                
-                # if unpaid order exists in database already:
-                else:
-                    # get items already assigned to this order
-                    items_in_order = OrderItem.objects.filter(order=order)
+                    
 
-                    # loop through items in session storage cart
-                    for item in checkout_cart['orderItems']:
-                        _id = int(item['listingId'])
-                        quantity = int(item['quantity'])
 
-                        # loop through OrderItems already assigned to existing order
-                        for orderitem in items_in_order:
-                            # if exact item and quantity are already in the Order, break out of loop.
-                            if orderitem.product.id == _id and orderitem.quantity == quantity:
-                                break
+                        
 
-                            # if item listingId already in OrderItems table
-                            elif orderitem.product.id == _id:
-                                # if quantity is 0 delete entry from orderItems
-                                if quantity == 0:
-                                    orderitem.delete()
-                                # if quantity in cart is different from OrderItem, update quantity in table
-                                else:
-                                    orderitem.quantity = quantity
-                                    orderitem.save()
-
-                            # if item listingId is not already in OrderItems table and quantity is greater than 0
-                            elif orderitem.product.id != _id and quantity > 0:
-                                # create a new instance
-                                product = Product.objects.filter(id=_id).first()
-                                order_item = OrderItem(order=order, product=product, quantity=quantity)
-                                order_item.save()
-                            
-                            
-                return redirect('info')
+                # return redirect('info')
     else:
         context = {
             'nothing_in_cart': True,
