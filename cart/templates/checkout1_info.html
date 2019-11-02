@@ -2,6 +2,8 @@
 
 {% load staticfiles %}
 
+{% load crispy_forms_tags %}
+
 <!-- listing name here (SEO) -->
 {% block title %}Checkout Step 1 Info | The House of Mouse{% endblock %}
 
@@ -15,12 +17,15 @@
 
 <div class="container">
     <div class="row justify-content-between">
-        <div class="col-12 col-md-6 mt-4 pt-3">
-            <h6 class="checkout-heading">Contact Information</h6>
-            <p>Already have an account? <a href="#" class="link">Log in</a></p>
-            <hr>
-            <p>------ shipping address form here. ------</p>
-            <button type="submit" class="btn btn-cta btn-blue d-block ml-auto mr-0">Continue to shipping</button>
+        <div class="col-12 col-md-6 mt-4 pt-3 px-3 px-lg-5">
+            <h6 class="checkout-heading">Shipping address</h6>
+            
+            <form method="POST">
+                {% csrf_token %}
+                {{ shipping_info_form|crispy }}
+                <button type="submit" class="btn btn-cta btn-blue d-block ml-auto mr-0 mb-5">Continue to shipping</button>
+            </form>
+            
         </div>
 
         <!-- order summary section, hidden on medium screens and up -->
@@ -36,7 +41,7 @@
                     <div class="col-12 text-right">
                         <h3 id="subtotal">Subtotal: €<span id="subtotal-js">{{ request.session.cart.total }}</span></h3>
                         <p>Tax included.
-                            <br>Shipping calculated during checkout.</p>
+                        <br>Shipping calculated during checkout.</p>
                     </div>
                 </div>
             </form>

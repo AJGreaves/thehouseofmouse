@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.forms import formset_factory
 from products.models import Product
-from .forms import OrderItemForm
+from .forms import OrderItemForm, NewOrderForm
 from .models import Order, OrderItem
 
 # Create your views here.
@@ -101,7 +101,16 @@ def checkout_info_view(request, *args, **kwargs):
     else:
         return redirect('cart')
 
-    new_context = {**context, **{"active_pg": "checkout_info"}}
+    shipping_info_form = NewOrderForm
+
+    new_context = {
+        **context,
+        **{
+            "active_pg": "checkout_info",
+            "shipping_info_form" : shipping_info_form,
+            "navbar": False
+        }
+    }
 
     return render(request, "checkout1_info.html", new_context)
 
