@@ -84,19 +84,17 @@ def checkout_info_view(request, *args, **kwargs):
                 return JsonResponse(response)
 
             else:
-                # CHECKOUT REQUEST
 
-                # get unpaid order for this user if it already exists
+                # get unpaid order for this user
                 order = Order.objects.filter(customer=request.user, paid=False).first()
                 checkout_cart = request.session['cart']
-
-                # if new order create instance of order
-                if not order:
-                    order = Order.objects.create(customer=request.user)
-                
                 create_order_items(order, checkout_cart)
-                    
-                return redirect('info')
+                
+                order_form = NewOrderForm(request.POST)
+                if order_form.is_valid():
+                    print('form is valid')
+
+                return redirect('shipping')
                 
     else:
         return redirect('cart')
