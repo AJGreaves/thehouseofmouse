@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.forms import formset_factory
 from products.models import Product
 from .forms import OrderItemForm
-from .models import ShippingDestination, Order, OrderItem
+from .models import Order, OrderItem
 
 # Create your views here.
 @login_required
@@ -27,52 +27,12 @@ def cart_view(request, *args, **kwargs):
                 # if change to quantities in cart
                 if post_request.get('idChangedInput'):
                     
-                    cart_items = get_cart_items(cart)
-                    # get item from cart items that was changed by user
-                    input_id = post_request['idChangedInput']
-                    input_id = ''.join(i for i in input_id if i.isdigit())
-
-                    # get number in stock from database
-                    listing_id = cart['orderItems'][int(input_id)]['listingId']
-                    product = get_object_or_404(Product, id=listing_id)
-                    max_num = product.num_in_stock
-
-                    # get quantity user requested
-                    value = int(post_request['value'])
-
-                    # set quantity value by comparing number requested with maximum number in stock
-                    quantity = value if value <= max_num else int(max_num)
-
-                    cart['orderItems'][int(input_id)]['quantity'] = quantity
-
-                    cart_total_price = set_new_cart_totals(request, cart)
-
-                    response = {
-                        'max_num': max_num,
-                        'title': cart_items[int(input_id)]['product'].title,
-                        'total': int(cart_total_price),
-                    }
+                    response = process_changed_input_request(request, post_request, cart)
 
                 # if user deleted item from cart
                 if post_request.get('orderItemId'):
 
-                    id_to_delete = post_request['orderItemId']
-                    id_to_delete = int(id_to_delete) - 1
-
-                    # set quantity of item to 0, but do not actually delete entry from session.
-                    # I did this to save from changing the indexes of other items in the
-                    # session orderItems list.
-                    cart['orderItems'][id_to_delete]['quantity'] = 0
-                    
-                    cart_total_price = set_new_cart_totals(request, cart)
-
-                    # If cart completely empty, delete entire cart data in storage
-                    if int(cart_total_price) == 0:
-                        del request.session['cart']
-                    
-                    response = {
-                        'total': int(cart_total_price),
-                    }
+                    response = process_delete_request(request, post_request, cart)
 
                 return JsonResponse(response)
 
@@ -87,30 +47,7 @@ def cart_view(request, *args, **kwargs):
                 if not order:
                     order = Order.objects.create(customer=request.user)
                 
-                # if unpaid order exists in database already:
-                else:
-                    # get items in session storage cart
-                    session_cart = checkout_cart['orderItems']
-
-                    # get items currently in Order
-                    items_in_order = OrderItem.objects.filter(order=order)
-
-                    # delete all orders in the list
-                    # fixes doubled up items appearing in database due to nested loop I 
-                    # was trying to use to compare entries.
-                    for orderitem in items_in_order:
-                        orderitem.delete()
-
-                    # loop through all cart items and create new instances of OrderItem for them
-                    for item in session_cart:
-                        _id = int(item['listingId'])
-                        quantity = int(item['quantity'])
-
-                        # filter out items in session storage that have had their quantities reduced to 0
-                        if quantity > 0:
-                            product = Product.objects.filter(id=_id).first()
-                            order_item = OrderItem(order=order, product=product, quantity=quantity)
-                            order_item.save()
+                create_order_items(order, checkout_cart)
                     
                 return redirect('info')
     else:
@@ -119,6 +56,86 @@ def cart_view(request, *args, **kwargs):
             'footer': False
         }
     return render(request, "cart.html", context)
+
+def create_order_items(order, checkout_cart):
+    # get items in session storage cart
+    session_cart = checkout_cart['orderItems']
+
+    # get items currently in Order
+    items_in_order = OrderItem.objects.filter(order=order)
+
+    # delete all orders in the list
+    # fixes doubled up items appearing in database due to nested loop I 
+    # was trying to use to compare entries.
+    for orderitem in items_in_order:
+        orderitem.delete()
+
+    # loop through all cart items and create new instances of OrderItem for them
+    for item in session_cart:
+        _id = int(item['listingId'])
+        quantity = int(item['quantity'])
+
+        # filter out items in session storage that have had their quantities reduced to 0
+        if quantity > 0:
+            product = Product.objects.filter(id=_id).first()
+            order_item = OrderItem(order=order, product=product, quantity=quantity)
+            order_item.save()
+
+def process_delete_request(request, post_request, cart):
+    """
+    Processes request from user to delete item from their cart. 
+    Reduces deleted item quantity to 0 and returns response to be sent to js fetch.
+    """
+    id_to_delete = post_request['orderItemId']
+    id_to_delete = int(id_to_delete) - 1
+
+    # set quantity of item to 0, but do not actually delete entry from session.
+    # I did this to save from changing the indexes of other items in the
+    # session orderItems list.
+    cart['orderItems'][id_to_delete]['quantity'] = 0
+    
+    cart_total_price = set_new_cart_totals(request, cart)
+
+    # If cart completely empty, delete entire cart data in storage
+    if int(cart_total_price) == 0:
+        del request.session['cart']
+    
+    response = {
+        'total': int(cart_total_price),
+    }
+    return response
+
+def process_changed_input_request(request, post_request, cart):
+    """
+    Processes request from user to change cart item quantity. 
+    Returns response to be sent to js fetch.
+    """
+    cart_items = get_cart_items(cart)
+    # get item from cart items that was changed by user
+    input_id = post_request['idChangedInput']
+    input_id = ''.join(i for i in input_id if i.isdigit())
+
+    # get number in stock from database
+    listing_id = cart['orderItems'][int(input_id)]['listingId']
+    product = get_object_or_404(Product, id=listing_id)
+    max_num = product.num_in_stock
+
+    # get quantity user requested
+    value = int(post_request['value'])
+
+    # set quantity value by comparing number requested with maximum number in stock
+    quantity = value if value <= max_num else int(max_num)
+
+    cart['orderItems'][int(input_id)]['quantity'] = quantity
+
+    cart_total_price = set_new_cart_totals(request, cart)
+
+    response = {
+        'max_num': max_num,
+        'title': cart_items[int(input_id)]['product'].title,
+        'total': int(cart_total_price),
+    }
+    return response
 
 def get_cart_page_context(cart):
     """ gets context to display contents of cart """
