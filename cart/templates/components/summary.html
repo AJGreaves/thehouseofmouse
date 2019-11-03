@@ -18,7 +18,13 @@
                                 </div>
 
                                 <div class="total ml-auto">€<span
-                                        class="subtotal-js">{{ request.session.cart.total }}</span></div>
+                                        class="subtotal-js total-js">
+                                        {% if order.country.shipping_price %}
+                                        {{ request.session.cart.total|add:order.country.shipping_price }}.00
+                                        {% else %}
+                                        {{ request.session.cart.total }}
+                                        {% endif %}
+                                    </span></div>
                             </button>
                         </h2>
                     </div>
@@ -29,12 +35,6 @@
                             <div class="container-fluid">
                                 <div class="row">
                                     {% include 'components/cart-items.html' %}
-                                    <div class="col-12 text-right">
-                                        <h3 id="subtotal">Subtotal: €<span
-                                                class="subtotal-js">{{ request.session.cart.total }}</span></h3>
-                                        <p>Tax included.
-                                            <br>Shipping calculated during checkout.</p>
-                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -11,7 +11,7 @@ h1, h2, h3 {
     font-family: $heading
 }
 
-h4, h5 {
+h4, h5, h6 {
     font-family: $main-text;
     text-transform: uppercase;
 }
@@ -19,6 +19,13 @@ h4, h5 {
 h5 {
     font-size: 1.1rem;
     letter-spacing: 0.1rem;
+}
+
+h6.total {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
 }
 
 footer h3 {
