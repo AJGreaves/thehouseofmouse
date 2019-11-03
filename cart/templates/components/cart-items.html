@@ -28,7 +28,6 @@ condition loops through the orderItems and only displays them if their quantity 
         </div>
         <div class="col-5 col-xl-4">
 
-
             <!-- Loops through formset and pulls out the corresponding input field -->
             {% with forloop.counter as item_counter %}
             {% for form in formset %}
@@ -47,3 +46,15 @@ condition loops through the orderItems and only displays them if their quantity 
 </div>
 {% endif %}
 {% endfor %}
+
+<div class="col-12 text-right">
+    <h3 id="subtotal">Subtotal: €<span class="subtotal-js">{{ request.session.cart.total }}.00</span></h3>
+    {% if order.country.shipping_price %}
+    <p>Shipping: €{{ order.country.shipping_price }}</p>
+    <h6 class="total">Total: €<span class="total-js">{{ request.session.cart.total|add:order.country.shipping_price }}</span>.00</h6>
+    <p>Tax included</p>
+    {% else %}
+    <p>Tax included.
+        <br>Shipping calculated during checkout.</p>
+    {% endif %}
+</div>
