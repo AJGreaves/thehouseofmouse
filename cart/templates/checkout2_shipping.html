@@ -19,14 +19,23 @@
 
             <div class="card bg-light checkout-card">
                 <h6 class="checkout-heading">Contact</h6>
-                <p>example@email.com</p>
+                <p>{{user.email}}</p>
                 <hr>
                 <div class="d-flex justify-content-between">
                     <h6 class="checkout-heading">Ship to</h6>
-                    <span>Change</span>
+                    <a href="{% url 'info' %}">Change</a>
                 </div>
-
-                <p>Example Street 1, 1234AB Amsterdam, Netherlands</p>
+                <p>{{ order.full_name }},<br>
+                    {{ order.address_line_1 }},<br>
+                    {% if order.address_line_2 %}
+                        {{ order.address_line_2 }},<br>
+                    {% endif %}
+                    {{ order.town_or_city }},<br>
+                    {% if order.county %}
+                        {{ order.county }},<br>
+                    {% endif %}
+                    {{ order.postcode }},<br>
+                    {{ order.country }}</p>
             </div>
 
             <h6 class="checkout-heading mt-4">Shipping method</h6>
@@ -51,26 +60,30 @@
 
             </div>
 
-            <button type="submit" class="btn btn-cta btn-blue d-block mx-auto m-lg-0 ml-lg-auto mr-0">Continue to
-                payment</button>
+            <button type="submit" class="btn btn-cta btn-blue d-block mx-auto m-lg-0 ml-lg-auto mr-0">
+                Continue to payment
+            </button>
 
         </div>
 
         <!-- order summary section, hidden on medium screens and up -->
         <div id="shopping-cart-contents" class="d-none d-md-block col-md-6 card">
-            <div class="row">
-                <div class="col-12">
-                    <h3 class="checkout-heading pb-3 px-3">Your order summary</h3>
-                </div>
+            <form id="confirmCartForm" method="POST">
+                <div class="row">
+                    {% csrf_token %}
+                    <div class="col-12">
+                        <h3 class="checkout-heading pb-3 px-3">Your order summary</h3>
+                    </div>
 
-                {% include 'components/cart-items.html' %}
-                <div class="col-12 text-right">
-                    <hr>
-                    <h3 id="subtotal">Subtotal: <span>€105</span></h3>
-                    <p>Tax included.
-                        <br>Shipping calculated during checkout.</p>
+                    {% include 'components/cart-items.html' %}
+                    <div class="col-12 text-right">
+                        <h3 id="subtotal">Subtotal: €<span class="subtotal-js">{{ request.session.cart.total }}</span></h3>
+                        <h4>Shipping: €<span>??</span></h4>
+                        <p>Tax included.</p>
+                    </div>
                 </div>
-            </div>
+            </form>
+
         </div>
 
         <div class="col-12 text-center text-md-left p-3">

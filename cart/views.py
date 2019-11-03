@@ -122,7 +122,7 @@ def checkout_info_view(request, *args, **kwargs):
         'postcode': order.postcode,
         'country': order.country,
     }
-    
+
     shipping_info_form = NewOrderForm(initial=initial_data)
 
     new_context = {
@@ -141,12 +141,48 @@ def checkout_shipping_view(request, *args, **kwargs):
     """
     Renders checkout shipping page with navbar and footer removed
     """
-    context = {
-        "footer": False,
-        "navbar": False,
-        "active_pg": "checkout_shipping"
+    if request.session.get('cart'):
+        cart = request.session.get('cart')
+        context = get_cart_page_context(cart)
+
+        # get unpaid order for this user
+        order = Order.objects.filter(customer=request.user, paid=False).first()
+
+        if request.method == 'POST':
+            
+            if request.headers['Content-Type'] == 'application/json':
+                # FETCH REQUESTS
+                post_request = json.loads(request.body)
+
+                # if change to quantities in cart
+                if post_request.get('idChangedInput'):
+                    response = process_changed_input_request(request, post_request, cart)
+
+                # if user deleted item from cart
+                if post_request.get('orderItemId'):
+                    response = process_delete_request(request, post_request, cart)
+
+                return JsonResponse(response)
+
+            else:
+                checkout_cart = request.session['cart']
+                create_order_items(order, checkout_cart)
+
+    # If user trying to navigate to this page with nothing in their cart, redirect them to cart page
+    # that shows message "You have nothing in your cart yet."
+    else:
+        return redirect('cart')
+
+    new_context = {
+        **context,
+        **{
+            "active_pg": "checkout_shipping",
+            "navbar": False,
+            "order": order,
+            "user": request.user,
+        }
     }
-    return render(request, "checkout2_shipping.html", context)
+    return render(request, "checkout2_shipping.html", new_context)
 
 @login_required
 def checkout_payment_view(request, *args, **kwargs):

@@ -39,7 +39,7 @@
 
                     {% include 'components/cart-items.html' %}
                     <div class="col-12 text-right">
-                        <h3 id="subtotal">Subtotal: €<span id="subtotal-js">{{ request.session.cart.total }}</span></h3>
+                        <h3 id="subtotal">Subtotal: €<span class="subtotal-js">{{ request.session.cart.total }}</span></h3>
                         <p>Tax included.
                         <br>Shipping calculated during checkout.</p>
                     </div>

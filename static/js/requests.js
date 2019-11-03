@@ -76,7 +76,7 @@ $(document).ready(function () {
                         );
                         this.value = response.max_num;
                     };
-                    $('#subtotal-js').text(response.total)
+                    $('.subtotal-js').text(response.total)
 
                 })
                 .catch(err => console.log('ERROR: ' + err))
@@ -104,7 +104,7 @@ $(document).ready(function () {
                 })
                 .then(res => res.json())
                 .then(response => {
-                    $('#subtotal-js').text(response.total);
+                    $('.subtotal-js').text(response.total);
                     location.reload(); 
                 })
                 .catch(err => console.log('ERROR: ' + err))
