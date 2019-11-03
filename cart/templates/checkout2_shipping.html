@@ -68,16 +68,13 @@
 
         <!-- order summary section, hidden on medium screens and up -->
         <div id="shopping-cart-contents" class="d-none d-md-block col-md-6 card">
-            <form id="confirmCartForm" method="POST">
+            
                 <div class="row">
-                    {% csrf_token %}
                     <div class="col-12">
                         <h3 class="checkout-heading pb-3 px-3">Your order summary</h3>
                     </div>
-
-                    {% include 'components/cart-items.html' %}
+                    {% include 'components/orderitem-list.html' %}
                 </div>
-            </form>
 
         </div>
 
