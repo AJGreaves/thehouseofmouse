@@ -112,20 +112,18 @@ def checkout_info_view(request, *args, **kwargs):
     else:
         return redirect('cart')
 
-    if order.full_name:
-        initial_data = {
-            'full_name': order.full_name,
-            'address_line_1': order.address_line_1,
-            'address_line_2': order.address_line_2,
-            'town_or_city': order.town_or_city,
-            'county': order.county,
-            'postcode': order.postcode,
-            'country': order.country,
-        }
-        shipping_info_form = NewOrderForm(initial=initial_data)
-    else:
-        shipping_info_form = NewOrderForm
-
+    # Get any data for shipping info already in order:
+    initial_data = {
+        'full_name': order.full_name,
+        'address_line_1': order.address_line_1,
+        'address_line_2': order.address_line_2,
+        'town_or_city': order.town_or_city,
+        'county': order.county,
+        'postcode': order.postcode,
+        'country': order.country,
+    }
+    
+    shipping_info_form = NewOrderForm(initial=initial_data)
 
     new_context = {
         **context,
