@@ -62,3 +62,10 @@ footer a:hover {
     color: $color2;
     text-decoration: none;
 }
+
+.order-card {
+    background-color: $color-light;
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin: 10px;
+}
