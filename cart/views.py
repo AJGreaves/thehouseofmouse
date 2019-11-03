@@ -124,7 +124,6 @@ def checkout_shipping_view(request, *args, **kwargs):
     """
     Renders checkout shipping page with navbar and footer removed
     """
-
     if not request.session.get('cart'):
         return redirect('cart')
 
@@ -136,7 +135,7 @@ def checkout_shipping_view(request, *args, **kwargs):
         order = Order.objects.filter(customer=request.user, paid=False).first()
 
         if request.method == 'POST':
-            return render(request, 'checkout3_payment.html')
+            return redirect('payment')
 
         new_context = {
             **context,
@@ -154,12 +153,30 @@ def checkout_payment_view(request, *args, **kwargs):
     """
     Renders checkout payment page with navbar and footer removed
     """
-    context = {
-        "footer": False,
-        "navbar": False,
-        "active_pg": "checkout_payment"
-    }
-    return render(request, "checkout3_payment.html", context)
+    if not request.session.get('cart'):
+        return redirect('cart')
+    
+    else:
+        cart = request.session.get('cart')
+        context = get_cart_page_context(cart)
+
+        # get unpaid order for this user
+        order = Order.objects.filter(customer=request.user, paid=False).first()
+
+        if request.method == 'POST':
+            # when stripe successful update order paid
+            return redirect('confirm')
+
+        new_context = {
+            **context,
+            **{
+                "active_pg": "checkout_payment",
+                "navbar": False,
+                "order": order,
+                "user": request.user,
+            }
+        }
+        return render(request, "checkout3_payment.html", new_context)
 
 @login_required
 def checkout_confirm_view(request, *args, **kwargs):
