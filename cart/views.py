@@ -63,7 +63,12 @@ def checkout_info_view(request, *args, **kwargs):
     Renders checkout info page with navbar and footer removed
     """
 
-    if request.session.get('cart'):
+    # If user trying to navigate to this page with nothing in their cart, redirect them to cart page
+    # that shows message "You have nothing in your cart yet."
+    if not request.session.get('cart'):
+        return redirect('cart')
+
+    else:
         cart = request.session.get('cart')
         context = get_cart_page_context(cart)
 
@@ -72,45 +77,23 @@ def checkout_info_view(request, *args, **kwargs):
 
         if request.method == 'POST':
             
-            if request.headers['Content-Type'] == 'application/json':
-                # FETCH REQUESTS
-                post_request = json.loads(request.body)
+            order_form = NewOrderForm(request.POST)
 
-                # if change to quantities in cart
-                if post_request.get('idChangedInput'):
-                    response = process_changed_input_request(request, post_request, cart)
-
-                # if user deleted item from cart
-                if post_request.get('orderItemId'):
-                    response = process_delete_request(request, post_request, cart)
-
-                return JsonResponse(response)
+            if order_form.is_valid():
+                # Extract form data and insert into order instance.
+                order.full_name = request.POST.get('full_name')
+                order.address_line_1 = request.POST.get('address_line_1')
+                order.address_line_2 = request.POST.get('address_line_2')
+                order.town_or_city = request.POST.get('town_or_city')
+                order.county = request.POST.get('county')
+                order.postcode = request.POST.get('postcode').upper()
+                order.country = ShippingDestination.objects.get(id=request.POST.get('country'))
+                order.save()
 
             else:
-                checkout_cart = request.session['cart']
-                create_order_items(order, checkout_cart)
-                
-                order_form = NewOrderForm(request.POST)
-                if order_form.is_valid():
-                    # Extract form data and insert into order instance.
-                    order.full_name = request.POST.get('full_name')
-                    order.address_line_1 = request.POST.get('address_line_1')
-                    order.address_line_2 = request.POST.get('address_line_2')
-                    order.town_or_city = request.POST.get('town_or_city')
-                    order.county = request.POST.get('county')
-                    order.postcode = request.POST.get('postcode').upper()
-                    order.country = ShippingDestination.objects.get(id=request.POST.get('country'))
-                    order.save()
+                return HttpResponse(order_form.errors)
 
-                else:
-                    return HttpResponse(order_form.errors)
-
-                return redirect('shipping')
-    
-    # If user trying to navigate to this page with nothing in their cart, redirect them to cart page
-    # that shows message "You have nothing in your cart yet."
-    else:
-        return redirect('cart')
+            return redirect('shipping')
 
     # Get any data for shipping info already in order:
     initial_data = {
@@ -141,7 +124,11 @@ def checkout_shipping_view(request, *args, **kwargs):
     """
     Renders checkout shipping page with navbar and footer removed
     """
-    if request.session.get('cart'):
+
+    if not request.session.get('cart'):
+        return redirect('cart')
+
+    else:
         cart = request.session.get('cart')
         context = get_cart_page_context(cart)
 
@@ -149,40 +136,18 @@ def checkout_shipping_view(request, *args, **kwargs):
         order = Order.objects.filter(customer=request.user, paid=False).first()
 
         if request.method == 'POST':
-            
-            if request.headers['Content-Type'] == 'application/json':
-                # FETCH REQUESTS
-                post_request = json.loads(request.body)
+            return render(request, 'checkout3_payment.html')
 
-                # if change to quantities in cart
-                if post_request.get('idChangedInput'):
-                    response = process_changed_input_request(request, post_request, cart)
-
-                # if user deleted item from cart
-                if post_request.get('orderItemId'):
-                    response = process_delete_request(request, post_request, cart)
-
-                return JsonResponse(response)
-
-            else:
-                checkout_cart = request.session['cart']
-                create_order_items(order, checkout_cart)
-
-    # If user trying to navigate to this page with nothing in their cart, redirect them to cart page
-    # that shows message "You have nothing in your cart yet."
-    else:
-        return redirect('cart')
-
-    new_context = {
-        **context,
-        **{
-            "active_pg": "checkout_shipping",
-            "navbar": False,
-            "order": order,
-            "user": request.user,
+        new_context = {
+            **context,
+            **{
+                "active_pg": "checkout_shipping",
+                "navbar": False,
+                "order": order,
+                "user": request.user,
+            }
         }
-    }
-    return render(request, "checkout2_shipping.html", new_context)
+        return render(request, "checkout2_shipping.html", new_context)
 
 @login_required
 def checkout_payment_view(request, *args, **kwargs):
