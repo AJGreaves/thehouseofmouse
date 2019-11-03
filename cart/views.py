@@ -1,11 +1,11 @@
 import json
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.forms import formset_factory
 from products.models import Product
 from .forms import OrderItemForm, NewOrderForm
-from .models import Order, OrderItem
+from .models import Order, OrderItem, ShippingDestination
 
 # Create your views here.
 @login_required
@@ -92,10 +92,23 @@ def checkout_info_view(request, *args, **kwargs):
                 
                 order_form = NewOrderForm(request.POST)
                 if order_form.is_valid():
-                    print('form is valid')
+                    # Extract form data and insert into order instance.
+                    order.full_name = request.POST.get('full_name')
+                    order.address_line_1 = request.POST.get('address_line_1')
+                    order.address_line_2 = request.POST.get('address_line_2') if request.POST.get('address_line_2') else None
+                    order.town_or_city = request.POST.get('town_or_city')
+                    order.county = request.POST.get('county') if request.POST.get('county') else None
+                    order.postcode = request.POST.get('postcode').upper()
+                    order.country = ShippingDestination.objects.get(id=request.POST.get('country'))
+                    order.save()
+
+                else:
+                    return HttpResponse(order_form.errors)
 
                 return redirect('shipping')
-                
+    
+    # If user trying to navigate to this page with nothing in their cart, redirect them to cart page
+    # that shows message "You have nothing in your cart yet."
     else:
         return redirect('cart')
 
