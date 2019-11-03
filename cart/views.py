@@ -67,6 +67,9 @@ def checkout_info_view(request, *args, **kwargs):
         cart = request.session.get('cart')
         context = get_cart_page_context(cart)
 
+        # get unpaid order for this user
+        order = Order.objects.filter(customer=request.user, paid=False).first()
+
         if request.method == 'POST':
             
             if request.headers['Content-Type'] == 'application/json':
@@ -84,9 +87,6 @@ def checkout_info_view(request, *args, **kwargs):
                 return JsonResponse(response)
 
             else:
-
-                # get unpaid order for this user
-                order = Order.objects.filter(customer=request.user, paid=False).first()
                 checkout_cart = request.session['cart']
                 create_order_items(order, checkout_cart)
                 
@@ -95,9 +95,9 @@ def checkout_info_view(request, *args, **kwargs):
                     # Extract form data and insert into order instance.
                     order.full_name = request.POST.get('full_name')
                     order.address_line_1 = request.POST.get('address_line_1')
-                    order.address_line_2 = request.POST.get('address_line_2') if request.POST.get('address_line_2') else None
+                    order.address_line_2 = request.POST.get('address_line_2')
                     order.town_or_city = request.POST.get('town_or_city')
-                    order.county = request.POST.get('county') if request.POST.get('county') else None
+                    order.county = request.POST.get('county')
                     order.postcode = request.POST.get('postcode').upper()
                     order.country = ShippingDestination.objects.get(id=request.POST.get('country'))
                     order.save()
@@ -112,7 +112,20 @@ def checkout_info_view(request, *args, **kwargs):
     else:
         return redirect('cart')
 
-    shipping_info_form = NewOrderForm
+    if order.full_name:
+        initial_data = {
+            'full_name': order.full_name,
+            'address_line_1': order.address_line_1,
+            'address_line_2': order.address_line_2,
+            'town_or_city': order.town_or_city,
+            'county': order.county,
+            'postcode': order.postcode,
+            'country': order.country,
+        }
+        shipping_info_form = NewOrderForm(initial=initial_data)
+    else:
+        shipping_info_form = NewOrderForm
+
 
     new_context = {
         **context,
