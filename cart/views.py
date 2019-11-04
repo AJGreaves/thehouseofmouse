@@ -145,6 +145,7 @@ def checkout_shipping_view(request, *args, **kwargs):
                 "navbar": False,
                 "order": order,
                 "user": request.user,
+                'publishable': settings.STRIPE_PUBLISHABLE
             }
         }
         return render(request, "checkout2_shipping.html", new_context)

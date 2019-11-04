@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="copyright" content="The House of Mouse is a registered trademark of Anna Greaves Inc.">
-    <meta name="description" content="{% block meta_description %}{% endblock %}"> 
+    <meta name="description" content="{% block meta_description %}{% endblock %}">
     <meta name="robots" content="{% block meta_robots %}{% endblock %}">
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -21,8 +21,6 @@
 
     <!-- Font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <!-- javascript for stripe -->
-    <script src="https://js.stripe.com/v3/"></script>
 
     <!-- custom css -->
     <link rel="stylesheet" href="{% static 'css/main.min.css' %}">
@@ -30,19 +28,19 @@
 </head>
 
 <body>
-
+    <noscript>You need to enable JavaScript to run this site.</noscript>
     {% if navbar != False %}
     {% include 'components/navbar.html' %}
     {% endif %}
 
     {% if messages %}
     {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}">
-            <div class="messages">
-                    {{ message }}
-                
-            </div>
+    <div class="alert alert-{{ message.tags }}">
+        <div class="messages">
+            {{ message }}
+
         </div>
+    </div>
     {% endfor %}
     {% endif %}
 
@@ -55,7 +53,17 @@
 
     <!-- script for mailchimp -->
     <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
-    <script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='MMERGE1';ftypes[1]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+    <script type='text/javascript'>
+        (function ($) {
+            window.fnames = new Array();
+            window.ftypes = new Array();
+            fnames[0] = 'EMAIL';
+            ftypes[0] = 'email';
+            fnames[1] = 'MMERGE1';
+            ftypes[1] = 'text';
+        }(jQuery));
+        var $mcj = jQuery.noConflict(true);
+    </script>
 
     <!-- scripts for bootstrap -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -68,11 +76,72 @@
     <!-- custom js -->
     <script src="{% static 'js/main.js' %}"></script>
     <script src="{% static 'js/cookie.js' %}"></script>
-    <script src="{% static 'js/stripe.js' %}"></script>
+    <!-- <script src="{% static 'js/stripe.js' %}"></script> -->
 
     {% if stock_arr or cart_items %}
     <script src="{% static 'js/requests.js' %}"></script>
     {% endif %}
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        var stripe = Stripe('pk_test_eggAhpupSlwlC3c6Se8mYMBH00kyDPiw3d');
+        var elements = stripe.elements();
+        var style = {
+            base: {
+                color: '#32325d',
+                fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                fontSmoothing: 'antialiased',
+                fontSize: '16px',
+                '::placeholder': {
+                    color: '#aab7c4'
+                }
+            },
+            invalid: {
+                color: '#fa755a',
+                iconColor: '#fa755a'
+            }
+        };
+        var card = elements.create('card', {
+            style: style
+        });
+        card.mount('#card-element');
+        // Handle real-time validation errors from the card Element.
+        card.addEventListener('change', function (event) {
+            var displayError = document.getElementById('card-errors');
+            if (event.error) {
+                displayError.textContent = event.error.message;
+            } else {
+                displayError.textContent = '';
+            }
+        });
+        // Handle form submission.
+        var form = document.getElementById('payment-form');
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            stripe.createToken(card).then(function (result) {
+                if (result.error) {
+                    // Inform the user if there was an error.
+                    var errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = result.error.message;
+                } else {
+                    // Send the token to your server.
+                    stripeTokenHandler(result.token);
+                }
+            });
+        });
+        // Submit the form with the token ID.
+        function stripeTokenHandler(token) {
+            // Insert the token ID into the form so it gets submitted to the server
+            var form = document.getElementById('payment-form');
+            var hiddenInput = document.createElement('input');
+            hiddenInput.setAttribute('type', 'hidden');
+            hiddenInput.setAttribute('name', 'stripeToken');
+            hiddenInput.setAttribute('value', token.id);
+            form.appendChild(hiddenInput);
+            // Submit the form
+            form.submit();
+        }
+    </script>
 </body>
+
 
 </html>
