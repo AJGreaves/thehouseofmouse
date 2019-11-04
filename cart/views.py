@@ -1,6 +1,6 @@
 import json
 import env
-import stripe
+import stripe # pylint error appears for this import, but code imported works!
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
