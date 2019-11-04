@@ -17,7 +17,6 @@
             <hr id="progress-line">
             <div id="progress-circles" class="d-flex justify-content-between">
                 <div class="progress-step">
-                    <a href="{% url 'info' %}">
                         <div class="progress-circle active">
                             {% if active_pg == 'checkout_info' %}
                             1
@@ -26,12 +25,10 @@
                             {% endif %}
                         </div>
                         <p>Info</p>
-                    </a>
 
                 </div>
 
                 <div class="progress-step">
-                    <a href="{% url 'shipping' %}">
                         <div
                             class="progress-circle {% if active_pg == 'checkout_shipping' or active_pg != 'checkout_info' %}active{% endif %}">
                             {% if active_pg == 'checkout_info' or active_pg == 'checkout_shipping' %}
@@ -41,12 +38,10 @@
                             {% endif %}
                         </div>
                         <p>Shipping</p>
-                    </a>
 
                 </div>
 
                 <div class="progress-step">
-                    <a href="{% url 'payment' %}">
                         <div
                             class="progress-circle {% if active_pg == 'checkout_payment' or active_pg == 'checkout_confirm' %}active{% endif %}">
                             {% if active_pg != 'checkout_confirm' %}
@@ -56,17 +51,13 @@
                             {% endif %}
                         </div>
                         <p>Payment</p>
-                    </a>
                 </div>
 
                 <div class="progress-step">
-                    <a href="{% url 'confirm' %}">
                         <div class="progress-circle {% if active_pg == 'checkout_confirm' %}active{% endif %}">
                             4
                         </div>
                         <p>Confirm</p>
-                    </a>
-
                 </div>
             </div>
         </div>
