@@ -1,4 +1,6 @@
 import json
+import env
+import stripe
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
@@ -8,6 +10,8 @@ from products.models import Product
 from .forms import OrderItemForm, NewOrderForm
 from .models import Order, OrderItem, ShippingDestination
 from django.conf import settings
+
+stripe.api_key = settings.STRIPE_SECRET
 
 # Create your views here.
 @login_required
