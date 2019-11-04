@@ -1,32 +1,39 @@
-$(function() {
-    $("#payment-form").submit(function() {
-        var form = this;
-        var card = {
-            number: $("#id_credit_card_number").val(),
-            expMonth: $("#id_expiry_month").val(),
-            expYear: $("#id_expiry_year").val(),
-            cvc: $("#id_cvv").val()
-        };
-    
-    Stripe.createToken(card, function(status, response) {
-        if (status === 200) {
-            $("#credit-card-errors").hide();
-            $("#id_stripe_id").val(response.id);
+const stripe = Stripe('pk_test_HBIRLDOMqTFcuRZWxR4BjsNf00a93m4id3');
+const elements = stripe.elements();
 
-            // Prevent the credit card details from being submitted
-            // to our server
-            $("#id_credit_card_number").removeAttr('name');
-            $("#id_cvv").removeAttr('name');
-            $("#id_expiry_month").removeAttr('name');
-            $("#id_expiry_year").removeAttr('name');
-
-            form.submit();
-        } else {
-            $("#stripe-error-message").text(response.error.message);
-            $("#credit-card-errors").show();
-            $("#validate_card_btn").attr("disabled", false);
+// Custom styling can be passed to options when creating an Element.
+// (Note that this demo uses a wider set of styles than the guide below.)
+var style = {
+    base: {
+        color: '#32325d',
+        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+        fontSmoothing: 'antialiased',
+        fontSize: '16px',
+        '::placeholder': {
+            color: '#aab7c4'
         }
-    });
-    return false;
-    });
+    },
+    invalid: {
+        color: '#fa755a',
+        iconColor: '#fa755a'
+    }
+};
+
+// Create an instance of the card Element.
+const card = elements.create('card', {
+    style
+});
+
+// Add an instance of the card Element into the `card-element` <div>.
+card.mount('#card-element');
+
+card.addEventListener('change', ({
+    error
+}) => {
+    const displayError = document.getElementById('card-errors');
+    if (error) {
+        displayError.textContent = error.message;
+    } else {
+        displayError.textContent = '';
+    }
 });

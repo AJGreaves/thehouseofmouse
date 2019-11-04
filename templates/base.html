@@ -21,19 +21,11 @@
 
     <!-- Font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- javascript for stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
 
     <!-- custom css -->
     <link rel="stylesheet" href="{% static 'css/main.min.css' %}">
-
-    <!-- javascript for stripe -->
-    {% if publishable %}
-    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-    <script type="text/javascript">
-        //<![CDATA[
-            Stripe.publishableKey = '{{ publishable }}';
-        //]]>
-    </script>
-    {% endif %}
 
 </head>
 
