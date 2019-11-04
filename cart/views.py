@@ -198,7 +198,7 @@ def checkout_payment_view(request, *args, **kwargs):
 
         session = stripe.checkout.Session.create(
             payment_method_types=['card'],
-            line_items=[line_items],
+            line_items=line_items,
             success_url='https://127.0.0.1:8000/cart/checkout/confirm/{CHECKOUT_SESSION_ID}',
             cancel_url='https://127.0.0.1:8000/all-products/',
         )
