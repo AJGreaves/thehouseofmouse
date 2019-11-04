@@ -46,9 +46,14 @@
 
             <h6 class="checkout-heading mt-4">Payment</h6>
             <p>All transactions are secure and encrypted</p>
-            <p>---- Credit card form here ----</p>
+            <form method="POST">
+                {% csrf_token %}
+                <p>---- Credit card form here ----</p>
 
-            <button id="pay-now-btn" type="submit" class="btn btn-cta btn-blue d-block mx-auto m-lg-0 ml-lg-auto mr-0">Pay Now</button>
+                <button id="pay-now-btn" type="submit"
+                    class="btn btn-cta btn-blue d-block mx-auto m-lg-0 ml-lg-auto mr-0">Pay Now</button>
+            </form>
+
 
         </div>
 
@@ -65,7 +70,8 @@
 
         <div class="col-12 text-center text-md-left p-3">
             <div class="text-center text-md-left my-2">
-                <a href="{% url 'shipping' %}" class="mx-auto blue-link"><i class="fas fa-arrow-left"></i> Return to Shipping</a>
+                <a href="{% url 'shipping' %}" class="mx-auto blue-link"><i class="fas fa-arrow-left"></i> Return to
+                    Shipping</a>
             </div>
             <a href="#" class="mr-2">Refund Policy</a>
             <a href="#" class="ml-2">Terms of Service</a>
