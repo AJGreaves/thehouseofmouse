@@ -169,31 +169,38 @@ def checkout_payment_view(request, *args, **kwargs):
         # get unpaid order for this user
         order = Order.objects.filter(customer=request.user, paid=False).first()
 
-        if request.method == 'POST':
+        line_items = []
 
-            total = 0
-            for item in cart['orderItems']:
-                product = get_object_or_404(Product, pk=item['listingId'])
-                total += item['quantity'] * product.price
+        for item in cart['orderItems']:
+            product = get_object_or_404(Product, pk=item['listingId'])
+            name = product.title
+            price = int(product.price * 100)
+            quantity = item['quantity']
+            line_item = {
+                'name': name,
+                'amount': price,
+                'currency': 'eur',
+                'quantity': quantity,
+            }
+            line_items.append(line_item)
 
-            total += order.country.shipping_price
-            print(total)
+        shipping_cost = int(order.country.shipping_price * 100)
 
-            # when stripe successful update order paid
-            # return redirect('confirm')
-        
+        shipping_item = {
+            'name': 'Shipping cost',
+            'amount': shipping_cost,
+            'currency': 'eur',
+            'quantity': 1,
+        }
+
+        line_items.append(shipping_item)
+        print(line_items)
+
         session = stripe.checkout.Session.create(
             payment_method_types=['card'],
-            line_items=[{
-                'name': 'T-shirt',
-                'description': 'Comfortable cotton t-shirt',
-                'images': ['https://example.com/t-shirt.png'],
-                'amount': 500,
-                'currency': 'eur',
-                'quantity': 1,
-            }],
-            success_url='https://example.com/success?session_id={CHECKOUT_SESSION_ID}',
-            cancel_url='https://example.com/cancel',
+            line_items=[line_items],
+            success_url='https://127.0.0.1:8000/cart/checkout/confirm/{CHECKOUT_SESSION_ID}',
+            cancel_url='https://127.0.0.1:8000/all-products/',
         )
 
         new_context = {
