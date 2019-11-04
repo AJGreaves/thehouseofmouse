@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.forms import formset_factory
 from products.models import Product
-from .forms import OrderItemForm, NewOrderForm
+from .forms import OrderItemForm, NewOrderForm, MakePaymentForm
 from .models import Order, OrderItem, ShippingDestination
 
 # Create your views here.
@@ -164,8 +164,27 @@ def checkout_payment_view(request, *args, **kwargs):
         order = Order.objects.filter(customer=request.user, paid=False).first()
 
         if request.method == 'POST':
+
+            total = 0
+            for item in cart['orderItems']:
+                product = get_object_or_404(Product, pk=item['listingId'])
+                total += item['quantity'] * product.price
+
+            total += order.country.shipping_price
+            print(total)
+
+            # payment_form = MakePaymentForm(request.POST)
+
+            # if payment_form.is_valid():
+            #     try:
+            #         customer = stripe.Charge.create(
+            #             amount=int(total * 100),
+            #             currency="EUR",
+            #             description=request.user.email,
+            #             card=payment_form.cleaned_data['stripe_id']
+            #         )
             # when stripe successful update order paid
-            return redirect('confirm')
+            # return redirect('confirm')
 
         new_context = {
             **context,
@@ -193,6 +212,7 @@ def checkout_confirm_view(request, *args, **kwargs):
 
 
 # HELPER FUNCTIONS
+
 def create_order_items(order, checkout_cart):
     """
     Creates new OrderItems for Order from cart stored in session. 
