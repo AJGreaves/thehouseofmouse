@@ -25,12 +25,33 @@
     <!-- custom css -->
     <link rel="stylesheet" href="{% static 'css/main.min.css' %}">
 
+    <!-- javascript for stripe -->
+    {% if publishable %}
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script type="text/javascript">
+        //<![CDATA[
+            Stripe.publishableKey = '{{ publishable }}';
+        //]]>
+    </script>
+    {% endif %}
+
 </head>
 
 <body>
 
     {% if navbar != False %}
     {% include 'components/navbar.html' %}
+    {% endif %}
+
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            <div class="messages">
+                    {{ message }}
+                
+            </div>
+        </div>
+    {% endfor %}
     {% endif %}
 
     {% block content %}
@@ -55,6 +76,7 @@
     <!-- custom js -->
     <script src="{% static 'js/main.js' %}"></script>
     <script src="{% static 'js/cookie.js' %}"></script>
+    <script src="{% static 'js/stripe.js' %}"></script>
 
     {% if stock_arr or cart_items %}
     <script src="{% static 'js/requests.js' %}"></script>

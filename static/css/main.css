@@ -384,6 +384,13 @@ footer a:hover {
   text-decoration: none;
 }
 
+.order-card {
+  background-color: #E5E5E5;
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin: 10px;
+}
+
 .home-carousel-item {
   height: 66vh;
   width: 100vw;
@@ -619,7 +626,7 @@ footer a:hover {
 #shopping-cart-contents {
   border: 1px solid lightgray;
   border-radius: 6px;
-  margin: 1.5rem 0;
+  margin-top: 1.5rem;
   padding: 1rem;
   background-color: #f8f9fa;
 }

@@ -1,11 +1,16 @@
 import json
+import stripe
 from django.http import JsonResponse, HttpResponse
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.forms import formset_factory
 from products.models import Product
 from .forms import OrderItemForm, NewOrderForm, MakePaymentForm
 from .models import Order, OrderItem, ShippingDestination
+from django.conf import settings
+
+stripe.api_key = settings.STRIPE_SECRET
 
 # Create your views here.
 @login_required
@@ -173,18 +178,34 @@ def checkout_payment_view(request, *args, **kwargs):
             total += order.country.shipping_price
             print(total)
 
-            # payment_form = MakePaymentForm(request.POST)
+            payment_form = MakePaymentForm(request.POST)
 
-            # if payment_form.is_valid():
-            #     try:
-            #         customer = stripe.Charge.create(
-            #             amount=int(total * 100),
-            #             currency="EUR",
-            #             description=request.user.email,
-            #             card=payment_form.cleaned_data['stripe_id']
-            #         )
+            if payment_form.is_valid():
+                try:
+                    customer = stripe.Charge.create(
+                        amount=int(total * 100),
+                        currency="EUR",
+                        description=request.user.email,
+                        card=payment_form.cleaned_data['stripe_id']
+                    )
+                except stripe.error.CartError:
+                    messages.error(request, "Your card was declined!")
+
+                if customer.paid:
+                    messages.error(request, "You have successfully paid")
+                    request.session['cart'] = {}
+                    return redirect(reverse('home'))
+                else:
+                    messages.error(request, "Unable to take payment")
+
+            else:
+                print(payment_form.errors)
+                messages.error(request, "We were unable to take a payment with that card!")
+
+
             # when stripe successful update order paid
             # return redirect('confirm')
+        payment_form = MakePaymentForm()
 
         new_context = {
             **context,
@@ -193,6 +214,8 @@ def checkout_payment_view(request, *args, **kwargs):
                 "navbar": False,
                 "order": order,
                 "user": request.user,
+                "payment_form": payment_form,
+                "publishable": settings.STRIPE_PUBLISHABLE
             }
         }
         return render(request, "checkout3_payment.html", new_context)

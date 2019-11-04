@@ -2,6 +2,8 @@
 
 {% load staticfiles %}
 
+{% load crispy_forms_tags %}
+
 <!-- listing name here (SEO) -->
 {% block title %}Checkout Step 3 Payment | The House of Mouse{% endblock %}
 
@@ -26,15 +28,15 @@
                     <a href="{% url 'info' %}">Change</a>
                 </div>
                 <p>{{ order.full_name }},<br>
-                    {{ order.address_line_1 }},<br>
+                    {{ order.address_line_1 }}, 
                     {% if order.address_line_2 %}
-                    {{ order.address_line_2 }},<br>
+                    {{ order.address_line_2 }}, 
                     {% endif %}
-                    {{ order.town_or_city }},<br>
+                    {{ order.town_or_city }}, 
                     {% if order.county %}
-                    {{ order.county }},<br>
+                    {{ order.county }}, 
                     {% endif %}
-                    {{ order.postcode }},<br>
+                    {{ order.postcode }}, 
                     {{ order.country }}</p>
                 <hr>
                 <div class="d-flex justify-content-between">
@@ -46,20 +48,24 @@
 
             <h6 class="checkout-heading mt-4">Payment</h6>
             <p>All transactions are secure and encrypted</p>
-            <form method="POST">
+            <form role="form" method="POST" id="payment-form">
                 {% csrf_token %}
-                <p>---- Credit card form here ----</p>
+                <div id="credit-card-errors" style="display: none;">
+                    <div id="alert-message block-message error" id="stripe-error-message"></div>
+                </div>
+                {{ payment_form|crispy }}
 
-                <button id="pay-now-btn" type="submit"
-                    class="btn btn-cta btn-blue d-block mx-auto m-lg-0 ml-lg-auto mr-0">Pay Now</button>
+                <input id="pay-now-btn" name="commit" type="submit"
+                    class="btn btn-cta btn-blue d-block mx-auto m-lg-0 ml-lg-auto mr-0"
+                    id="submit_payment_btn" value="Pay Now">
             </form>
 
 
         </div>
 
         <!-- order summary section, hidden on medium screens and up -->
-        <div id="shopping-cart-contents" class="d-none d-md-block col-md-6 card">
-            <div class="row">
+        <div class="d-none d-md-block col-md-6">
+            <div class="row" id="shopping-cart-contents">
                 <div class="col-9">
                     <h3 class="checkout-heading pb-3 px-3">Your order summary</h3>
                 </div>

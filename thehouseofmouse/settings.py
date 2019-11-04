@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     # 3rd party
     'crispy_forms',
+    'stripe',
 
     # Custom
     'products',
