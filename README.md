@@ -224,6 +224,7 @@ Password | password | text, `maxlength="15"` | string -->
 - [Browserstack](https://www.browserstack.com/) to test functionality on all browsers and devices.
 - [Am I Responsive](http://ami.responsivedesign.is/) to create the images in this readme file of each page displayed on different screen sizes.
 <!-- - database info here -->
+https://obfuscator.io/
 
 ### Libraries
 - [JQuery](https://jquery.com) to simplify DOM manipulation.
