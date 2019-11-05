@@ -1,0 +1,40 @@
+.full-order-card {
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    margin-top: 1.5rem;
+    background-color: white;
+}
+
+.order-header {
+    background-color: $color-light;
+    border-bottom: 1px solid lightgray;
+    padding: 1rem;
+    border-radius: 6px 6px 0 0;
+}
+
+.order-footer {
+    background-color: $color-light;
+    border-bottom: 1px solid lightgray;
+    padding: 1rem 0.5rem;
+    border-radius: 0 0 6px 6px;
+}
+
+h6.sml-cap-heading {
+    font-family: $main-text;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+.sml-data {
+    font-family: $main-text;
+    font-size: 0.8rem;
+}
+.order-summary-short {
+    padding: 1rem;
+}
+
+.sml-data.total {
+    margin: 0;
+    font-weight: bold;
+}

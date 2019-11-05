@@ -798,6 +798,48 @@ a.blue-link {
   font-weight: bold;
 }
 
+.full-order-card {
+  border: 1px solid lightgray;
+  border-radius: 6px;
+  margin-top: 1.5rem;
+  background-color: white;
+}
+
+.order-header {
+  background-color: #E5E5E5;
+  border-bottom: 1px solid lightgray;
+  padding: 1rem;
+  border-radius: 6px 6px 0 0;
+}
+
+.order-footer {
+  background-color: #E5E5E5;
+  border-bottom: 1px solid lightgray;
+  padding: 1rem 0.5rem;
+  border-radius: 0 0 6px 6px;
+}
+
+h6.sml-cap-heading {
+  font-family: "Lato", sans-serif;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.sml-data {
+  font-family: "Lato", sans-serif;
+  font-size: 0.8rem;
+}
+
+.order-summary-short {
+  padding: 1rem;
+}
+
+.sml-data.total {
+  margin: 0;
+  font-weight: bold;
+}
+
 @media screen and (min-width: 768px) {
   /* replacement image that will look better when image wider than tall */
   #carousel-img-3 {
