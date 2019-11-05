@@ -82,6 +82,9 @@
     <script src="{% static 'js/obfusicate.js' %}"></script>
     <script src="{% static 'js/stripe.js' %}"></script>
     {% if page == "contact" %}
+    <script type="text/javascript">
+        const ejs = '{{emailjs_user_id}}';
+    </script>
     <script src="{% static 'js/emailjs.js' %}"></script>
     {% endif %}
 </body>

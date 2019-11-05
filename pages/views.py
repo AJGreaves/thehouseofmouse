@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from products.models import Product
-from django.contrib import messages
+from django.conf import settings
 from .forms import ContactForm
+
 
 # Create your views here.
 def home_view(request, *args, **kwargs):
@@ -32,9 +33,12 @@ def contact_view(request, *args, **kwargs):
     else:
         contact_form = ContactForm()
 
+    emailjs_user_id = settings.EMAILJS_USER_ID
+
     context = {
         "page": "contact",
-        "form": contact_form
+        "form": contact_form,
+        "emailjs_user_id": emailjs_user_id
     }
 
     return render(request, "contact.html", context)
