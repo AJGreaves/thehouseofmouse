@@ -1,6 +1,8 @@
 // // All code in this file provided by https://stripe.com/docs/payments/cards/collecting/web
 
-let stripe = Stripe('pk_test_HBIRLDOMqTFcuRZWxR4BjsNf00a93m4id3');
+const s_pub = returnStripePublishableKey();
+
+let stripe = Stripe(s_pub);
 let elements = stripe.elements();
 
 $('#submit-payment-btn').click(function() {

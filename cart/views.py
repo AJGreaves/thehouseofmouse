@@ -13,6 +13,7 @@ from .models import Order, OrderItem, ShippingDestination
 
 
 stripe.api_key = settings.STRIPE_SECRET
+STRIPE_PUBLISHABLE = settings.STRIPE_PUBLISHABLE
 
 # Create your views here.
 @login_required
@@ -183,7 +184,8 @@ def checkout_shipping_view(request, *args, **kwargs):
                 "navbar": False,
                 "order": order,
                 "user": request.user,
-                "stripe_session_id": stripe_session_id
+                "stripe_session_id": stripe_session_id,
+                "publishable": STRIPE_PUBLISHABLE
             }
         }
         return render(request, "checkout2_shipping.html", new_context)

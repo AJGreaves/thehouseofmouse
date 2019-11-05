@@ -79,7 +79,7 @@
     <!-- custom js -->
     <script src="{% static 'js/main.js' %}"></script>
     <script src="{% static 'js/cookie.js' %}"></script>
-    
+
 
     {% if stock_arr or cart_items %}
     <script src="{% static 'js/requests.js' %}"></script>
@@ -90,6 +90,7 @@
         const s_id = '{{ stripe_session_id }}';
     </script>
     {% endif %}
+    <script src="{% static 'js/obfusicate.js' %}"></script>
     <script src="{% static 'js/stripe.js' %}"></script>
 </body>
 
