@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm, UserUpdateForm
+from cart.models import Order, OrderItem, ShippingDestination
 
 # Create your views here.
 def register_view(request):
@@ -43,8 +44,24 @@ def profile_view(request):
     else:
         form = UserUpdateForm(instance=request.user)
 
+    orders = Order.objects.filter(customer=request.user, paid=True)
+
+    all_orders = []
+
+    for order in orders:
+        order_items_db = OrderItem.objects.filter(order=order)
+        order_items = []
+
+        for order_item in order_items_db:
+            order_items.append(order_item)
+        
+        all_orders.append({'order': order, 'order_items': order_items})
+
+    print(all_orders)
+
     context = {
         'form': form,
+        'all_orders': all_orders,
     }
 
     return render(request, 'profile.html', context)
