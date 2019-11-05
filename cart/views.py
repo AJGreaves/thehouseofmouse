@@ -195,12 +195,26 @@ def checkout_confirm_view(request, *args, **kwargs):
     """
     Renders payment conformation page with navbar and footer removed
     """
-    context = {
-        "footer": False,
-        "navbar": False,
-        "active_pg": "checkout_confirm"
-    }
-    return render(request, "checkout4_confirm.html", context)
+    if not request.session.get('cart'):
+        return redirect('cart')
+
+    else:
+        order = Order.objects.filter(customer=request.user, paid=False).first()
+
+        # Update order in database to paid
+        order.paid = True
+        order.save()
+
+        # delete session data so cart is empty
+        del request.session['cart']
+
+        context = {
+            "footer": False,
+            "navbar": False,
+            "active_pg": "checkout_confirm",
+            "order": order,
+        }
+        return render(request, "checkout4_confirm.html", context)
 
 
 

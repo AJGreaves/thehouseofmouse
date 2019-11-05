@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 class ShippingDestination(models.Model):
     country = models.CharField(max_length=50)
     shipping_price = models.DecimalField(max_digits=6, decimal_places=2)
+    shipping_time = models.CharField(max_length=150, default="1 to 2 weeks")
 
     def __str__(self):
         return f'{self.country}'
