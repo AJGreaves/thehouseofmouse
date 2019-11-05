@@ -166,7 +166,6 @@ def checkout_shipping_view(request, *args, **kwargs):
         }
 
         line_items.append(shipping_item)
-        print(line_items)
 
         session = stripe.checkout.Session.create(
             payment_method_types=['card'],
@@ -206,11 +205,8 @@ def checkout_confirm_view(request, *args, **kwargs):
         order.save()
 
         order_items = OrderItem.objects.filter(order=order)
-        print(order_items)
         for item in order_items:
-            print(item)
             product = Product.objects.filter(id=item.product.id).first()
-            print(product)
             product.num_in_stock = product.num_in_stock - item.quantity
             product.save()
 
@@ -288,7 +284,6 @@ def process_changed_input_request(request, post_request, cart):
     Processes request from user to change cart item quantity. 
     Returns response to be sent to js fetch.
     """
-    print(cart)
     cart_items = get_cart_items(cart)
     # get item from cart items that was changed by user
     input_id = post_request['idChangedInput']
