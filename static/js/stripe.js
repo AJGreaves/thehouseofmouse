@@ -1,11 +1,8 @@
 // All code in this file provided by https://stripe.com/docs/payments/cards/collecting/web
 
-const stripe = Stripe('pk_test_HBIRLDOMqTFcuRZWxR4BjsNf00a93m4id3');
-const elements = stripe.elements();
-
-// Custom styling can be passed to options when creating an Element.
-// (Note that this demo uses a wider set of styles than the guide below.)
-var style = {
+let stripe = Stripe('pk_test_HBIRLDOMqTFcuRZWxR4BjsNf00a93m4id3');
+let elements = stripe.elements();
+let style = {
     base: {
         color: '#32325d',
         fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
@@ -20,34 +17,27 @@ var style = {
         iconColor: '#fa755a'
     }
 };
-
-// Create an instance of the card Element.
-var card = elements.create('card', {
+let card = elements.create('card', {
     style: style
 });
-
-// Add an instance of the card Element into the `card-element` <div>.
 card.mount('#card-element');
-
 // Handle real-time validation errors from the card Element.
 card.addEventListener('change', function (event) {
-    var displayError = document.getElementById('card-errors');
+    let displayError = document.getElementById('card-errors');
     if (event.error) {
         displayError.textContent = event.error.message;
     } else {
         displayError.textContent = '';
     }
 });
-
 // Handle form submission.
-var form = document.getElementById('payment-form');
+let form = document.getElementById('payment-form');
 form.addEventListener('submit', function (event) {
     event.preventDefault();
-
     stripe.createToken(card).then(function (result) {
         if (result.error) {
             // Inform the user if there was an error.
-            var errorElement = document.getElementById('card-errors');
+            let errorElement = document.getElementById('card-errors');
             errorElement.textContent = result.error.message;
         } else {
             // Send the token to your server.
@@ -55,17 +45,27 @@ form.addEventListener('submit', function (event) {
         }
     });
 });
-
 // Submit the form with the token ID.
 function stripeTokenHandler(token) {
     // Insert the token ID into the form so it gets submitted to the server
-    var form = document.getElementById('payment-form');
-    var hiddenInput = document.createElement('input');
+    let form = document.getElementById('payment-form');
+    let hiddenInput = document.createElement('input');
     hiddenInput.setAttribute('type', 'hidden');
     hiddenInput.setAttribute('name', 'stripeToken');
     hiddenInput.setAttribute('value', token.id);
     form.appendChild(hiddenInput);
-
     // Submit the form
     form.submit();
 }
+
+$('#test-payment-btn').click(function() {
+    const {error} = await stripe.redirectToCheckout({
+        // Make the id field from the Checkout Session creation API response
+        // available to this file, so you can provide it as parameter here
+        // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
+        sessionId: '{{CHECKOUT_SESSION_ID}}'
+    })
+    // If `redirectToCheckout` fails due to a browser or network
+    // error, display the localized error message to your customer
+    // using `error.message`.
+})

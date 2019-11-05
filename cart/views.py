@@ -203,13 +203,16 @@ def checkout_payment_view(request, *args, **kwargs):
             cancel_url='https://127.0.0.1:8000/all-products/',
         )
 
+        stripe_session_id = session.id
+
         new_context = {
             **context,
             **{
                 "active_pg": "checkout_payment",
                 "navbar": False,
                 "order": order,
-                "user": request.user
+                "user": request.user,
+                "stripe_session_id": stripe_session_id
             }
         }
         return render(request, "checkout3_payment.html", new_context)

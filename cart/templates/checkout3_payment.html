@@ -48,7 +48,8 @@
 
             <h6 class="checkout-heading mt-4">Payment</h6>
             <p>All transactions are secure and encrypted</p>
-            <form action="/charge" method="post" id="payment-form">
+            <form action="{% url 'confirm' %}" method="POST" id="payment-form">
+                    {% csrf_token %}
                 <div class="my-3">
                     <label for="card-element">
                         Credit or debit card
@@ -64,6 +65,8 @@
                 <button id="pay-now-btn"
             class="btn btn-cta btn-blue d-block mx-auto m-lg-0 ml-lg-auto mr-0 mt-3" id="submit_payment_btn">Submit Payment</button>
             </form>
+
+            <button id="test-payment-btn">test payment button</button>
 
         </div>
 
