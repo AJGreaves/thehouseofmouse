@@ -44,18 +44,18 @@ def profile_view(request):
     else:
         form = UserUpdateForm(instance=request.user)
 
-    orders = Order.objects.filter(customer=request.user, paid=True)
+    orders = Order.objects.filter(customer=request.user, paid=True).order_by('-date_ordered')
 
     all_orders = []
 
     for order in orders:
         order_items_db = OrderItem.objects.filter(order=order)
         order_items = []
-
+        order_total = 0
         for order_item in order_items_db:
             order_items.append(order_item)
-        
-        all_orders.append({'order': order, 'order_items': order_items})
+            order_total += int(order_item.product.price * order_item.quantity)
+        all_orders.append({'order': order, 'order_items': order_items, "total": order_total})
 
     print(all_orders)
 

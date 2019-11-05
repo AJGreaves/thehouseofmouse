@@ -6,15 +6,14 @@
 }
 
 .order-header {
-    background-color: $color-light;
+    background-color: $color1;
     border-bottom: 1px solid lightgray;
     padding: 1rem;
     border-radius: 6px 6px 0 0;
 }
 
 .order-footer {
-    background-color: $color-light;
-    border-bottom: 1px solid lightgray;
+    border-top: 1px solid lightgray;
     padding: 1rem 0.5rem;
     border-radius: 0 0 6px 6px;
 }

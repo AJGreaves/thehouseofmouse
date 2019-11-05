@@ -29,7 +29,7 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container pb-5">
     <div class="row justify-content-center">
         <div class="col-12 col-md-6">
 
@@ -48,20 +48,22 @@
         <div class="col-12 col-md-6">
             <legend class="border-bottom my-4 pink-uppercase">My Orders</legend>
             <div class="row mx-2">
-
+                {% if all_orders %}
+                {% for full_order in all_orders %}
                 <div class="col-12 full-order-card small-box-shadow">
                     <div class="row order-header">
                         <div class="col-4">
                             <h6 class="sml-cap-heading">Order placed</h6>
-                            <span class="sml-data">27 Oct 2019</span>
+                            <span class="sml-data">{{ full_order.order.date_ordered }}</span>
                         </div>
                         <div class="col-4">
                             <h6 class="sml-cap-heading">Total</h6>
-                            <span class="sml-data">€50</span>
+                            <span
+                                class="sml-data">€{{ full_order.total|add:full_order.order.country.shipping_price }}</span>
                         </div>
                         <div class="col-4">
                             <h6 class="sml-cap-heading">Dispatch to</h6>
-                            <span class="sml-data">Jane Doe</span>
+                            <span class="sml-data">{{ full_order.order.full_name }}</span>
                         </div>
                     </div>
                     <div class="row order-summary-short">
@@ -74,52 +76,66 @@
                         <div class="col-3 text-right">
                             <h6 class="sml-cap-heading">Price</h6>
                         </div>
+
+                        {% for order_item in full_order.order_items %}
                         <div class="col-6">
-                            <span class="sml-data">Bob Mouse</span>
+                            <span class="sml-data">{{ order_item.product.title }}</span>
                         </div>
                         <div class="col-3 text-right">
-                            <span class="sml-data">2</span>
+                            <span class="sml-data">{{ order_item.quantity }}</span>
                         </div>
                         <div class="col-3 text-right">
-                            <span class="sml-data">€25</span>
+                            <span class="sml-data">€{{ order_item.product.price }}</span>
                         </div>
-
-
-                        <div class="col-6">
-                            <span class="sml-data">Joe Mouse</span>
-                        </div>
-                        <div class="col-3 text-right">
-                            <span class="sml-data">2</span>
-                        </div>
-                        <div class="col-3 text-right">
-                            <span class="sml-data">€25</span>
-                        </div>
-
+                        {% endfor %}
 
                         <div class="col-9 text-right">
-                            <span class="sml-data">Shipping</span>
+                            <span class="sml-data">DHL tracked Shipping</span>
                         </div>
                         <div class="col-3 text-right">
-                            <span class="sml-data">€24</span>
+                            <span class="sml-data">€{{ full_order.order.country.shipping_price }}</span>
                         </div>
 
                         <div class="col-9 text-right">
                             <span class="sml-data total">TOTAL</span>
                         </div>
                         <div class="col-3 text-right">
-                            <span class="sml-data total">€124</span>
+                            <span
+                                class="sml-data total">€{{ full_order.total|add:full_order.order.country.shipping_price }}</span>
                         </div>
+
                     </div>
                     <div class="row order-footer">
-                        <div class="col-3">
-                            <span class="sml-data">STATUS</span>
+                        <div class="col-8">
+                            <h6 class="sml-cap-heading">Shipping address:</h6>
+                            <p class="sml-data">{{ full_order.order.full_name }},<br>
+                                {{ full_order.order.address_line_1 }},<br>
+                                {% if full_order.order.address_line_2 %}
+                                {{ full_order.order.address_line_2 }},<br>
+                                {% endif %}
+                                {{ full_order.order.town_or_city }},<br>
+                                {% if order.county %}
+                                {{ full_order.order.county }},<br>
+                                {% endif %}
+                                {{ full_order.order.postcode }},<br>
+                                {{ full_order.order.country }}</p>
                         </div>
-                        <div class="col-9">
-                            <span class="sml-data">Shipped</span>
+                        <div class="col-4">
+                            <span class="sml-data">STATUS</span>
+                            <div class="sml-data">
+                                    {% if full_order.order.shipped %}
+                                    Shipped
+                                    {% else %}
+                                    Being processed
+                                    {% endif %}
+                            </div>
                         </div>
                     </div>
                 </div>
-
+                {% endfor %}
+                {% else %}
+                <p>No orders to show.</p>
+                {% endif %}
             </div>
         </div>
     </div>
