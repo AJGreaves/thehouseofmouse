@@ -27,7 +27,7 @@ class Order(models.Model):
     shipped = models.BooleanField(default=False)
 
     def __str__(self):
-        return f'{self.id}-{self.date_ordered}-{self.full_name}'
+        return f'{self.id}-{self.date_ordered}-{self.customer.username}'
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
