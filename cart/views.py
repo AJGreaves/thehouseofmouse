@@ -205,6 +205,15 @@ def checkout_confirm_view(request, *args, **kwargs):
         order.paid = True
         order.save()
 
+        order_items = OrderItem.objects.filter(order=order)
+        print(order_items)
+        for item in order_items:
+            print(item)
+            product = Product.objects.filter(id=item.product.id).first()
+            print(product)
+            product.num_in_stock = product.num_in_stock - item.quantity
+            product.save()
+
         # delete session data so cart is empty
         del request.session['cart']
 
