@@ -422,34 +422,27 @@ footer a:hover {
   background-color: #fefde5 !important;
 }
 
-.vertical-centre-flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
 #contact-pg-background {
   background-image: url("https://i.ibb.co/c8mKfZy/overrun.jpg");
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
+  height: 100vh;
 }
 
-.full-height {
-  min-height: 100vh;
-}
-
-.background-img-overlay {
-  background-color: rgba(63, 63, 63, 0.24);
+#background-img-overlay {
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 100%;
 }
 
 .contact-form-wrapper {
-  background-color: rgba(173, 173, 173, 0.24);
-  border: 1px solid white;
+  background-color: white;
   border-radius: 6px;
+  padding: 1rem;
+}
+
+.alert {
+  margin: 0;
 }
 
 .home-carousel-item {

@@ -81,6 +81,9 @@
     {% endif %}
     <script src="{% static 'js/obfusicate.js' %}"></script>
     <script src="{% static 'js/stripe.js' %}"></script>
+    {% if page == "contact" %}
+    <script src="{% static 'js/emailjs.js' %}"></script>
+    {% endif %}
 </body>
 
 
