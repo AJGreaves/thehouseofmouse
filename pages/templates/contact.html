@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact | The House of Mouse{% endblock %}
+
+{% block meta_robots %}index, follow{% endblock %}
+
+{% block content %}
+
+<div id="contact-pg-background" class="container-fluid full-height">
+    <div id="background-img-overlay" class="row vertical-centre-flex small-box-shadow">
+        <div class="col-12">
+            <div class="contact-form-wrapper">
+                <form method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name"
+                            placeholder="Name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Example textarea</label>
+                        <textarea class="form-control" id="message" rows="6"></textarea>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
