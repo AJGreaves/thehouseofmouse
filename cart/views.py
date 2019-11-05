@@ -1,15 +1,16 @@
 import json
-import env
-import stripe # pylint error appears for this import, but code imported works!
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from django.contrib import messages
 from django.forms import formset_factory
+from django.conf import settings
+import stripe # pylint error appears for this import, but code imported works!
 from products.models import Product
+import env
 from .forms import OrderItemForm, NewOrderForm
 from .models import Order, OrderItem, ShippingDestination
-from django.conf import settings
+
+
 
 stripe.api_key = settings.STRIPE_SECRET
 
@@ -139,36 +140,6 @@ def checkout_shipping_view(request, *args, **kwargs):
         # get unpaid order for this user
         order = Order.objects.filter(customer=request.user, paid=False).first()
 
-        if request.method == 'POST':
-            return redirect('payment')
-
-        new_context = {
-            **context,
-            **{
-                "active_pg": "checkout_shipping",
-                "navbar": False,
-                "order": order,
-                "user": request.user,
-                'publishable': settings.STRIPE_PUBLISHABLE
-            }
-        }
-        return render(request, "checkout2_shipping.html", new_context)
-
-@login_required
-def checkout_payment_view(request, *args, **kwargs):
-    """
-    Renders checkout payment page with navbar and footer removed
-    """
-    if not request.session.get('cart'):
-        return redirect('cart')
-    
-    else:
-        cart = request.session.get('cart')
-        context = get_cart_page_context(cart)
-
-        # get unpaid order for this user
-        order = Order.objects.filter(customer=request.user, paid=False).first()
-
         line_items = []
 
         for item in cart['orderItems']:
@@ -199,8 +170,8 @@ def checkout_payment_view(request, *args, **kwargs):
         session = stripe.checkout.Session.create(
             payment_method_types=['card'],
             line_items=line_items,
-            success_url='https://127.0.0.1:8000/cart/checkout/confirm/{CHECKOUT_SESSION_ID}',
-            cancel_url='https://127.0.0.1:8000/all-products/',
+            success_url='http://127.0.0.1:8000/cart/checkout/confirm/{CHECKOUT_SESSION_ID}',
+            cancel_url='http://127.0.0.1:8000/all-products/',
         )
 
         stripe_session_id = session.id
@@ -208,14 +179,14 @@ def checkout_payment_view(request, *args, **kwargs):
         new_context = {
             **context,
             **{
-                "active_pg": "checkout_payment",
+                "active_pg": "checkout_shipping",
                 "navbar": False,
                 "order": order,
                 "user": request.user,
                 "stripe_session_id": stripe_session_id
             }
         }
-        return render(request, "checkout3_payment.html", new_context)
+        return render(request, "checkout2_shipping.html", new_context)
 
 @login_required
 def checkout_confirm_view(request, *args, **kwargs):

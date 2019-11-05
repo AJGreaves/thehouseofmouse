@@ -84,7 +84,12 @@
     {% if stock_arr or cart_items %}
     <script src="{% static 'js/requests.js' %}"></script>
     {% endif %}
-    <script src="https://js.stripe.com/v3/"></script>
+
+    {% if stripe_session_id %}
+    <script type='text/javascript'>
+        const s_id = '{{ stripe_session_id }}';
+    </script>
+    {% endif %}
     <script src="{% static 'js/stripe.js' %}"></script>
 </body>
 
