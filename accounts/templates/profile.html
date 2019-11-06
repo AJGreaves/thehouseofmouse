@@ -64,14 +64,17 @@
                                             <h6 class="sml-cap-heading">Order placed</h6>
                                             <span class="sml-data">{{ full_order.order.date_ordered }}</span>
                                         </div>
-                                        <div class="col-4">
+                                        <div class="col-3">
                                             <h6 class="sml-cap-heading">Total</h6>
                                             <span
                                                 class="sml-data">€{{ full_order.total|add:full_order.order.country.shipping_price }}</span>
                                         </div>
-                                        <div class="col-4">
+                                        <div class="col-3">
                                             <h6 class="sml-cap-heading">Dispatch to</h6>
                                             <span class="sml-data">{{ full_order.order.full_name }}</span>
+                                        </div>
+                                        <div class="col-2 text-center">
+                                            <i class="fas fa-info orders-icon"></i>
                                         </div>
                                     </div>
                                 </button>

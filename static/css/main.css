@@ -324,6 +324,11 @@ footer .fa-youtube-square:hover {
   color: red;
 }
 
+.orders-icon {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+
 a {
   color: #797979;
   -webkit-transition: 0.2s all ease-in-out 0.2s;
