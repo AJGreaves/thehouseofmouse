@@ -1,6 +1,7 @@
 import json
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import DetailView
+from django.core.paginator import Paginator
+from django.views.generic import DetailView, ListView
 from django.http import JsonResponse
 from decimal import Decimal
 from .models import Product
@@ -91,32 +92,34 @@ def results_view(request, *args, **kwargs):
     """ results_view can be used for search results, category or favourites """
     return render(request, "results.html")
 
+class AllProductsView(ListView):
 
-def all_products_view(request, *args, **kwargs):
-    """
-    Displays all products. If user selects an option to sort listings
-    by featured or price, loads content in order requested.
-    """
-    if request.method == 'POST':
-        sort = request.POST.get('results-sort-select')
-        if sort == 'price-high':
-            results = Product.objects.all().order_by('-price')
-        elif sort == 'price-low':
-            results = Product.objects.all().order_by('price')
-        elif sort == 'featured':
-            results = Product.objects.all().order_by('-featured')
-        context = {
-            'products': results,
-            'select': sort,
-            'category': 'All Products'
-        }
-        return render(request, "results.html", context)
+    model = Product
+    template_name = 'results.html'
+    ordering = ['-featured']
+    context_object_name = 'products'
+    paginate_by = 12
 
-    context = {
-        'products': Product.objects.all().order_by('-featured'),
-        'category': 'All Products',
-    }
-    return render(request, "results.html", context)
+    def get_context_data(self, **kwargs):
+        context = super(AllProductsView, self).get_context_data(**kwargs)
+        context['category'] = 'All Products'
+        return context
+
+    def post(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            sort = request.POST.get('results-sort-select')
+            if sort == 'price-high':
+                results = Product.objects.all().order_by('-price')
+            elif sort == 'price-low':
+                results = Product.objects.all().order_by('price')
+            elif sort == 'featured':
+                results = Product.objects.all().order_by('-featured')
+            context = {
+                'products': results,
+                'select': sort,
+                'category': 'All Products'
+            }
+            return render(request, "results.html", context)
 
 def categories_view(request, *args, **kwargs):
     """
