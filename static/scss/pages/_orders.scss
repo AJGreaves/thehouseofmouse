@@ -5,11 +5,25 @@
     background-color: white;
 }
 
-.order-header {
+.card-header {
     background-color: #dbf1ff;
-    border-bottom: 1px solid lightgray;
-    padding: 1rem;
-    border-radius: 6px 6px 0 0;
+}
+
+.card-header button {
+    text-align: left;
+    color: $color-dark;
+    -webkit-transition: 0.2s all ease-in-out 0.2s;
+    transition: 0.2s all ease-in-out 0.2s;
+}
+
+.card-header button:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.card-header button:focus {
+    text-decoration: none;
+    color: black;
 }
 
 .order-footer {
@@ -37,3 +51,4 @@ h6.sml-cap-heading {
     margin: 0;
     font-weight: bold;
 }
+

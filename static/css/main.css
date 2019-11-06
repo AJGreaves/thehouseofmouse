@@ -199,6 +199,10 @@ footer h5 {
   min-width: 300px;
 }
 
+.accordion-btn {
+  width: 100%;
+}
+
 #logo {
   height: 45px;
 }
@@ -829,11 +833,25 @@ a.blue-link {
   background-color: white;
 }
 
-.order-header {
+.card-header {
   background-color: #dbf1ff;
-  border-bottom: 1px solid lightgray;
-  padding: 1rem;
-  border-radius: 6px 6px 0 0;
+}
+
+.card-header button {
+  text-align: left;
+  color: #373737;
+  -webkit-transition: 0.2s all ease-in-out 0.2s;
+  transition: 0.2s all ease-in-out 0.2s;
+}
+
+.card-header button:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.card-header button:focus {
+  text-decoration: none;
+  color: black;
 }
 
 .order-footer {
