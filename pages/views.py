@@ -22,7 +22,7 @@ def about_view(request, *args, **kwargs):
 
 def contact_view(request, *args, **kwargs):
 
-    if request.user:
+    if request.user.is_authenticated:
         initial_data = {
             'name': request.user.first_name,
             'email': request.user.email
