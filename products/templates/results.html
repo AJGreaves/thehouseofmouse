@@ -29,11 +29,11 @@ Search Results
             {% if category %}
             <a href="{% url 'categories' %}">Categories </a>
             <i class="fas fa-cheese fa-flip-horizontal"></i>
-                {% if category != "All Products" %}
-                <a href="categories/{{ category|slugify }}">{{ category }}</a>
-                {% else %}
-                <a href="{% url 'all-products' %}">{{ category }}</a>
-                {% endif %}
+            {% if category != "All Products" %}
+            <a href="categories/{{ category|slugify }}">{{ category }}</a>
+            {% else %}
+            <a href="{% url 'all-products' %}">{{ category }}</a>
+            {% endif %}
             {% else %}
             <a href="#">Search</a>
             {% endif %}
@@ -89,33 +89,40 @@ Search Results
 
                     </div>
                     {% endfor %}
-
-                    <!-- placeholder pagination -->
-                    <div class="col-12">
-                        <nav aria-label="Page navigation example" class="mx-auto">
-                            <ul class="pagination justify-content-center">
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-
                 </div>
-            </div>
-        </div>
+                <div class="row">
+                    <div class="col-12 text-right">
+                        <!-- Pagination code provided by Corey Schafer youtube video https://www.youtube.com/watch?v=acOktTcTVEQ&t -->
+                        {% if is_paginated %}
+                        {% if page_obj.has_previous %}
+                        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+                        <a class="btn btn-outline-info mb-4"
+                            href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                        {% endif %}
 
+                        {% for num in page_obj.paginator.page_range %}
+                        {% if page_obj.number == num %}
+                        <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                        {% elif num > page.obj.number|add:'-3' and num < page.obj.number|add:'3' %}
+                        <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                        {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+                        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+                        {% endif %}
+
+                        {% endif %}
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
     </div>
 </div>
+
 
 {% endblock %}
