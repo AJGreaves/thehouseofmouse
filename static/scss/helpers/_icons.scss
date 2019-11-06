@@ -122,4 +122,9 @@ footer .fa-youtube-square:hover {
 .orders-icon {
     font-size: 1.2rem;
     margin-top: 0.5rem;
+    -webkit-transition: 0.2s all ease-in-out 0.1s;
+    transition: 0.2s all ease-in-out 0.1s;
+}
+.orders-icon:hover {
+    color: $color2-hover
 }
