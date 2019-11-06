@@ -422,7 +422,7 @@ footer a:hover {
   background-color: #fefde5 !important;
 }
 
-#contact-pg-background {
+.many-mice-background {
   background-image: url("https://i.ibb.co/c8mKfZy/overrun.jpg");
   background-attachment: fixed;
   background-size: cover;
@@ -430,7 +430,7 @@ footer a:hover {
   height: 100vh;
 }
 
-#background-img-overlay {
+.background-img-overlay {
   background-color: rgba(255, 255, 255, 0.5);
   height: 100%;
 }
