@@ -14,6 +14,8 @@ from .models import Order, OrderItem, ShippingDestination
 
 stripe.api_key = settings.STRIPE_SECRET
 STRIPE_PUBLISHABLE = settings.STRIPE_PUBLISHABLE
+STRIPE_SUCCESS_URL = settings.STRIPE_SUCCESS_URL 
+STRIPE_CANCEL_URL =  settings.STRIPE_CANCEL_URL
 
 # Create your views here.
 @login_required
@@ -170,8 +172,8 @@ def checkout_shipping_view(request, *args, **kwargs):
         session = stripe.checkout.Session.create(
             payment_method_types=['card'],
             line_items=line_items,
-            success_url='http://127.0.0.1:8000/cart/checkout/confirm/{CHECKOUT_SESSION_ID}',
-            cancel_url='http://127.0.0.1:8000/all-products/',
+            success_url=STRIPE_SUCCESS_URL,
+            cancel_url=STRIPE_CANCEL_URL,
         )
 
         stripe_session_id = session.id
