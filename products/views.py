@@ -1,8 +1,7 @@
 import json
 from decimal import Decimal
-from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse
-from django.views.generic import DetailView, ListView
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import DetailView
 from django.http import JsonResponse
 from .models import Product
 from .mixins import (
@@ -113,28 +112,37 @@ def results_view(request, *args, **kwargs):
     """ results_view can be used for search results, category or favourites """
     return render(request, "results.html")
 
-# All products
 
-    model = Product
-    template_name = 'results.html'
-    ordering = ['-featured']
-    context_object_name = 'products'
-    paginate_by = 10
+def all_products_view(request, *args, **kwargs):
+    """
+    Displays all products. If user selects an option to sort listings
+    by featured or price, loads content in order requested.
+    """
+    if request.method == 'POST':
+        sort = request.POST.get('results-sort-select')
+        if sort == 'price-high':
+            results = Product.objects.all().order_by('-price')
+        elif sort == 'price-low':
+            results = Product.objects.all().order_by('price')
+        elif sort == 'featured':
+            results = Product.objects.all().order_by('-featured')
+        context = {
+            'products': results,
+            'select': sort,
+            'category': 'All Products'
+        }
+        return render(request, "results.html", context)
 
-    ordering = ['-featured']
-    
-    def get_context_data(self, **kwargs):
-        context = super(AllProductsView, self).get_context_data(**kwargs)
-        context['category'] = 'All Products'
-        context['select'] = 'featured'
-        return context
-
-class AllProductsPriceHighView(ProductMixin, AllProductsMixin, SortAllMixin):
+    context = {
+        'products': Product.objects.all().order_by('-featured'),
+        'category': 'All Products',
+    }
+    return render(request, "results.html", context)
 
     ordering = ['-price']
 
     def get_context_data(self, **kwargs):
-        context = super(AllProductsPriceHighView, self).get_context_data(**kwargs)
+        context = super(all_products_view, self).get_context_data(**kwargs)
         context['category'] = 'All Products'
         context['select'] = 'price-high'
         return context
@@ -239,6 +247,22 @@ class HarryPriceLowView(ProductMixin, HarryProductsMixin, SortHarryMixin):
         context['category'] = 'Harry Potter'
         return context
 
+def famous_category_view(request, *args, **kwargs):
+    if request.method == 'POST':
+        context = get_post_request_context(request, 'Famous')
+        return render(request, "results.html", context)
+
+    context = get_context('Famous')
+    return render(request, "results.html", context)
+
+
+def special_category_view(request, *args, **kwargs):
+    if request.method == 'POST':
+        context = get_post_request_context(request, 'Special Occasions')
+        return render(request, "results.html", context)
+
+    context = get_context('Special Occasions')
+    return render(request, "results.html", context)
 
 def harry_potter_category_view(request, *args, **kwargs):
     """
