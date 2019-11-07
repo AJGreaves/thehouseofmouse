@@ -43,9 +43,18 @@ Search Results
         <div class="col-12">
             {% if category %}
             <h1>{{ category }}</h1>
-            {% else %}
-            <h1>Search Results</h1>
             {% endif %}
+        </div>
+
+        <div class="col-12">
+            <form method="POST" id="search-form" class="form-inline">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" max_length="100" class="form-control" id="searchbox" name="q" type="text" value="{{ request.GET.q }}"
+                    placeholder="Search..." />
+                </div>
+                <button type="submit">Search</button>
+            </form>
         </div>
 
         <!-- results -->
