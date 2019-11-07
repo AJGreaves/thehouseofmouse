@@ -355,6 +355,10 @@ a:hover {
   width: auto;
 }
 
+#searchbox {
+  width: auto;
+}
+
 /*  overrides bootstrap navbar padding to 
     make it more streamlined                */
 .navbar {
