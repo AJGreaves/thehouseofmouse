@@ -3,7 +3,7 @@ from django.contrib.postgres.search import SearchVector
 from products.models import Product
 
 # Create your views here.
-def search_view(request, q, *args, **kwargs):
+def search_view(request, q='', *args, **kwargs):
     results = Product.objects.annotate(
         search=SearchVector('title', 'description', 'tags')
     ).filter(search=q)
