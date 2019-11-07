@@ -98,7 +98,7 @@ class AllProductsView(ListView):
     template_name = 'results.html'
     ordering = ['-featured']
     context_object_name = 'products'
-    paginate_by = 12
+    paginate_by = 10
 
     def get_context_data(self, **kwargs):
         context = super(AllProductsView, self).get_context_data(**kwargs)
