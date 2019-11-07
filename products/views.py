@@ -121,53 +121,25 @@ class AllProductsView(ProductMixin):
         context['select'] = 'featured'
         return context
         
+class AllProductsPriceHighView(ProductMixin):
 
-
-class AllProductsPriceHighView(ListView):
-    model = Product
-    template_name = 'results.html'
     ordering = ['-price']
-    context_object_name = 'products'
-    paginate_by = 12
     
     def get_context_data(self, **kwargs):
         context = super(AllProductsPriceHighView, self).get_context_data(**kwargs)
         context['category'] = 'All Products'
-        context['select'] = 'featured'
+        context['select'] = 'price-high'
         return context
-        
-    def post(self, request, *args, **kwargs):
-        if request.method == 'POST':
-            sort = request.POST.get('results-sort-select')
-            if sort == 'price-high':
-                return redirect(reverse('all-products-price-high'))
-            elif sort == 'price-low':
-                return redirect(reverse('all-products-price-low'))
-            elif sort == 'featured':
-                return redirect(reverse('all-products'))
 
-class AllProductsPriceLowView(ListView):
-    model = Product
-    template_name = 'results.html'
+class AllProductsPriceLowView(ProductMixin):
+
     ordering = ['price']
-    context_object_name = 'products'
-    paginate_by = 12
     
     def get_context_data(self, **kwargs):
         context = super(AllProductsPriceLowView, self).get_context_data(**kwargs)
         context['category'] = 'All Products'
-        context['select'] = 'featured'
+        context['select'] = 'price-low'
         return context
-        
-    def post(self, request, *args, **kwargs):
-        if request.method == 'POST':
-            sort = request.POST.get('results-sort-select')
-            if sort == 'price-high':
-                return redirect(reverse('all-products-price-high'))
-            elif sort == 'price-low':
-                return redirect(reverse('all-products-price-low'))
-            elif sort == 'featured':
-                return redirect(reverse('all-products'))
 
 def famous_category_view(request, *args, **kwargs):
     if request.method == 'POST':
