@@ -1,26 +1,9 @@
 import json
 from decimal import Decimal
-from django.shortcuts import render, get_object_or_404
-from django.views.generic import DetailView
+from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.views.generic import DetailView, ListView
 from django.http import JsonResponse
 from .models import Product
-from .mixins import (
-    ProductMixin,
-    AllProductsMixin,
-    SortAllMixin,
-    SortFamousMixin,
-    FamousProductsMixin,
-    SortSpecialMixin,
-    SpecialProductsMixin,
-    SortHarryMixin,
-    HarryProductsMixin,
-    SortStarWarsMixin,
-    SortWeirdMiscMixin,
-    SortJobsMixin,
-    SortDrWhoMixin,
-    SortXmasMixin,
-    SortHalloweenMixin
-)
 
 # Create your views here.
 class ListingDetailView(DetailView):
@@ -112,140 +95,79 @@ def results_view(request, *args, **kwargs):
     """ results_view can be used for search results, category or favourites """
     return render(request, "results.html")
 
+class ProductMixin(ListView):
 
-def all_products_view(request, *args, **kwargs):
-    """
-    Displays all products. If user selects an option to sort listings
-    by featured or price, loads content in order requested.
-    """
-    if request.method == 'POST':
-        sort = request.POST.get('results-sort-select')
-        if sort == 'price-high':
-            results = Product.objects.all().order_by('-price')
-        elif sort == 'price-low':
-            results = Product.objects.all().order_by('price')
-        elif sort == 'featured':
-            results = Product.objects.all().order_by('-featured')
-        context = {
-            'products': results,
-            'select': sort,
-            'category': 'All Products'
-        }
-        return render(request, "results.html", context)
+    model = Product
+    template_name = 'results.html'
+    ordering = ['-featured']
+    context_object_name = 'products'
+    paginate_by = 12
 
-    context = {
-        'products': Product.objects.all().order_by('-featured'),
-        'category': 'All Products',
-    }
-    return render(request, "results.html", context)
+    def post(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            sort = request.POST.get('results-sort-select')
+            if sort == 'price-high':
+                return redirect(reverse('all-products-price-high'))
+            elif sort == 'price-low':
+                return redirect(reverse('all-products-price-low'))
+            elif sort == 'featured':
+                return redirect(reverse('all-products'))
 
-    ordering = ['-price']
-
+class AllProductsView(ProductMixin):
+    
     def get_context_data(self, **kwargs):
-        context = super(all_products_view, self).get_context_data(**kwargs)
+        context = super(AllProductsView, self).get_context_data(**kwargs)
         context['category'] = 'All Products'
-        context['select'] = 'price-high'
+        context['select'] = 'featured'
         return context
+        
 
-class AllProductsPriceLowView(ProductMixin, AllProductsMixin, SortAllMixin):
 
+class AllProductsPriceHighView(ListView):
+    model = Product
+    template_name = 'results.html'
+    ordering = ['-price']
+    context_object_name = 'products'
+    paginate_by = 12
+    
+    def get_context_data(self, **kwargs):
+        context = super(AllProductsPriceHighView, self).get_context_data(**kwargs)
+        context['category'] = 'All Products'
+        context['select'] = 'featured'
+        return context
+        
+    def post(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            sort = request.POST.get('results-sort-select')
+            if sort == 'price-high':
+                return redirect(reverse('all-products-price-high'))
+            elif sort == 'price-low':
+                return redirect(reverse('all-products-price-low'))
+            elif sort == 'featured':
+                return redirect(reverse('all-products'))
+
+class AllProductsPriceLowView(ListView):
+    model = Product
+    template_name = 'results.html'
     ordering = ['price']
-
+    context_object_name = 'products'
+    paginate_by = 12
+    
     def get_context_data(self, **kwargs):
         context = super(AllProductsPriceLowView, self).get_context_data(**kwargs)
         context['category'] = 'All Products'
-        context['select'] = 'price-low'
-        return context
-
-# Famous category
-
-class FamousView(ProductMixin, FamousProductsMixin, SortFamousMixin):
-
-    ordering = ['-featured']
-
-    def get_context_data(self, **kwargs):
-        context = super(FamousView, self).get_context_data(**kwargs)
-        context['category'] = 'Famous'
         context['select'] = 'featured'
         return context
-
-class FamousPriceHighView(ProductMixin, FamousProductsMixin, SortFamousMixin):
-
-    ordering = ['-price']
-
-    def get_context_data(self, **kwargs):
-        context = super(FamousPriceHighView, self).get_context_data(**kwargs)
-        context['category'] = 'Famous'
-        context['select'] = 'price-high'
-        return context
-
-class FamousPriceLowView(ProductMixin, FamousProductsMixin, SortFamousMixin):
-
-    ordering = ['price']
-
-    def get_context_data(self, **kwargs):
-        context = super(FamousPriceLowView, self).get_context_data(**kwargs)
-        context['category'] = 'Famous'
-        context['select'] = 'price-low'
-        return context
-
-# Special Occasions category
-
-class SpecialView(ProductMixin, SpecialProductsMixin, SortSpecialMixin):
-
-    ordering = ['-featured']
-
-    def get_context_data(self, **kwargs):
-        context = super(SpecialView, self).get_context_data(**kwargs)
-        context['category'] = 'Special Occasions'
-        return context
-
-class SpecialPriceHighView(ProductMixin, SpecialProductsMixin, SortSpecialMixin):
-
-    ordering = ['-price']
-
-    def get_context_data(self, **kwargs):
-        context = super(SpecialPriceHighView, self).get_context_data(**kwargs)
-        context['category'] = 'Special Occasions'
-        return context
-
-class SpecialPriceLowView(ProductMixin, SpecialProductsMixin, SortSpecialMixin):
-
-    ordering = ['price']
-
-    def get_context_data(self, **kwargs):
-        context = super(SpecialPriceLowView, self).get_context_data(**kwargs)
-        context['category'] = 'Special Occasions'
-        return context
-
-# Harry Potter category
-
-class HarryView(ProductMixin, HarryProductsMixin, SortHarryMixin):
-
-    ordering = ['-featured']
-
-    def get_context_data(self, **kwargs):
-        context = super(HarryView, self).get_context_data(**kwargs)
-        context['category'] = 'Harry Potter'
-        return context
-
-class HarryPriceHighView(ProductMixin, HarryProductsMixin, SortHarryMixin):
-
-    ordering = ['-price']
-
-    def get_context_data(self, **kwargs):
-        context = super(HarryPriceHighView, self).get_context_data(**kwargs)
-        context['category'] = 'Harry Potter'
-        return context
-
-class HarryPriceLowView(ProductMixin, HarryProductsMixin, SortHarryMixin):
-
-    ordering = ['price']
-
-    def get_context_data(self, **kwargs):
-        context = super(HarryPriceLowView, self).get_context_data(**kwargs)
-        context['category'] = 'Harry Potter'
-        return context
+        
+    def post(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            sort = request.POST.get('results-sort-select')
+            if sort == 'price-high':
+                return redirect(reverse('all-products-price-high'))
+            elif sort == 'price-low':
+                return redirect(reverse('all-products-price-low'))
+            elif sort == 'featured':
+                return redirect(reverse('all-products'))
 
 def famous_category_view(request, *args, **kwargs):
     if request.method == 'POST':
