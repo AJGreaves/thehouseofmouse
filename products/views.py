@@ -141,7 +141,6 @@ class AllProductsPriceHighView(ProductMixin):
         context['category'] = 'All Products'
         context['select'] = 'price-high'
         return context
-
 class AllProductsPriceLowView(ProductMixin):
     """
     Inherits from custom built ProductMixin, 
