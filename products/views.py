@@ -115,7 +115,11 @@ def results_view(request, *args, **kwargs):
 
 # All products
 
-class AllProductsView(ProductMixin, AllProductsMixin, SortAllMixin):
+    model = Product
+    template_name = 'results.html'
+    ordering = ['-featured']
+    context_object_name = 'products'
+    paginate_by = 10
 
     ordering = ['-featured']
     
