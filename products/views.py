@@ -96,7 +96,10 @@ def results_view(request, *args, **kwargs):
     return render(request, "results.html")
 
 class ProductMixin(ListView):
-
+    """
+    Mixin to build common data needed for "All products" pages on site, allows for
+    pagination of all products when sorted by price or featured.
+    """
     model = Product
     template_name = 'results.html'
     ordering = ['-featured']
@@ -114,7 +117,11 @@ class ProductMixin(ListView):
                 return redirect(reverse('all-products'))
 
 class AllProductsView(ProductMixin):
-    
+    """
+    Inherits from custom built ProductMixin, 
+    collects context data need for this specific page to render all products page.
+    with Products with featured=True first.
+    """
     def get_context_data(self, **kwargs):
         context = super(AllProductsView, self).get_context_data(**kwargs)
         context['category'] = 'All Products'
@@ -122,7 +129,11 @@ class AllProductsView(ProductMixin):
         return context
         
 class AllProductsPriceHighView(ProductMixin):
-
+    """
+    Inherits from custom built ProductMixin, 
+    collects context data need for this specific page to render all products page
+    with highest priced listings first.
+    """
     ordering = ['-price']
     
     def get_context_data(self, **kwargs):
@@ -132,7 +143,11 @@ class AllProductsPriceHighView(ProductMixin):
         return context
 
 class AllProductsPriceLowView(ProductMixin):
-
+    """
+    Inherits from custom built ProductMixin, 
+    collects context data need for this specific page to render all products page
+    with lowest ghest priced listings first.
+    """
     ordering = ['price']
     
     def get_context_data(self, **kwargs):
@@ -142,6 +157,11 @@ class AllProductsPriceLowView(ProductMixin):
         return context
 
 def famous_category_view(request, *args, **kwargs):
+    """
+    Collects context for page displaying Products in Famous category
+    No class based views for categories as pagination is not needed,
+    not enough products to need to paginate.
+    """
     if request.method == 'POST':
         context = get_post_request_context(request, 'Famous')
         return render(request, "results.html", context)
@@ -151,6 +171,9 @@ def famous_category_view(request, *args, **kwargs):
 
 
 def special_category_view(request, *args, **kwargs):
+    """
+    Collects context for page displaying Products in Special Occasions category.
+    """
     if request.method == 'POST':
         context = get_post_request_context(request, 'Special Occasions')
         return render(request, "results.html", context)
@@ -160,7 +183,7 @@ def special_category_view(request, *args, **kwargs):
 
 def harry_potter_category_view(request, *args, **kwargs):
     """
-    Render all listings in "Harry Potter" category.
+    Collects context for page displaying Products in Harry Potter category.
     """
     if request.method == 'POST':
         context = get_post_request_context(request, 'Harry Potter')
@@ -169,10 +192,9 @@ def harry_potter_category_view(request, *args, **kwargs):
     context = get_context('Harry Potter')
     return render(request, "results.html", context)
 
-
 def starwars_category_view(request, *args, **kwargs):
     """
-    Render all listings in "Star Wars" category.
+    Collects context for page displaying Products in "Star Wars" category.
     """
     if request.method == 'POST':
         context = get_post_request_context(request, 'Star Wars')
@@ -184,7 +206,7 @@ def starwars_category_view(request, *args, **kwargs):
 
 def misc_category_view(request, *args, **kwargs):
     """
-    Render all listings in "Weird & Misc" category.
+    Collects context for page displaying Products in "Weird & Misc" category.
     """
     if request.method == 'POST':
         context = get_post_request_context(request, 'Weird & Misc')
@@ -196,7 +218,7 @@ def misc_category_view(request, *args, **kwargs):
 
 def jobs_category_view(request, *args, **kwargs):
     """
-    Render all listings in "Jobs & Hobbies" category.
+    Collects context for page displaying Products in "Jobs & Hobbies" category.
     """
     if request.method == 'POST':
         context = get_post_request_context(request, 'Jobs & Hobbies')
@@ -208,7 +230,7 @@ def jobs_category_view(request, *args, **kwargs):
 
 def doctor_who_category_view(request, *args, **kwargs):
     """
-    Render all listings in "Doctor Who" category.
+    Collects context for page displaying Products in "Doctor Who" category.
     """
     if request.method == 'POST':
         context = get_post_request_context(request, 'Doctor Who')
@@ -220,7 +242,7 @@ def doctor_who_category_view(request, *args, **kwargs):
 
 def xmas_category_view(request, *args, **kwargs):
     """
-    Render all listings in "Christmas" category.
+    Collects context for page displaying Products in "Christmas" category.
     """
     if request.method == 'POST':
         context = get_post_request_context(request, 'Christmas')
@@ -232,7 +254,7 @@ def xmas_category_view(request, *args, **kwargs):
 
 def halloween_category_view(request, *args, **kwargs):
     """
-    Render all listings in "Halloween" category.
+    Collects context for page displaying Products in "Halloween" category.
     """
     if request.method == 'POST':
         context = get_post_request_context(request, 'Halloween')
