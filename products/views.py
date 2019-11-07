@@ -14,6 +14,7 @@ from .mixins import (
     SortSpecialMixin,
     SpecialProductsMixin,
     SortHarryMixin,
+    HarryProductsMixin,
     SortStarWarsMixin,
     SortWeirdMiscMixin,
     SortJobsMixin,
@@ -144,7 +145,7 @@ class AllProductsPriceLowView(ProductMixin, AllProductsMixin, SortAllMixin):
         context['select'] = 'price-low'
         return context
 
-# Famous category 
+# Famous category
 
 class FamousView(ProductMixin, FamousProductsMixin, SortFamousMixin):
 
@@ -176,6 +177,8 @@ class FamousPriceLowView(ProductMixin, FamousProductsMixin, SortFamousMixin):
         context['select'] = 'price-low'
         return context
 
+# Special Occasions category
+
 class SpecialView(ProductMixin, SpecialProductsMixin, SortSpecialMixin):
 
     ordering = ['-featured']
@@ -201,6 +204,35 @@ class SpecialPriceLowView(ProductMixin, SpecialProductsMixin, SortSpecialMixin):
     def get_context_data(self, **kwargs):
         context = super(SpecialPriceLowView, self).get_context_data(**kwargs)
         context['category'] = 'Special Occasions'
+        return context
+
+# Harry Potter category
+
+class HarryView(ProductMixin, HarryProductsMixin, SortHarryMixin):
+
+    ordering = ['-featured']
+
+    def get_context_data(self, **kwargs):
+        context = super(HarryView, self).get_context_data(**kwargs)
+        context['category'] = 'Harry Potter'
+        return context
+
+class HarryPriceHighView(ProductMixin, HarryProductsMixin, SortHarryMixin):
+
+    ordering = ['-price']
+
+    def get_context_data(self, **kwargs):
+        context = super(HarryPriceHighView, self).get_context_data(**kwargs)
+        context['category'] = 'Harry Potter'
+        return context
+
+class HarryPriceLowView(ProductMixin, HarryProductsMixin, SortHarryMixin):
+
+    ordering = ['price']
+
+    def get_context_data(self, **kwargs):
+        context = super(HarryPriceLowView, self).get_context_data(**kwargs)
+        context['category'] = 'Harry Potter'
         return context
 
 

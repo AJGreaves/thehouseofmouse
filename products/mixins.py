@@ -55,6 +55,9 @@ class SortSpecialMixin(ListView):
             elif sort == 'featured':
                 return redirect(reverse(product_category))
 
+class HarryProductsMixin(ListView):
+    queryset = Product.objects.filter(category="Harry Potter")
+
 class SortHarryMixin(ListView):
     def post(self, request, *args, **kwargs):
         if request.method == 'POST':
