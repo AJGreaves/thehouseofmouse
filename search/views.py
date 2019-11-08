@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator
 from products.models import Product
 from django.db.models import Q #for multiple searches
 
@@ -9,10 +10,16 @@ def search_view(request, *args, **kwargs):
     View for search page. If search query entered view takes query
     and filters results from Product model input
     """
-    products = Product.objects.all().order_by('-featured')
+    products_list = Product.objects.all().order_by('-featured')
+    paginator = Paginator(products_list, 12)
+
+    page = request.GET.get('page')
+    products = paginator.get_page(page)
+
     context = {
         'products': products,
-        'category': 'Search'
+        'category': 'Search',
+        'page': 'search',
     }
 
     if request.method == 'POST':
@@ -22,10 +29,12 @@ def search_view(request, *args, **kwargs):
         context = {
             'products': results,
             'category': 'Search',
+            'page': 'search',
             'search_params': query
         }
 
         return render(request, "results.html", context)
 
     return render(request, "results.html", context)
+
 

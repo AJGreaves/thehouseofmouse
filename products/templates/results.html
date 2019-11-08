@@ -52,20 +52,14 @@ Search Results
                 {% csrf_token %}
                 <div class="form-row justify-content-center">
                     <div class="col-12 col-md-8 col-lg-10 mb-3">
-                        <input type="search" 
-                        max_length="100" 
-                        class="form-control w-100" 
-                        id="searchbox" 
-                        name="query" 
-                        value="{{ request.GET.query }}"
-                        placeholder="Search..."
-                        />
+                        <input type="search" max_length="100" class="form-control w-100" id="searchbox" name="query"
+                            value="{{ request.GET.query }}" placeholder="Search..." />
                     </div>
                     <div class="col-5 col-md-4 col-lg-2 mb-2">
-                        <button type="submit" class="btn btn-blue btn-cta w-100 m-0" >Search</button>
+                        <button type="submit" class="btn btn-blue btn-cta w-100 m-0">Search</button>
                     </div>
                 </div>
-                
+
             </form>
         </div>
         {% endif %}
@@ -116,7 +110,10 @@ Search Results
                 </div>
                 <div class="row">
                     <div class="col-12 text-center">
-                        <!-- Pagination code provided by Corey Schafer youtube video https://www.youtube.com/watch?v=acOktTcTVEQ&t -->
+                        <!-- 
+                            Pagination code provided by Corey Schafer youtube video https://www.youtube.com/watch?v=acOktTcTVEQ&t 
+                            This code for when class based pagination is used
+                        -->
                         {% if is_paginated %}
                         {% if page_obj.has_previous %}
                         <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
@@ -138,6 +135,29 @@ Search Results
                         {% endif %}
 
                         {% endif %}
+                    </div>
+                    <div class="col-12 text-center">
+
+                        <!-- This code for when function based pagination is used -->
+                        {% if products.has_previous %}
+                        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+                        <a class="btn btn-outline-info mb-4"
+                            href="?page={{ products.previous_page_number }}">Previous</a>
+                        {% endif %}
+
+                        {% for num in products.paginator.page_range %}
+                        {% if products.number == num %}
+                        <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                        {% elif num > page.obj.number|add:'-3' and num < page.obj.number|add:'3' %}
+                        <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                        {% endif %}
+                        {% endfor %}
+
+                        {% if products.has_next %}
+                        <a class="btn btn-outline-info mb-4" href="?page={{ products.next_page_number }}">Next</a>
+                        <a class="btn btn-outline-info mb-4" href="?page={{ products.paginator.num_pages }}">Last</a>
+                        {% endif %}
+
                     </div>
                 </div>
 
