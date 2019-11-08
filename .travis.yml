@@ -4,4 +4,4 @@ python:
 install:
   - pip install -r requirements.txt
 script:
-  - SECRET_KEY="fake_secret_key" ./manage.py test
+  - python manage.py test
