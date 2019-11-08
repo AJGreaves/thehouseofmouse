@@ -53,18 +53,12 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.16), 0 2px 4px rgba(0,0,0,0.23);
 }
 
-.btn-blue,
-#mc_embed_signup .button {
+.btn-blue {
     background-color: $color3;
     color: white;
-    /* overrides mailchimp css */
-    line-height: auto;
-    height: auto;
 }
 
-.btn-blue:hover,
-#mc_embed_signup .button:hover {
-    /* overrides mailchimp css */
+.btn-blue:hover {
     background-color: $color3-hover;
     -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.16), 0 2px 4px rgba(0,0,0,0.23);
             box-shadow: 0 2px 4px rgba(0,0,0,0.16), 0 2px 4px rgba(0,0,0,0.23);

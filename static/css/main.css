@@ -65,11 +65,6 @@ footer h5 {
   color: #ff9a9f;
 }
 
-/* overrides mailchimp css */
-#mc_embed_signup h2 {
-  font-weight: normal;
-}
-
 .pink-text {
   font-family: "Emilys Candy", cursive;
   color: #ff9a9f;
@@ -143,18 +138,12 @@ footer h5 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23);
 }
 
-.btn-blue,
-#mc_embed_signup .button {
+.btn-blue {
   background-color: #63c4fc;
   color: white;
-  /* overrides mailchimp css */
-  line-height: auto;
-  height: auto;
 }
 
-.btn-blue:hover,
-#mc_embed_signup .button:hover {
-  /* overrides mailchimp css */
+.btn-blue:hover {
   background-color: #47b7f8;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23);
@@ -588,19 +577,6 @@ footer a:hover {
 
 #testimonials-container {
   padding: 2rem 1rem;
-}
-
-/* mailchimp signup form */
-#mc-embedded-subscribe-form {
-  max-width: 500px;
-}
-
-#mc_embed_signup form {
-  padding: 0;
-}
-
-.bg-light-pink {
-  background-color: #FFE4E6;
 }
 
 #breadcrumbs {
