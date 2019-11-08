@@ -25,9 +25,13 @@ def search_view(request, *args, **kwargs):
     if request.method == 'POST':
         query = request.POST.get('query')
         results = Product.objects.filter(Q(title__icontains=query) | Q(description__icontains=query) | Q(tags__icontains=query))
+        paginator = Paginator(results, 12)
+
+        page = request.GET.get('page')
+        products = paginator.get_page(page)
 
         context = {
-            'products': results,
+            'products': products,
             'category': 'Search',
             'page': 'search',
             'search_params': query
