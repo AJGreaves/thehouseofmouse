@@ -151,7 +151,3 @@ STRIPE_CANCEL_URL = os.getenv('STRIPE_CANCEL_URL')
 
 EMAILJS_USER_ID = os.getenv('EMAILJS_USER_ID')
 
-# Configure Django App for Heroku.
-if 'HEROKU' in os.environ:
-    import django_heroku
-    django_heroku.settings(locals())
