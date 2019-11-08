@@ -1,6 +1,8 @@
 # The House of Mouse Webshop
 ## eCommerce site built using Django
 
+[![Build Status](https://travis-ci.org/AJGreaves/thehouseofmouse.svg?branch=master)](https://travis-ci.org/AJGreaves/thehouseofmouse)
+
 Currently in early development stages.
 
 ## Introduction
