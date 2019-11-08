@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, reverse, redirect
 from products.models import Product
-from django.db.models import Q #for multiple searchs
+from django.db.models import Q #for multiple searches
 
 # Create your views here.
 
@@ -13,14 +13,31 @@ def search_view(request, *args, **kwargs):
     }
 
     if request.method == 'POST':
-        query = request.POST.get('q')
-        results = Product.objects.filter(Q(title__icontains=query) | Q(description__icontains=query) | Q(tags__icontains=query))
-        context = {
-            'products': results,
-            'category': 'Search',
-            'search_params': query
-        }
+        query = request.POST.get('query')
 
-        return render(request, "results.html", context)
+        return redirect(reverse('search-results', kwargs={'query': query}))
 
     return render(request, "results.html", context)
+
+
+def search_results_view(request, *args, **kwargs):
+
+    if request.method == 'POST':
+        query = request.POST.get('query')
+        context = do_search(query)
+        return render(request, "results.html", context)
+    else:
+        query = kwargs.get('query')
+        context = do_search(query)
+        return render(request, "results.html", context)
+
+
+def do_search(query):
+    results = Product.objects.filter(Q(title__icontains=query) | Q(description__icontains=query) | Q(tags__icontains=query))
+    context = {
+        'products': results,
+        'category': 'Search',
+        'search_params': query
+    }
+
+    return context
