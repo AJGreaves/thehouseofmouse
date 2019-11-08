@@ -6,7 +6,6 @@ from django.forms import formset_factory
 from django.conf import settings
 import stripe # pylint error appears for this import, but code imported works!
 from products.models import Product
-import env
 from .forms import OrderItemForm, NewOrderForm
 from .models import Order, OrderItem, ShippingDestination
 
