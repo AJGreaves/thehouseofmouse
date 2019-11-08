@@ -1,11 +1,14 @@
-from django.shortcuts import render, reverse, redirect
+from django.shortcuts import render
 from products.models import Product
 from django.db.models import Q #for multiple searches
 
 # Create your views here.
 
 def search_view(request, *args, **kwargs):
-
+    """
+    View for search page. If search query entered view takes query
+    and filters results from Product model input
+    """
     products = Product.objects.all().order_by('-featured')
     context = {
         'products': products,
@@ -14,30 +17,15 @@ def search_view(request, *args, **kwargs):
 
     if request.method == 'POST':
         query = request.POST.get('query')
+        results = Product.objects.filter(Q(title__icontains=query) | Q(description__icontains=query) | Q(tags__icontains=query))
 
-        return redirect(reverse('search-results', kwargs={'query': query}))
+        context = {
+            'products': results,
+            'category': 'Search',
+            'search_params': query
+        }
+
+        return render(request, "results.html", context)
 
     return render(request, "results.html", context)
 
-
-def search_results_view(request, *args, **kwargs):
-
-    if request.method == 'POST':
-        query = request.POST.get('query')
-        context = do_search(query)
-        return render(request, "results.html", context)
-    else:
-        query = kwargs.get('query')
-        context = do_search(query)
-        return render(request, "results.html", context)
-
-
-def do_search(query):
-    results = Product.objects.filter(Q(title__icontains=query) | Q(description__icontains=query) | Q(tags__icontains=query))
-    context = {
-        'products': results,
-        'category': 'Search',
-        'search_params': query
-    }
-
-    return context

@@ -57,7 +57,7 @@ Search Results
                         class="form-control w-100" 
                         id="searchbox" 
                         name="query" 
-                        value="{% if search_params %}{{ search_params }}{% endif %}{{ request.GET.query }}"
+                        value="{{ request.GET.query }}"
                         placeholder="Search..."
                         />
                     </div>
