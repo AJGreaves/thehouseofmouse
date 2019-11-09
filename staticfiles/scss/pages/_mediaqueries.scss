@@ -1,0 +1,24 @@
+
+// Medium devices (tablets, 768px and up)
+@media screen and (min-width: 768px) {
+    /* replacement image that will look better when image wider than tall */
+    #carousel-img-3 {
+        background-image: url('https://i.ibb.co/CW69XXd/smile.jpg');
+        background-position: center 65%;
+    }
+
+    #info-form input.half-md-width {
+        width: 49%;
+        display: inline-block;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media screen and (min-width: 992px) {
+    .home-category-wrapper-lg {
+        height: 400px;
+    }
+    .home-category-wrapper-lg h3 {
+        font-size: 2rem;
+    }
+}
