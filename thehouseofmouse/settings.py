@@ -25,7 +25,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+if 'DEV' in os.environ:
+    DEBUG = True
+else:
+    DEBUG = False
+
 ALLOWED_HOSTS = [os.environ.get('HOSTNAME')]
 
 # Application definition
@@ -132,10 +136,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-if 'HEROKU' in os.environ:
-    STATIC_URL = '/staticfiles/'
-else:
+if 'DEV' in os.environ:
     STATIC_URL = '/static/'
+else:
+    STATIC_URL = '/staticfiles/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
@@ -165,6 +169,6 @@ AWS_DEFAULT_ACL = None
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-if 'HEROKU' in os.environ:
+if 'DEV' not in os.environ:
     import django_heroku
     django_heroku.settings(locals())
