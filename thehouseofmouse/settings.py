@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages'
 
     # 3rd party
     'crispy_forms',
@@ -151,3 +152,6 @@ STRIPE_CANCEL_URL = os.getenv('STRIPE_CANCEL_URL')
 
 EMAILJS_USER_ID = os.getenv('EMAILJS_USER_ID')
 
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
