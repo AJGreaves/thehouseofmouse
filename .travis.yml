@@ -7,4 +7,4 @@ before_install:
 install:
   - pip install -r requirements.txt
 script:
-  - SECRET_KEY="whateverwillbewillbe" python manage.py test
+  - SECRET_KEY="whateverwillbewillbe" DEV="1" python manage.py test
