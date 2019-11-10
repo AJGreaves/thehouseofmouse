@@ -1,6 +1,5 @@
 from django.urls import path
 from .views import (
-    results_view,
     AllProductsView,
     AllProductsPriceHighView,
     AllProductsPriceLowView,
@@ -20,7 +19,6 @@ from .views import (
 urlpatterns = [
     path('listing/<int:pk>/', ListingDetailView.as_view(), name="listing-detail"),
     path('categories/', categories_view, name="categories"),
-    path('results/', results_view, name="results"),
     path('all-products/', AllProductsView.as_view(), name="all-products"),
     path('all-products/price-high/', AllProductsPriceHighView.as_view(), name="all-products-price-high"),
     path('all-products/price-low/', AllProductsPriceLowView.as_view(), name="all-products-price-low"),

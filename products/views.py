@@ -91,10 +91,6 @@ def categories_view(request, *args, **kwargs):
     """
     return render(request, "categories.html")
 
-def results_view(request, *args, **kwargs):
-    """ results_view can be used for search results, category or favourites """
-    return render(request, "results.html")
-
 class ProductMixin(ListView):
     """
     Mixin to build common data needed for "All products" pages on site, allows for
@@ -118,7 +114,7 @@ class ProductMixin(ListView):
 
 class AllProductsView(ProductMixin):
     """
-    Inherits from custom built ProductMixin, 
+    Inherits from custom built ProductMixin,
     collects context data need for this specific page to render all products page.
     with Products with featured=True first.
     """
