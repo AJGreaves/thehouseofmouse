@@ -145,6 +145,7 @@ footer h5 {
 
 .btn-blue:hover {
   background-color: #47b7f8;
+  color: white;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23);
 }
