@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 from django.core.paginator import Paginator
 from products.models import Product
 from django.db.models import Q #for multiple searches
@@ -22,23 +23,27 @@ def search_view(request, *args, **kwargs):
         'page': 'search',
     }
 
-    if request.method == 'POST':
-        query = request.POST.get('query')
-        results = Product.objects.filter(Q(title__icontains=query) | Q(description__icontains=query) | Q(tags__icontains=query))
-        paginator = Paginator(results, 12)
+    if request.method == 'GET':
+        query = request.GET.get('query')
+        if query:
+            vector = SearchVector('title', weight='A') + SearchVector('description', weight='B') + SearchVector('tags', weight='C')
+            query = SearchQuery(query)
+            results = Product.objects.annotate(rank=SearchRank(vector, query)).filter(rank__gte=0.1).order_by('rank')
+            paginator = Paginator(results, 12)
 
-        page = request.GET.get('page')
-        products = paginator.get_page(page)
+            page = request.GET.get('page')
+            products = paginator.get_page(page)
 
-        context = {
-            'products': products,
-            'category': 'Search',
-            'page': 'search',
-            'search_params': query
-        }
+            context = {
+                'products': products,
+                'category': 'Search',
+                'page': 'search',
+                'search_params': query
+            }
 
-        return render(request, "results.html", context)
+            return render(request, "results.html", context)
 
     return render(request, "results.html", context)
+
 
 
