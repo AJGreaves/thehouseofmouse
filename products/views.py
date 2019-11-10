@@ -120,7 +120,7 @@ class AllProductsView(ListView):
     """
     model = Product
     template_name = 'results.html'
-    ordering = ['-featured']
+    queryset = Product.objects.all().order_by('-featured')
     context_object_name = 'products'
     paginate_by = 12
 
