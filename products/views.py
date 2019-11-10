@@ -112,12 +112,28 @@ class ProductMixin(ListView):
             elif sort == 'featured':
                 return redirect(reverse('all-products'))
 
-class AllProductsView(ProductMixin):
+class AllProductsView(ListView):
     """
     Inherits from custom built ProductMixin,
     collects context data need for this specific page to render all products page.
     with Products with featured=True first.
     """
+    model = Product
+    template_name = 'results.html'
+    ordering = ['-featured']
+    context_object_name = 'products'
+    paginate_by = 12
+
+    def post(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            sort = request.POST.get('results-sort-select')
+            if sort == 'price-high':
+                return redirect(reverse('all-products-price-high'))
+            elif sort == 'price-low':
+                return redirect(reverse('all-products-price-low'))
+            elif sort == 'featured':
+                return redirect(reverse('all-products'))
+
     def get_context_data(self, **kwargs):
         context = super(AllProductsView, self).get_context_data(**kwargs)
         context['category'] = 'All Products'
