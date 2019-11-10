@@ -57,8 +57,6 @@ def profile_view(request):
             order_total += int(order_item.product.price * order_item.quantity)
         all_orders.append({'order': order, 'order_items': order_items, "total": order_total})
 
-    print(all_orders)
-
     context = {
         'form': form,
         'all_orders': all_orders,

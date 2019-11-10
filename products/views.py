@@ -77,7 +77,7 @@ class ListingDetailView(DetailView):
 
             
         request.session['cart'] = cart
-        print(cart)
+
         data = {
             'title': instance.title,
             'quantity': form['quantity'],
