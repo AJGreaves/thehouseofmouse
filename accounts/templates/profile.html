@@ -80,7 +80,7 @@
                                 </button>
                             </div>
 
-                            <div id="collapse-{{ forloop.counter }}" class="collapse p-0 order-summary-short"
+                            <div id="collapse-{{ forloop.counter }}" class="collapse p-0 order-summary-short {% if forloop.counter == 1 %} show{% endif %} "
                                 aria-labelledby="heading-{{ forloop.counter }}"
                                 data-parent="#orders-accordion-{{ forloop.counter }}">
                                 <div class="card-body">
