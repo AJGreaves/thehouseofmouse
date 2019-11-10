@@ -33,14 +33,15 @@
                     {{ order.country }}</p>
             </div>
 
-
             <p>I will email you a tracking code when your parcel is on its way. You can check your tracking info at
                 <a href="www.dhl.de/en" target="_blank">www.dhl.de/en</a>.<br>
                 Packages to {{ order.country }} normally take {{ order.country.shipping_time }} to arrive however
                 customs can occasionally
                 slow parcels down further.</p>
 
-            <p>If you have any questions about your order, feel free to <a href="#">contact</a> me.</p>
+            <p>You can review your order on your <a href="{% url 'profile'%}">Account page</a></p>
+
+            <p>If you have any questions about your order, feel free to <a href="{% url 'contact'%}">contact</a> me.</p>
 
             <p>Thank you so much for supporting my art!</p>
 
