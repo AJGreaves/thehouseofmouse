@@ -124,8 +124,11 @@ $(document).ready(function () {
             type: 'success',
             title: message,
             text: "Go to checkout?",
-            showCloseButton: true,
-            confirmButtonColor: '#47b7f8'
+            showCancelButton: true,
+            cancelButtonText: 'Keep shopping',
+            confirmButtonText: 'Go to checkout',
+            confirmButtonColor: '#47b7f8',
+            cancelButtonColor: '#fa878d',
         }).then((result) => {
             if (result.value) {
                 window.location.replace("/cart/");
