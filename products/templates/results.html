@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+{% load search_extras %}
 <!-- This page can be used for displaying categories and search results -->
 
 <!-- Page name here (SEO) -->
@@ -159,22 +160,22 @@ Search Results
                         <!-- This code for when function based pagination is used -->
                         {% if products %}
                         {% if products.has_previous %}
-                        <a class="btn btn-blue mb-4" href="?page=1">First</a>
+                        <a class="btn btn-blue mb-4" href="{{ request.build_absolute_uri|build_search_url }}&page=1">First</a>
                         <a class="btn btn-blue mb-4"
-                            href="?page={{ products.previous_page_number }}">Previous</a>
+                            href="{{ request.build_absolute_uri|build_search_url }}&page={{ products.previous_page_number }}">Previous</a>
                         {% endif %}
 
                         {% for num in products.paginator.page_range %}
                         {% if products.number == num %}
-                        <a class="btn btn-pink mb-4" href="?page={{ num }}">{{ num }}</a>
+                        <a class="btn btn-pink mb-4" href="{{ request.build_absolute_uri|build_search_url }}&page={{ num }}">{{ num }}</a>
                         {% elif num > page.obj.number|add:'-3' and num < page.obj.number|add:'3' %}
-                        <a class="btn btn-blue mb-4" href="?page={{ num }}">{{ num }}</a>
+                        <a class="btn btn-blue mb-4" href="{{ request.build_absolute_uri|build_search_url }}&page={{ num }}">{{ num }}</a>
                         {% endif %}
                         {% endfor %}
 
                         {% if products.has_next %}
-                        <a class="btn btn-blue mb-4" href="?page={{ products.next_page_number }}">Next</a>
-                        <a class="btn btn-blue mb-4" href="?page={{ products.paginator.num_pages }}">Last</a>
+                        <a class="btn btn-blue mb-4" href="{{ request.build_absolute_uri|build_search_url }}&page={{ products.next_page_number }}">Next</a>
+                        <a class="btn btn-blue mb-4" href="{{ request.build_absolute_uri|build_search_url }}&page={{ products.paginator.num_pages }}">Last</a>
                         {% endif %}
                         {% endif %}
                     </div>

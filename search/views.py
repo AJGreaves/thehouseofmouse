@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 from django.core.paginator import Paginator
 from products.models import Product
-from django.db.models import Q #for multiple searches
 
 # Create your views here.
 
@@ -43,6 +42,5 @@ def search_view(request, *args, **kwargs):
         return render(request, "results.html", context)
 
     return render(request, "results.html", context)
-
 
 
