@@ -16,7 +16,7 @@
         <div id="breadcrumbs" class="col-12">
             <a href="/">Home </a>
             <i class="fas fa-cheese fa-flip-horizontal"></i>
-            <a href="#">FAQs </a>
+            <a href="{% url 'faqs' %}">FAQs </a>
         </div>
         <div class="col-12">
             <h1>Frequently Asked Questions</h1>
@@ -34,7 +34,7 @@
                 you want, and this extra time taken is reflected in the price.</p>
 
             <h4 class="pink-text">My order is a gift. Can you include a message with the parcel?</h4>
-            <p>Yes! Please <a href="#">contact me</a> with your order number and message and I will be happy to include it with your parcel</p>
+            <p>Yes! Please <a href="{% url 'contact' %}">contact me</a> with your order number and message and I will be happy to include it with your parcel</p>
 
             <h4 class="pink-text">What is included with my order?</h4>
             <p>Each mouse comes with a signed and embossed Certificate of Authenticity and 
@@ -57,7 +57,7 @@
             <div class="text-center m-4">
                 <p>If you weren't able to find an answer to your question here. Feel free to contact me and I will be happy to help!</p>
 
-                <a href="#" class="btn btn-cta btn-pink">Get in touch</a>
+                <a href="{% url 'contact' %}" class="btn btn-cta btn-pink">Get in touch</a>
             </div>
             
         </div>

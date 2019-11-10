@@ -35,7 +35,7 @@ Search Results
             <a href="{% url 'all-products' %}">{{ category }}</a>
             {% endif %}
             {% else %}
-            <a href="#">Search</a>
+            <a href="{% url 'search' %}">Search</a>
             {% endif %}
         </div>
 
