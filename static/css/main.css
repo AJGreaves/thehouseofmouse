@@ -668,7 +668,7 @@ footer a:hover {
 }
 
 .vh-66 {
-  height: 66vh;
+  min-height: 66vh;
 }
 
 #results-sort-select {
