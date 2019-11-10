@@ -19,7 +19,7 @@ Search Results
 
 {% block content %}
 
-<div class="container">
+<div class="container {% if not products %}vh-66{% endif %}">
     <div class="row">
 
         <!-- breadcrumbs -->
@@ -87,6 +87,12 @@ Search Results
                     </div>
                     {% endif %}
 
+                    {% if not products %}
+                    <div class="col-12 text-center">
+                        <h5>There are currently no listings that match this {% if category != 'Search' %}category{% else %} search{% endif %}</h5>
+                    </div>
+                    {% endif %}
+
                     {% for product in products %}
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding">
                         <a href="{{ product.get_absolute_url }}">
@@ -139,6 +145,7 @@ Search Results
                     <div class="col-12 text-center">
 
                         <!-- This code for when function based pagination is used -->
+                        {% if is_paginated %}
                         {% if products.has_previous %}
                         <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
                         <a class="btn btn-outline-info mb-4"
@@ -157,7 +164,7 @@ Search Results
                         <a class="btn btn-outline-info mb-4" href="?page={{ products.next_page_number }}">Next</a>
                         <a class="btn btn-outline-info mb-4" href="?page={{ products.paginator.num_pages }}">Last</a>
                         {% endif %}
-
+                        {% endif %}
                     </div>
                 </div>
 

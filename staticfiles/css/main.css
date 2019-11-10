@@ -659,6 +659,18 @@ footer a:hover {
   background-position: center center;
 }
 
+#packaging-img {
+  background-image: url("https://i.ibb.co/TT762hB/Packaging.jpg");
+}
+
+#scale-img {
+  background-image: url("https://i.ibb.co/ZfLKgCs/Size.jpg");
+}
+
+.vh-66 {
+  height: 66vh;
+}
+
 #results-sort-select {
   max-width: 200px;
 }
