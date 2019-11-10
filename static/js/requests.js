@@ -112,7 +112,27 @@ $(document).ready(function () {
         });
     };
 
+    $('.country-info').click(function() {
+        alert_country();
+    });
 
+    function alert_country() {
+    
+        Swal.fire({
+            type: 'info',
+            title: "Sorry you couldn't find your country in the list.",
+            text: "Please get in touch to request your country is added my shipping destinations",
+            showCancelButton: true,
+            cancelButtonText: 'Close',
+            confirmButtonText: 'Contact',
+            confirmButtonColor: '#47b7f8',
+            cancelButtonColor: '#fa878d',
+        }).then((result) => {
+            if (result.value) {
+                window.location.replace("/pages/contact/");
+            }
+        })
+    }
 
     /**
      * settings for SweetAlert2 popup on successfully adding item to cart. 
