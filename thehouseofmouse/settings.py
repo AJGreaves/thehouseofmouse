@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import django_heroku  # vscode plyint throws error for this import, but it does work.
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -170,5 +169,6 @@ AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 if 'DEV' not in os.environ:
-    import django_heroku
+    import django_heroku  # pylint throws an error that it can't import this, but the code works.
+    
     django_heroku.settings(locals())
