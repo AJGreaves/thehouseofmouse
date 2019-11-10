@@ -42,3 +42,9 @@ def contact_view(request, *args, **kwargs):
     }
 
     return render(request, "contact.html", context)
+
+def privacy_view(request, *args, **kwargs):
+    return render(request, "privacy.html")
+
+def terms_view(request, *args, **kwargs):
+    return render(request, "terms.html")
