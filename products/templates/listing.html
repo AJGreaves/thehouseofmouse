@@ -16,9 +16,9 @@
         <div id="breadcrumbs" class="col-12">
             <a href="/">Home </a>
             <i class="fas fa-cheese fa-flip-horizontal"></i>
-            <a href="#">Categories </a>
+            <a href="{% url 'categories' %}">Categories </a>
             <i class="fas fa-cheese fa-flip-horizontal"></i>
-            <a href="/categories/{{ product.category|slugify }}">{{ product.category }}</a>
+            <a href="/products/categories/{{ product.category|slugify }}">{{ product.category }}</a>
             <i class="fas fa-cheese fa-flip-horizontal"></i>
             <a href="{{ product.get_absolute_url }}">{{ product.title }}</a>
         </div>
@@ -180,7 +180,7 @@
                     {% endfor %}
 
                     <div class="col-12 text-center">
-                        <a href="/categories/{{ product.category|slugify }}" class="btn btn-cta btn-pink">Browse more</a>
+                        <a href="/products/categories/{{ product.category|slugify }}" class="btn btn-cta btn-pink">Browse more</a>
                     </div>
 
                 </div>
