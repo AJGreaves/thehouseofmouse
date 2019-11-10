@@ -35,8 +35,12 @@ $(document).ready(function () {
             type: 'success',
             title: message,
             text: "Your message has been sent successfully!",
-            timer: 2000,
-            showConfirmButton: false,
+            confirmButtonText: 'Ok',
+            confirmButtonColor: '#47b7f8'
+        }).then((result) => {
+            if (result.value) {
+                window.location.replace("/");
+            }
         })
     }
 
