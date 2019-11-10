@@ -523,6 +523,10 @@ footer a:hover {
   background-position: center 35%;
 }
 
+.category-img h3 {
+  color: #373737;
+}
+
 .category-heading-box {
   width: 100%;
   padding: 0.5rem;
@@ -578,6 +582,14 @@ footer a:hover {
 
 #testimonials-container {
   padding: 2rem 1rem;
+  height: 610px;
+}
+
+.btn-fixed {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-bottom: 1rem;
 }
 
 #breadcrumbs {
