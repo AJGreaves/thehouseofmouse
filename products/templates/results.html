@@ -39,6 +39,19 @@ Search Results
             {% endif %}
         </div>
 
+        <div class="col-12 text-center">
+            <a href="{% url 'all-products' %}" class="btn btn-pink-outline">View all</a>
+            <a href="{% url 'famous' %}" class="btn btn-pink-outline">Famous</a>
+            <a href="{% url 'star-wars' %}" class="btn btn-pink-outline">Star Wars</a>
+            <a href="{% url 'doctor-who' %}" class="btn btn-pink-outline">Doctor Who</a>
+            <a href="{% url 'harry-potter' %}" class="btn btn-pink-outline">Harry Potter</a>
+            <a href="{% url 'special-occasions' %}" class="btn btn-pink-outline">Special Occasions</a>
+            <a href="{% url 'christmas' %}" class="btn btn-pink-outline">Christmas</a>
+            <a href="{% url 'halloween' %}" class="btn btn-pink-outline">Halloween & Dangerous</a>
+            <a href="{% url 'jobs-hobbies' %}" class="btn btn-pink-outline">Jobs & Hobbies</a>
+            <a href="{% url 'weird-misc' %}" class="btn btn-pink-outline">Weird & Misc</a>
+        </div>
+
         <!-- Heading -->
         <div class="col-12">
             {% if category %}

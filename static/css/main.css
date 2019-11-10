@@ -138,6 +138,21 @@ footer h5 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23);
 }
 
+.btn-pink-outline {
+  border: 1px solid #ff9a9f;
+  color: #ff9a9f;
+  margin: 0.25rem;
+  font-size: 0.8rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.btn-pink-outline:hover {
+  background-color: #ff9a9f;
+  color: white;
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23);
+}
+
 .btn-blue {
   background-color: #63c4fc;
   color: white;
