@@ -11,6 +11,10 @@
         width: 49%;
         display: inline-block;
     }
+
+    .blockquote {
+        height: 200px;
+    }
 }
 
 // Large devices (desktops, 992px and up)
@@ -20,5 +24,8 @@
     }
     .home-category-wrapper-lg h3 {
         font-size: 2rem;
+    }
+    .blockquote {
+        height: 145px;
     }
 }

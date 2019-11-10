@@ -582,14 +582,11 @@ footer a:hover {
 
 #testimonials-container {
   padding: 2rem 1rem;
-  height: 610px;
 }
 
-.btn-fixed {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  margin-bottom: 1rem;
+.blockquote {
+  height: 300px;
+  font-size: 1rem;
 }
 
 #breadcrumbs {
@@ -907,6 +904,9 @@ h6.sml-cap-heading {
     width: 49%;
     display: inline-block;
   }
+  .blockquote {
+    height: 200px;
+  }
 }
 
 @media screen and (min-width: 992px) {
@@ -915,6 +915,9 @@ h6.sml-cap-heading {
   }
   .home-category-wrapper-lg h3 {
     font-size: 2rem;
+  }
+  .blockquote {
+    height: 145px;
   }
 }
 /*# sourceMappingURL=main.css.map */
