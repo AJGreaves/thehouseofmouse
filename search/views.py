@@ -10,7 +10,7 @@ def search_view(request, *args, **kwargs):
     View for search page. If search query entered view takes query
     and filters results from Product model input
     """
-    products_list = Product.objects.all().order_by('-featured')
+    products_list = Product.objects.all().order_by('?')
     paginator = Paginator(products_list, 12)
 
     page = request.GET.get('page')

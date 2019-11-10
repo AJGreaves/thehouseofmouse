@@ -98,7 +98,7 @@ class ProductMixin(ListView):
     """
     model = Product
     template_name = 'results.html'
-    ordering = ['-featured']
+    queryset = Product.objects.all().order_by('?')
     context_object_name = 'products'
     paginate_by = 12
 
@@ -112,27 +112,12 @@ class ProductMixin(ListView):
             elif sort == 'featured':
                 return redirect(reverse('all-products'))
 
-class AllProductsView(ListView):
+class AllProductsView(ProductMixin):
     """
     Inherits from custom built ProductMixin,
     collects context data need for this specific page to render all products page.
     with Products with featured=True first.
     """
-    model = Product
-    template_name = 'results.html'
-    queryset = Product.objects.all().order_by('-featured')
-    context_object_name = 'products'
-    paginate_by = 12
-
-    def post(self, request, *args, **kwargs):
-        if request.method == 'POST':
-            sort = request.POST.get('results-sort-select')
-            if sort == 'price-high':
-                return redirect(reverse('all-products-price-high'))
-            elif sort == 'price-low':
-                return redirect(reverse('all-products-price-low'))
-            elif sort == 'featured':
-                return redirect(reverse('all-products'))
 
     def get_context_data(self, **kwargs):
         context = super(AllProductsView, self).get_context_data(**kwargs)
@@ -286,7 +271,7 @@ def get_post_request_context(post_request, category_name):
     elif sort == 'price-low':
         results = Product.objects.all().filter(category=category_name).order_by('price')
     elif sort == 'featured':
-        results = Product.objects.all().filter(category=category_name).order_by('-featured')
+        results = Product.objects.all().filter(category=category_name).order_by('?')
     context = {
         'products': results,
         'select': sort,
@@ -296,7 +281,7 @@ def get_post_request_context(post_request, category_name):
 
 def get_context(category_name):
     context = {
-        'products': Product.objects.all().filter(category=category_name).order_by('-featured'),
+        'products': Product.objects.all().filter(category=category_name).order_by('?'),
         'category': category_name
     }
     return context
