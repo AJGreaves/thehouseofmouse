@@ -23,25 +23,24 @@ def search_view(request, *args, **kwargs):
         'page': 'search',
     }
 
-    if request.method == 'GET':
-        query = request.GET.get('query')
-        if query:
-            vector = SearchVector('title', weight='A') + SearchVector('description', weight='B') + SearchVector('tags', weight='C')
-            query = SearchQuery(query)
-            results = Product.objects.annotate(rank=SearchRank(vector, query)).filter(rank__gte=0.1).order_by('rank')
-            paginator = Paginator(results, 12)
+    query = request.GET.get('query')
+    if query:
+        vector = SearchVector('title', weight='A') + SearchVector('description', weight='B') + SearchVector('tags', weight='C')
+        query = SearchQuery(query)
+        results = Product.objects.annotate(rank=SearchRank(vector, query)).filter(rank__gte=0.1).order_by('rank')
+        paginator = Paginator(results, 12)
 
-            page = request.GET.get('page')
-            products = paginator.get_page(page)
+        page = request.GET.get('page')
+        products = paginator.get_page(page)
 
-            context = {
-                'products': products,
-                'category': 'Search',
-                'page': 'search',
-                'search_params': query
-            }
+        context = {
+            'products': products,
+            'category': 'Search',
+            'page': 'search',
+            'search_params': query
+        }
 
-            return render(request, "results.html", context)
+        return render(request, "results.html", context)
 
     return render(request, "results.html", context)
 
