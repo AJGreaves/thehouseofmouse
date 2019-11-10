@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load search_extras %}
+<!-- This page can be used for displaying categories and search results -->
+
+<!-- Page name here (SEO) -->
+{% block title %}404 page not found | The House of Mouse{% endblock %}
+
+
+{% block meta_robots %}noindex{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>404 - Page Not Found</h1>
+            <hr>
+            <h2>Uh oh! We can't seem to find that page.</h2>
+            <p>Try the links below</p>
+            <a href="{% url 'home' %}" class="btn btn-pink">Home</a>
+            <a href="{% url 'all-products' %}" class="btn btn-blue">Shop</a>
+        </div>
+        <div class="col-12 text-center">
+            <img src="{% static 'animation/computer_mouse.gif' %}" alt="">
+        </div>
+    </div>
+</div>
+
+{% endblock %}
