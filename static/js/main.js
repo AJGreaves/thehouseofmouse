@@ -1,4 +1,4 @@
-$(document).ready(function () {
+// $(document).ready(function () {
 
     /**
      * Sets copyright date in footer to current year
@@ -10,13 +10,16 @@ $(document).ready(function () {
      * Changes direction of chevron when clicked
      */
     $('.chevron').click(function () {
-        if ($('.chevron').hasClass('fa-chevron-down')) {
-            $('.chevron').addClass('fa-chevron-up').removeClass('fa-chevron-down')
-        } else {
-            $('.chevron').addClass('fa-chevron-down').removeClass('fa-chevron-up')
-        }
-
+        changeChevronDirection();
     });
+
+    function changeChevronDirection() {
+        if ($('.chevron').hasClass('fa-chevron-down')) {
+            $('.chevron').addClass('fa-chevron-up').removeClass('fa-chevron-down');
+        } else {
+            $('.chevron').addClass('fa-chevron-down').removeClass('fa-chevron-up');
+        }
+    }
 
     /**
      * Updates main listing image with src url from thumbnails when clicked.
@@ -27,4 +30,4 @@ $(document).ready(function () {
         $('#main-listing-img').attr("src", url);
     });
 
-});
+// });
