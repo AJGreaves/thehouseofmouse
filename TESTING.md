@@ -150,6 +150,29 @@ else:
             order_item.save()
 ```
 
+5. **Django code for search vectors not working with sqlite3 database**
+    - The more refined search functions from `django.contrib.postgres.search`, such as `SearchQuery, SearchRank, SearchVector` would not work with my local sqlite3 database.
+    - Temporarily solved this by using this simpler search code:
+
+    ```python
+    from django.db.models import Q
+    results = Product.objects.filter(Q(title__icontains=query) | Q(description__icontains=query) | Q(tags__icontains=query))
+    ```
+
+    - Once my site was deployed, I connected to the postgres database and then replaced the above code with the more robust and accurate django postgres search code.
+
+    ```python
+    from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
+
+    vector = SearchVector('title', weight='A') + SearchVector('description', weight='B') + SearchVector('tags', weight='C')
+    query = SearchQuery(query)
+    results = Product.objects.annotate(rank=SearchRank(vector, query)).filter(rank__gte=0.1).order_by('rank')
+    ```
+
+
+4. **VScode unable to access postgreSQL database for testing**
+    - Due to the free Hobby-dev postgres package selected when setting up the heroku database, I was not able to set the permissions necessary to alow Django to create a test database when running `manage.py test`. 
+    - To fix this I reverted to accessing my sqlite3 database on my local machine for testing, and checked Travis regularly to check my tests written locally were passing when tested against the production database too.
 
 #### Unsolved bugs
 
