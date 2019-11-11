@@ -33,6 +33,20 @@ class OrderItemEntryTest(TestCase):
         
         self.assertEqual(str(order_item), expected_result)
 
+    def test_order_id_on_order_item(self):
+        product = Product(title="Test Mouse")
+        order = Order(id=42, full_name="Arthur Dent")
+        order_item = OrderItem(order=order, product=product, quantity=3)
+
+        self.assertEqual(order_item.order.id, 42)
+
+    def test_product_id_in_order_item(self):
+        product = Product(id=99, title="Test Mouse")
+        order = Order(id=42, full_name="Arthur Dent")
+        order_item = OrderItem(order=order, product=product, quantity=3)
+
+        self.assertEqual(order_item.product.id, 99)
+
 class OrderEntryTest(TestCase):
 
     def test_string_representation(self):
