@@ -20,7 +20,7 @@ from products.views import (
 class TestUrls(SimpleTestCase):
 
     def test_listing_detail_url_is_resolved(self):
-        url = reverse('listing-detail', args=[5])
+        url = reverse('listing-detail', args=[5, 'test-title'])
         self.assertEqual(resolve(url).func.view_class, ListingDetailView)
     
     def test_categories_url_is_resolved(self):
