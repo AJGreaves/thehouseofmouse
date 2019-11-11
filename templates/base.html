@@ -40,11 +40,9 @@
     {% include 'components/footer.html' %}
     {% endif %}
 
-    <script src="{% static 'js/main.js' %}"></script>
-
     <!-- scripts for bootstrap -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     <!-- scripts for SweetAlert2 -->
@@ -56,8 +54,7 @@
     <!-- custom js -->
     <script src="{% static 'js/main.js' %}"></script>
     <script src="{% static 'js/cookie.js' %}"></script>
-
-
+    
     {% if stock_arr or cart_items %}
     <script src="{% static 'js/requests.js' %}"></script>
     {% endif %}
