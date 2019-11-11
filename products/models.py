@@ -44,11 +44,8 @@ class Product(models.Model):
     featured = models.BooleanField(default=False)
 
     def get_absolute_url(self):
-
-        return reverse('listing-detail', kwargs={'pk': self.id})
-        # title = slugify(self.title)
-
-        # return reverse('listing-detail', kwargs={'pk': self.id, 'slug': title})
+        title = slugify(self.title)
+        return reverse('listing-detail', kwargs={'pk': self.id, 'slug': title})
 
     def __str__(self):
         return self.title

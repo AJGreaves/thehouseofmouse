@@ -17,13 +17,11 @@ from .views import (
     )
 
 urlpatterns = [
-    # path('listing/<int:pk>/<slug:slug>', ListingDetailView.as_view(), name="listing-detail"),
-    path('listing/<int:pk>/', ListingDetailView.as_view(), name="listing-detail"),
+    path('listing/<int:pk>/<slug:slug>', ListingDetailView.as_view(), name="listing-detail"),
     path('categories/', categories_view, name="categories"),
     path('all-products/', AllProductsView.as_view(), name="all-products"),
     path('all-products/price-high/', AllProductsPriceHighView.as_view(), name="all-products-price-high"),
     path('all-products/price-low/', AllProductsPriceLowView.as_view(), name="all-products-price-low"),
-    path('categories/', categories_view, name="categories"),
     path('categories/famous', famous_category_view, name="famous"),
     path('categories/special-occasions', special_category_view, name="special-occasions"),
     path('categories/harry-potter', harry_potter_category_view, name="harry-potter"),
