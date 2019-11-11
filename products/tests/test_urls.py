@@ -58,3 +58,19 @@ class TestUrls(SimpleTestCase):
     def test_weird_url_is_resolved(self):
         url = reverse('weird-misc')
         self.assertEqual(resolve(url).func, misc_category_view)
+
+    def test_jobs_url_is_resolved(self):
+        url = reverse('jobs-hobbies')
+        self.assertEqual(resolve(url).func, jobs_category_view)
+
+    def test_doctor_who_url_is_resolved(self):
+        url = reverse('doctor-who')
+        self.assertEqual(resolve(url).func, doctor_who_category_view)
+
+    def test_xmas_url_is_resolved(self):
+        url = reverse('christmas')
+        self.assertEqual(resolve(url).func, xmas_category_view)
+
+    def test_halloween_url_is_resolved(self):
+        url = reverse('halloween')
+        self.assertEqual(resolve(url).func, halloween_category_view)
