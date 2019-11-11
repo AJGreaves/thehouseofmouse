@@ -1,4 +1,5 @@
 from django.test import TestCase
+from django.contrib.auth.models import User
 from cart.models import ShippingDestination, Order, OrderItem
 from products.models import Product
 
@@ -27,5 +28,24 @@ class OrderItemEntryTest(TestCase):
         product = Product(title="Test Mouse")
         order = Order(full_name="Arthur Dent")
         order_item = OrderItem(order=order, product=product, quantity=3)
+
         expected_result = '3 x Test Mouse'
+        
         self.assertEqual(str(order_item), expected_result)
+
+class OrderEntryTest(TestCase):
+
+    def test_string_representation(self):
+        user = User(username="Trillian")
+        order = Order(id=42, date_ordered='2019-11-10', customer=user)
+
+        expected_result = '42-2019-11-10-Trillian'
+
+        self.assertEqual(str(order), expected_result)
+
+    def test_default_values(self):
+        user = User(username="Trillian")
+        order = Order(id=42, date_ordered='2019-11-10', customer=user)
+
+        self.assertEqual(order.paid, False)
+        self.assertEqual(order.shipped, False)
