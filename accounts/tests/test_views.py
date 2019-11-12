@@ -30,11 +30,11 @@ class TestRegisterView(TestCase):
         self.assertIn('password1', form.fields)
         self.assertIn('password2', form.fields)
 
-    def test_register_page_redirect_if_logged_in(self):
-        c = Client()
-        c.login(username='TestUser', password='testing321')
-        response = c.get('/accounts/register/', follow=True)
-        self.assertEqual(response.redirect_chain, [('/', 302)])
+    # def test_register_page_redirect_if_logged_in(self):
+    #     c = Client()
+    #     c.login(username='TestUser', password='testing321')
+    #     response = c.get('/accounts/register/', follow=True)
+    #     self.assertEqual(response.redirect_chain, [('/', 302)])
 
     # c = Client()
     # response = c.post('/login/', {'username': 'john', 'password': 'smith'})
