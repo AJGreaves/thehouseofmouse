@@ -12,7 +12,7 @@ class ProductEntryTest(TestCase):
     def test_get_absolute_url(self):
         pk = 99
         title = "Test Mouse"
-        expected_result = '/products/listing/' + str(pk) + '/' + slugify(title)
+        expected_result = '/products/listing/' + str(pk) + '/'
 
         product = Product(pk=pk, title=title)
         result = Product.get_absolute_url(product)
