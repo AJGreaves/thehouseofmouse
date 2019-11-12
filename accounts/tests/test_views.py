@@ -1,6 +1,6 @@
 from django.test import Client, RequestFactory, TestCase
 from django.contrib.auth.models import User
-from accounts.forms import UserUpdateForm
+from accounts.forms import UserUpdateForm, UserRegisterForm
 from cart.models import Order, OrderItem, ShippingDestination
 from products.models import Product
 from accounts.views import register_view, profile_view
@@ -23,13 +23,11 @@ class TestRegisterViewLoggedOut(TestCase):
         self.assertIn('components/navbar.html', str(names))
         self.assertIn('components/footer.html', str(names))
 
-    def test_register_form_fields(self):
+    def test_register_form_in_context(self):
         response = self.client.get('/accounts/register/')
         form = response.context['form']
-        self.assertIn('username', form.fields)
-        self.assertIn('email', form.fields)
-        self.assertIn('password1', form.fields)
-        self.assertIn('password2', form.fields)
+        form_type = type(form)
+        self.assertEqual(form_type, UserRegisterForm)
 
 class TestRegisterViewLoggedIn(TestCase):
 
