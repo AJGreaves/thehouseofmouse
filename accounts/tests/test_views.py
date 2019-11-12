@@ -1,7 +1,8 @@
-from unittest import TestCase
-from django.test import Client
+from django.test import Client, RequestFactory, TestCase
+from django.contrib.auth.models import User
+from accounts.views import register_view
 
-class TestRegisterView(TestCase):
+class TestRegisterViewLoggedOut(TestCase):
     def setUp(self):
         self.client = Client()
 
@@ -30,12 +31,20 @@ class TestRegisterView(TestCase):
         self.assertIn('password1', form.fields)
         self.assertIn('password2', form.fields)
 
-    def test_register_page_redirect_if_logged_in(self):
-        c = Client()
-        c.login(username='TestUser', password='testing321')
-        response = c.get('/accounts/register/', follow=True)
-        self.assertEqual(response.redirect_chain, [('/', 302)])
+class TestRegisterViewLoggedIn(TestCase):
 
-    # c = Client()
-    # response = c.post('/login/', {'username': 'john', 'password': 'smith'})
-    # response.status_code
+    def setUp(self):
+        self.factory = RequestFactory()
+        self.user = User.objects.create_user(
+            username='testuser', email='test@email.com', password="testing321"
+        )
+    
+    def test_register_page_redirect_to_home_if_logged_in(self):
+        request = self.factory.get('/')
+        request.user = self.user
+        response = register_view(request)
+        
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, "/")
+
+        
