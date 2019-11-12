@@ -153,7 +153,8 @@
                     </div>
                     {% for product in more_products %}
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 listing-card-padding {% if forloop.counter >= 5 %} d-lg-none {% endif %} ">
-                        <a href="{% url 'listing-detail' product.id product.title|slugify %}">
+                        
+                        <a href="{% url 'listing-detail' product.id %}">
                             <div class="listing-card mx-auto">
                                 <div class="listing-img-wrapper">
                                     <div class="listing-img small-box-shadow sm-box-shadow-hover"
