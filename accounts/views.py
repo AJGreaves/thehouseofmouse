@@ -12,6 +12,9 @@ def register_view(request):
     then redirects users to the login page on successfully
     creating a new account.
     """
+    if request.user.is_authenticated:
+        return redirect('home')
+
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
