@@ -1,16 +1,16 @@
-# The House of Mouse Webshop
-## eCommerce site built using Django
+<div align="center">
+    <img src="https://i.ibb.co/1znc0qC/website-banner-simple-650.png" href="https://thehouseofmouse.herokuapp.com/" target="_blank" rel="noopener" alt="The House of Mouse, Tails of Joy" aria-label="The House of Mouse, Tails of Joy" />
+</div>
+
 
 [![Build Status](https://travis-ci.org/AJGreaves/thehouseofmouse.svg?branch=master)](https://travis-ci.org/AJGreaves/thehouseofmouse)
-
-Currently in early development stages.
 
 ## Introduction
 
 <div align="center">
     <img src="https://i.ibb.co/F3rct3F/all-products-responsive.png" href="https://thehouseofmouse.herokuapp.com/" target="_blank" rel="noopener" alt="Image of how shop page looks on all screen sizes" aria-label="Image of how shop page looks on all screen sizes" />
 </div>
-<br>
+
 
 [The House of Mouse webshop](https://thehouseofmouse.herokuapp.com/) was created by Anna Greaves. 
 
