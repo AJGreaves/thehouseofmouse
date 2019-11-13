@@ -1,8 +1,10 @@
 from django.test import Client, RequestFactory, TestCase
 from django.contrib.auth.models import User
+from django.core.files import File
 from products.models import Product
 from cart.forms import NewOrderForm
 from cart.models import Order, ShippingDestination
+from pathlib import Path
 
 class TestCartViewLoggedOut(TestCase):
     def setUp(self):
@@ -107,6 +109,16 @@ class TestCheckoutInfoViewLoggedIn(TestCase):
             tags="tags",
             product_image1="test.jpg",
         )
+
+        product = Product()
+        product.id = 3
+        product.price = 20
+        product.num_in_stock = 10
+        product.description = "description"
+        product.tags = "tags"
+        product.product_image1 = File(open("static/img/test.jpg", "rb"))
+        product.save()
+
         Order.objects.create(customer=self.user)
 
         # create session data for product
@@ -126,15 +138,15 @@ class TestCheckoutInfoViewLoggedIn(TestCase):
         client.login(username='testuser', password="testing321")
 
         # create product, country and order in database
-        Product.objects.create(
-            id=3,
-            title="Test Mouse",
-            price=20,
-            num_in_stock=10,
-            description="description",
-            tags="tags",
-            product_image1="test.jpg",
-        )
+        product = Product()
+        product.id = 3
+        product.price = 20
+        product.num_in_stock = 10
+        product.description = "description"
+        product.tags = "tags"
+        product.product_image1 = File(open("static/img/test.jpg", "rb"))
+        product.save()
+
         country = ShippingDestination.objects.create(country="UK", shipping_price=10)
         Order.objects.create(
             customer=self.user,
@@ -165,15 +177,15 @@ class TestCheckoutInfoViewLoggedIn(TestCase):
         client.login(username='testuser', password="testing321")
 
         # create product in database
-        Product.objects.create(
-            id=3,
-            title="Test Mouse",
-            price=20,
-            num_in_stock=10,
-            description="description",
-            tags="tags",
-            product_image1="test.jpg",
-        )
+        product = Product()
+        product.id = 3
+        product.price = 20
+        product.num_in_stock = 10
+        product.description = "description"
+        product.tags = "tags"
+        product.product_image1 = File(open("static/img/test.jpg", "rb"))
+        product.save()
+        
         country = ShippingDestination.objects.create(country="UK", shipping_price=10)
         Order.objects.create(customer=self.user)
 
