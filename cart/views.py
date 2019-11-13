@@ -23,7 +23,6 @@ def cart_view(request, *args, **kwargs):
     """
     if request.session.get('cart'):
         cart = request.session.get('cart')
-        print(cart)
         context = get_cart_page_context(cart)
         
         if request.method == 'POST':
@@ -102,29 +101,33 @@ def checkout_info_view(request, *args, **kwargs):
 
             return redirect('shipping')
 
-    # Get any data for shipping info already in order:
-    initial_data = {
-        'full_name': order.full_name,
-        'address_line_1': order.address_line_1,
-        'address_line_2': order.address_line_2,
-        'town_or_city': order.town_or_city,
-        'county': order.county,
-        'postcode': order.postcode,
-        'country': order.country,
-    }
+        if order:
+            # Get data for shipping info already in order:
+            initial_data = {
+                'full_name': order.full_name,
+                'address_line_1': order.address_line_1,
+                'address_line_2': order.address_line_2,
+                'town_or_city': order.town_or_city,
+                'county': order.county,
+                'postcode': order.postcode,
+                'country': order.country,
+            }
 
-    shipping_info_form = NewOrderForm(initial=initial_data)
+            shipping_info_form = NewOrderForm(initial=initial_data)
 
-    new_context = {
-        **context,
-        **{
-            "active_pg": "checkout_info",
-            "shipping_info_form" : shipping_info_form,
-            "navbar": False
+        else:
+            shipping_info_form = NewOrderForm()
+
+        new_context = {
+            **context,
+            **{
+                "active_pg": "checkout_info",
+                "shipping_info_form" : shipping_info_form,
+                "navbar": False
+            }
         }
-    }
 
-    return render(request, "checkout1_info.html", new_context)
+        return render(request, "checkout1_info.html", new_context)
 
 @login_required
 def checkout_shipping_view(request, *args, **kwargs):
