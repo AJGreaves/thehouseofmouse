@@ -9,8 +9,6 @@ from products.models import Product
 from .forms import OrderItemForm, NewOrderForm
 from .models import Order, OrderItem, ShippingDestination
 
-
-
 stripe.api_key = settings.STRIPE_SECRET
 STRIPE_PUBLISHABLE = settings.STRIPE_PUBLISHABLE
 STRIPE_SUCCESS_URL = settings.STRIPE_SUCCESS_URL 
@@ -25,8 +23,9 @@ def cart_view(request, *args, **kwargs):
     """
     if request.session.get('cart'):
         cart = request.session.get('cart')
+        print(cart)
         context = get_cart_page_context(cart)
-
+        
         if request.method == 'POST':
             
             if request.headers['Content-Type'] == 'application/json':
