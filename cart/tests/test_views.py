@@ -1,10 +1,7 @@
 from django.test import Client, RequestFactory, TestCase
 from django.contrib.auth.models import User
-from django.core.files import File
 from products.models import Product
-from cart.forms import NewOrderForm
 from cart.models import Order, ShippingDestination
-from pathlib import Path
 
 class TestCartViewLoggedOut(TestCase):
     def setUp(self):
