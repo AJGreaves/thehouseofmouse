@@ -7,12 +7,12 @@ Currently in early development stages.
 
 ## Introduction
 
-<!-- <div align="center">
-    <img src="https://i.ibb.co/CBw04v7/home.jpg" href="http://family-hub-nl.herokuapp.com" target="_blank" rel="noopener" alt="Image of how home page looks on all screen sizes" aria-label="Image of how home page looks on all screen sizes" />
+<div align="center">
+    <img src="https://i.ibb.co/F3rct3F/all-products-responsive.png" href="https://thehouseofmouse.herokuapp.com/" target="_blank" rel="noopener" alt="Image of how shop page looks on all screen sizes" aria-label="Image of how shop page looks on all screen sizes" />
 </div>
-<br> -->
+<br>
 
-[The House of Mouse webshop]() was created by Anna Greaves. 
+[The House of Mouse webshop](https://thehouseofmouse.herokuapp.com/) was created by Anna Greaves. 
 
 Introduction to purpose of project here.
 
