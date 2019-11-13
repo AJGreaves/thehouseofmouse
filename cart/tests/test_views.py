@@ -182,7 +182,7 @@ class TestCheckoutInfoViewLoggedIn(TestCase):
         session['cart'] = {'orderItems': [{'listingId': 3, 'quantity': 1}], 'total': 20, 'count': 1}
         session.save()
 
-        response = client.post(
+        client.post(
             '/cart/checkout/info/',
             {
                 'full_name': 'Arthur Dent',
