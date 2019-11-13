@@ -116,7 +116,6 @@ class TestCheckoutInfoViewLoggedIn(TestCase):
         product.num_in_stock = 10
         product.description = "description"
         product.tags = "tags"
-        product.product_image1 = File(open("static/img/test.jpg", "rb"))
         product.save()
 
         Order.objects.create(customer=self.user)
@@ -144,7 +143,6 @@ class TestCheckoutInfoViewLoggedIn(TestCase):
         product.num_in_stock = 10
         product.description = "description"
         product.tags = "tags"
-        product.product_image1 = File(open("static/img/test.jpg", "rb"))
         product.save()
 
         country = ShippingDestination.objects.create(country="UK", shipping_price=10)
@@ -183,7 +181,6 @@ class TestCheckoutInfoViewLoggedIn(TestCase):
         product.num_in_stock = 10
         product.description = "description"
         product.tags = "tags"
-        product.product_image1 = File(open("static/img/test.jpg", "rb"))
         product.save()
         
         country = ShippingDestination.objects.create(country="UK", shipping_price=10)
