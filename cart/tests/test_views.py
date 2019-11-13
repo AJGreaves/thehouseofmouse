@@ -107,6 +107,7 @@ class TestCheckoutInfoViewLoggedIn(TestCase):
             tags="tags",
             product_image1="test.jpg",
         )
+        Order.objects.create(customer=self.user)
 
         # create session data for product
         session = client.session
@@ -119,7 +120,7 @@ class TestCheckoutInfoViewLoggedIn(TestCase):
         form_type = type(form)
         self.assertEqual(form_type, NewOrderForm)
 
-    def test_load_initial_data_in_form_when_order_already_exists(self):
+    def test_load_initial_data_in_form(self):
         # create client and log them in
         client = Client()
         client.login(username='testuser', password="testing321")
@@ -158,3 +159,43 @@ class TestCheckoutInfoViewLoggedIn(TestCase):
         self.assertIn("Cottingshire", str(form))
         self.assertIn("UK", str(form))
 
+    def test_post_new_order_form_correct(self):
+        # create client and log them in
+        client = Client()
+        client.login(username='testuser', password="testing321")
+
+        # create product in database
+        Product.objects.create(
+            id=3,
+            title="Test Mouse",
+            price=20,
+            num_in_stock=10,
+            description="description",
+            tags="tags",
+            product_image1="test.jpg",
+        )
+        country = ShippingDestination.objects.create(country="UK", shipping_price=10)
+        Order.objects.create(customer=self.user)
+
+        # create session data for product
+        session = client.session
+        session['cart'] = {'orderItems': [{'listingId': 3, 'quantity': 1}], 'total': 20, 'count': 1}
+        session.save()
+
+        response = client.post(
+            '/cart/checkout/info/',
+            {
+                'full_name': 'Arthur Dent',
+                'address_line_1': 'Street House 1',
+                'town_or_city': 'City',
+                'county': 'Devon',
+                'postcode': '1234CB',
+                'country': country.id,
+            }
+        )
+
+        order = Order.objects.filter(customer=self.user).first()
+        self.assertEqual(order.full_name, "Arthur Dent")
+        self.assertEqual(order.county, "Devon")
+        self.assertEqual(order.country, country)
+        self.assertIsInstance(order, Order)
