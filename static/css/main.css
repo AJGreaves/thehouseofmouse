@@ -89,6 +89,42 @@ from headings with this class on */
   font-size: 0.9rem;
 }
 
+.text-pink {
+  color: #ff9a9f;
+}
+
+/* Shopping cart fonts */
+#shopping-cart-contents h4 {
+  font-size: 1rem;
+}
+
+#subtotal {
+  font-family: "Lato", sans-serif;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+#order-summary-mobile h4,
+.total {
+  font-size: 1rem;
+  font-family: "Lato", sans-serif;
+  color: #373737;
+  margin: 0 1rem;
+  display: inline;
+  text-transform: none;
+}
+
+.checkout-heading {
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: "Lato", sans-serif;
+}
+
+#total {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
 /* Buttons scss */
 /* Uniform styling for all call to action buttons */
 .btn-cta {
@@ -148,6 +184,11 @@ from headings with this class on */
 }
 
 .accordion-btn {
+  width: 100%;
+}
+
+#order-summary-mobile button {
+  text-decoration: none;
   width: 100%;
 }
 
@@ -582,6 +623,7 @@ footer a:hover {
   max-width: 200px;
 }
 
+/* Styles for cart and checkout pages */
 .cart-item-img {
   width: 100px;
   height: 100px;
@@ -600,10 +642,6 @@ footer a:hover {
   background-color: #f8f9fa;
 }
 
-#shopping-cart-contents h4 {
-  font-size: 1rem;
-}
-
 #shopping-cart-contents i {
   line-height: 1.2rem;
 }
@@ -613,16 +651,7 @@ footer a:hover {
   margin-bottom: 1.4rem;
 }
 
-.text-pink {
-  color: #ff9a9f;
-}
-
-#subtotal {
-  font-family: "Lato", sans-serif;
-  text-transform: uppercase;
-  font-size: 1.2rem;
-}
-
+/* Progress bar in shopping cart */
 #progress-line {
   border-top: 1px solid black;
   margin: 2rem auto;
@@ -671,21 +700,6 @@ footer a:hover {
   margin: 1rem 1rem 1rem 0;
 }
 
-#order-summary-mobile h4,
-.total {
-  font-size: 1rem;
-  font-family: "Lato", sans-serif;
-  color: #373737;
-  margin: 0 1rem;
-  display: inline;
-  text-transform: none;
-}
-
-#order-summary-mobile button {
-  text-decoration: none;
-  width: 100%;
-}
-
 #order-summary-mobile .fa-shopping-basket {
   color: #373737;
   font-size: 1.5rem;
@@ -694,12 +708,6 @@ footer a:hover {
 #order-summary-mobile .chevron {
   color: #373737;
   font-size: 1.1rem;
-}
-
-.checkout-heading {
-  font-size: 1.2rem;
-  font-weight: bold;
-  font-family: "Lato", sans-serif;
 }
 
 .link {
@@ -729,11 +737,6 @@ footer a:hover {
 
 a.blue-link {
   color: #47b7f8;
-}
-
-#total {
-  font-size: 1.5rem;
-  font-weight: bold;
 }
 
 .country-info {

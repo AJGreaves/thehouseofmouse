@@ -88,3 +88,39 @@ from headings with this class on */
 .sml-txt {
     font-size: 0.9rem;
 }
+
+.text-pink {
+    color: $color2;
+}
+
+/* Shopping cart fonts */
+#shopping-cart-contents h4 {
+    font-size: 1rem;
+}
+
+#subtotal {
+    font-family: $main-text;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+}
+
+#order-summary-mobile h4,
+.total {
+    font-size: 1rem;
+    font-family: $main-text;
+    color: $color-dark;
+    margin: 0 1rem;
+    display: inline;
+    text-transform: none;
+}
+
+.checkout-heading {
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: $main-text;
+}
+
+#total {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
