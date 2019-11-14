@@ -91,3 +91,12 @@
     min-height: 66vh;
 }
 
+.listing-card h5 {
+    color: $color-dark;
+    -webkit-transition: 0.2s all ease-in-out 0.2s;
+    transition: 0.2s all ease-in-out 0.2s;
+}
+
+.listing-card h5:hover {
+    color: $color2;
+}

@@ -696,6 +696,16 @@ footer a:hover {
   min-height: 66vh;
 }
 
+.listing-card h5 {
+  color: #373737;
+  -webkit-transition: 0.2s all ease-in-out 0.2s;
+  transition: 0.2s all ease-in-out 0.2s;
+}
+
+.listing-card h5:hover {
+  color: #ff9a9f;
+}
+
 #results-sort-select {
   max-width: 200px;
 }

@@ -78,11 +78,38 @@ Introduction to purpose of project here.
 
 ### Visitor Goals
 
+The central target audience for The House of Mouse are:
+- People who collect mouse ornaments or cute animal ornaments.
+- Fans of Harry Potter, Star Wars or Doctor Who.
+- People who value buying handmade.
+- People searching for unique handmade gifts.
+- People in touch with their inner child and who find joy in adorable art.
+
+User goals are:
+- Find a new mouse for my collection.
+- Find a gift for my husband-who-has-everything.
+- Enjoy browsing all the cute designs and stories.
+- Be able to navigate the shop easily, find what I need and make a safe and secure purchase.
+- Buy from a trustworthy online shop.
+
+The House of Mouse online shop is a great way to meet these needs because:
+- The website has been carefully designed with the years of experience this developer has had in running The House of Mouse through online marketplaces like Etsy.
+- The navigation fits with conventions of well laid out online shops, products are professionally photographed and easy to find. All the information that the buyer needs is available and easy to find.
+- The House of Mouse website can be searched by category, similar items and using text search, making it easy for customers to find specific things or enjoy browsing categories that interest them.
+
 ### Business Goals
+
+The Goals of The House of Mouse business are:
+- Provide a professional online shop that helps the user to feel safe that they are buying from a trustworthy source. 
+- Build brand awareness by including all the branding photographs, colours, fonts and logo associated with The House of Mouse brand.
+- Connect to fans of the shop through The House of Mouse social media channels.
+- Build The House of Mouse newsletter subscriptions.
+- Keep track of sales data to inform future product choices.
+- Make sales of products easy for buyers to increase sales conversion.
 
 ## User Stories
 
-As a visitor to The House of Mouse webshop (THOM) I expect/want/need:
+As a visitor to The House of Mouse website I expect/want/need:
 
 1. To easily find what I am looking for, I want the layout of the site to make sense so I am not confused or put off using it. 
 
@@ -90,16 +117,21 @@ As a visitor to The House of Mouse webshop (THOM) I expect/want/need:
 
 3. The ability to search through small amounts of information to find what I need, and then be able to easily click to get more detailed information when I need it.
 
+4. The site to be easily navigable from any device, desktop, tablet or phone. For the content to look good and be useable on all of these devices.
 
-13. As a regular user of the THOM website, I expect to be able to connect to their social media channels and/or newsletter, to keep up to date with new listings on the site. 
+5. I want to learn more about the shop owner and their process. 
 
-14. As a user of THOM webshop, I expect to be able to easily get in contact via a contact form.
+6. I want a completely custom mouse designed and created for me. 
+
+13. As a regular user of the The House of Mouse website, I expect to be able to connect to their social media channels and/or newsletter, to keep up to date with new listings on the site. 
+
+14. As a user of The House of Mouse website, I expect to be able to easily get in contact via a contact form.
 
 15. As a user I expect feedback from the website I am using when I interact with it, I expect loading spinners when pages are taking a while to load, I expect pop ups and modals to inform me when my forms have been completed and sent correctly.
 
 ## Design Choices
 
-The House of Mouse webshop has an overall child like, joyful feel, with emphasis on the high quality, artisan handmade feel of the products on sale. The following design choices were made with this in mind:
+The House of Mouse website has an overall child like, joyful feel, with emphasis on the high quality, artisan handmade feel of the products on sale. The following design choices were made with this in mind:
 
 ### Fonts
 
