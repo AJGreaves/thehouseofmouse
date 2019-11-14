@@ -40,6 +40,7 @@ Search Results
             {% endif %}
         </div>
 
+        <!-- Buttons for each category in the shop, hidden on mobile view -->
         <div class="col-12 text-center d-none d-md-block">
             <a href="{% url 'all-products' %}" class="btn btn-pink-outline">View all</a>
             <a href="{% url 'famous' %}" class="btn btn-pink-outline">Famous</a>
@@ -61,6 +62,8 @@ Search Results
         </div>
 
         {% if category == 'Search' %}
+
+        <!-- Search bar field -->
         <div class="col-12">
             <form method="GET" id="search-form" action=".">
                 <div class="form-row justify-content-center">
