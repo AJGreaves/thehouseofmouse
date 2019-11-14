@@ -6,9 +6,6 @@
 <!-- page name here (SEO) -->
 {% block title %}Your Account | The House of Mouse{% endblock %}
 
-<!-- page meta description here (SEO) -->
-{% block meta_description %}{% endblock %}
-
 {% block meta_robots %}noindex{% endblock %}
 
 {% block content %}
@@ -33,6 +30,7 @@
     <div class="row justify-content-center">
         <div class="col-12 col-lg-6">
 
+            <!-- User can update profile info here -->
             <form method="POST">
                 {% csrf_token %}
                 <fieldset class="form-group">
@@ -45,12 +43,18 @@
             </form>
 
         </div>
+
         <div class="col-12 col-lg-6">
+
+            <!--
+                Section that displays all the users paid orders. 
+                First order accordion is open, all others after that are closed, 
+                but can be opened with a click
+            -->
             <legend class="border-bottom my-4 pink-uppercase">My Orders</legend>
             <div class="row mx-2">
-                <!-- Begin accordion test -->
+                
                 <div class="col-12">
-
                     {% if all_orders %}
                     {% for full_order in all_orders %}
                     <div id="orders-accordion-{{ forloop.counter }}" class="accordion mb-3">
@@ -150,14 +154,9 @@
                                     </div>
 
                                 </div>
-
-
                             </div>
                         </div>
-
-
                     </div>
-
 
                     {% endfor %}
                     {% endif %}
