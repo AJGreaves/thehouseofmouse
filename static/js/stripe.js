@@ -13,7 +13,7 @@ $('#submit-payment-btn').click(function() {
 });
 
 /**
- * Activates strive v3 checkout page
+ * Activates stripe v3 checkout page
  */
 async function startCheckout() {
     const {error} = await stripe.redirectToCheckout({
