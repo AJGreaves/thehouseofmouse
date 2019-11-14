@@ -69,7 +69,11 @@ def cart_view(request, *args, **kwargs):
 @login_required
 def checkout_info_view(request, *args, **kwargs):
     """
-    Renders checkout info page with navbar and footer removed
+    Renders checkout info page with navbar and footer removed to fit with conventions of online shops.
+    Redirects the user to the cart page if they do not have anything in their cart yet.
+    Retrieves any existing unpaid order for the current user and adds their information to the form values.
+    Processes order form request and adds all data to the Order instance.
+    The redirects user to the checkout_shipping page.
     """
 
     # If user trying to navigate to this page with nothing in their cart, redirect them to cart page
@@ -85,7 +89,6 @@ def checkout_info_view(request, *args, **kwargs):
         order = Order.objects.filter(customer=request.user, paid=False).first()
 
         if request.method == 'POST':
-            
             order_form = NewOrderForm(request.POST)
 
             if order_form.is_valid():
@@ -132,7 +135,13 @@ def checkout_info_view(request, *args, **kwargs):
 @login_required
 def checkout_shipping_view(request, *args, **kwargs):
     """
-    Renders checkout shipping page with navbar and footer removed
+    Renders checkout shipping page with navbar and footer removed to fit with conventions of online shops.
+    Redirects the user to the cart page if they do not have anything in their cart yet.
+    Gets unpaid order for current user from the database. Creates instances of OrderItem from the data
+    stored in the users session cart. Retrieves the shipping cost from the selected destination country
+    and adds this to the context for the page.
+    Provides Stripe with the necessary keys to process payment when user clicks the "Pay now" button.
+
     """
     if not request.session.get('cart'):
         return redirect('cart')

@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class ShippingDestination(models.Model):
+    """ Model to store all shipping destinations with their relevant price and shipping time """
+
     country = models.CharField(max_length=50)
     shipping_price = models.DecimalField(max_digits=6, decimal_places=2)
     shipping_time = models.CharField(max_length=150, default="1 to 2 weeks")
@@ -13,6 +15,10 @@ class ShippingDestination(models.Model):
         return f'{self.country}'
 
 class Order(models.Model):
+    """
+    Model to store order information, customer, shipping address,
+    date ordered and if the order has been paid or shipped yet.
+    """
 
     customer = models.ForeignKey(User, on_delete=models.PROTECT)
     full_name = models.CharField(max_length=150, null=True)
@@ -30,6 +36,11 @@ class Order(models.Model):
         return f'{self.id}-{self.date_ordered}-{self.customer.username}'
 
 class OrderItem(models.Model):
+    """
+    Model to store individual order items, the Order and Product they relate
+    to and the quantity the customer would like.
+    """
+    
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveSmallIntegerField()
