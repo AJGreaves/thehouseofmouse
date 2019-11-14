@@ -464,7 +464,7 @@ footer a:hover {
 #carousel-img-3 {
   /*  this image is replaced with a different one on 
         medium screens & up, see media queries          */
-  background-image: url("https://i.ibb.co/CJv8wjC/site-3-png.png");
+  background-image: url("https://i.ibb.co/Jm3wwZV/site2-png.png");
   background-position: center 35%;
 }
 
@@ -809,7 +809,7 @@ a.blue-link {
 @media screen and (min-width: 768px) {
   /* replacement image that will look better when image dimensions are wider than tall */
   #carousel-img-3 {
-    background-image: url("https://i.ibb.co/Jm3wwZV/site2-png.png");
+    background-image: url("https://i.ibb.co/CJv8wjC/site-3-png.png");
     background-position: center 65%;
   }
   #info-form input.half-md-width {
