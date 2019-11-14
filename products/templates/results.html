@@ -103,7 +103,7 @@ Search Results
                     </div>
                     {% endif %}
 
-                    {% if not products %}
+                    {% if not products and not no_search_yet %}
                     <div class="col-12 text-center">
                         <h5>There are currently no listings that match this {% if category != 'Search' %}category{% else %} search{% endif %}</h5>
                     </div>

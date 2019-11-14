@@ -8,22 +8,14 @@ from products.models import Product
 
 def search_view(request, *args, **kwargs):
     """
-    View for search page. Before search query is entered, displays all products in database ordered by featured items first.
-    If search query entered view takes query and filters results from Product model input and provides the list for
+    View for search page. If search query entered view takes query and filters results from Product model input and provides the list for
     display on the page.
     """
-    featured = Product.objects.filter(featured=True)
-    not_featured = Product.objects.filter(featured=False)
-    products_list = list(chain(featured, not_featured))
-    paginator = Paginator(products_list, 12)
-
-    page = request.GET.get('page')
-    products = paginator.get_page(page)
 
     context = {
-        'products': products,
         'category': 'Search',
         'page': 'search',
+        'no_search_yet': True
     }
 
     query = request.GET.get('query')
