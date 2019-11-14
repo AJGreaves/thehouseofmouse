@@ -8,6 +8,7 @@ from cart.views import (
 )
 
 class TestUrls(SimpleTestCase):
+    """ Tests for urls in cart app """
 
     def test_cart_url_is_resolved(self):
         url = reverse('cart')
