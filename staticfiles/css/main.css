@@ -141,6 +141,19 @@ from headings with this class on */
   color: #ff9a9f;
 }
 
+/* Headings for displaying orders */
+h6.sml-cap-heading {
+  font-family: "Lato", sans-serif;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.sml-data {
+  font-family: "Lato", sans-serif;
+  font-size: 0.8rem;
+}
+
 /* Buttons scss */
 /* Uniform styling for all call to action buttons */
 .btn-cta {
@@ -422,6 +435,10 @@ footer a:hover {
   margin: 0;
 }
 
+#results-sort-select {
+  max-width: 200px;
+}
+
 /* Styling for home page */
 .home-carousel-item {
   height: 66vh;
@@ -623,10 +640,6 @@ footer a:hover {
   min-height: 66vh;
 }
 
-#results-sort-select {
-  max-width: 200px;
-}
-
 /* Styles for cart and checkout pages */
 .cart-item-img {
   width: 100px;
@@ -748,6 +761,7 @@ a.blue-link {
   cursor: pointer;
 }
 
+/* Styles for cards displaying order information */
 .full-order-card {
   border: 1px solid lightgray;
   border-radius: 6px;
@@ -782,18 +796,6 @@ a.blue-link {
   border-radius: 0 0 6px 6px;
 }
 
-h6.sml-cap-heading {
-  font-family: "Lato", sans-serif;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  margin: 0;
-}
-
-.sml-data {
-  font-family: "Lato", sans-serif;
-  font-size: 0.8rem;
-}
-
 .order-summary-short {
   padding: 1rem;
 }
@@ -803,8 +805,9 @@ h6.sml-cap-heading {
   font-weight: bold;
 }
 
+/* Media queries */
 @media screen and (min-width: 768px) {
-  /* replacement image that will look better when image wider than tall */
+  /* replacement image that will look better when image dimentions are wider than tall */
   #carousel-img-3 {
     background-image: url("https://i.ibb.co/CW69XXd/smile.jpg");
     background-position: center 65%;

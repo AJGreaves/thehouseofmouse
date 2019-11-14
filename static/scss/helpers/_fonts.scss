@@ -141,3 +141,17 @@ from headings with this class on */
 .listing-card h5:hover {
     color: $color2;
 }
+
+/* Headings for displaying orders */
+
+h6.sml-cap-heading {
+    font-family: $main-text;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+.sml-data {
+    font-family: $main-text;
+    font-size: 0.8rem;
+}
