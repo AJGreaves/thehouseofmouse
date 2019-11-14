@@ -1,3 +1,5 @@
+/* Styles for fonts and text */
+
 body {
     font-family: $main-text;
     color: $color-dark;
@@ -62,6 +64,8 @@ footer h5 {
     color: $color2;
 }
 
+/* removes previously set uppercase
+from headings with this class on */
 .pink-text {
     font-family: $heading;
     color: $color2;
@@ -75,6 +79,7 @@ footer h5 {
     font-size: 1.2rem;
 }
 
+/* Styles sweetAlert popup heading to match site brand */
 .swal2-popup h2 {
     font-size: 1.3rem;
     font-family: $main-text;
