@@ -1,44 +1,12 @@
-.btn-search {
-    color: $color3;
-    background-color: transparent;
-    border-color: $color3
-}
+/* Buttons scss */
 
-.btn-search:hover {
-    background-color: $color3;
-    color: white;
-}
 
-#mobile-search-btn {
-    color: white;
-    background-color: #ced4da;
-    border-color: #ced4da;
-    border-radius: 0 0.25rem 0.25rem 0;
-}
-
-#mobile-search-btn:hover {
-    background-color: $color3;
-}
-
-#mobile-search-input,
-#nav-search-input {
-    border-radius: 0.25rem 0 0 0.25rem;
-}
-
-#nav-search-btn {
-    border-radius: 0 0.25rem 0.25rem 0;
-}
-
-.btn-cta,
-#mc_embed_signup .button {
+/* Uniform styling for all call to action buttons */
+.btn-cta {
     text-transform: uppercase;
     letter-spacing: 0.25rem;
     padding: 0.4rem 1rem;
     margin: 1rem;
-}
-
-#mc_embed_signup .button {
-    margin-top: 0.5rem;
 }
 
 .btn-pink{
@@ -83,36 +51,6 @@
 .btn-shop {
     width: 100%;
     margin: 0;
-}
-
-.btn-fb {
-    color: #4267B2;
-    border: 1px solid #4267B2;
-}
-
-.btn-fb:hover {
-    color: white;
-    background-color: #4267B2;
-}
-
-.btn-twit {
-    color: #1DA1F2;
-    border: 1px solid #1DA1F2;
-}
-
-.btn-twit:hover {
-    color: white;
-    background-color: #1DA1F2;
-}
-
-.btn-pin {
-    color: #E60023;
-    border: 1px solid #E60023;
-}
-
-.btn-pin:hover {
-    color: white;
-    background-color: #E60023;
 }
 
 #pay-now-btn {
