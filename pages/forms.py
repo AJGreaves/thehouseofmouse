@@ -1,6 +1,8 @@
 from django import forms
 
 class ContactForm(forms.Form):
+    """ Form for contact page - sent with emailjs """
+    
     name = forms.CharField()
     email = forms.EmailField()
     message = forms.CharField(
