@@ -84,8 +84,9 @@
             </a>
             {% endif  %}
             <li class="nav-item {% if page == 'search' %}active{% endif %}">
-                <a class="nav-link" href="{% url 'search' %}">Search {% if page == "search" %}<span
-                        class="sr-only">(current)</span>{% endif %}</a>
+                <a class="nav-link" href="{% url 'search' %}">
+                        <i class="fas fa-search navbar-search-icon" title="Search"></i>
+                        {% if page == "search" %}<span class="sr-only">(current)</span>{% endif %}</a>
             </li>
         </ul>
 
