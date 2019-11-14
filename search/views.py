@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 from django.core.paginator import Paginator
-from itertools import chain
 from products.models import Product
 
 # Create your views here.
