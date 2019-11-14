@@ -1,8 +1,8 @@
 #folders
-.venv
-.vscode
-product_images
-htmlcov
+.venv/
+.vscode/
+product_images/
+htmlcov/
 
 #files
 *.sqlite3
