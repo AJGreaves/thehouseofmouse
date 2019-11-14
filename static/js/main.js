@@ -3,7 +3,7 @@ $(document).ready(function () {
     /**
      * Sets copyright date in footer to current year
      */
-    $('#copyright-year').text('2008 - ' + new Date().getFullYear())
+    $('#copyright-year').text('2008 - ' + new Date().getFullYear());
 
     /**
      * Changes direction of chevron when clicked
