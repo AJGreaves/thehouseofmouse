@@ -40,12 +40,12 @@ footer h3 {
 }
 
 footer h5 {
-  color: #ff9a9f;
+  color: #e68186;
 }
 
 .pink-cap-header {
   font-family: "Lato", sans-serif;
-  color: #ff9a9f;
+  color: #e68186;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   font-size: 1.2rem;
@@ -61,19 +61,19 @@ footer h5 {
 
 #testimonials-section h3 {
   font-size: 2rem;
-  color: #ff9a9f;
+  color: #e68186;
 }
 
 /* removes previously set uppercase
 from headings with this class on */
 .pink-text {
   font-family: "Emilys Candy", cursive;
-  color: #ff9a9f;
+  color: #e68186;
   text-transform: none;
 }
 
 .pink-uppercase {
-  color: #ff9a9f;
+  color: #e68186;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
   font-size: 1.2rem;
@@ -90,7 +90,7 @@ from headings with this class on */
 }
 
 .text-pink {
-  color: #ff9a9f;
+  color: #e68186;
 }
 
 /* Shopping cart fonts */
@@ -138,7 +138,7 @@ from headings with this class on */
 }
 
 .listing-card h5:hover {
-  color: #ff9a9f;
+  color: #e68186;
 }
 
 /* Headings for displaying orders */
@@ -164,12 +164,12 @@ h6.sml-cap-heading {
 }
 
 .btn-pink {
-  background-color: #ff9a9f;
+  background-color: #e68186;
   color: white;
 }
 
 .btn-pink:hover {
-  background-color: #fa878d;
+  background-color: #cc5d62;
   color: white;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23);
@@ -189,15 +189,15 @@ h6.sml-cap-heading {
 
 /* Category buttons on results page */
 .btn-pink-outline {
-  border: 1px solid #ff9a9f;
-  color: #ff9a9f;
+  border: 1px solid #e68186;
+  color: #e68186;
   margin: 0.25rem;
   font-size: 0.8rem;
   padding: 0.25rem 0.5rem;
 }
 
 .btn-pink-outline:hover {
-  background-color: #ff9a9f;
+  background-color: #e68186;
   color: white;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23);
@@ -232,7 +232,7 @@ h6.sml-cap-heading {
 }
 
 .fa-heart.navbar-icon {
-  color: #ff9a9f;
+  color: #e68186;
 }
 
 .navbar-search-icon {
@@ -315,7 +315,7 @@ footer .fa-facebook-square:hover {
 }
 
 .orders-icon:hover {
-  color: #fa878d;
+  color: #cc5d62;
 }
 
 /* icons on home page */
@@ -336,7 +336,7 @@ footer .fa-facebook-square:hover {
 
 .icon-box p {
   font-size: 1rem;
-  color: #ff9a9f;
+  color: #e68186;
   text-transform: uppercase;
   letter-spacing: 0.15rem;
 }
@@ -398,7 +398,7 @@ footer a {
 }
 
 footer a:hover {
-  color: #ff9a9f;
+  color: #e68186;
   text-decoration: none;
 }
 
@@ -452,19 +452,19 @@ footer a:hover {
 }
 
 #carousel-img-1 {
-  background-image: url("https://i.ibb.co/wSrfNTN/RWF-4746-1500.jpg");
+  background-image: url("https://i.ibb.co/8DHsgDv/site-1-png.png");
   background-position: center 35%;
 }
 
 #carousel-img-2 {
-  background-image: url("https://i.ibb.co/zGW76QM/Family-1500.jpg");
+  background-image: url("https://i.ibb.co/CwWxmLS/Family-1500.png");
   background-position: center 65%;
 }
 
 #carousel-img-3 {
   /*  this image is replaced with a different one on 
         medium screens & up, see media queries          */
-  background-image: url("https://i.ibb.co/BnzQYjP/silly.jpg");
+  background-image: url("https://i.ibb.co/CJv8wjC/site-3-png.png");
   background-position: center 35%;
 }
 
@@ -807,9 +807,9 @@ a.blue-link {
 
 /* Media queries */
 @media screen and (min-width: 768px) {
-  /* replacement image that will look better when image dimentions are wider than tall */
+  /* replacement image that will look better when image dimensions are wider than tall */
   #carousel-img-3 {
-    background-image: url("https://i.ibb.co/CW69XXd/smile.jpg");
+    background-image: url("https://i.ibb.co/Jm3wwZV/site2-png.png");
     background-position: center 65%;
   }
   #info-form input.half-md-width {
