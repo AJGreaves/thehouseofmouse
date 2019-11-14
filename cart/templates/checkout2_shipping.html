@@ -37,6 +37,8 @@
                     {{ order.postcode }},<br>
                     {{ order.country }}</p>
             </div>
+
+            <!-- Form options currently not actually used, but added so additional shipping options can be added in future! -->
             <form method="POST">
                 {% csrf_token %}
                 <h6 class="checkout-heading mt-4">Shipping method</h6>
@@ -65,7 +67,7 @@
 
         </div>
 
-        <!-- order summary section, hidden on medium screens and up -->
+        <!-- order summary section, visible on medium screens and up -->
         <div id="shopping-cart-contents" class="d-none d-md-block col-md-6 card">
 
             <div class="row">
