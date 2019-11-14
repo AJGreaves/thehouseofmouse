@@ -1,4 +1,4 @@
-// $(document).ready(function () {
+$(document).ready(function () {
 
     /**
      * Sets copyright date in footer to current year
@@ -29,4 +29,4 @@
         $('#main-listing-img').attr("src", url);
     });
 
-// });
+});
