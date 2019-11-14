@@ -169,10 +169,14 @@ else:
     results = Product.objects.annotate(rank=SearchRank(vector, query)).filter(rank__gte=0.1).order_by('rank')
     ```
 
-
 4. **VScode unable to access postgreSQL database for testing**
     - Due to the free Hobby-dev postgres package selected when setting up the heroku database, I was not able to set the permissions necessary to alow Django to create a test database when running `manage.py test`. 
     - To fix this I reverted to accessing my sqlite3 database on my local machine for testing, and checked Travis regularly to check my tests written locally were passing when tested against the production database too.
+
+5. **Duplicate listings showing up in All-Products view**
+    - This was initially caused due to trying to sort results from the database by a boolean value (featured), but this turned out to be a known nofix issue with django. 
+    - First I attempted to fix this by ordering by random, but the same problem continued.
+    - Eventually I decided to order by id, so that the most recently added products to the database would be displayed first, which suits a shops "all products" view much better than a random collection that changes each time the page is loaded.
 
 #### Unsolved bugs
 
