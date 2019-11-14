@@ -124,3 +124,20 @@ from headings with this class on */
     font-size: 1.5rem;
     font-weight: bold;
 }
+
+/* Listing fonts */
+
+.listing-info h5 {
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+.listing-card h5 {
+    color: $color-dark;
+    -webkit-transition: 0.2s all ease-in-out 0.2s;
+    transition: 0.2s all ease-in-out 0.2s;
+}
+
+.listing-card h5:hover {
+    color: $color2;
+}

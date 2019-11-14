@@ -125,6 +125,22 @@ from headings with this class on */
   font-weight: bold;
 }
 
+/* Listing fonts */
+.listing-info h5 {
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.listing-card h5 {
+  color: #373737;
+  -webkit-transition: 0.2s all ease-in-out 0.2s;
+  transition: 0.2s all ease-in-out 0.2s;
+}
+
+.listing-card h5:hover {
+  color: #ff9a9f;
+}
+
 /* Buttons scss */
 /* Uniform styling for all call to action buttons */
 .btn-cta {
@@ -289,6 +305,29 @@ footer .fa-facebook-square:hover {
   color: #fa878d;
 }
 
+/* icons on home page */
+.icon-box-wrapper,
+.icon-box {
+  display: inline-block;
+}
+
+.icon-box {
+  width: 200px;
+  margin: 1rem;
+}
+
+.icon-box-wrapper i {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.icon-box p {
+  font-size: 1rem;
+  color: #ff9a9f;
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+}
+
 a {
   color: #63c4fc;
   -webkit-transition: 0.2s all ease-in-out 0.2s;
@@ -383,6 +422,7 @@ footer a:hover {
   margin: 0;
 }
 
+/* Styling for home page */
 .home-carousel-item {
   height: 66vh;
   width: 100vw;
@@ -409,28 +449,6 @@ footer a:hover {
         medium screens & up, see media queries          */
   background-image: url("https://i.ibb.co/BnzQYjP/silly.jpg");
   background-position: center 35%;
-}
-
-.icon-box-wrapper,
-.icon-box {
-  display: inline-block;
-}
-
-.icon-box {
-  width: 200px;
-  margin: 1rem;
-}
-
-.icon-box-wrapper i {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.icon-box p {
-  font-size: 1rem;
-  color: #ff9a9f;
-  text-transform: uppercase;
-  letter-spacing: 0.15rem;
 }
 
 /* category images and headings */
@@ -517,6 +535,7 @@ footer a:hover {
   font-size: 1rem;
 }
 
+/* Styling for product pages */
 #breadcrumbs {
   margin: 0.5rem 0;
 }
@@ -566,11 +585,6 @@ footer a:hover {
   padding: 0.5rem 1rem;
 }
 
-.listing-info h5 {
-  font-size: 0.8rem;
-  margin: 0;
-}
-
 .listing-info p {
   color: #63c4fc;
   font-size: 1.2rem;
@@ -607,16 +621,6 @@ footer a:hover {
 
 .vh-66 {
   min-height: 66vh;
-}
-
-.listing-card h5 {
-  color: #373737;
-  -webkit-transition: 0.2s all ease-in-out 0.2s;
-  transition: 0.2s all ease-in-out 0.2s;
-}
-
-.listing-card h5:hover {
-  color: #ff9a9f;
 }
 
 #results-sort-select {

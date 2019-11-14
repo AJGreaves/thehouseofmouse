@@ -1,3 +1,5 @@
+/* Styling for product pages */
+
 #breadcrumbs {
     margin: 0.5rem 0;
 }
@@ -48,11 +50,6 @@
     padding: 0.5rem 1rem;
 }
 
-.listing-info h5 {
-    font-size: 0.8rem;
-    margin: 0;
-}
-
 .listing-info p {
     color: $color3;
     font-size: 1.2rem;
@@ -89,14 +86,4 @@
 
 .vh-66 {
     min-height: 66vh;
-}
-
-.listing-card h5 {
-    color: $color-dark;
-    -webkit-transition: 0.2s all ease-in-out 0.2s;
-    transition: 0.2s all ease-in-out 0.2s;
-}
-
-.listing-card h5:hover {
-    color: $color2;
 }
