@@ -1,6 +1,4 @@
-@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Emilys+Candy|Lato&display=swap");
-/* Variables */
 /* Styles for fonts and text */
 body {
   font-family: "Lato", sans-serif;
@@ -261,21 +259,12 @@ a:hover {
   color: #47b7f8;
 }
 
-#mobile-search-bar {
-  padding: 0.5rem;
-  background-color: #FFE4E6;
-}
-
-#mobile-search-input {
-  width: auto;
-}
-
 #searchbox {
   width: auto;
 }
 
 /*  overrides bootstrap navbar padding to 
-    make it more streamlined                */
+    make it more streamlined */
 .navbar {
   padding: 0 1rem;
 }
@@ -290,6 +279,7 @@ a:hover {
   box-shadow: 0 4px 7px rgba(0, 0, 0, 0.16), 0 4px 8px rgba(0, 0, 0, 0.23);
 }
 
+/* Styling for footer */
 #footer {
   background-color: #373737;
   padding: 1.5rem;
@@ -326,36 +316,7 @@ footer a:hover {
   margin: 10px;
 }
 
-.StripeElement {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  height: 40px;
-  padding: 10px 12px;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  background-color: white;
-  -webkit-box-shadow: 0 1px 3px 0 #e6ebf1;
-  box-shadow: 0 1px 3px 0 #e6ebf1;
-  -webkit-transition: box-shadow 150ms ease;
-  -webkit-transition: -webkit-box-shadow 150ms ease;
-  transition: -webkit-box-shadow 150ms ease;
-  transition: box-shadow 150ms ease;
-  transition: box-shadow 150ms ease, -webkit-box-shadow 150ms ease;
-}
-
-​ .StripeElement--focus {
-  -webkit-box-shadow: 0 1px 3px 0 #cfd7df;
-  box-shadow: 0 1px 3px 0 #cfd7df;
-}
-
-​ .StripeElement--invalid {
-  border-color: #fa755a;
-}
-
-​ .StripeElement--webkit-autofill {
-  background-color: #fefde5 !important;
-}
-
+/* Background image for account pages */
 .many-mice-background {
   background-image: url("https://i.ibb.co/c8mKfZy/overrun.jpg");
   background-attachment: fixed;
@@ -376,6 +337,7 @@ footer a:hover {
   padding: 1rem;
 }
 
+/* Overrides bootstrap margin-bottom on alert messages */
 .alert {
   margin: 0;
 }
