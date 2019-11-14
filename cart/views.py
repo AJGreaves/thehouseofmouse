@@ -12,14 +12,17 @@ from .models import Order, OrderItem, ShippingDestination
 stripe.api_key = settings.STRIPE_SECRET
 STRIPE_PUBLISHABLE = settings.STRIPE_PUBLISHABLE
 STRIPE_SUCCESS_URL = settings.STRIPE_SUCCESS_URL 
-STRIPE_CANCEL_URL =  settings.STRIPE_CANCEL_URL
+STRIPE_CANCEL_URL = settings.STRIPE_CANCEL_URL
 
-# Create your views here.
 @login_required
 def cart_view(request, *args, **kwargs):
     """
-    render shopping cart page, remove footer from this page
-    to fit conventions of other eCommerce sites
+    render shopping cart page, removes footer from this page to fit conventions of other
+    eCommerce sites. View processes fetch data from user if they adjust the quantity of or
+    delete an item from their cart on this page. View also processes checkout post request,
+    getting any unpaid order that already exists in the database and updating it to match 
+    what the user has in their cart (stored in session). Finally redirecting the user to
+    the next stage in the checkout process.
     """
     if request.session.get('cart'):
         cart = request.session.get('cart')

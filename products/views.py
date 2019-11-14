@@ -1,5 +1,6 @@
 import json
 from decimal import Decimal
+from itertools import chain
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views.generic import DetailView, ListView
 from django.http import JsonResponse
@@ -119,6 +120,12 @@ class AllProductsView(ProductMixin):
     with Products with featured=True first.
     """
 
+    def get_queryset(self):
+        featured = Product.objects.filter(featured=True)
+        not_featured = Product.objects.filter(featured=False)
+        queryset = list(chain(featured, not_featured))
+        return queryset
+
     def get_context_data(self, **kwargs):
         context = super(AllProductsView, self).get_context_data(**kwargs)
         context['category'] = 'All Products'
@@ -142,7 +149,7 @@ class AllProductsPriceLowView(ProductMixin):
     """
     Inherits from custom built ProductMixin, 
     collects context data need for this specific page to render all products page
-    with lowest ghest priced listings first.
+    with lowest priced listings first.
     """
     ordering = ['price']
     
