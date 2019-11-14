@@ -104,6 +104,19 @@ footer h5 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23);
 }
 
+.btn-blue {
+  background-color: #63c4fc;
+  color: white;
+}
+
+.btn-blue:hover {
+  background-color: #47b7f8;
+  color: white;
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23);
+}
+
+/* Category buttons on results page */
 .btn-pink-outline {
   border: 1px solid #ff9a9f;
   color: #ff9a9f;
@@ -114,18 +127,6 @@ footer h5 {
 
 .btn-pink-outline:hover {
   background-color: #ff9a9f;
-  color: white;
-  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23);
-}
-
-.btn-blue {
-  background-color: #63c4fc;
-  color: white;
-}
-
-.btn-blue:hover {
-  background-color: #47b7f8;
   color: white;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23);
