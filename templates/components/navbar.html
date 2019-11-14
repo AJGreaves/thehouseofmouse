@@ -85,8 +85,9 @@
             {% endif  %}
             <li class="nav-item {% if page == 'search' %}active{% endif %}">
                 <a class="nav-link" href="{% url 'search' %}">
-                        <i class="fas fa-search navbar-search-icon" title="Search"></i>
-                        {% if page == "search" %}<span class="sr-only">(current)</span>{% endif %}</a>
+                    <i class="fas fa-search navbar-search-icon" title="Search"></i>
+                    {% if page == "search" %}<span class="sr-only">(current)</span>{% endif %}
+                </a>
             </li>
         </ul>
 
@@ -94,7 +95,7 @@
 
     <!-- positions favs and cart icons to far right of navbar when navigation not collapsed -->
     <div id="navbar-icons-desktop" class="d-none d-lg-inline-block">
-        <a class="nav-link nav-link-icon" href="{% url 'cart' %}" title="Shopping cart">
+        <a class="nav-link nav-link-icon" href="{% url 'cart' %}" title="Shopping cart" aria-label="View shopping cart">
             <div>
                 <i class="fas fa-shopping-basket navbar-icon"></i>
                 {% if request.session.cart.count and request.session.cart.count != 0 %}

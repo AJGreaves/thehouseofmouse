@@ -258,7 +258,7 @@ Password | password | text, `maxlength="15"` | string -->
 - [GitHub](https://github.com/) to store and share all project code remotely. 
 - [Photoshop](www.adobe.com/Photoshop) to edit, crop and save images as well as ulitizing the colour picker to ensure color consistency over the entire project.
 - [Browserstack](https://www.browserstack.com/) to test functionality on all browsers and devices.
-- [Am I Responsive](http://ami.responsivedesign.is/) to create the images in this readme file of each page displayed on different screen sizes.
+- [Am I Responsive](https://ami.responsivedesign.is/) to create the images in this readme file of each page displayed on different screen sizes.
 <!-- - database info here -->
 https://obfuscator.io/
 
@@ -334,7 +334,7 @@ pip -r requirements.txt.
 python app.py
 ```
 
-9. You can visit the website at `http://127.0.0.1:5000` -->
+9. You can visit the website at `https://thehouseofmouse.herokuapp.com/` -->
 
 ## Heroku Deployment
 
