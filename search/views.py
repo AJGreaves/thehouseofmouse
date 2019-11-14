@@ -1,16 +1,20 @@
 from django.shortcuts import render
 from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 from django.core.paginator import Paginator
+from itertools import chain
 from products.models import Product
 
 # Create your views here.
 
 def search_view(request, *args, **kwargs):
     """
-    View for search page. If search query entered view takes query
-    and filters results from Product model input
+    View for search page. Before search query is entered, displays all products in database ordered by featured items first.
+    If search query entered view takes query and filters results from Product model input and provides the list for
+    display on the page.
     """
-    products_list = Product.objects.all().order_by('?')
+    featured = Product.objects.filter(featured=True)
+    not_featured = Product.objects.filter(featured=False)
+    products_list = list(chain(featured, not_featured))
     paginator = Paginator(products_list, 12)
 
     page = request.GET.get('page')
