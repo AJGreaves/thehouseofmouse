@@ -134,7 +134,7 @@ class AllProductsView(ProductMixin):
         
 class AllProductsPriceHighView(ProductMixin):
     """
-    Inherits from custom built ProductMixin, 
+    Inherits from custom built ProductMixin,
     collects context data need for this specific page to render all products page
     with highest priced listings first.
     """
@@ -278,7 +278,10 @@ def get_post_request_context(post_request, category_name):
     elif sort == 'price-low':
         results = Product.objects.all().filter(category=category_name).order_by('price')
     elif sort == 'featured':
-        results = Product.objects.all().filter(category=category_name).order_by('-id')
+        featured = Product.objects.filter(category=category_name, featured=True)
+        not_featured = Product.objects.filter(category=category_name, featured=False)
+        results = list(chain(featured, not_featured))
+        
     context = {
         'products': results,
         'select': sort,
