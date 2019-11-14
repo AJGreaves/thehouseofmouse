@@ -34,7 +34,7 @@
             <form method="POST">
                 {% csrf_token %}
                 <fieldset class="form-group">
-                    <legend class="border-bottom my-4 pink-uppercase">Profile Info</legend>
+                    <legend class="border-bottom py-4 pink-uppercase">Profile Info</legend>
                     {{ form|crispy }}
                 </fieldset>
                 <div class="form-group">
@@ -51,20 +51,20 @@
                 First order accordion is open, all others after that are closed, 
                 but can be opened with a click
             -->
-            <legend class="border-bottom my-4 pink-uppercase">My Orders</legend>
-            <div class="row mx-2">
+            <legend class="border-bottom py-4 pink-uppercase">My Orders</legend>
+            <div class="row no-gutters">
                 
                 <div class="col-12">
                     {% if all_orders %}
                     {% for full_order in all_orders %}
                     <div id="orders-accordion-{{ forloop.counter }}" class="accordion mb-3">
-                        <div class="card">
+                        <div class="card order-card small-box-shadow small-box-shadow-hover">
                             <div class="card-header p-0 py-2" id="heading-{{ forloop.counter }}">
                                 <button class="btn btn-link accordion-btn" type="button" data-toggle="collapse"
                                     data-target="#collapse-{{ forloop.counter }}" aria-expanded="true"
                                     aria-controls="collapse-{{ forloop.counter }}">
                                     <div class="row">
-                                        <div class="col-4">
+                                        <div class="col-9 col-md-4 mb-3 mb-md-0">
                                             <h6 class="sml-cap-heading">Order placed</h6>
                                             <span class="sml-data">{{ full_order.order.date_ordered }}</span>
                                         </div>
@@ -73,11 +73,11 @@
                                             <span
                                                 class="sml-data">€{{ full_order.total|add:full_order.order.country.shipping_price }}</span>
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-9 col-md-3">
                                             <h6 class="sml-cap-heading">Dispatch to</h6>
                                             <span class="sml-data">{{ full_order.order.full_name }}</span>
                                         </div>
-                                        <div class="col-2 text-center">
+                                        <div class="col-3 col-md-2 text-center">
                                             <i class="fas fa-info orders-icon"></i>
                                         </div>
                                     </div>
@@ -87,13 +87,13 @@
                             <div id="collapse-{{ forloop.counter }}" class="collapse p-0 order-summary-short {% if forloop.counter == 1 %} show{% endif %} "
                                 aria-labelledby="heading-{{ forloop.counter }}"
                                 data-parent="#orders-accordion-{{ forloop.counter }}">
-                                <div class="card-body">
+                                <div class="card-body px-2">
                                     <div class="row">
                                         <div class="col-6">
                                             <h6 class="sml-cap-heading">Item</h6>
                                         </div>
                                         <div class="col-3 text-right">
-                                            <h6 class="sml-cap-heading">Quantity</h6>
+                                            <h6 class="sml-cap-heading">Qty</h6>
                                         </div>
                                         <div class="col-3 text-right">
                                             <h6 class="sml-cap-heading">Price</h6>

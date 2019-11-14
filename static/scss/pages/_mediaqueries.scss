@@ -18,6 +18,12 @@
     .blockquote {
         height: 200px;
     }
+
+    .card-body,
+    .card-header {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
 }
 
 // Large devices (desktops, 992px and up)

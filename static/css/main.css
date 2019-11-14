@@ -548,7 +548,7 @@ footer a:hover {
 }
 
 .blockquote {
-  height: 300px;
+  height: 330px;
   font-size: 1rem;
 }
 
@@ -743,7 +743,7 @@ footer a:hover {
 }
 
 .checkout-card {
-  padding: 1.5rem;
+  padding: 0.9rem;
   margin: 0 auto;
   border-radius: 6px;
 }
@@ -759,6 +759,17 @@ a.blue-link {
 .country-info {
   color: #63c4fc;
   cursor: pointer;
+}
+
+.card-body,
+.card-header {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.card.order-card {
+  border: 1px solid rgba(128, 128, 128, 0.5);
+  border-radius: 6px !important;
 }
 
 /* Styles for cards displaying order information */
@@ -818,6 +829,11 @@ a.blue-link {
   }
   .blockquote {
     height: 200px;
+  }
+  .card-body,
+  .card-header {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 }
 

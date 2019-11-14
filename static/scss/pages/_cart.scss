@@ -101,7 +101,7 @@
 }
 
 .checkout-card {
-    padding: 1.5rem;
+    padding: 0.9rem;
     margin: 0 auto;
     border-radius: 6px;
 }
@@ -117,4 +117,16 @@ a.blue-link {
 .country-info {
     color: $color3;
     cursor: pointer;
+}
+
+.card-body,
+.card-header {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+}
+
+.card.order-card {
+    border: 1px solid rgba(128, 128, 128, 0.5);
+    border-radius: 6px!important;
+    
 }
