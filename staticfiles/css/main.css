@@ -87,6 +87,10 @@ from headings with this class on */
   font-family: "Lato", sans-serif;
 }
 
+.sml-txt {
+  font-size: 0.9rem;
+}
+
 /* Buttons scss */
 /* Uniform styling for all call to action buttons */
 .btn-cta {
@@ -149,12 +153,12 @@ from headings with this class on */
   width: 100%;
 }
 
+/* Styles for site icons */
 #logo {
   height: 45px;
 }
 
-/*  Gives shopping cart and favs icons the
-    right sizing                                */
+/* Gives shopping cart and favs icons the right sizing */
 .navbar-icon {
   font-size: 2rem;
 }
@@ -167,19 +171,19 @@ from headings with this class on */
   font-size: 1.3rem;
 }
 
-/*  Matches color of other navbar items         */
+/* Matches color of other navbar items */
 .fa-shopping-basket.navbar-icon {
   color: rgba(0, 0, 0, 0.5);
 }
 
-/*  Positions shopping cart nicely in navbar    */
+/* Positions shopping cart nicely in navbar */
 .nav-link-icon {
   padding: 0 5px;
   display: inline-block;
 }
 
-/*  Styles shopping cart counter and positions 
-    it partially over the shopping cart icon    */
+/* Styles shopping cart counter and positions 
+it partially over the shopping cart icon */
 #cart-counter {
   background-color: #63c4fc;
   height: 20px;
@@ -201,7 +205,7 @@ from headings with this class on */
   margin: 0.25rem;
 }
 
-/* social media icons */
+/* Facebook icon */
 footer .fab {
   font-size: 2rem;
   padding: 0.8rem;
@@ -220,51 +224,12 @@ footer .fa-facebook-square:hover {
   color: #4267B2;
 }
 
-footer .fa-twitter:hover {
-  color: #1DA1F2;
-}
-
-footer .fa-pinterest:hover {
-  color: #E60023;
-}
-
-footer .fa-instagram:hover {
-  color: #F77737;
-}
-
-footer .fa-youtube-square:hover {
-  color: #FF0000;
-}
-
-/* add to favrouites icon */
-.listing-img i {
-  font-size: 1.5rem;
-  padding: 1rem;
-  -webkit-transition: 0.2s all ease-in-out 0.3s;
-  transition: 0.2s all ease-in-out 0.3s;
-  opacity: 0.5;
-}
-
-.listing-img i:hover {
-  color: #fa878d;
-}
-
-#add-fav i {
-  font-size: 1.9rem;
-  color: #ff9a9f;
-  display: block;
-  line-height: 2.3rem;
-}
-
 .listing-price {
   color: #63c4fc;
   font-size: 1.5rem;
 }
 
-.sml-txt {
-  font-size: 0.9rem;
-}
-
+/* Delete icon in cart page */
 .fa-times-circle {
   -webkit-transition: 0.2s all ease-in-out 0.1s;
   transition: 0.2s all ease-in-out 0.1s;
