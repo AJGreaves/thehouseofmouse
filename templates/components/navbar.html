@@ -79,9 +79,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'register' %}">Register</a>
             </li>
-            <a class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link" href="{% url 'login' %}">Login</a>
-            </a>
+            </li>
             {% endif  %}
             <li class="nav-item {% if page == 'search' %}active{% endif %}">
                 <a class="nav-link" href="{% url 'search' %}">
