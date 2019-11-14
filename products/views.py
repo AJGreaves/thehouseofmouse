@@ -19,7 +19,7 @@ class ListingDetailView(DetailView):
 
         self.extra_context['product'] = instance
         self.extra_context['stock_arr'] = [x for x in range(instance.num_in_stock)]
-        self.extra_context['more_products'] = Product.objects.all().filter(category=instance.category).exclude(id=_id).order_by('-featured')[:6]
+        self.extra_context['more_products'] = Product.objects.all().filter(category=instance.category).exclude(id=_id).order_by('?')[:6]
 
         return instance
 
@@ -98,7 +98,7 @@ class ProductMixin(ListView):
     """
     model = Product
     template_name = 'results.html'
-    queryset = Product.objects.all().order_by('?')
+    queryset = Product.objects.all().order_by('-id')
     context_object_name = 'products'
     paginate_by = 12
 
@@ -271,7 +271,7 @@ def get_post_request_context(post_request, category_name):
     elif sort == 'price-low':
         results = Product.objects.all().filter(category=category_name).order_by('price')
     elif sort == 'featured':
-        results = Product.objects.all().filter(category=category_name).order_by('?')
+        results = Product.objects.all().filter(category=category_name).order_by('-id')
     context = {
         'products': results,
         'select': sort,
@@ -281,7 +281,7 @@ def get_post_request_context(post_request, category_name):
 
 def get_context(category_name):
     context = {
-        'products': Product.objects.all().filter(category=category_name).order_by('?'),
+        'products': Product.objects.all().filter(category=category_name),
         'category': category_name
     }
     return context
