@@ -4,7 +4,8 @@ from django.urls import reverse
 
 # Create your models here.
 class Product(models.Model):
-    """ Model for product """
+    """ Model for product instances """
+
     WEIRD_MISC = 'Weird & Misc'
     STAR_WARS = 'Star Wars'
     OCCASIONS = 'Special Occasions'
@@ -43,6 +44,7 @@ class Product(models.Model):
     featured = models.BooleanField(default=False)
 
     def get_absolute_url(self):
+        """ Gets absolute url including listing id as pk for dynamic url """
         return reverse('listing-detail', kwargs={'pk': self.id})
 
     def __str__(self):

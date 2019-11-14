@@ -269,7 +269,7 @@ def halloween_category_view(request, *args, **kwargs):
 
 def get_post_request_context(post_request, category_name):
     """
-    Takes request and the relevant category name, and pulls the 
+    Takes request and the relevant category name, and pulls the
     necessary context to fit the filer the user selected.
     """
     sort = post_request.POST.get('results-sort-select')
@@ -290,6 +290,8 @@ def get_post_request_context(post_request, category_name):
     return context
 
 def get_context(category_name):
+    """ Returns relevant context for category views """
+    
     context = {
         'products': Product.objects.all().filter(category=category_name),
         'category': category_name
