@@ -30,7 +30,7 @@ $(document).ready(function () {
     });
 
     function contact_form_success(name) {
-        message = `Thank you ${name}.`
+        let message = `Thank you ${name}.`;
         Swal.fire({
             type: 'success',
             title: message,
@@ -41,11 +41,11 @@ $(document).ready(function () {
             if (result.value) {
                 window.location.replace("/");
             }
-        })
+        });
     }
 
     function contact_form_error() {
-        message = `Oops!`
+        let message = `Oops!`;
         Swal.fire({
             type: 'warning',
             title: message,

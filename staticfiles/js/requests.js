@@ -16,7 +16,7 @@ $(document).ready(function () {
             const data = {
                 listingId: form.listingId.value,
                 quantity: form.quantity.value
-            }
+            };
 
             fetch('.', {
                     method: 'POST',
@@ -37,10 +37,10 @@ $(document).ready(function () {
                     }
 
                 })
-                .catch(err => console.log('ERROR: ' + err))
+                .catch(err => console.log('ERROR: ' + err));
 
         };
-    };
+    }
 
 
     /**
@@ -51,7 +51,7 @@ $(document).ready(function () {
      */
     if (document.querySelector('#confirmCartForm')) {
         $('.numberinput').change(function () {
-            const value = this.value
+            const value = this.value;
             const data = {
                 idChangedInput: this.id,
                 value: value,
@@ -75,13 +75,13 @@ $(document).ready(function () {
                             response.title
                         );
                         this.value = response.max_num;
-                    };
-                    $('.subtotal-js').text(response.total)
+                    }
+                    $('.subtotal-js').text(response.total);
 
                 })
-                .catch(err => console.log('ERROR: ' + err))
+                .catch(err => console.log('ERROR: ' + err));
 
-        })
+        });
 
         /**
          * Function starts when user clicks a X icon in cart to delete an item from 
@@ -107,10 +107,10 @@ $(document).ready(function () {
                     $('.subtotal-js').text(response.total);
                     location.reload(); 
                 })
-                .catch(err => console.log('ERROR: ' + err))
+                .catch(err => console.log('ERROR: ' + err));
 
         });
-    };
+    }
 
     $('.country-info').click(function() {
         alert_country();
@@ -131,7 +131,7 @@ $(document).ready(function () {
             if (result.value) {
                 window.location.replace("/pages/contact/");
             }
-        })
+        });
     }
 
     /**
@@ -139,7 +139,7 @@ $(document).ready(function () {
      * @param {string} title 
      */
     function alert_success(title) {
-        message = `${title} has been added to your cart.`
+        let message = `${title} has been added to your cart.`;
         Swal.fire({
             type: 'success',
             title: message,
@@ -153,7 +153,7 @@ $(document).ready(function () {
             if (result.value) {
                 window.location.replace("/cart/");
             }
-        })
+        });
     }
 
     /**
@@ -172,7 +172,7 @@ $(document).ready(function () {
             if (result.value) {
                 window.location.replace("/cart/");
             }
-        })
+        });
     }
 
     /**
@@ -185,6 +185,6 @@ $(document).ready(function () {
             type: 'info',
             title: `Sorry!`,
             text: `There are only ${num} of this ${title} in stock.`,
-        })
+        });
     }
 });

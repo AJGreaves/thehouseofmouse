@@ -3,6 +3,10 @@
  * created to demonstrate how to get csrf token from cookies
  */
 
+/**
+ * Retrieves csrftoken from document for use with fetch/ajax requests.
+ * @param {string} name 
+ */
 function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
