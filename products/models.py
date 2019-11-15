@@ -2,7 +2,6 @@ from django.db import models
 from django.core.validators import MaxValueValidator
 from django.urls import reverse
 
-# Create your models here.
 class Product(models.Model):
     """ Model for product instances """
 
