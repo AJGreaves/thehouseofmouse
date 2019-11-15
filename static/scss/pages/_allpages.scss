@@ -74,13 +74,8 @@ footer a:hover {
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 100vh;
+    min-height: 100%;
     background-position: center 5%;
-}
-
-.background-img-overlay {
-    background-color: rgba(255, 255, 255, 0.5);
-    min-height: 100vh;
 }
 
 .contact-form-wrapper {
@@ -96,4 +91,10 @@ footer a:hover {
 
 #results-sort-select {
     max-width: 200px;
+}
+
+/* pushes footer down to bottom of the page on larger screens. 
+Footer height on larger screens is 392px, navbar is 55px */
+.push-footer-down {
+    min-height: calc(100vh - (392px + 55px));
 }

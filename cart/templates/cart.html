@@ -11,48 +11,50 @@
 {% block meta_robots %}index, follow{% endblock %}
 
 {% block content %}
+<div class="push-footer-down">
+    <div class="container">
+        <div class="row justify-content-center">
 
-<div class="container">
-    <div class="row justify-content-center">
-        
-        <!-- breadcrumbs -->
-        <div id="breadcrumbs" class="col-12">
-            <a href="/">Home </a>
-            <i class="fas fa-cheese fa-flip-horizontal"></i>
-            <a href="{% url 'cart' %}">Shopping cart </a>
-        </div>
-        <heading class="col-11 col-md-8 col-lg-6 text-center">
-            {% if nothing_in_cart %}
+            <!-- breadcrumbs -->
+            <div id="breadcrumbs" class="col-12">
+                <a href="/">Home </a>
+                <i class="fas fa-cheese fa-flip-horizontal"></i>
+                <a href="{% url 'cart' %}">Shopping cart </a>
+            </div>
+            <heading class="col-11 col-md-8 col-lg-6 text-center">
+                {% if nothing_in_cart %}
                 <h1>Your cart is empty!</h1>
                 <a href="{% url 'all-products' %}" class="btn btn-pink btn-cta my-5">Let's go shopping</a>
-            {% else %}
+                {% else %}
                 <h1>Your shopping cart</h1>
-            {% endif %}
-        </heading>
-    </div>
-</div>
-
-<!-- contents of shopping basket -->
-{% if not nothing_in_cart %}
-<div class="container mb-5">
-    <div class="row justify-content-center">
-
-        <div id="shopping-cart-contents" class="col-11 col-md-8 col-lg-6 small-box-shadow">
-            <form id="confirmCartForm" method="POST">
-                {% csrf_token %}
-                <div class="row">
-
-                    {% include 'components/cart-items.html' %}
-
-                    <div class="col-12 text-right">
-                        <button type="submit" class="btn btn-cta btn-blue mr-0">Checkout</button>
-                    </div>
-                </div>
-            </form>
-
-
+                {% endif %}
+            </heading>
         </div>
     </div>
+
+    <!-- contents of shopping basket -->
+    {% if not nothing_in_cart %}
+    <div class="container mb-5">
+        <div class="row justify-content-center">
+
+            <div id="shopping-cart-contents" class="col-11 col-md-8 col-lg-6 small-box-shadow">
+                <form id="confirmCartForm" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+
+                        {% include 'components/cart-items.html' %}
+
+                        <div class="col-12 text-right">
+                            <button type="submit" class="btn btn-cta btn-blue mr-0">Checkout</button>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+    {% endif %}
 </div>
-{% endif %}
+
 {% endblock %}
