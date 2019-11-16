@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 if 'DEV' in os.environ:
     DEBUG = True
 else:
-    DEBUG = True
+    DEBUG = False
 
 ALLOWED_HOSTS = [os.environ.get('HOSTNAME')]
 
@@ -52,7 +52,6 @@ INSTALLED_APPS = [
     'cart',
     'accounts',
     'search',
-    'gallery',
 ]
 
 MIDDLEWARE = [
