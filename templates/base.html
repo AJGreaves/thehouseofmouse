@@ -22,11 +22,6 @@
     <!-- Font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
 
-    {% if page == 'gallery' %}
-    <!-- fancybox -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous" />
-    {% endif %}
-
     <!-- custom css -->
     <link rel="stylesheet" href="{% static 'css/main.min.css' %}">
 
@@ -55,11 +50,6 @@
 
     <!-- scripts for stripe -->
     <script src="https://js.stripe.com/v3/"></script>
-
-    {% if page == 'gallery' %}
-    <!-- scripts for fancybox  -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-    {% endif %}
 
     <!-- custom js -->
     <script src="{% static 'js/main.js' %}"></script>
