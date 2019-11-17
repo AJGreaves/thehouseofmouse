@@ -119,15 +119,39 @@ As a visitor to The House of Mouse website I expect/want/need:
 
 1. The site to be easily navigable from any device, desktop, tablet or phone. For the content to look good and be useable on all of these devices.
 
-1. I want to learn more about the shop owner and their process, so that I can be assured I am buying from a small handmade business. 
+1. To learn more about the shop owner and their process, so that I can be assured I am buying from a small handmade business. 
 
-1. I want a completely custom mouse designed and created for me either for my own collection or as a gift. 
+1. To be able to read reviews of this shop from previous customers, to build trust in my purchase.
 
-1. As a regular user of the The House of Mouse website, I expect to be able to connect to their social media channels and/or newsletter, to keep up to date with new listings on the site. 
+1. For all information and images to be laid out in a clear and easy to understand way, on whatever size screen I am viewing the website on.
 
-1. As a user of The House of Mouse website, I expect to be able to easily get in contact via a contact form.
+1. A completely custom mouse designed and created for me either for my own collection or as a gift. 
 
-1. As a user I expect feedback from the website I am using when I interact with it, I expect pop ups and modals to inform me when my forms have been completed and sent correctly.
+1. Plenty of high quality images of the products for sale, so I have a clear idea of what I am buying and can see the quality of the products up close.
+
+1. To be able to easily find out all the information I need to make an informed purchase. I expect information about materials, measurements, safety and packaging to be available on every listing page.
+
+1. To be informed if I try to order more items than are available in stock.
+
+1. For recorded stock levels to be accurate, so there are no delays in receiving my order.
+
+1. A text search function so that I can quickly narrow down my search when looking for something specific.
+
+1. A clear terms and conditions and privacy policy.
+
+1. There to be a frequently asked questions page for any further questions I might have about my order.
+
+1. To be able to see a summary of my order on every page of the checkout process.
+
+1. That once I am logged in I can access my account details and update them if I need to. 
+
+1. To be able to find information on my past orders and how to cancel an order. 
+
+1. To be able to connect to the businesses social media channels and/or newsletter, to keep up to date with new listings on the site. 
+
+1. To be able to easily get in contact with the shop owner via a contact form.
+
+1. Feedback from the website I am using when I interact with it, I expect pop ups and modals to inform me when my forms have been completed and sent correctly. Or to let me know when an error has ocurred and what to do next.
 
 ## Design Choices
 
@@ -165,7 +189,9 @@ The House of Mouse website has an overall child like, joyful feel, with emphasis
 - light grey: #E5E5E5
 - light blue: #7ccfff
 
-- The brand colours for this project were chosen because...
+- The brand colours for this project were chosen because the two shades of pink and two shades of grey are taken from the felt mice ears and standard body color. This helps to pull the colours of the site together with the product photographs. 
+
+The blue was chosen to provide a highlighting contrast for links, prices and important buttons for the user such as "add to cart" and "checkout now".
 
 ### Styling
 
@@ -173,20 +199,18 @@ The House of Mouse website has an overall child like, joyful feel, with emphasis
 
 These wireframes were created using [Balsamiq](https://balsamiq.com/) during the Scope Plane part of the design and planning process for this project. 
 
-- [Home]()
-
-
-### Flowchart
-
-- [Flowchart]()
-
-This flowchart was created using [draw.io](https://www.draw.io) to plan and explain the flow of behavior between the user, JavaScript, data and the modal messages the user sees based on their interactions.
-
-### PDF
-
-- [The House of Mouse development planes PDF]()
-
-This document was created during the planning phase of this project. The final website has some slight differences from what was planned. But I included this document in the project to provide insight into the original planning and direction of the site during the planning stages.  
+- [Home](https://i.ibb.co/wgpZ6Ch/Home-Page.png)
+- [About](https://i.ibb.co/zVCP7K9/About-page.png)
+- [FAQs](https://i.ibb.co/BGK7WCy/FAQs-page.png)
+- [Account](https://i.ibb.co/ScwR6Zz/account-page.png)
+- [Shop/Search Results](https://i.ibb.co/NpMFjpH/search-results-page.png)
+- [Catagories](https://i.ibb.co/8NKbWTn/browse-categories-page.png)
+- [Listing](https://i.ibb.co/GvLQ1Z1/listing-page.png)
+- [Cart](https://i.ibb.co/Sm4g5w0/Cart-page.png)
+- [Checkout - Info](https://i.ibb.co/5jW9tVD/info-page.png)
+- [Checkout - Shipping](https://i.ibb.co/FbL5VWq/shipping-page.png)
+- [Checkout - Payment](https://i.ibb.co/TgnPT7b/payment-page.png)
+- [Checkout - Confirmed](https://i.ibb.co/QHg2bTg/payment-confirmed-page.png)
 
 # Features
  
@@ -229,6 +253,8 @@ This document was created during the planning phase of this project. The final w
     - Send email when new order made
     - staff pages to view all order info needed together for easier shipping process
     - gallery app
+    - User favourites
+    - newsletter signup
 
 This section will continue to grow as the site is deployed to its own domain and implemented in the real word. New issues and needs will become apparent as the site is used.
 
