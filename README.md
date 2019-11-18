@@ -217,14 +217,31 @@ These wireframes were created using [Balsamiq](https://balsamiq.com/) during the
 ## Existing Features
 
 ### Elements on every page
-- Navbar
-    - The navigation bar features...
 
-    - For visitors to the site who are not logged in, list items links are available for them to use.
-        1. Home...
+#### Navbar:
 
-    - For users who are logged in, the list items are as follows: 
-        1. Home...
+<div align="center">
+    <img src="https://i.ibb.co/K7fFpC8/navbar-desktop.png" alt="The House of Mouse Navbar on desktop devices" aria-label="The House of Mouse Navbar on desktop devices" />
+</div>
+
+- The navigation bar features The House of Mouse logo on the far left, which links to the home page of the site.
+
+- **In desktop view** on the left side of the navbar is a list of the key website pages: Home, Shop, About and FAQs. The Shop link is a dropdown menu which lists out the sections of shop products.
+- On the right side of the navbar are the links to contact page, search page and shopping cart.
+- A user who is currently logged out will also see options to register or log into the website.
+- A user who is logged in will see options to view their account page or log out.
+- The shopping cart icon is located to the far right of the navigation bar. Once a user has added at least one item to their cart a blue circle will appear with the total number of items in their cart displayed within it. If the total number is 10 or more then the circle will display "9+" to save from extending the text over the size of the blue circle indicator. 
+    - The indicator was chosen to mimic notification icons users are used to seeing in online shops and social media etc.
+    - The blue color was chosen because it contrasts well with the rest of the sites colors and draws the eye.
+    - The shopping cart counter works even for a user who is not logged in. This is because all the information about which products the user has added to their cart is stored in their session data. This makes it possible for a new user to add things to their cart before being asked to log in or register. 
+
+
+<div align="center">
+    <img src="https://i.ibb.co/c2mT77b/navbar-mobile.png" alt="The House of Mouse Navbar on mobile devices" aria-label="The House of Mouse Navbar on mobile devices" />
+</div>
+
+- **In tablet and mobile view** the logo remains in the left side of the navigation bar, where users would expect it to be. 
+- The shopping cart icon is displayed in the middle of the navigation bar, and the burger icon to display the full navigation menu is on the far left, again because that is where a user would expect to find it.
 
 
 - Footer
