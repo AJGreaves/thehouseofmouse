@@ -173,6 +173,7 @@ The House of Mouse website has an overall child like, joyful feel, with emphasis
 
 - In order to keep the site uncluttered only a few icons were utilized. 
 - The search icon and shopping cart icons were used in the navigation bar as they are conventionally used in this setting and would be what the user expects to see.
+- Yellow cheese icons are used as pointers between breadcrumb links on pages that have worked their way deeper into the hierarchical structure of the website information. These were used to add a little humour to a usually boring aspect of a website.
 - On the home page the important facts about The House of Mouse are laid out using icons and simple text for quick assimilation of info (see image above).
 - Star icons are used in the testimonials section of the home page, to emphasize the high level of reviews the shop already has on Etsy.
 - The Facebook logo icon is included in the footer to lead visitors to The House of Mouse facebook page.
@@ -244,6 +245,8 @@ These wireframes were created using [Balsamiq](https://balsamiq.com/) during the
 
     - The shopping cart counter works even for a user who is not logged in. This is because all the information about which products the user has added to their cart is stored in their session data. This makes it possible for a new user to add things to their cart before being asked to log in or register. 
 
+- When a user is on a page listed in the navbar the text for that page is highlighted with a deeper color, and `<span class="sr-only">(current)</span>` is added to the relevant html for screen readers to tell which page the user is on.
+
 
 <div align="center">
     <img src="https://i.ibb.co/c2mT77b/navbar-mobile.png" alt="The House of Mouse Navbar on mobile devices" aria-label="The House of Mouse Navbar on mobile devices" />
@@ -268,18 +271,40 @@ These wireframes were created using [Balsamiq](https://balsamiq.com/) during the
 
 ### Home Page
 
-<!-- <div align="center">
-<img src="#" alt="The House of Mouse home page on all major screen sizes" >
-</div> -->
+![Home page](https://i.ibb.co/SJCXN6H/home-responsive.png)
 
-**Feature 1**
-- Feature one description
+**Hero slider/carousel**
+- The home page hero slider/carousel features 3 slides of promotional images from The House of Mouse. There are 4 images in total used as the last slides image is different for mobile and desktop. The reason for this was that the image gets too cropped when in a wide screen, while looks much better when the dimensions are taller than wide. So this image was saved for mobile screens, and another chosen for wider screens. 
 
-### Next Page
+**Introduction and brief pitch**
+- Below the hero slider is a concise introduction to The House of Mouse, what it is, who created it and what their mission is.
+- A "learn more" button leads a user to the About page where they can read the story behind The House of Mouse. 
+- Icons are used to deliver information on the quality and scope of the shop quickly. The information here is deliberately short and to the point, as this page is most likely where a brand new customer would land first and it is important to use this space effectively to help convert sales.
 
-<!-- <div align="center">
-<img src="https://i.ibb.co/yN750bS/activities.jpg" alt="Family Hub activities page on all major screen sizes" >
-</div> -->
+**Shop categories**
+
+![shop categories](https://i.ibb.co/rkRpHq8/sections.png)
+
+- Below the site introduction are a selection of the shop categories, displayed with beautiful product photographs and clear headings. The user can click any of these images to be taken to the relevant sections of the shop.
+- On desktop view these sections are displayed with 2 larger images and 4 smaller ones, to give some visual contrast. On smaller screens each section image is the same size, so save space.
+
+**Testimonials carousel**
+
+![Testimonials carousel](https://i.ibb.co/3fLPkQy/reviews.png)
+
+- A carousel of 5 reviews from The House of Mouse customers on Etsy. Each displays a 5 star rating and the review written by a customer. At the bottom of the carousel is a "read more" button that links to The House of Mouse Etsy shop reviews section, where the user can read more of the reviews for this shop.
+
+**Featured listings**
+
+- At the bottom of the home page 4-6 products are selected from the products database from those with `featured = True` in their properties. 4 products are displayed on desktop, and 6 on mobile and tablet size screens.
+- A "browse more" button is placed underneath the featured listing inviting the user to go to the shop page.
+
+
+### Shop Page
+
+![Shop page](https://i.ibb.co/F3rct3F/all-products-responsive.png)
+
+
 
 ## Features Left to Implement
 
