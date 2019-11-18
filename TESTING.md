@@ -180,8 +180,8 @@ else:
 
 #### Unsolved bugs
 
-1. **On running the python server, large errors appear in terminal**
-    - Any time a page is loaded, the terminal filled with around 100 lines of errors, although the page does still load. This appears to be an existing bug with Python 3 [See bug report on bugs.python.org](https://bugs.python.org/issue27682).
+1. **Sorting category results with pagination**
+
 
 
 ## Further testing: 

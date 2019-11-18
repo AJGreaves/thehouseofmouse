@@ -318,9 +318,11 @@ These wireframes were created using [Balsamiq](https://balsamiq.com/) during the
 - Pagination buttons are provided depending on the number of results returned from the database with options for "First", "previous", "next" and "last" as well as the page number the user is currently on.
 - Pagination is not currently available for shop sections, as there is an unsolved bug with trying to then sort these results. As the number of products in a single category is never very large I opted to leave fixing this issue for a future release.
 
-### Results Page
-
-
+### Search Page
+- The search page is built from the same template as the main shop page and shop categories pages. With the one addition of the search bar where users can enter a text search.
+- On loading the search page there are no products displayed. Once the user has entered a text search the results are displayed below the search bar and paginated if more than 12 results are returned from the database.
+- If no results for a text search are returned from the database then the text 
+"There are currently no listings that match this search" provides feedback to the user.
 
 ## Features Left to Implement
 
