@@ -178,7 +178,6 @@ The House of Mouse website has an overall child like, joyful feel, with emphasis
 - Star icons are used in the testimonials section of the home page, to emphasize the high level of reviews the shop already has on Etsy.
 - The Facebook logo icon is included in the footer to lead visitors to The House of Mouse facebook page.
 
-
 ### Colours
 <div align="center">
     <img src="https://i.ibb.co/kBR2r7K/THOM-Brand-colors.jpg" alt="The House of Mouse Brand Colours" aria-label="The House of Mouse Brand colours" />
@@ -283,7 +282,7 @@ These wireframes were created using [Balsamiq](https://balsamiq.com/) during the
 
 **Shop categories**
 
-![shop categories](https://i.ibb.co/rkRpHq8/sections.png)
+![Shop categories](https://i.ibb.co/rkRpHq8/sections.png)
 
 - Below the site introduction are a selection of the shop categories, displayed with beautiful product photographs and clear headings. The user can click any of these images to be taken to the relevant sections of the shop.
 - On desktop view these sections are displayed with 2 larger images and 4 smaller ones, to give some visual contrast. On smaller screens each section image is the same size, so save space.
@@ -303,6 +302,23 @@ These wireframes were created using [Balsamiq](https://balsamiq.com/) during the
 ### Shop Page
 
 ![Shop page](https://i.ibb.co/F3rct3F/all-products-responsive.png)
+
+**Category buttons**
+- The main shop page features a collection of buttons leading to each section of the shop. These buttons are not visible on mobile view to save space, as they can also be accessed from the navbar.
+
+**Sort results**
+- The main shop page includes the option to sort its results by "featured", "price: high to low" and "price: low to high".
+
+**Products list**
+- Products in the shop are displayed as thumbnail images with their title and price displayed underneath each photograph.
+- Shop results are paginated by 12 items at a time. This number was chosen because 12 can be evenly divided by 3 and 4 making is possible to display results 4 to a row on desktop, 3 to a row on tablet and 1 on top of each other on mobile screens.
+- Each product in the list has a link to it;s respective product listing with more photographs and information.
+
+**Pagination** 
+- Pagination buttons are provided depending on the number of results returned from the database with options for "First", "previous", "next" and "last" as well as the page number the user is currently on.
+- Pagination is not currently available for shop sections, as there is an unsolved bug with trying to then sort these results. As the number of products in a single category is never very large I opted to leave fixing this issue for a future release.
+
+### Results Page
 
 
 
