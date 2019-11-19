@@ -429,7 +429,7 @@ These wireframes were created using [Balsamiq](https://balsamiq.com/) during the
     - Every trustworthy online shop provides the legal documentation expected by the user on their site. Although these documents are a legal requirement of any online shop, including them also helps users to feel they can trust the outlet.
 
 
-## Features Left to Implement
+## Features for Future Releases
 
 1. Password reset by email.
     - I already looked into this, but it required changing settings in my private gmail account to less secure ones. Which is not something I am willing to do at this moment. When/if this site is deployed to it's own domain and is being used as a fully functioning online store, then I will invest in a separate gmail account specifically for it and get this feature set up.
