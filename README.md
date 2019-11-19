@@ -461,7 +461,7 @@ This section will continue to grow as the site is deployed to its own domain and
 ### Database Choice
 
 - As a framework Django works with SQL databases. During development on my local machine I worked with the standard sqlite3 database installed with Django.
-- On deployment, the SQL database provided by Heroku is a Postgres database. 
+- On deployment, the SQL database provided by Heroku is a PostgreSQL database. 
 
 ### Data Models
 
@@ -540,15 +540,32 @@ Quantity | quantity | | PositiveSmallIntegerField
 
 ### Tools
 - [Visual Studio Code](https://code.visualstudio.com/) is the IDE used for developing this project. 
-- [Imgbb](https://imgbb.com) to store all external images for this project.
+- [Django](https://www.djangoproject.com/) as python web framework for rapid development and clean design.
+- [Stripe](https://stripe.com) as payment platform to validate and accept credit card payments securely.
+- [Travis](https://travis-ci.org/) for continuous integration.
+- [AWS S3 Bucket](https://aws.amazon.com/) to store images entered into the database.
+- [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html) to enable creation, configuration and management of AWS S3.
+- [Coverage](https://coverage.readthedocs.io/en/v4.5.x/) to measure code coverage of python unittests.
+- [Django Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) to style django forms.
+- [Django Heroku](https://pypi.org/project/django-heroku/) to improve deployment of django projects on heroku.
+- [Django Storages](https://django-storages.readthedocs.io/en/latest/) a collection of custom storage backends with django to work with boto3 and AWS S3.
+- [Gunicorn](https://pypi.org/project/gunicorn/) WSGI HTTP Server for UNIX to aid in deployment of the Django project to heroku.
+- [Pillow](https://pillow.readthedocs.io/en/stable/) as python imaging library to aid in processing image files to store in database.
+- [Psycopg2](https://pypi.org/project/psycopg2/) as PostgreSQL database adapter for Python.
+- [Whitenoise](http://whitenoise.evans.io/en/stable/) to allows the web app to serve its own static files.
+- [Obfuscator](https://obfuscator.io/) to obscure emailjs user key from plain text code.
+- [Imgbb](https://imgbb.com) to store external images for this project that were not entered into the database.
 - [PIP](https://pip.pypa.io/en/stable/installing/) for installation of tools needed in this project.
 - [Git](https://gist.github.com/derhuerst/1b15ff4652a867391f03) to handle version control.
 - [GitHub](https://github.com/) to store and share all project code remotely. 
-- [Photoshop](www.adobe.com/Photoshop) to edit, crop and save images as well as ulitizing the colour picker to ensure color consistency over the entire project.
+- [Photoshop](www.adobe.com/Photoshop) to edit, crop and save images as well as utilizing the colour picker to ensure color consistency over the entire project.
 - [Browserstack](https://www.browserstack.com/) to test functionality on all browsers and devices.
-- [Am I Responsive](https://ami.responsivedesign.is/) to create the images in this readme file of each page displayed on different screen sizes.
-<!-- - database info here -->
-https://obfuscator.io/
+- Heroku for deployment
+- [SweetAlert2](https://sweetalert2.github.io/) for beautiful responsive replacement to javascript popup boxes.
+
+### Databases
+- [PostgreSQL](https://www.postgresql.org/) for production database, provided by heroku.
+- [SQlite3](https://www.sqlite.org/index.html) for development database, provided by django.
 
 ### Libraries
 - [JQuery](https://jquery.com) to simplify DOM manipulation.
@@ -564,7 +581,7 @@ https://obfuscator.io/
 
 # Testing 
 
-Testing information can be found in separate [testing.md](testing.md) file
+Testing information can be found in separate [TESTING.md](TESTING.md) file
 
 # Deployment
 

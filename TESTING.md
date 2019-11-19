@@ -74,6 +74,10 @@ This project did not utilize Test Driven Development for Jasmine or Python while
 
 The automated tests for this project were created after the vast majority of the project was already complete, once I had a firmer grasp of how my functions were working and what their expected output was. Now that I have a better understanding of how automated tests work, I intend to attempt TDD with my next project.
 
+- coverage - command: coverage html, then open and run index.html file in the htmlcov directory created.
+- travis
+
+
 ## User Stories Testing
 
 ## Manual Testing
