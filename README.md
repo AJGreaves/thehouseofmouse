@@ -316,13 +316,118 @@ These wireframes were created using [Balsamiq](https://balsamiq.com/) during the
 
 **Pagination** 
 - Pagination buttons are provided depending on the number of results returned from the database with options for "First", "previous", "next" and "last" as well as the page number the user is currently on.
-- Pagination is not currently available for shop sections, as there is an unsolved bug with trying to then sort these results. As the number of products in a single category is never very large I opted to leave fixing this issue for a future release.
+
+### Category pages
+- The category pages are built from the same template as the main shop page and displays the same buttons and sorting options.
+- Pagination is not currently available for shop categories, as there is an unsolved bug with trying to then sort these results. As the number of products in a single category is never very large I opted to leave fixing this issue for a future release.
 
 ### Search Page
 - The search page is built from the same template as the main shop page and shop categories pages. With the one addition of the search bar where users can enter a text search.
 - On loading the search page there are no products displayed. Once the user has entered a text search the results are displayed below the search bar and paginated if more than 12 results are returned from the database.
 - If no results for a text search are returned from the database then the text 
 "There are currently no listings that match this search" provides feedback to the user.
+
+### Listing Detail Page
+
+**Product images**
+-  Each product detail page features at least 3 professional quality photographs of the product from different angles. 
+- Sometimes a group photo is included as well to show off more mice from the same collection. 
+- A photograph of the packaging is also included, to give users a clear idea of how their order will appear when it arrives. 
+- Finally a photograph of one of the mice being held, to give a clear indication of scale for those users who may not read the measurements further down the listing.
+- One main large image is presented at a time, with thumbnails along the side or bottom of the main image (depending on screen size) that are clickable. Every time a thumbnail image is clicked, the larger image is replaced with the one from the thumbnail. This gives the user the ability to fully inspect the product while not taking up too much space on the page.
+
+**Product details**
+- The product **title, price and description** are all clearly visible on the product listing page.
+- Under the product description is standard information that is applicable to all orders in the shop. 
+- A dropdown menu allows the user to select the quantity of a product they wish to purchase. The maximum number available for selection is in direct relation to the number currently in stock. 
+- An "Add to cart" button is displayed right under the quantity selection.
+
+**Notification modals**
+- When a user adds an item to their cart, an animated modal appears to inform them that their item has been successfully added. They are then given the option to continue shopping or view their cart.
+- If a user already has 2 of an item in their cart, and tries to add another 2 when there are only 3 available, a modal will appear alerting the user to the maximum number of this item available for them to buy. Their cart totals will be updated to reflect the maximum they can buy at this time.
+
+**More like this**
+- A collection of 4-6 listings from the same category as the detailed listing above, as well as a "browse more" button underneath it. These were included to keep the user engaged in the shop and looking at other products that might appeal to them.
+
+### About page
+
+- The About page features a photograph of the artist behind The House of Mouse and text about her story. To provide the user with more information and a way to connect with the creator of the handmade products.
+- At the end a call to action button at the bottom of this page invites the user to visit the shop.
+
+### Frequently Asked Questions Page
+
+- The FAQs page highlights the questions in pink with heading font, making it easier for the user to scan the questions and find the relevant one.
+- The answers to the questions are clearly given under each one.
+- At the bottom of the page the user is encouraged to contact the shop owner via the contact page if they have further questions that were not already answered above.
+
+### Contact Page
+
+- The contact page contains a form for the user to fill in to send the shop owner an email.
+- Name, email address and message are all required fields so that the shop owner receives all the information she needs to respond.
+- If the user is logged in then their email address will already be populated in the email field.
+- When the user clicks "send" the email is processed and sent via emailjs to The House of Mouse email address.
+
+### Register Page
+- A user who is not logged in can create a new account using the register page. The page on this form includes a username (which must be unique), email address, password and password conformation fields. 
+- Information about what characters are accepted by these fields is displayed with the form.
+- If a user who is already logged in tries to access this page, they are redirected to the home page.
+
+### Login Page
+- The login page features a standard login form asking for username and password.
+- Validation for this form is handled in the back end and relevant feedback is sent to the user when they sign in.
+
+### Account Page
+- The users account page can only be accessed by a logged in user. Any user not logged in who tries to access this page will be redirected to the login page.
+- The account page is split into two sections:
+    - **Profile Info**, where the user can update their username and email address, and where they can add or update their first and last name.
+    - **My Orders**, where a user can see a summary of all their previous orders. request a cancellation, and view the order status. 
+
+### Log out page
+- Any user who clicks on "Log out" from the navigation bar is automatically logged out and their session data cleared. They are taken to a page that informs them that they have been logged out and provides a link to log back in if they wish.
+
+### Cart page
+
+![Cart example image](https://i.ibb.co/2KHGbVD/Clipboard01.png)
+
+- The shopping cart page features a summary of all the items the user has added to their cart.
+- Each list item includes a picture of the item, the item title and price.
+- A cross symbol at the top right of each list item gives the user the ability to delete that item from their cart.
+- A quantity field is displayed with each cart item, giving the user the ability to adjust the quantity in their cart. Any time a quantity is adjusted the subtotal displayed is updated to reflect the change.
+- Information is provided for the user to tell them that tax is already included in the price they saw, and that the shipping cost will be calculated during checkout.
+
+#### Checkout
+
+- Each checkout page features an order summary, which lists all the items in the users cart, title, price and quantity. A link is provided at the top of this for the user to return to the cart page to make changes to the order.
+    - On mobile devices this order summary is part of a closed accordian, the top part of which displays the total cost. It can be clicked to open the full order details. This was done to save space on a smaller screen.
+    - On tablet devices and larger screens, the order summary is displayed in full on the right side of the screen on all checkout pages.
+
+- The checkout process is broken up into 4 stages. The reason for this was to break up the process into small steps as is common in online shops.
+
+    1. **Info**
+        - Here the user is asked to provide the shipping name and address to send their order to. They are also asked to select the country their order will go to, this is used to calculate the shipping price.
+        - Not every country in the world is currently included on the list of shipping destinations. This was done in part to save time in making multiple entries into the database, and also because after running this shop for over 10 years the owner knows which destinations her products are usually shipped to. 
+        - For the unlikely case that someone wishes to ship to a country not in the list, a link at the bottom of the form says "My country is not on the list?" and opens a modal encouraging the user to request their country be added to the shipping destinations.
+        - The "Continue to shipping" button leads the user to the shipping page.
+
+    2. **Shipping**
+        - The shipping page includes all the information that the user has provided so far: Their contact email address (taken from when they created their account), the shipping name and address, and their order summary. A link is provided where the shipping address is displayed so that the user can return to the info page to update it.
+        - This page provides the user with shipping options to choose from. At this point there is only one shipping option available, however this page and functionality have been left in so that other options such as expedited shipping may be added with a future release.
+        - As a shipping method is automatically selected, the order summary now reflects the total cost including shipping. 
+        - The "Continue to payment" button leads the user to the payment page hosted by Stripe.
+
+    3. **Payment**
+        - As stripe now offer a pre-built checkout in their latest version 3, I opted to use this as my payment page, as it hands over much of the back end coding needed for making payment to Stripe.
+        - The Stripe payment page includes a summary of what the user is buying, and fields to enter credit card information.
+        - All the validation and messages to the user on this page are handled by stripe.
+        - On clicking the "Pay" button and on successful completion of payment, the user is redirected to the order confirmation page back on The House of Mouse website.
+
+    4. **Confirmation of order**
+        - The order confirmation page gives the customer all the information they need going forward. The shipping address and expected shipping time are provided. As well as links to the users account page and the contact page should they need to get in touch with the shop owner.
+        - Finally the user is invited to return to the shop with a call to action button at the bottom of the page.
+
+#### Terms and Conditions / Privacy Policy pages
+    - Every trustworthy online shop provides the legal documentation expected by the user on their site. Although these documents are a legal requirement of any online shop, including them also helps users to feel they can trust the outlet.
+
 
 ## Features Left to Implement
 
@@ -334,6 +439,7 @@ These wireframes were created using [Balsamiq](https://balsamiq.com/) during the
     - gallery app
     - User favourites
     - newsletter signup
+    - other payment methods
 
 This section will continue to grow as the site is deployed to its own domain and implemented in the real word. New issues and needs will become apparent as the site is used.
 
