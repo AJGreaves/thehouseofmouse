@@ -448,7 +448,7 @@ These wireframes were created using [Balsamiq](https://balsamiq.com/) during the
 6. User favourites.
     - Another feature designed for The House of Mouse fan, who would return to the site many times and have a "dream collection" of mice they would like to own one day. 
     - This feature was originally included in the wireframes for this project, but unfortunately had to be clipped from the current release due to time constraints.
-7. Embedded mailchimp newsletter signup form in footer.
+7. Embedded Mailchimp newsletter signup form in footer.
     - At the moment the footer contains a button to lead the user to the newsletter signup form, currently hosted by Mailchimp. 
     - For ease of use for the user, and to get rid of more clicks needed to sign up, I would like to add the signup form fully embedded into my own website in the footer.
 8. Additional payment methods.
@@ -460,30 +460,81 @@ This section will continue to grow as the site is deployed to its own domain and
 
 ### Database Choice
 
-more info here
+- As a framework Django works with SQL databases. During development on my local machine I worked with the standard sqlite3 database installed with Django.
+- On deployment, the SQL database provided by Heroku is a Postgres database. 
 
-### Data Storage Types
+### Data Models
 
-The types of data stored in ... are:
-- ObjectId
-- String
-- Boolean...
+#### User
 
-### Collections Data Structure
+The User model utilized for this project is the standard one provided by `django.contrib.auth.models`
 
-The House of Mouse webshop relies on two database collections:
+#### Products app model
 
-#### Collection 1
+Within the `products` app, the **Product** model holds all the data needed for the products in the shop.
 
-<!-- example table from other project to use as template
- | Title | Key in db | form validation type | Data type |
---- | --- | --- | --- 
-Account ID | _id | None | ObjectId 
-Name | username | text, `maxlength="40"` | string
-Email Address | email | email, `maxlength="40"` | string
-Password | password | text, `maxlength="15"` | string -->
+**Product model**
 
-[Example JSON from collection 1]()
+| Name | Key in db | Validation | Field Type |
+--- | --- | --- | ---
+Title | title | max_length=100 | CharField
+Shop category | category | choices=CATEGORY_CHOICES | CharField
+Image 1 | product_image1 |  | ImageField
+Image 2 | product_image2 | blank=True, null=True | ImageField
+Image 3 | product_image3 | blank=True, null=True | ImageField
+Image 4 | product_image4 | blank=True, null=True | ImageField
+Image 5 | product_image5 | blank=True, null=True | ImageField
+Description | description |  | TextField
+Price | price | max_digits=6, decimal_places=2 | DecimalField
+Tags | tags | max_length=300 | CharField
+Stock qty | num_in_stock | validators=[MaxValueValidator(100)] | PositiveSmallIntegerField
+Featured | featured | default=False | BooleanField
+
+- Category choices are defined within the Product model.
+- The Product model uses Pillow to store all image files in an AWS S3 bucket.
+
+#### Cart app models
+
+Within the `cart` app, the **ShippingDestination**, **Order** and **OrderItem** models hold the data needed for users to create and pay for their orders.
+
+**ShippingDestination model**
+
+| Name | Key in db | Validation | Field Type |
+--- | --- | --- | ---
+Country | country | max_length=50 | CharField
+Shipping Price | shipping_price | max_digits=6, decimal_places=2 | DecimalField
+Shipping Time | shipping_time | max_length=150, default="1 to 2 weeks" | CharField
+
+- This table is used within the Django admin panel for shop staff to add all the countries the shop will ship to, the cost of that shipping and an estimated shipping time. 
+- This data is then used to calculate the total cost of an order depending on the shipping destination selected, as well as provide the customer with the estimated shipping time when placing their order.
+
+**Order model**
+
+| Name | Key in db | Validation | Field Type |
+--- | --- | --- | ---
+User | customer | on_delete=models.PROTECT | ForeignKey to User
+Full Name | full_name | max_length=150 | CharField
+Address line 1 | address_line_1 | max_length=150 | CharField
+Address line 2 | address_line_2 | max_length=150, blank=True | CharField
+Town / City | town_or_city | max_length=150 | CharField
+County | county | max_length=150, blank=True | CharField
+Postcode | postcode | max_length=10 | CharField
+Country | country | on_delete=models.PROTECT | ForeignKey to ShippingDestination
+Date ordered | date_ordered | default=datetime.date.today | DateField
+Paid | paid | default=False | BooleanField
+Shipped | shipped | default=False | BooleanField
+
+- An instance of the Order model is created before any OrderItems, as the latter relies on the former for a ForeignKey.
+
+**OrderItem model**
+
+| Name | Key in db | Validation | Field Type |
+--- | --- | --- | ---
+Order | order | on_delete=models.CASCADE | ForeignKey to Order
+Product | product | on_delete=models.PROTECT | ForeignKey to Product
+Quantity | quantity | | PositiveSmallIntegerField
+
+- An instance of OrderItem is created for each unique product in the users cart. It links to the already existing Order for this user, the relevant product and the quantity the user wishes to buy.
 
 # Technologies Used
 
