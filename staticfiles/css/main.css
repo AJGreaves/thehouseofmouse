@@ -435,9 +435,9 @@ footer a:hover {
 }
 
 /* pushes footer down to bottom of the page on larger screens. 
-Footer height on larger screens is 392px, navbar is 55px */
+Footer height on larger screens is 516px, navbar is 55px */
 .push-footer-down {
-  min-height: calc(100vh - (392px + 55px));
+  min-height: calc(100vh - (516px + 55px));
 }
 
 /* Styling for home page */
