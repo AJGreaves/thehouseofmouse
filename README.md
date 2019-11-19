@@ -596,16 +596,21 @@ The following **must be installed** on your machine:
 - [PIP](https://pip.pypa.io/en/stable/installing/)
 - [Python 3](https://www.python.org/downloads/)
 - [Git](https://gist.github.com/derhuerst/1b15ff4652a867391f03)
-...
-<!-- Other details here -->
+
+To allow you to access all functionality on the site locally, ensure you have created free accounts with the following services:
+- [Stripe](https://dashboard.stripe.com/register)
+- [AWS](https://aws.amazon.com/) and [set up an S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html)
+- [emailjs](https://www.emailjs.com/)
+
+Please click the links above for documentation on how to set these up and retrieve the necessary environment variables.
 
 ### Instructions
-1. Save a copy of the github repository located at xxx by clicking the "download zip" button at the top of the page and extracting the zip file to your chosen folder. If you have Git installed on your system, you can clone the repository with the following command.
+1. Save a copy of the github repository located at https://github.com/AJGreaves/thehouseofmouse by clicking the "download zip" button at the top of the page and extracting the zip file to your chosen folder. If you have Git installed on your system, you can clone the repository with the following command.
 ```
-git clone xxx
+git clone https://github.com/AJGreaves/thehouseofmouse
 ```
 
-2. If possible open a terminal session in the unzip folder or cd to the correct location.
+2. Open your preferred IDE, open a terminal session in the unzip folder or cd to the correct location.
 
 3. A virtual environment is recommended for the Python interpreter, I recommend using Pythons built in virtual environment. Enter the command:
 ```
@@ -628,18 +633,51 @@ pip install --upgrade pip.
 ```
 pip -r requirements.txt.
 ```
-...
-<!-- 
-6. In your local IDE create a file called `.flaskenv`.
 
-7. Inside the .flaskenv file, create a SECRET_KEY variable and a MONGO_URI to link to your own database. Please make sure to call your database `familyHub`, with 2 collections called `users` and `activities`. You will find example json structures for these collections in the [schemas](familyhubapp/data/schemas) folder.
+6. Set up the following environment variables within your IDE. 
 
-8. You can now run the application with the command
+- If using VSCode, locate the `settings.json` file within the .vscode directory and add your environment variables as below. Do not forget to restart your machine to activate your environment variables or your code will not be able to see them: 
+
+```json
+"terminal.integrated.env.windows": {
+    "HOSTNAME": "<enter hostname here>",
+    "DEV": "1",
+    "SECRET_KEY": "<enter key here>",
+    "STRIPE_PUBLISHABLE": "<enter key here>",
+    "STRIPE_SECRET": "<enter key here>",
+    "EMAILJS_USER_ID": "<enter key here>",
+    "STRIPE_SUCCESS_URL": "<enter url here>",
+    "STRIPE_CANCEL_URL": "<enter url here>",
+    "AWS_ACCESS_KEY_ID": "<enter key here>",
+    "AWS_SECRET_ACCESS_KEY": "<enter key here>",
+    "AWS_STORAGE_BUCKET_NAME": "<enter bucket name here>",
+}
 ```
-python app.py
+
+- If using an IDE that includes a `bashrc` file, open this file and enter all the environment variables listed above using the following format: 
+```
+HOSTNAME="<enter key here>"
+```
+- `HOSTNAME` should be the local address for the site when running within your own IDE.
+- `DEV` environment variable is set only within the development environment, it does not exist in the deployed version, making it possible to have different settings for the two environments. For example setting DEBUG to True only when working in development and not on the deployed site.
+
+7. If you have restarted your machine to activate your environment variables, do not forget to reactivate your virtual environment with the command used at step 4.
+
+8. Create your superuser to access the django admin panel and database with the following command, and then follow the steps to add your admin username and password:
+```
+python manage.py createsuperuser
 ```
 
-9. You can visit the website at `https://thehouseofmouse.herokuapp.com/` -->
+8. You can now run the program locally with the following command: 
+```
+python manage.py runserver
+```
+_NOTE: Your Python command may differ, such as python3 or py, depending on your operating system_
+
+9. Once the program is running, go to the local link provided and add `/admin` to the end of the ur. Here log in with your superuser account and create instances of ShippingDestination and Product within the new database.
+
+10. Once instances of these items exist in your database your local site will run as expected.
+
 
 ## Heroku Deployment
 
@@ -651,7 +689,7 @@ To deploy The House of Mouse webshop to heroku, take the following steps:
 
 3. `git add` and `git commit` the new requirements and Procfile and then `git push` the project to GitHub.
 
-3. Create a new app on the [Heroku website](https://dashboard.heroku.com/apps) by clicking the "New" button in your dashboard. Give it a name and set the region to Europe.
+3. Create a new app on the [Heroku website](https://dashboard.heroku.com/apps) by clicking the "New" button in your dashboard. Give it a name and set the region to whichever is applicable for your location.
 
 4. From the heroku dashboard of your newly created application, click on "Deploy" > "Deployment method" and select GitHub.
 
@@ -660,23 +698,30 @@ To deploy The House of Mouse webshop to heroku, take the following steps:
 6. In the heroku dashboard for the application, click on "Settings" > "Reveal Config Vars".
 
 7. Set the following config vars:
-...
-<!-- 
+
 | Key | Value |
- --- | ---
-DEBUG | FALSE
-IP | 0.0.0.0
-MONGO_URI | `mongodb+srv://<username>:<password>@<cluster_name>-qtxun.mongodb.net/<database_name>?retryWrites=true&w=majority`
-PORT | 5000
-SECRET_KEY | `<your_secret_key>`
+--- | ---
+AWS_ACCESS_KEY_ID | `<your secret key>`
+AWS_SECRET_ACCESS_KEY | `<your secret key>`
+AWS_STORAGE_BUCKET_NAME | `<your AWS S3 bucket name>`
+DATABASE_URL | `<your postgres database url>`
+EMAILJS_USER_ID | `<your secret key>`
+HOSTNAME | `<your heroku app hostname>`
+SECRET_KEY | `<your secret key>`
+STRIPE_CANCEL_URL | `<link to all-products page in your app>`
+STRIPE_PUBLISHABLE | `<your secret key>`
+STRIPE_SECRET | `<your secret key>`
+STRIPE_SUCCESS_URL | `<link to checkout/confirm page in your app>`
 
-- To get you MONGO_URI read the MongoDB Atlas documentation [here](https://docs.atlas.mongodb.com/)
+8. From the command line of your local IDE, enter the heroku postres shell to create your superuser account in your new database, which will allow you to access the django admin panel. Instructions on how to do this here in the [heroku devcenter documentation](https://devcenter.heroku.com/articles/heroku-postgresql).
 
-8. In the heroku dashboard, click "Deploy".
+9. In your heroku dashboard, click "Deploy". Scroll down to "Manual Deploy", select the master branch then click "Deploy Branch".
 
-9. In the "Manual Deployment" section of this page, made sure the master branch is selected and then click "Deploy Branch".
+10. Once the build is complete, click the "View app" button provided.
 
-10. The site is now successfully deployed. -->
+11. From the link provided add `/admin` to the end of the url, log in with your superuser account and create instances of ShippingDestination and Product within the new database.
+
+12. Once instances of these items exist in your database your heroku site will run as expected.
 
 # Credits
 
