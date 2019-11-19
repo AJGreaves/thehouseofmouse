@@ -256,11 +256,11 @@ These wireframes were created using [Balsamiq](https://balsamiq.com/) during the
 
 #### Footer
 
-![Footer](https://i.ibb.co/KjFjjtP/footer.png)
-
 - The footer features on every page except the cart and checkout pages. It was deliberately not included on those pages as that is the standard for online shops, to remove distractions and links that would take the user away from their cart once they decide to start the checkout process.
 
-- The footer features The House of Mouse tagline at the top, designed to speak to those most likely to enjoy the products for sale. Underneath this is a list of the shops categories, making it easy for the user to find a section they are most interested in. On the right side a list of the most commonly used links. 
+- The footer features The House of Mouse tagline at the top, designed to speak to those most likely to enjoy the products for sale. Under this is a link to The House of Mouse newsletter signup form, hosted by Mailchimp.
+
+- Underneath the newsletter signup button is a list of the shops categories, making it easy for the user to find a section they are most interested in. On the right side a list of the most commonly used links. 
 
 - The footer background of grey was chosen to provide some contrast and obvious separation between the footer and the rest of the content on the page. The Headings are displayed in pink with the links all in white. When the user hovers over a link it gently turns pink.
 
@@ -431,15 +431,28 @@ These wireframes were created using [Balsamiq](https://balsamiq.com/) during the
 
 ## Features Left to Implement
 
-1. Feature 1
-
-    - password reset by email
-    - Send email when new order made
-    - staff pages to view all order info needed together for easier shipping process
-    - gallery app
-    - User favourites
-    - newsletter signup
-    - other payment methods
+1. Password reset by email.
+    - I already looked into this, but it required changing settings in my private gmail account to less secure ones. Which is not something I am willing to do at this moment. When/if this site is deployed to it's own domain and is being used as a fully functioning online store, then I will invest in a separate gmail account specifically for it and get this feature set up.
+2. Sending an email to customer when their new order has been placed.
+    - This feature also required the gmail settings mentioned above, and is one that would be included if/when the site is properly launched.
+3. Build staff pages to view all order info needed together for easier shipping process.
+    - Giving staff the ability to view all order information in one place, rather than having to visit the Stripe dashboard or admin panel to see the orders. Functionality for this page might include:
+        - Ability to print out pre-formatted shipping labels
+        - Update order as "shipped" in the database and add tracking information so that the customer is updated with this information at the same time.
+        - Integration with DHL to follow tracking on packages sent.
+        - Ability to handle cancellations and refunds.
+4. Coupons and discount codes.
+    - Checkout pages to include a field for customers to enter discount codes or coupons to adjust their final payment cost.
+5. Gallery app.
+    - A gallery of previously made custom orders. Many fans of The House of Mouse enjoy seeing the many weird and wonderful creations and artistic flair of the owner. A gallery of mice not for sale, would be enjoyed by many of these fans, and would inspire those looking for a custom order.
+6. User favourites.
+    - Another feature designed for The House of Mouse fan, who would return to the site many times and have a "dream collection" of mice they would like to own one day. 
+    - This feature was originally included in the wireframes for this project, but unfortunately had to be clipped from the current release due to time constraints.
+7. Embedded mailchimp newsletter signup form in footer.
+    - At the moment the footer contains a button to lead the user to the newsletter signup form, currently hosted by Mailchimp. 
+    - For ease of use for the user, and to get rid of more clicks needed to sign up, I would like to add the signup form fully embedded into my own website in the footer.
+8. Additional payment methods.
+    - The current free version of Stripe checkout only allows for customers to pay via credit card. However this is not a popular form of payment in The Netherlands, with many more people preferring to pay via PayPal, bank transfer or iDeal. Stripe does offer these payment methods, and once this site is deployed for actual use these will be added to the options for customers to choose from.
 
 This section will continue to grow as the site is deployed to its own domain and implemented in the real word. New issues and needs will become apparent as the site is used.
 
