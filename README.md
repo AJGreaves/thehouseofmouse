@@ -7,10 +7,7 @@
 
 ## Introduction
 
-<div align="center">
-    <img src="https://i.ibb.co/F3rct3F/all-products-responsive.png" href="https://thehouseofmouse.herokuapp.com/" target="_blank" rel="noopener" alt="Image of how shop page looks on all screen sizes" aria-label="Image of how shop page looks on all screen sizes" />
-</div>
-
+![Home page](https://i.ibb.co/SJCXN6H/home-responsive.png)
 
 [The House of Mouse webshop](https://thehouseofmouse.herokuapp.com/) was created by Anna Greaves. 
 
@@ -24,51 +21,53 @@ Introduction to purpose of project here.
     - [User Stories](#user-stories)
     - [Design Choices](#design-choices)
     - [Wireframes](#wireframes)
-    - [Flowcharts](#flowcharts)
-    - [PDF](#pdf)
 
 2. [Features](#features)
     - [Existing Features](#existing-features)
-        <!-- - [Elements on every Page](#elements-on-every-page)
+        - [Elements on every Page](#elements-on-every-page)
         - [Home Page](#home-page)
-        - [Activities Page](#activities-page)
-        - [Listing Page](#listing-page)
-        - [Create Account Page](#create-account-page)
-        - [Log In Page](#log-in-page)
-        - [Account Settings Page](#account-settings-page)
-        - [Account Page](#account-page)
-        - [Add new Listing Page](#add-new-listing-page)
-        - [Preview Listing Page](#preview-listing-page)
-        - [Edit Listing Page](#edit-listing-page)
+        - [Shop Page](#ashop-page)
+        - [Search Page](#search-page)
+        - [Listing Detail Page](#listing-detail-page)
+        - [About Page](#about-page)
+        - [Frequently Asked Questions Page](#frequently-asked-questions-page)
         - [Contact Page](#contact-page)
-        - [404 Page](#404-page)
-        - [Permission Denied Page](#permission-denied-page) -->
-    - [Features Left to Implement](#features-left-to-implement)
+        - [Register Page](#register-page)
+        - [Login Page](#login-page)
+        - [Account Page](#account-page)
+        - [Log out Page](#log-out-page)
+        - [Cart Page](#cart-page)
+        - [Checkout](#checkout)
+        - [Terms and Conditions / Privacy Policy pages](#terms-and-conditions-privacy-policy-pages)
+    - [Features for Future Releases](#features-for-future-releases)
 
 3. [Information Architecture](#information-architecture)
     - [Database choice](#database-choice)
-    - [Data Storage Types](#data-storage-types)
-    <!-- - [Collections Data Structure](#collections-data-structure)
-        - [Users Collection](#users-collection)
-        - [Activities Collection](#activities-collection) -->
+    - [Data Models](#data-models)
+        - [User](#user)
+        - [Products App Model](#products-app-model)
+        - [Cart App Models](#cart-app-models)
 
 4. [Technologies Used](#technologies-used)
+    - [Tools](#tools)
+    - [Databases](#databases)
+    - [Libraries](#libraries)
+    - [Languages](#languages)
 
 5. [Testing](#testing)
+    - See separate [TESTING.md](TESTING.md) file.
 
 6. [Deployment](#deployment)
-    - [Heroku Deployment](#heroku-deployment)
     - [How to run this project locally](#how-to-run-this-project-locally)
+    - [Heroku Deployment](#heroku-deployment)
 
 7. [Credits](#credits)
     - [Content](#content)
-    - [Media](#media)
+    - [Images](#images)
     - [Code](#code)
     - [Acknowledgements](#acknowledgements)
 
 8. [Contact](#contact)
-
-9. [Disclaimer](#disclaimer)
 
 ----
 
@@ -270,8 +269,6 @@ These wireframes were created using [Balsamiq](https://balsamiq.com/) during the
 
 ### Home Page
 
-![Home page](https://i.ibb.co/SJCXN6H/home-responsive.png)
-
 **Hero slider/carousel**
 - The home page hero slider/carousel features 3 slides of promotional images from The House of Mouse. There are 4 images in total used as the last slides image is different for mobile and desktop. The reason for this was that the image gets too cropped when in a wide screen, while looks much better when the dimensions are taller than wide. So this image was saved for mobile screens, and another chosen for wider screens. 
 
@@ -300,8 +297,6 @@ These wireframes were created using [Balsamiq](https://balsamiq.com/) during the
 
 
 ### Shop Page
-
-![Shop page](https://i.ibb.co/F3rct3F/all-products-responsive.png)
 
 **Category buttons**
 - The main shop page features a collection of buttons leading to each section of the shop. These buttons are not visible on mobile view to save space, as they can also be accessed from the navbar.
@@ -426,32 +421,33 @@ These wireframes were created using [Balsamiq](https://balsamiq.com/) during the
         - Finally the user is invited to return to the shop with a call to action button at the bottom of the page.
 
 #### Terms and Conditions / Privacy Policy pages
-    - Every trustworthy online shop provides the legal documentation expected by the user on their site. Although these documents are a legal requirement of any online shop, including them also helps users to feel they can trust the outlet.
+
+- Every trustworthy online shop provides the legal documentation expected by the user on their site. Although these documents are a legal requirement of any online shop, including them also helps users to feel they can trust the outlet.
 
 
 ## Features for Future Releases
 
-1. Password reset by email.
+1. **Password reset by email.**
     - I already looked into this, but it required changing settings in my private gmail account to less secure ones. Which is not something I am willing to do at this moment. When/if this site is deployed to it's own domain and is being used as a fully functioning online store, then I will invest in a separate gmail account specifically for it and get this feature set up.
-2. Sending an email to customer when their new order has been placed.
+2. **Sending an email to customer when their new order has been placed.**
     - This feature also required the gmail settings mentioned above, and is one that would be included if/when the site is properly launched.
-3. Build staff pages to view all order info needed together for easier shipping process.
+3. **Build staff pages to view all order info needed together for easier shipping process.**
     - Giving staff the ability to view all order information in one place, rather than having to visit the Stripe dashboard or admin panel to see the orders. Functionality for this page might include:
         - Ability to print out pre-formatted shipping labels
         - Update order as "shipped" in the database and add tracking information so that the customer is updated with this information at the same time.
         - Integration with DHL to follow tracking on packages sent.
         - Ability to handle cancellations and refunds.
-4. Coupons and discount codes.
+4. **Coupons and discount codes.**
     - Checkout pages to include a field for customers to enter discount codes or coupons to adjust their final payment cost.
-5. Gallery app.
+5. **Gallery app.**
     - A gallery of previously made custom orders. Many fans of The House of Mouse enjoy seeing the many weird and wonderful creations and artistic flair of the owner. A gallery of mice not for sale, would be enjoyed by many of these fans, and would inspire those looking for a custom order.
-6. User favourites.
+6. **User favourites.**
     - Another feature designed for The House of Mouse fan, who would return to the site many times and have a "dream collection" of mice they would like to own one day. 
     - This feature was originally included in the wireframes for this project, but unfortunately had to be clipped from the current release due to time constraints.
-7. Embedded Mailchimp newsletter signup form in footer.
+7. **Embedded Mailchimp newsletter signup form in footer.**
     - At the moment the footer contains a button to lead the user to the newsletter signup form, currently hosted by Mailchimp. 
     - For ease of use for the user, and to get rid of more clicks needed to sign up, I would like to add the signup form fully embedded into my own website in the footer.
-8. Additional payment methods.
+8. **Additional payment methods.**
     - The current free version of Stripe checkout only allows for customers to pay via credit card. However this is not a popular form of payment in The Netherlands, with many more people preferring to pay via PayPal, bank transfer or iDeal. Stripe does offer these payment methods, and once this site is deployed for actual use these will be added to the options for customers to choose from.
 
 This section will continue to grow as the site is deployed to its own domain and implemented in the real word. New issues and needs will become apparent as the site is used.
@@ -460,8 +456,8 @@ This section will continue to grow as the site is deployed to its own domain and
 
 ### Database Choice
 
-- As a framework Django works with SQL databases. During development on my local machine I worked with the standard sqlite3 database installed with Django.
-- On deployment, the SQL database provided by Heroku is a PostgreSQL database. 
+- As a framework Django works with SQL databases. During development on my local machine I worked with the standard **sqlite3** database installed with Django.
+- On deployment, the SQL database provided by Heroku is a **PostgreSQL** database. 
 
 ### Data Models
 
@@ -624,17 +620,17 @@ _NOTE: The `python` part of this command and the ones in other steps below assum
 ```
 _Again this **command may differ depending on your operating system**, please check the [Python Documentation on virtual environments](https://docs.python.org/3/library/venv.html) for further instructions._
 
-4. If needed, Upgrade pip locally with
+5. If needed, Upgrade pip locally with
 ```
 pip install --upgrade pip.
 ```
 
-5. Install all required modules with the command 
+6. Install all required modules with the command 
 ```
 pip -r requirements.txt.
 ```
 
-6. Set up the following environment variables within your IDE. 
+7. Set up the following environment variables within your IDE. 
 
 - If using VSCode, locate the `settings.json` file within the .vscode directory and add your environment variables as below. Do not forget to restart your machine to activate your environment variables or your code will not be able to see them: 
 
@@ -661,26 +657,26 @@ HOSTNAME="<enter key here>"
 - `HOSTNAME` should be the local address for the site when running within your own IDE.
 - `DEV` environment variable is set only within the development environment, it does not exist in the deployed version, making it possible to have different settings for the two environments. For example setting DEBUG to True only when working in development and not on the deployed site.
 
-7. If you have restarted your machine to activate your environment variables, do not forget to reactivate your virtual environment with the command used at step 4.
+8. If you have restarted your machine to activate your environment variables, do not forget to reactivate your virtual environment with the command used at step 4.
 
-8. Migrate the admin panel models to create your database template with the terminal command
+9. Migrate the admin panel models to create your database template with the terminal command
 ```
 python manage.py migrate
 ```
 
-9. Create your superuser to access the django admin panel and database with the following command, and then follow the steps to add your admin username and password:
+10. Create your superuser to access the django admin panel and database with the following command, and then follow the steps to add your admin username and password:
 ```
 python manage.py createsuperuser
 ```
 
-10. You can now run the program locally with the following command: 
+11. You can now run the program locally with the following command: 
 ```
 python manage.py runserver
 ```
 
-11. Once the program is running, go to the local link provided and add `/admin` to the end of the ur. Here log in with your superuser account and create instances of ShippingDestination and Product within the new database.
+12. Once the program is running, go to the local link provided and add `/admin` to the end of the ur. Here log in with your superuser account and create instances of ShippingDestination and Product within the new database.
 
-12. Once instances of these items exist in your database your local site will run as expected.
+13. Once instances of these items exist in your database your local site will run as expected.
 
 
 ## Heroku Deployment
