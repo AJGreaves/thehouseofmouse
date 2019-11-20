@@ -616,7 +616,7 @@ git clone https://github.com/AJGreaves/thehouseofmouse
 ```
 python -m .venv venv
 ```  
-_NOTE: Your Python command may differ, such as python3 or py_
+_NOTE: The `python` part of this command and the ones in other steps below assumes  you are working with a windows operating system. Your Python command may differ, such as `python3` or `py`_
 
 4. Activate the .venv with the command:
 ```
@@ -663,20 +663,24 @@ HOSTNAME="<enter key here>"
 
 7. If you have restarted your machine to activate your environment variables, do not forget to reactivate your virtual environment with the command used at step 4.
 
-8. Create your superuser to access the django admin panel and database with the following command, and then follow the steps to add your admin username and password:
+8. Migrate the admin panel models to create your database template with the terminal command
+```
+python manage.py migrate
+```
+
+9. Create your superuser to access the django admin panel and database with the following command, and then follow the steps to add your admin username and password:
 ```
 python manage.py createsuperuser
 ```
 
-8. You can now run the program locally with the following command: 
+10. You can now run the program locally with the following command: 
 ```
 python manage.py runserver
 ```
-_NOTE: Your Python command may differ, such as python3 or py, depending on your operating system_
 
-9. Once the program is running, go to the local link provided and add `/admin` to the end of the ur. Here log in with your superuser account and create instances of ShippingDestination and Product within the new database.
+11. Once the program is running, go to the local link provided and add `/admin` to the end of the ur. Here log in with your superuser account and create instances of ShippingDestination and Product within the new database.
 
-10. Once instances of these items exist in your database your local site will run as expected.
+12. Once instances of these items exist in your database your local site will run as expected.
 
 
 ## Heroku Deployment
@@ -713,7 +717,12 @@ STRIPE_PUBLISHABLE | `<your secret key>`
 STRIPE_SECRET | `<your secret key>`
 STRIPE_SUCCESS_URL | `<link to checkout/confirm page in your app>`
 
-8. From the command line of your local IDE, enter the heroku postres shell to create your superuser account in your new database, which will allow you to access the django admin panel. Instructions on how to do this here in the [heroku devcenter documentation](https://devcenter.heroku.com/articles/heroku-postgresql).
+8. From the command line of your local IDE:
+    - Enter the heroku postres shell 
+    - Migrate the database models 
+    - Create your superuser account in your new database
+    
+     Instructions on how to do these steps can be found in the [heroku devcenter documentation](https://devcenter.heroku.com/articles/heroku-postgresql).
 
 9. In your heroku dashboard, click "Deploy". Scroll down to "Manual Deploy", select the master branch then click "Deploy Branch".
 
@@ -726,24 +735,28 @@ STRIPE_SUCCESS_URL | `<link to checkout/confirm page in your app>`
 # Credits
 
 ## Content
-
-## Media
-### Animations
+- Terms and conditions template provided by [Shopify](https://en.shopify.nl/tools/policy-generator/terms-and-conditions)
+- Example privacy policy provided by [Cleverbox](https://www.cleverbox.co.uk/example-privacy-policy/)
+- All other text, including but not limited to website introduction, product descriptions and marketing copy was written and provided with permission by The House of Mouse shop owner.
 
 ### Images
+- All product photography was taken and provided with permission by The House of Mouse shop owner.
+- Photographs of the shop owner were taken by [Rudi Wells Photography](https://www.rudiwells.com/)
 
 ## Code
 
-- Box shadow codes were taken from [Material Design Box Shadows](https://codepen.io/sdthornton/pen/wBZdXq).
+- The following youtube video series provided much explanation about the use and operation of Django2
+    - [Python Django Web Framework by freeCodeCamp.org](https://www.youtube.com/watch?v=F5mRW0jo-U4)
+    - [Python Django Tutorial by Corey Schafer](https://www.youtube.com/watch?v=UmljXZIypDc&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p)
+
 
 ## Acknowledgements
 
-Special thanks to my mentor [Simen Daehlin](https://github.com/Eventyret) for his never-ending patience and willingness to teach me not only what code works, but what is expected of my websites and code in industry.
+Special thanks to my mentor [Simen Daehlin](https://github.com/Eventyret) for his time, expertise and friendship through my entire journey through the CodeInstitute full stack web development course.
+
+With thanks also to my many coding friends who have tested, helped troubleshoot and debug, saved me from mild panic, supported and encouraged me along the way: Jo, Sean, Tim, Anthony, Robin, John, John, Chris, Anthony, Matt, Bim, Shane, Sipo and Ailsa.
 
 # Contact
 To contact me feel free to email
 
  `gilhespy (dot) anna (at) gmail (dot) com`
-
-## Disclaimer
-The content of this website is educational purposes only.
