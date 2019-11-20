@@ -171,11 +171,11 @@ The House of Mouse website has an overall child like, joyful feel, with emphasis
 </div>
 
 - In order to keep the site uncluttered only a few icons were utilized. 
-- The search icon and shopping cart icons were used in the navigation bar as they are conventionally used in this setting and would be what the user expects to see.
-- Yellow cheese icons are used as pointers between breadcrumb links on pages that have worked their way deeper into the hierarchical structure of the website information. These were used to add a little humour to a usually boring aspect of a website.
+- The **search** icon and **shopping cart** icons were used in the navigation bar as they are conventionally used in this setting and would be what the user expects to see.
+- Yellow **cheese icons** are used as pointers between breadcrumb links on pages that have worked their way deeper into the hierarchical structure of the website information. These were used to add a little humour to a usually boring aspect of a website.
 - On the home page the important facts about The House of Mouse are laid out using icons and simple text for quick assimilation of info (see image above).
-- Star icons are used in the testimonials section of the home page, to emphasize the high level of reviews the shop already has on Etsy.
-- The Facebook logo icon is included in the footer to lead visitors to The House of Mouse facebook page.
+- **Star icons** are used in the testimonials section of the home page, to emphasize the high level of reviews the shop already has on Etsy.
+- The **Facebook logo** icon is included in the footer to lead visitors to The House of Mouse facebook page.
 
 ### Colours
 <div align="center">
@@ -193,6 +193,10 @@ The House of Mouse website has an overall child like, joyful feel, with emphasis
 The blue was chosen to provide a highlighting contrast for links, prices and important buttons for the user such as "add to cart" and "checkout now".
 
 ### Styling
+
+- Subtle box shadowing and curved was applied to elements that needed a little extra emphasis and style. For example on product images, cart summary and form wrappers. 
+- In cases when the an is clickable, for example product images or call to action buttons the shadow size is increased and animated when the user hovers over that element, this was done to make the area more tempting to click.
+- Curved corner styling was chosen for its friendly feel, and as it is a common stylistic choice of bootstrap it blends well with styles used from that library on this project.
 
 ## Wireframes
 
@@ -255,6 +259,8 @@ These wireframes were created using [Balsamiq](https://balsamiq.com/) during the
 
 #### Footer
 
+![Footer](https://i.ibb.co/n8k7swY/footer.png)
+
 - The footer features on every page except the cart and checkout pages. It was deliberately not included on those pages as that is the standard for online shops, to remove distractions and links that would take the user away from their cart once they decide to start the checkout process.
 
 - The footer features The House of Mouse tagline at the top, designed to speak to those most likely to enjoy the products for sale. Under this is a link to The House of Mouse newsletter signup form, hosted by Mailchimp.
@@ -292,6 +298,8 @@ These wireframes were created using [Balsamiq](https://balsamiq.com/) during the
 
 **Featured listings**
 
+![Featured listings](https://i.ibb.co/TLZS3Gw/featured.png)
+
 - At the bottom of the home page 4-6 products are selected from the products database from those with `featured = True` in their properties. 4 products are displayed on desktop, and 6 on mobile and tablet size screens.
 - A "browse more" button is placed underneath the featured listing inviting the user to go to the shop page.
 
@@ -323,6 +331,8 @@ These wireframes were created using [Balsamiq](https://balsamiq.com/) during the
 "There are currently no listings that match this search" provides feedback to the user.
 
 ### Listing Detail Page
+
+![Listing detail page on different screen sizes](https://i.ibb.co/mS3dqQc/listing-responsive.png)
 
 **Product images**
 -  Each product detail page features at least 3 professional quality photographs of the product from different angles. 
@@ -363,6 +373,9 @@ These wireframes were created using [Balsamiq](https://balsamiq.com/) during the
 - When the user clicks "send" the email is processed and sent via emailjs to The House of Mouse email address.
 
 ### Register Page
+
+![Register page on different screen sizes](https://i.ibb.co/TvR9Rn8/register-responsive.png)
+
 - A user who is not logged in can create a new account using the register page. The page on this form includes a username (which must be unique), email address, password and password conformation fields. 
 - Information about what characters are accepted by these fields is displayed with the form.
 - If a user who is already logged in tries to access this page, they are redirected to the home page.
@@ -372,6 +385,9 @@ These wireframes were created using [Balsamiq](https://balsamiq.com/) during the
 - Validation for this form is handled in the back end and relevant feedback is sent to the user when they sign in.
 
 ### Account Page
+
+![Account page on different screen sizes](https://i.ibb.co/27GrNtP/account-responsive.png)
+
 - The users account page can only be accessed by a logged in user. Any user not logged in who tries to access this page will be redirected to the login page.
 - The account page is split into two sections:
     - **Profile Info**, where the user can update their username and email address, and where they can add or update their first and last name.
@@ -382,8 +398,6 @@ These wireframes were created using [Balsamiq](https://balsamiq.com/) during the
 
 ### Cart page
 
-![Cart example image](https://i.ibb.co/2KHGbVD/Clipboard01.png)
-
 - The shopping cart page features a summary of all the items the user has added to their cart.
 - Each list item includes a picture of the item, the item title and price.
 - A cross symbol at the top right of each list item gives the user the ability to delete that item from their cart.
@@ -391,6 +405,8 @@ These wireframes were created using [Balsamiq](https://balsamiq.com/) during the
 - Information is provided for the user to tell them that tax is already included in the price they saw, and that the shipping cost will be calculated during checkout.
 
 #### Checkout
+
+![Checkout page on different screen sizes](https://i.ibb.co/vV2r6NL/checkout-responsive.png)
 
 - Each checkout page features an order summary, which lists all the items in the users cart, title, price and quantity. A link is provided at the top of this for the user to return to the cart page to make changes to the order.
     - On mobile devices this order summary is part of a closed accordian, the top part of which displays the total cost. It can be clicked to open the full order details. This was done to save space on a smaller screen.
