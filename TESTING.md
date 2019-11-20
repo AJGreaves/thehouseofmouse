@@ -2,7 +2,7 @@
 
 [Main README.md file](README.md)
 
-[View website on Heroku]()
+[View website on Heroku](https://thehouseofmouse.herokuapp.com/)
 
 ## Table of Contents
 
@@ -10,6 +10,8 @@
     - [Validation services](#validation-services)
     - [Jasmine](#jasmine)
     - [Python Testing](#python-testing)
+    - [Coverage](#coverage)
+    - [Travis](#travis)
 2. [User Stories Testing](#user-stories-testing)
 3. [Manual Testing](#manual-testing)
     - [Testing undertaken on desktop](#testing-undertaken-on-desktop)
@@ -24,34 +26,32 @@
 ### Validation Services
 The following validation services and linter were used to check the validity of the website code.
 
-- [W3C Markup Validation]( https://validator.w3.org/) was used to validate HTML.
-
-    - **Important note** On the pages that use [Gijgo](https://gijgo.com/) date and time pickers (Add New Listing Page and Edit Listing Page), the W3c validator throws many errors to do with the html code that is inserted by Gijo.js. I have double-checked that I am using the most up to date version of Gijgo. These errors are due to code I have not written myself, and that is added when the page is rendered via the Gijgo JavaScript file. 
+- [W3C Markup Validation](https://validator.w3.org/) was used to validate HTML. 
 
 - [W3C CSS validation](https://jigsaw.w3.org/css-validator/) was used to validate CSS.
 
 - [JSHint](https://jshint.com/) was used to validate JavaScript.
 
-    <!-- - To save on loading times and to keep my JavaScript code organized I chose to break up the JS into several separate files. 
+    - To save on loading times and to keep my JavaScript code organized I chose to break up the JS into several separate files. 
     - When running JSHint, the errors `undefined variable` and `unused variable` appear when one file either creates or uses a function that is utilized or created in another file. As validates one JS file at a time, it is not aware of the other files. 
-    - To double-check that no errors occur with the entire files loaded I pasted in all the JavaScript code into JSHint and then it ran with no errors.  -->
+    - To double-check that no errors occur with the entire files loaded I pasted in all the JavaScript code into JSHint and then it ran with no errors. 
 
-- [Python extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python) was used to validate Python.
+- [Python extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python) and [Pylint-django](https://pypi.org/project/pylint-django/) was used to validate Python.
+
+If you wish to run any of these tests for yourself, befre going further please make sure you have already cloned this project from the [The House of Mouse GitHub repository](https://github.com/AJGreaves/thehouseofmouse) 
+by following the steps in the [README.md](readme.md#how-to-run-this-project-locally) under "How to run this project locally" and that you have the entire project running on your own IDE.
 
 ### Jasmine
 
 - [Jasmine-Jquery CDN](https://github.com/velesin/jasmine-jquery) has been imported into the jasmine testing to allow for jQuery within the JavaScript functions.
 
-The files for jasmine testing Family Hub can be found here:
+The files for jasmine testing The House of Mouse can be found here:
 - HTML page to run jasmine tests from: [jasmine-testing.html](testing/jasmine/jasmine-testing.html)
-- JavaScript specifications (tests): [familyhubSpec.js](testing/jasmine/spec/familyHubSpec.js)
+- JavaScript specifications (tests): [familyhubSpec.js](testing/jasmine/spec/thehouseofmouseSpec.js)
 - The House of Mouse JavaScript functions to be tested are in the [js directory](static/js)
-    - [common.js](static/js/common.js) // replace this
+    - [common.js](static/js/main.js)
 
 #### How to run Jasmine tests
-
-Before going further please make sure you have already cloned this project from the [The House of Mouse GitHub repository](https://github.com/AJGreaves/thehouseofmouse) 
-by following the steps in the [README.md](readme.md#how-to-run-this-project-locally) under "How to run this project locally" and that you have the entire project running on your own IDE.
 
 To run the Jasmine tests: 
 1. Open [jasmine-testing.html](testing/jasmine/jasmine-testing.html).
@@ -60,7 +60,7 @@ To run the Jasmine tests:
 #### How to create Jasmine tests
 
 To create Jasmine tests: 
-1. Open the [thehouseofmouseSpec.js](testing/jasmine/spec/thehouseofmouse.js) file.
+1. Open the [thehouseofmouseSpec.js](testing/jasmine/spec/thehouseofmouseSpec.js) file.
 2. Write your own tests using the jasmine 3.1 framework.
 3. Save [thehouseofmouseSpec.js](testing/jasmine/spec/thehouseofmouseSpec.js), and then run/refresh [jasmine-testing.html](testing/jasmine/jasmine-testing.html).
 
@@ -68,17 +68,135 @@ To create Jasmine tests:
 
 #### How to run Python tests
 
+To run the existing Python tests:
+1. Activate your virtual environment.
+2. In the terminal enter the following command:
+```
+python manage.py test
+```
+3. If you wish to run the tests within a specific app only you can specify with: 
+```
+python manage.py test <app name here>
+```
+4. The test results will be shown within the terminal.
+
+_NOTE: The `python` part of these commands assumes you are working with a windows operating system. Your Python command may differ, such as `python3` or `py`_
+
+
 ### A note about TDD
 
-This project did not utilize Test Driven Development for Jasmine or Python while it is a student project. The reason for this was that I am still very new to both JavaScript and Python and found it impossible to write tests for languages I did not understand well. 
+This project did not utilize Test Driven Development. The reason for this was that I was learning how Django works and functions and found it impossible to write tests for methods and classes that I did not understand well as I went along. 
 
-The automated tests for this project were created after the vast majority of the project was already complete, once I had a firmer grasp of how my functions were working and what their expected output was. Now that I have a better understanding of how automated tests work, I intend to attempt TDD with my next project.
+The automated tests for this project were created after the vast majority of the project was already complete, once I had a firmer grasp of how my code was working and what its expected output was. Now that I have a better understanding of how automated tests work, I intend to attempt TDD with my next project.
 
 - coverage - command: coverage html, then open and run index.html file in the htmlcov directory created.
 - travis
 
+### Coverage
+
+[Coverage.py](https://coverage.readthedocs.io/en/v4.5.x/) was used to provide feedback during testing to check that enough of my code had been tested.
+
+#### How to run coverage
+
+1. Activate your virtual environment.
+2. In the terminal enter the following command:
+```
+coverage html
+```
+3. Open the newly created `htmlcov` directory in the root of your project folder. 
+4. Open the `index.html` file inside it.
+5. Run the file in the browser to see the output.
+
+### Travis
+
+- [Travis](https://travis-ci.org/) was used throughout the unit testing of this project to provide continuous integration with the deployed site. The [Travis Documentation](https://docs.travis-ci.com/) provides all the info needed to set it up.
+- I set the heroku deployment settings for this project to only allow deployment when the travis had passed the latest push to the master branch.
 
 ## User Stories Testing
+
+The following section goes through the user stories identified in the [Ux section of README.md](README.md#UX) to check that the site meets those needs.
+
+**As a visitor to The House of Mouse website I expect/want/need:**
+
+1. **To easily find what I am looking for, I want the layout of the site to make sense so I am not confused or put off using it.**
+    - Arrangement of site elements such as navbar, footer, icons, carousels, products lists, search, contact, FAQs and forms conform to expected placement. Breadcrumbs are provided on pages where the user has moved deeper into the hierarchical data structure of the website to make it easier for the user to tell where they are and how they can return to previous pages they were on.
+    - The key pages of the site can be accessed from both the navigation bar and the footer, which can be found on all pages of the site (except the checkout pages).
+
+1. **The information I am presented with to be laid out in a way that is easy for me to navigate and digest, so that I find what I need quickly and efficiently.**
+    - As the user moves through the site from the surface layers like the home page, to more detailed pages like an individual listing page, the information needed at each stage is displayed at the appropriate level. 
+    - At the main shop results page only product images, titles and prices are displayed so that all the information can be scanned quickly by a user to find what they are most interested in. 
+    - Icons and images are used to help the user digest information quickly.
+    - Common frequently asked question are put into a separate page, so that they can be found easily when needed.
+
+1. **The ability to search through small amounts of information to find what I need, and then be able to easily click to get more detailed information when I need it.**
+    - Some points for this already covered in previous user story details.
+    - Once the user moves to a listing detail page the user can access more detailed information on that product. 
+    - Shop list pages can be sorted by category, price high to low or price low to high.
+    - The search page allows the user to run a text search through all products titles, descriptions and tags to find what they are looking for.
+
+1. **The site to be easily navigable from any device, desktop, tablet or phone. For the content to look good and be useable on all of these devices.**
+    - A lot of attention was paid to mobile-first design throughout the project, from wireframes to completion. 
+    - All elements have been given a responsive design, so nothing to too squashed, squeezed or hard to read on any screen size a user might be using.
+    - The use of the site has been extensively tested on desktop, tablet and phone size screens as well as all screen sizes available to simulate in Chrome Developer Tools.
+
+1. **To learn more about the shop owner and their process, so that I can be assured I am buying from a small handmade business.** 
+    - A short but compelling About page is included in the site. With enough information to satisfy a users curiosity without overloading them with more than they need.
+
+1. **To be able to read reviews of this shop from previous customers, to build trust in my purchase.**
+    - The home page featured 5 testimonials from past customers, displayed in a carousel. A button in this section leads the user to the Etsy feedback page where 100s of other reviews for this shop can be read.
+
+1. **For all information and images to be laid out in a clear and easy to understand way, on whatever size screen I am viewing the website on.**
+    - Attention has been paid to ensuring product images are clean and professional, never squashed or squeezed and that the users operation of the site pages work on all devices. Text is never too large or too small, buttons are always large enough to click with a finger easily on touch screen devices.
+
+1. **Plenty of high quality images of the products for sale, so I have a clear idea of what I am buying and can see the quality of the products up close.**
+    - Each product listing can hold up to 6 images, so the user can see the product, packaging and scale in detail. Image files have been optimized to keep the file size low while not sacrificing the professional image quality.
+
+1. **To be able to easily find out all the information I need to make an informed purchase. I expect information about materials, measurements, safety and packaging to be available on every listing page.**
+    - Information about product materials, measurements, safety and package are available on every listing page under the listing description.
+
+1. **To be informed if I try to order more items than are available in stock.**
+    - Whenever a user adds an item to their cart or adjusts the quantity in their cart the current stock level for that item is checked from its database entry. A modal will alert the user if they attempt to add more to their cart than is available in stock, and their cart will be updated to reflect the maximum number available.
+
+1. **For recorded stock levels to be accurate, so there are no delays in receiving my order.**
+    - Each listing detail quantity selection will only go up to the maximum number in stock. 
+    - Whenever an item is purchased, the stock level for it in the database is updated.
+    - The shop owner can access and update stock levels from the admin panel.
+
+1. **A text search function so that I can quickly narrow down my search when looking for something specific.**
+    - A text search is available on the search page. It searches through the products titles, description and tags to find and rank the results for the user.
+
+1. **A clear terms and conditions and privacy policy.**
+    - Terms and conditions, and privacy policy pages are included in the site and linked to in the footer of each page.
+
+1. **There to be a frequently asked questions page for any further questions I might have about my order.**
+    - A FAQs page is provided and linked to in the navigation and footer.
+
+1. **To be able to see a summary of my order on every page of the checkout process.**
+    - The order summary is indeed on every page of the checkout process, provided on the right side of the screen on large screens, and in a dropdown button on mobile.
+
+1. **That once I am logged in I can access my account details and update them if I need to.** 
+    - The Account page gives the logged in user the ability to update their username, email address, first and last names. 
+    - At the moment the user cannot change their password - see [Features for Future Releases](README.md#features-for-future-releases) for more details.
+
+1. **To be able to find information on my past orders and how to cancel an order.** 
+    - The Account page provides a list of all the users previous purchases, with full details of their order, date it was placed, products, quantities and total amount paid. 
+    - A link is provided in each order summary for the user to contact the seller to cancel their order.
+    - Order summary's also include information on if the relevant order has been shipped yet.
+
+1. **To be able to connect to the businesses social media channels and/or newsletter, to keep up to date with new listings on the site.**
+    - The footer contains a link to the Mailchimp newsletter signup form for this shop.
+    - The active social media channel for this shop is on Facebook, so an icon and link to that is provided in the footer. When/if this shop becomes active on social media again their other social media platforms can easily be added in the same place.
+
+1. **To be able to easily get in contact with the shop owner via a contact form.**
+    - The contact page is easily located from the navigation bar and footer.
+    - The contact page is linked to in various relevant places throughout the site to encourage users to get in contact if they need to.
+    - The contact form provides an easy on site way for the user to send an email to the shop owner.
+    - The email sent to the shop owner includes all the needed info to reply directly to the sender.
+
+1. **Feedback from the website I am using when I interact with it, I expect pop ups and modals to inform me when my forms have been completed and sent correctly. Or to let me know when an error has ocurred and what to do next.**
+    - HTTP responses provide feedback to the user if there is a problem with their input values in forms.
+    - Beautiful animated popups appear to inform the user when their forms are completed, contact message is sent or when items are added to their cart.
+    - Error messages are also returned to the user when there is a problem with the site's functionality.
 
 ## Manual Testing
 Below is a detailed account of all the manual testing that has been done to confirm all areas of the site work as expected. 

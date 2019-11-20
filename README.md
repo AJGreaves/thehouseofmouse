@@ -124,8 +124,6 @@ As a visitor to The House of Mouse website I expect/want/need:
 
 1. For all information and images to be laid out in a clear and easy to understand way, on whatever size screen I am viewing the website on.
 
-1. A completely custom mouse designed and created for me either for my own collection or as a gift. 
-
 1. Plenty of high quality images of the products for sale, so I have a clear idea of what I am buying and can see the quality of the products up close.
 
 1. To be able to easily find out all the information I need to make an informed purchase. I expect information about materials, measurements, safety and packaging to be available on every listing page.
@@ -465,6 +463,8 @@ These wireframes were created using [Balsamiq](https://balsamiq.com/) during the
     - For ease of use for the user, and to get rid of more clicks needed to sign up, I would like to add the signup form fully embedded into my own website in the footer.
 8. **Additional payment methods.**
     - The current free version of Stripe checkout only allows for customers to pay via credit card. However this is not a popular form of payment in The Netherlands, with many more people preferring to pay via PayPal, bank transfer or iDeal. Stripe does offer these payment methods, and once this site is deployed for actual use these will be added to the options for customers to choose from.
+9. **Auto login on registering a new account**
+    - A nice extra feature to streamline the login process.
 
 This section will continue to grow as the site is deployed to its own domain and implemented in the real word. New issues and needs will become apparent as the site is used.
 
