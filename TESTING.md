@@ -208,15 +208,83 @@ All steps on desktop were repeated in browsers: Firefox, Chrome and Internet Exp
 #### Elements on every page
 
 1. Navbar 
+    - Clicked each link in the navbar to confirm that it leads to the correct page.
+    - Confirm that when logged out the options "Register" and "Log in" are visible and that "Account" and "Log out" are not.
+    - Log into the site, confirm that options "Account" and "Log out" are visible and that "Register" and "Log in" are not.
+    - Click the "Shop" link in the navbar, confirm that all sections of the shop are listed in the dropdown menu.
+    - Add an item to the users cart, confirm that the counter appears over the shopping cart icon with the correct number of items displays.
+    - Add more than 10 items to the cart, confirm that the counter shows `9+`.
+    - Delete all items from the users cart, confirm that the counter is no longer visible in the navbar.
 
 2. Footer
-
+    - Click subscribe button, confirmed it opens a new tab and takes the user to the correct subscription page on the MailChimp website.
+    - Hover over links in the footer, confirm the color change animation works as expected.
+    - Click all links in the footer, confirm that they take the user to the relevant pages within the site.
+    - Click the facebook icon, confirm that it opens a new tab and takes the user to The House of Mouse facebook page.
+    - Check date of copyright information, confirm year displayed matches the current year.
 
 #### Home Page
 
-1. Hero Image
-    - Confirm that hero image loads at a reasonable speed, and that the image is sharp and clear. 
-    - Confirm the heading for the page is easy to read.
+1. Hero Slider
+    - Click slider buttons, confirm that they work as expected.
+    - Adjust width of browser window, confirm image is always cropped in an attractive way.
+
+2. Call to action buttons
+    - Hover over all buttons, confirm the color change and shadow on hover appear as expected.
+    - Click all buttons, confirm they take the user to the correct links and open new tabs when links go away from the website.
+
+3. Shop section images
+    - Hover over each section image, confirm shadow size increases and image looks as it if is being lifted up on the page.
+    - Confirm all titles laid over on images can be easily read.
+
+4. Testimonials carousel
+    - Click carousel buttons, confirm that they work as expected.
+    - Check each slide to be sure the elements fit within the slider.
+    - Confirm all text can be easily read.
+
+5. Featured listings
+    - Confirm that on desktop 4 featured listings are visible in one row.
+    - Confirm that on tablet 6 featured listings are visible over two rows.
+    - Reload the page, confirm that a new random selection of featured listings are shown.
+    - Click each listing picture, confirm that it takes the user to the relevant listing detail page.
+
+
+#### Shop Page
+
+#### Search Page
+
+#### Listing Page
+
+#### About Page
+
+#### FAQs Page
+
+#### Contact Page
+
+#### Register Page
+
+#### Login Page
+
+#### Account Page
+
+#### Log Out Page
+
+#### Cart Page
+
+#### Checkout Pages
+
+##### Info Page
+
+##### Shipping Page
+
+##### Payment Page
+
+##### Confirmation Page
+
+#### Terms and Conditions Page
+
+#### Privacy Policy Page
+
 
 ### Testing undertaken on tablet and phone devices
 All steps below were repeated to test mobile and tablet specific elements on my Samsung phone and tablet, in both the firefox browser and samsung internet browser.
