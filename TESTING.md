@@ -248,28 +248,142 @@ All steps on desktop were repeated in browsers: Firefox, Chrome and Internet Exp
     - Reload the page, confirm that a new random selection of featured listings are shown.
     - Click each listing picture, confirm that it takes the user to the relevant listing detail page.
 
-
 #### Shop Page
+
+1. Breadcrumbs
+    - Click breadcrumb links, confirm they work and go to the correct locations.
+
+2. Shop section buttons
+    - Hover over section buttons, confirm the hover effects work as expected.
+    - Click all section buttons, confirm they work and take the user to the correct pages.
+
+3. Sorting options
+    - Select the different sorting options from the menu one by one, confirm that the products are sorted in the orders selected.
+
+4. Product cards
+    - Hover over product cards, confirm the hover effect works as expected.
+    - Confirm that the photos, images and prices displayed are correct.
+    - Click multiple products, confirm that the user is taken to the correct product listing pages.
+    - Confirm that one of each product is displayed in total. 
+    - Check that there are no duplicates or missing products.
+
+5. Pagination
+    - Click all pagination links, confirm that they work as desired.
 
 #### Search Page
 
+1. Breadcrumbs
+    - Click breadcrumb links, confirm they work and go to the correct locations.
+
+2. Search bar
+    - Load search page, confirm that the search bar is visible and no product listing results are shown.
+    - Enter a search word that applies to many listings. 
+        - Confirm that the listing returned match the search term.
+        - Confirm that the results are paginated and that the pagination works correctly.
+    - Enter a search word that does not apply to any listings. Confirm that the message "There are currently no listings that match this search" is displayed when hitting enter.
+
+3. Footer on search page
+    - Confirm that footer stays stuck to the bottom of the screen even when there are no listings to fill up the space.
+
 #### Listing Page
+
+1. Listing breadcrumbs
+    - Check that breadcrumbs show the relevant category of the product listing in them.
+    - Click all breadcrumb links, confirm that they take the user to the correct pages.
+
+2. Listing details
+    - Confirm that the listing title, price, and description match those in the database for the product.
+
+3. Listing photographs
+    - Click the thumbnails provided for extra images of the product. Confirm that the large photograph is updated to reflect the thumbnails clicked.
+    - Confirm that the standard photograph of the product packaging, and the one provided to show scale are visible with the other listing photographs.
+
+4. Listing information
+    - Confirm that all information on measurements, materials, safety and customisations can be found on the listing detail page under the description. 
+    - Click the contact page link in the listing info, confirm it takes the user to the contact page.
+
+5. More like this
+    - Check that the listings featured in the "more like this" section are from the same category as the listing detail currently open.
+    - Check that the current listing is excluded from the selection of products shown.
+    - Click the products in this section, confirm that their links and hover effects work as expected.
+    - Click the "browse more" button, confirm it takes the user to the correct category section of the shop.
+
+6. Quantity selection
+    - Click the quantity selection. Confirm that the highest number available to select matches the number in stock of this product.
+
+7. Add to cart button
+    - Click the "add to cart" button. Confirm that the applicable modal is launched, stating the name of the product added to the cart, and that the cart counter in the navigation bar is updated to reflect the new quantity.
+    - Confirm that the modal provides two buttons to the user: to go to cart or to continue shopping. Click both to confirm they operate as expected.
+    - Add more to the cart from the same product, making the total go over the max number in stock. Confirm that the modal alerting the user to too many of the product in their cart is launch. Confirm that the quantity in the cart is reset to the max number in stock.
 
 #### About Page
 
+- Go to account page, confirm that the title and subheading displays as expected. 
+- Check that the photograph is on the left side of the screen and the text on the right. 
+- Check that the proportions of the page are as expected.
+- Click the "visit shop" call to action button, confirm it takes the user to the main shop page.
+
 #### FAQs Page
+
+- Go to FAQs page. Confirm that each question is in the main heading font and pink, to make it easy for users to scan the questions to find the ones relevant to their needs.
+- Check that the questions are clear and the answers given are sufficient.
+- Click the "contact" and "subscribe" links provided on this page, confirm they take the user to the contact page.
 
 #### Contact Page
 
+- Go to the contact page. Confirm that the contact form is laid out as expected.
+- Confirm that for a logged in user the email address field has already been populated. 
+- Confirm that for a user who is not logged in the email address field is blank.
+- Try to send the form with no fields filled in, confirm that the user is alerted to fill in the required fields.
+- Try to enter a non-email address into the email field, confirm that the user is alerted to fill in an email address.
+- Send a complete form, confirm that the message is sent to my email address with all the information included.
+
 #### Register Page
+
+- Try to go to the register url when already logged in, confirm that the user is redirected to the home page.
+- Log out then go to the register page again. Confirm that the register form is displayed as expected.
+- Fill in the form with a username already in the database, confirm that the user is informed that they must use a unique username.
+- Fill in the email input with a non-email address, confirm the user is shown an error asking the to use an email address.
+- Go into devtools, change the `type` attribute on the email form to `text`, attempt to send the form. confirm that the Django validation catches the error and tells the user to enter an email address.
+- Fill in the form with two different passwords, confirm the error is caught again and the user is informed of their mistake.
+- Fill in the registration for correctly, confirm that the user is automatically directed to the login page, and the message "Your account has been created `<username>`. You can now log in." is displayed above the login page. 
 
 #### Login Page
 
+- Reload the login page, confirm that the message for a new account is not visible.
+- Attempt to log in with a username not in the database, confirm the relevant error message is shown.
+- Attempt to log in with a correct username but wrong password, confirm the relevant error message is shown.
+- Log in with a correct username and password, confirm that the user is logged in and that they are redirected to their cart page.
+- Try to return to the login page url when already logged in, confirm that the user is redirected to the cart page.
+
 #### Account Page
+
+- Go to the account page of a newly created user. Confirm that te profile info form is populated with the users username and email address.
+- Confirm that the first name and last name fields are also available.
+- Fill in the form with a non-email address, confirm that the applicable error is shown to the user
+- Fill in the form correctly, confirm that the "Your account info has been updated." message is shown to the user and that the reloaded form is now populated with the new data.
+- Confirm that a user with no previous orders has the "no orders to show" text in the Orders section.
+- Make 2 separate orders on the website. 
+- Return to the account page, confirm that the orders are displayed in the Orders section of the account page. With the top order being the most recent and open to show the full details. Confirm that all orders after it in the list are closed accordions, but that can be opened with a click.
+- Confirm that all data in the orders on the account page is accurate.
+- Go into the admin panel, mark one of the orders as shipped. Confirm that the information to the user in their account page is updated to show that the order selected has been shipped.
 
 #### Log Out Page
 
+- Add a new product to the users cart. Click the "log out" link in the navigation bar. Confirm that the user is logged out and their cart has been cleared.
+- Click the "Log in again" link on this page, confirm that the user is taken back to the login page.
+- Confirm that the footer stays stuck to the bottom of the screen even when there is not enough content on the page to push it down.
+
 #### Cart Page
+
+- Go to the cart page when not logged in to the site, confirm that the user is taken to the login page to sign in.
+- Log in and go to the cart page with nothing in the cart. Confirm that the message "Your cart is empty!" is shown and the call to action button "Let's go shopping" is provided.
+- Click the button and confirm it takes the user to the main shop page.
+- Add items to the cart and return to the cart page, confirm that all items in the cart are displayed correctly, with the correct amounts requested by the user.
+- Adjust the quantity field, confirm that the shopping cart subtotal is updated to reflect the change.
+- Adjust the quantity field up higher than the number of that item in stock. Confirm that a modal alerts the user to the maximum number available and adjust the cart to reflect that amount.
+- Click the `x` delete button on a listing, confirm that the cart page is reloaded with that item removed from the cart.
+- Delete all items from the cart, confirm that the cart page is reloaded to reflect the empty cart.
 
 #### Checkout Pages
 
