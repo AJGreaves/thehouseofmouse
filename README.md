@@ -184,12 +184,12 @@ The House of Mouse website has an overall child like, joyful feel, with emphasis
 
 - The brand colours for this project were chosen because the two shades of pink and two shades of grey are taken from the felt mice ears and standard body color. This helps to pull the colours of the site together with the product photographs. 
 
-The blue was chosen to provide a highlighting contrast for links, prices and important buttons for the user such as "add to cart" and "checkout now".
+- The blue was chosen to provide a highlighting contrast for links, prices and important buttons for the user such as "add to cart" and "checkout now".
 
 ### Styling
 
-- Subtle box shadowing and curved was applied to elements that needed a little extra emphasis and style. For example on product images, cart summary and form wrappers. 
-- In cases when the an is clickable, for example product images or call to action buttons the shadow size is increased and animated when the user hovers over that element, this was done to make the area more tempting to click.
+- Subtle box shadowing and curved corners were applied to elements that needed a little extra emphasis and style. For example on product images, cart summary and form wrappers. 
+- In cases where an area is clickable, for example product images or call to action buttons, the shadow size is increased and animated when the user hovers over that element, this was done to make the area more tempting to click.
 - Curved corner styling was chosen for its friendly feel, and as it is a common stylistic choice of bootstrap it blends well with styles used from that library on this project.
 
 ## Wireframes
@@ -570,6 +570,7 @@ Quantity | quantity | | PositiveSmallIntegerField
 - [Browserstack](https://www.browserstack.com/) to test functionality on all browsers and devices.
 - Heroku for deployment
 - [SweetAlert2](https://sweetalert2.github.io/) for beautiful responsive replacement to javascript popup boxes.
+- [Balsamiq](https://balsamiq.com/) to create the wireframes for this project.
 
 ### Databases
 - [PostgreSQL](https://www.postgresql.org/) for production database, provided by heroku.
@@ -598,93 +599,93 @@ Testing information can be found in separate [TESTING.md](TESTING.md) file
 To run this project on your own IDE follow the instructions below:
 
 Ensure you have the following tools: 
-- An IDE such as [Visual Studio Code](https://code.visualstudio.com/)
+    - An IDE such as [Visual Studio Code](https://code.visualstudio.com/)
 
 The following **must be installed** on your machine:
-- [PIP](https://pip.pypa.io/en/stable/installing/)
-- [Python 3](https://www.python.org/downloads/)
-- [Git](https://gist.github.com/derhuerst/1b15ff4652a867391f03)
+    - [PIP](https://pip.pypa.io/en/stable/installing/)
+    - [Python 3](https://www.python.org/downloads/)
+    - [Git](https://gist.github.com/derhuerst/1b15ff4652a867391f03)
 
 To allow you to access all functionality on the site locally, ensure you have created free accounts with the following services:
-- [Stripe](https://dashboard.stripe.com/register)
-- [AWS](https://aws.amazon.com/) and [set up an S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html)
-- [emailjs](https://www.emailjs.com/)
+    - [Stripe](https://dashboard.stripe.com/register)
+    - [AWS](https://aws.amazon.com/) and [set up an S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html)
+    - [emailjs](https://www.emailjs.com/)
 
 Please click the links above for documentation on how to set these up and retrieve the necessary environment variables.
 
 ### Instructions
 1. Save a copy of the github repository located at https://github.com/AJGreaves/thehouseofmouse by clicking the "download zip" button at the top of the page and extracting the zip file to your chosen folder. If you have Git installed on your system, you can clone the repository with the following command.
-```
-git clone https://github.com/AJGreaves/thehouseofmouse
-```
+    ```
+    git clone https://github.com/AJGreaves/thehouseofmouse
+    ```
 
 2. Open your preferred IDE, open a terminal session in the unzip folder or cd to the correct location.
 
 3. A virtual environment is recommended for the Python interpreter, I recommend using Pythons built in virtual environment. Enter the command:
-```
-python -m .venv venv
-```  
+    ```
+    python -m .venv venv
+    ```  
 _NOTE: The `python` part of this command and the ones in other steps below assumes  you are working with a windows operating system. Your Python command may differ, such as `python3` or `py`_
 
 4. Activate the .venv with the command:
-```
-.venv\Scripts\activate 
-```
+    ```
+    .venv\Scripts\activate 
+    ```
 _Again this **command may differ depending on your operating system**, please check the [Python Documentation on virtual environments](https://docs.python.org/3/library/venv.html) for further instructions._
 
 5. If needed, Upgrade pip locally with
-```
-pip install --upgrade pip.
-```
+    ```
+    pip install --upgrade pip.
+    ```
 
 6. Install all required modules with the command 
-```
-pip -r requirements.txt.
-```
+    ```
+    pip -r requirements.txt.
+    ```
 
 7. Set up the following environment variables within your IDE. 
 
-- If using VSCode, locate the `settings.json` file within the .vscode directory and add your environment variables as below. Do not forget to restart your machine to activate your environment variables or your code will not be able to see them: 
+    - If using VSCode, locate the `settings.json` file within the .vscode directory and add your environment variables as below. Do not forget to restart your machine to activate your environment variables or your code will not be able to see them: 
 
-```json
-"terminal.integrated.env.windows": {
-    "HOSTNAME": "<enter hostname here>",
-    "DEV": "1",
-    "SECRET_KEY": "<enter key here>",
-    "STRIPE_PUBLISHABLE": "<enter key here>",
-    "STRIPE_SECRET": "<enter key here>",
-    "EMAILJS_USER_ID": "<enter key here>",
-    "STRIPE_SUCCESS_URL": "<enter url here>",
-    "STRIPE_CANCEL_URL": "<enter url here>",
-    "AWS_ACCESS_KEY_ID": "<enter key here>",
-    "AWS_SECRET_ACCESS_KEY": "<enter key here>",
-    "AWS_STORAGE_BUCKET_NAME": "<enter bucket name here>",
-}
-```
+    ```json
+    "terminal.integrated.env.windows": {
+        "HOSTNAME": "<enter hostname here>",
+        "DEV": "1",
+        "SECRET_KEY": "<enter key here>",
+        "STRIPE_PUBLISHABLE": "<enter key here>",
+        "STRIPE_SECRET": "<enter key here>",
+        "EMAILJS_USER_ID": "<enter key here>",
+        "STRIPE_SUCCESS_URL": "<enter url here>",
+        "STRIPE_CANCEL_URL": "<enter url here>",
+        "AWS_ACCESS_KEY_ID": "<enter key here>",
+        "AWS_SECRET_ACCESS_KEY": "<enter key here>",
+        "AWS_STORAGE_BUCKET_NAME": "<enter bucket name here>",
+    }
+    ```
 
-- If using an IDE that includes a `bashrc` file, open this file and enter all the environment variables listed above using the following format: 
-```
-HOSTNAME="<enter key here>"
-```
-- `HOSTNAME` should be the local address for the site when running within your own IDE.
-- `DEV` environment variable is set only within the development environment, it does not exist in the deployed version, making it possible to have different settings for the two environments. For example setting DEBUG to True only when working in development and not on the deployed site.
+    - If using an IDE that includes a `bashrc` file, open this file and enter all the environment variables listed above using the following format: 
+    ```
+    HOSTNAME="<enter key here>"
+    ```
+    - `HOSTNAME` should be the local address for the site when running within your own IDE.
+    - `DEV` environment variable is set only within the development environment, it does not exist in the deployed version, making it possible to have different settings for the two environments. For example setting DEBUG to True only when working in development and not on the deployed site.
 
 8. If you have restarted your machine to activate your environment variables, do not forget to reactivate your virtual environment with the command used at step 4.
 
 9. Migrate the admin panel models to create your database template with the terminal command
-```
-python manage.py migrate
-```
+    ```
+    python manage.py migrate
+    ```
 
 10. Create your superuser to access the django admin panel and database with the following command, and then follow the steps to add your admin username and password:
-```
-python manage.py createsuperuser
-```
+    ```
+    python manage.py createsuperuser
+    ```
 
 11. You can now run the program locally with the following command: 
-```
-python manage.py runserver
-```
+    ```
+    python manage.py runserver
+    ```
 
 12. Once the program is running, go to the local link provided and add `/admin` to the end of the ur. Here log in with your superuser account and create instances of ShippingDestination and Product within the new database.
 
