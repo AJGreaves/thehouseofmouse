@@ -5,8 +5,6 @@
 
 [![Build Status](https://travis-ci.org/AJGreaves/thehouseofmouse.svg?branch=master)](https://travis-ci.org/AJGreaves/thehouseofmouse)
 
-## Introduction
-
 ![Home page](https://i.ibb.co/SJCXN6H/home-responsive.png)
 
 [The House of Mouse webshop](https://thehouseofmouse.herokuapp.com/) was designed, built and deployed by Anna Greaves as her final project for the Code Institute Full Stack Web Development diploma. The  purpose of The House of Mouse online shop is to be the new custom built base for the established Etsy shop of the same name. This website is designed to create a beautifully intuitive, smooth and effortless online shopping experience. Specifically aimed at customers who enjoy artisan handmade quality, light hearted products and wish to connect to the personality of the creator behind the products they buy.
