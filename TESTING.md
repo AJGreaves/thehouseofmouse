@@ -387,29 +387,83 @@ All steps on desktop were repeated in browsers: Firefox, Chrome and Internet Exp
 
 #### Checkout Pages
 
+- Navigate to the checkout page urls without anything in the cart. Confirm that the user is redirected to the cart page.
+
 ##### Info Page
+
+- Go to the info page with items in users cart. Confirm that the items are displayed correctly in the order summary, that the subtotal is correct, and that the "change" link on the order summary returns the user to the cart page if clicked.
+- Confirm that the progress bar at the top of the page highlights the correct stage in the checkout process.
+- Try to click the "continue to shipping" button without adding any information to the shipping info form. Confirm that the appropriate error message is given to the user.
+- Try to send the form without all the required fields filled in. Confirm that the appropriate error message is given to the user.
+- Click the "My country is not in the list?" link, confirm that the information modal is launched and that the buttons on this modal work as expected.
+- Click the links at the bottom of the page, confirm that they work as expected.
+- After adding shipping information and going to the next page, return to the Info page and confirm that the shipping info is populated in the form.
 
 ##### Shipping Page
 
+- Go to the shipping page. Confirm that the items are displayed correctly in the order summary and that the "change" link on the order summary returns the user to the cart page if clicked.
+- Confirm that the shipping price is correct for the country selected, and has now been added to the total. 
+- Test the shipping price by changing the country destination to different areas that have different prices.
+- Confirm that the progress bar at the top of the page highlights the correct stage in the checkout process.
+- Check that the email address of the user is displayed and is correct. 
+- Check that the address given by the user is also displayed correctly.
+- Click the links at the bottom of the page, confirm that they work as expected.
+- Click the "Continue to payment" button, confirm it takes the user to the Stripe checkout page.
+
 ##### Payment Page
+
+- Cancel the payment, confirm that the user is taken back to the all products page of the website.
+- Return to the payment page , use the stripe checkout test [card numbers](https://stripe.com/docs/testing) to check the various responses to different errors.
+- Make a successful payment. Confirm that the user is returned to The House of Mouse website and the confirm order page.
 
 ##### Confirmation Page
 
+- Check that the conformation page loads as expected.
+- Confirm that the progress bar at the top of the page highlights the correct stage in the checkout process. 
+- Check that the shipping address provided by the user is also correct.
+- Check that the estimated shipping time given is correct for the country selected by the user.
+- Check that the links provided on this page work as expected.
+- Click the "return to shop" button, confirm that the user is taken back to the main shop page.
+
 #### Terms and Conditions Page
 
+- Check that the page loads and displays as expected. Confirm that the links in the text work as needed.
+
 #### Privacy Policy Page
+
+- Check that the page loads and displays as expected. Confirm that the links in the text work as needed.
 
 
 ### Testing undertaken on tablet and phone devices
 All steps below were repeated to test mobile and tablet specific elements on my Samsung phone and tablet, in both the firefox browser and samsung internet browser.
 
-Responsive design waw also tested in the Chrome Developer Tools device simulators on all options and orientations.
+Responsive design was also tested in the Chrome Developer Tools device simulators on all options and orientations.
 
 #### Elements on every page
 
 1. Navbar 
-- Open the website on mobile, confirm that the navbar is collapsed into a burger icon
-- click the burger icon, confirm that the navbar list appears are expected.
+    - Open the website on mobile, confirm that the navbar is collapsed into a burger icon
+    - click the burger icon, confirm that the navbar list appears are expected.
+    - Click the "Shop" dropdown menu, confirm that the shop sections are displayed. 
+    - Add something to the cart, confirm that the user shopping cart icon counter appears and displays correctly.
+
+2. Footer
+    - Scroll to the bottom of the page, confirm that the footer contents is displayed as expected with the bootstrap grid.
+    - No content squashed or squeezed or disproportionate in size.
+    - Confirm that all links and buttons in footer are easy to click with a finger on the smallest screen sizes.
+
+3. Shop pages
+    - Confirm that the product list is displayed one on top of each other on mobile, and 3 to a row on tablet.
+    - Confirm that all clicks and swipes operate as expected on touch screen.
+
+4. Checkout pages
+    - Confirm that the order summary is displayed as a closed accordion, and can be opened with a click.
+    - Check that the display of elements matches the expected layout for mobile and tablet devices.
+
+5. All pages
+    - Navigate to all pages on the site, check that the layout is as expected for the screen size.
+    - Check that all buttons, menus, forms and other elements are the correct proportions and easily clickable with a finger.
+
 
 ### Bugs discovered: 
 #### Solved bugs
@@ -417,7 +471,7 @@ Responsive design waw also tested in the Chrome Developer Tools device simulator
 1. **On running the python server, large errors appeared in terminal**
     - Any time a page was loaded, the terminal filled with around 100 lines of errors. This turned out to be a bug with Python 3.7.3 [See bug report on bugs.python.org](https://bugs.python.org/issue27682)
     - Bug was partially resolved by upgrading my version of python to python 3.7.5, although this threw new errors at me.
-    - Bug finally fixed by replacing my `python manage.py runserver` command with `python manage.py runserver 8000` (with thanks to Chris Zielinski, Code Institue Mentor for this solution)
+    - Bug finally fixed by replacing my `python manage.py runserver` command with `python manage.py runserver 8000` (with thanks to Chris Zielinski, Code Institute Mentor for this solution)
 
 2. **Duplicate items added to OrderItems database**
     - As I was using a nested loop to compare the items in my sessions storage cart to the items in the database Order, I was ending up with duplicate items when more than 1 item was already in the database.
@@ -438,7 +492,7 @@ else:
     # get items currently in Order
     items_in_order = OrderItem.objects.filter(order=order)
 
-    # delete all orders in the list
+    # delete all order items in the list
     for orderitem in items_in_order:
         orderitem.delete()
 
@@ -480,14 +534,23 @@ else:
 5. **Duplicate listings showing up in All-Products view**
     - This was initially caused due to trying to sort results from the database by a boolean value (featured), but this turned out to be a known nofix issue with django. 
     - First I attempted to fix this by ordering by random, but the same problem continued.
-    - Eventually I decided to order by id, so that the most recently added products to the database would be displayed first, which suits a shops "all products" view much better than a random collection that changes each time the page is loaded.
+    - Eventually I used the following code to grab both querysets for featured and not featured and concatenate them into one list to send to the page view.
+
+    ```python
+    from itertools import chain
+
+    featured = Product.objects.filter(featured=True)
+    not_featured = Product.objects.filter(featured=False)
+    queryset = list(chain(featured, not_featured))
+    ```
 
 #### Unsolved bugs
 
 1. **Sorting category results with pagination**
-
+    - Getting the operation of pagination in shop categories in combination with the sort function throws multiple bugs and errors. The first pagination page will show correctly, but when the user tries to go to the next page the results are either reset as if the page was never sorted, or throws an error.
+    - Given that the number of listings in the largest shop section is 15 - which is only 3 more than the usual pagination number of 12 - I decided to remove pagination in the shop sections and leave tackling this bug for a future release. 
 
 
 ## Further testing: 
 1. Asked fellow students, friends and family to look at the site on their devices and report any issues they found.
-2. FamilyHub viewed on all devices and orientations available in Chrome DevTools, as well at a local tech store.
+2. The House of Mouse viewed on all devices and orientations available in Chrome DevTools, as well at a local tech store.
