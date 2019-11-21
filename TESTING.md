@@ -38,18 +38,21 @@ The following validation services and linter were used to check the validity of 
 
 - [Python extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python) and [Pylint-django](https://pypi.org/project/pylint-django/) was used to validate Python.
 
-If you wish to run any of these tests for yourself, befre going further please make sure you have already cloned this project from the [The House of Mouse GitHub repository](https://github.com/AJGreaves/thehouseofmouse) 
+**IMPORTANT**
+
+If you wish to run any of these tests for yourself, before going further please make sure you have already cloned this project from the [The House of Mouse GitHub repository](https://github.com/AJGreaves/thehouseofmouse) 
 by following the steps in the [README.md](readme.md#how-to-run-this-project-locally) under "How to run this project locally" and that you have the entire project running on your own IDE.
 
 ### Jasmine
+
+- When creating this project I chose to use Python to handle almost all of the logic needed for the functionality of the site. Meaning that the javascript written was mainly to handle alert messages, fetch and ajax requests. This meant that there was not a lot of javascript for me to test with jasmine, so these tests are very short compared to previous projects I have made. I did do extensive Python unittesting on the python code however.
 
 - [Jasmine-Jquery CDN](https://github.com/velesin/jasmine-jquery) has been imported into the jasmine testing to allow for jQuery within the JavaScript functions.
 
 The files for jasmine testing The House of Mouse can be found here:
 - HTML page to run jasmine tests from: [jasmine-testing.html](testing/jasmine/jasmine-testing.html)
-- JavaScript specifications (tests): [familyhubSpec.js](testing/jasmine/spec/thehouseofmouseSpec.js)
+- JavaScript specifications (tests): [thehouseofmouseSpec.js](testing/jasmine/spec/thehouseofmouseSpec.js)
 - The House of Mouse JavaScript functions to be tested are in the [js directory](static/js)
-    - [common.js](static/js/main.js)
 
 #### How to run Jasmine tests
 
@@ -89,9 +92,6 @@ This project did not utilize Test Driven Development. The reason for this was th
 
 The automated tests for this project were created after the vast majority of the project was already complete, once I had a firmer grasp of how my code was working and what its expected output was. Now that I have a better understanding of how automated tests work, I intend to attempt TDD with my next project.
 
-- coverage - command: coverage html, then open and run index.html file in the htmlcov directory created.
-- travis
-
 ### Coverage
 
 [Coverage.py](https://coverage.readthedocs.io/en/v4.5.x/) was used to provide feedback during testing to check that enough of my code had been tested.
@@ -110,7 +110,7 @@ coverage html
 ### Travis
 
 - [Travis](https://travis-ci.org/) was used throughout the unit testing of this project to provide continuous integration with the deployed site. The [Travis Documentation](https://docs.travis-ci.com/) provides all the info needed to set it up.
-- I set the heroku deployment settings for this project to only allow deployment when the travis had passed the latest push to the master branch.
+- I set the heroku deployment settings for this project to only allow deployment when the travis had passed the latest push to the master branch on GitHub.
 
 ## User Stories Testing
 
@@ -519,6 +519,7 @@ else:
 
     - Once my site was deployed, I connected to the postgres database and then replaced the above code with the more robust and accurate django postgres search code.
 
+
     ```python
     from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 
@@ -535,6 +536,7 @@ else:
     - This was initially caused due to trying to sort results from the database by a boolean value (featured), but this turned out to be a known nofix issue with django. 
     - First I attempted to fix this by ordering by random, but the same problem continued.
     - Eventually I used the following code to grab both querysets for featured and not featured and concatenate them into one list to send to the page view.
+
 
     ```python
     from itertools import chain
