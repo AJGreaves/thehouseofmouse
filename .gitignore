@@ -1,5 +1,5 @@
 #folders
-.venv/
+venv/
 .vscode/
 product_images/
 htmlcov/

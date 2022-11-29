@@ -623,24 +623,24 @@ Please click the links above for documentation on how to set these up and retrie
 
 3. A virtual environment is recommended for the Python interpreter, I recommend using Pythons built in virtual environment. Enter the command:
     ```
-    python -m .venv venv
+    python -m venv venv
     ```  
 _NOTE: The `python` part of this command and the ones in other steps below assumes  you are working with a windows operating system. Your Python command may differ, such as `python3` or `py`_
 
-4. Activate the .venv with the command:
+4. Activate the venv with the command:
     ```
-    .venv\Scripts\activate 
+    venv\Scripts\activate 
     ```
 _Again this **command may differ depending on your operating system**, please check the [Python Documentation on virtual environments](https://docs.python.org/3/library/venv.html) for further instructions._
 
 5. If needed, Upgrade pip locally with
     ```
-    pip install --upgrade pip.
+    pip install --upgrade pip
     ```
 
 6. Install all required modules with the command 
     ```
-    pip -r requirements.txt.
+    pip -r requirements.txt
     ```
 
 7. Set up the following environment variables within your IDE. 
